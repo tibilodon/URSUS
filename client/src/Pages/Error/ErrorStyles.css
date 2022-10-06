@@ -1,0 +1,16 @@
+.error-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.error-text {
+  margin: 7em 0 0 37em;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* border: 2px solid black; */
+}
+.error-btn {
+  margin: 1em;
+}
