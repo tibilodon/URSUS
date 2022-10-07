@@ -1,0 +1,15 @@
+.reg-option {
+  margin: 1em;
+}
+.form-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reg-header {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+.reg-wrapper {
+  background-color: #ffeb3b;
+}

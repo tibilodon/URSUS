@@ -3,7 +3,7 @@ import "./InputFieldStyles.css";
 //mui
 import TextField from "@mui/material/TextField";
 
-const InputField = ({ type, name, value, handleChange, labelText }) => {
+const InputField = ({ type, name, value, handleChange, labelText, sx }) => {
   return (
     <>
       <div className="input-wrap">
@@ -15,6 +15,7 @@ const InputField = ({ type, name, value, handleChange, labelText }) => {
           value={value}
           name={name}
           onChange={handleChange}
+          sx={sx}
         />
       </div>
     </>

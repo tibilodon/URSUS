@@ -6,7 +6,7 @@ import InputField from "./Components/Input/InputField";
 import Dashboard from "./Pages/Dashboard";
 import Error from "./Pages/Error/Error";
 import Landing from "./Pages/Landing/Landing";
-import Register from "./Pages/Register";
+import Register from "./Pages/Register/Register";
 
 function App() {
   return (
