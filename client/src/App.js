@@ -1,4 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+//TODO:test
+import InputField from "./Components/Input/InputField";
 //Pages
 import Dashboard from "./Pages/Dashboard";
 import Error from "./Pages/Error/Error";
@@ -14,6 +17,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
+          <Route path="/test" element={<InputField />} />
         </Routes>
       </BrowserRouter>
     </>
