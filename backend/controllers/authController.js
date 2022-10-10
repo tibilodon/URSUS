@@ -12,7 +12,7 @@ const register = async (req, res) => {
     throw new BadRequestError("E-mail cím már használatban");
   }
   const user = await User.create({ name, email, password });
-  const toke = user.createJWT();
+  const token = user.createJWT();
   res.status(StatusCodes.OK).json({
     user: {
       email: user.email,
