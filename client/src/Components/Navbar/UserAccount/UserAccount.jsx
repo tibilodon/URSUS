@@ -1,9 +1,11 @@
 import "./UserAccountStyles.css";
 import React from "react";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Grid, Menu, MenuItem, IconButton } from "@mui/material";
+import { Grid, Menu, MenuItem, IconButton, Button } from "@mui/material";
 import { useState } from "react";
+import { useAppContext } from "../../../Context/appContext";
 const UserAccount = () => {
+  const { user, logoutUser } = useAppContext();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = event => {
@@ -25,8 +27,9 @@ const UserAccount = () => {
             onClick={handleMenu}
             color="inherit"
           >
-            <AccountCircle />
-            NAME
+            <AccountCircle sx={{ mr: "0.3em" }} />
+            {/* {user && user.name} */}
+            <div className="user-account">{user && user.name}</div>
           </IconButton>
           <Menu
             id="menu-appbar"
@@ -43,8 +46,8 @@ const UserAccount = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={logoutUser}>Logout</MenuItem>
+            {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
           </Menu>
         </div>
       </Grid>

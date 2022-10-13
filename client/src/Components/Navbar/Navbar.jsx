@@ -1,6 +1,9 @@
+import "./NavbarStyles.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./NavbarStyles.css";
+
+import { useAppContext } from "../../Context/appContext";
+
 import Button from "@mui/material/Button";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import UserAccount from "./UserAccount/UserAccount";
@@ -26,6 +29,8 @@ import ursus from "../../Assets/ursus_v5.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { toggleSidebar, user, logoutUser } = useAppContext();
+  const [showLogout, setShowLogout] = useState(false);
   const theme = createTheme({
     typography: {
       h2: {
@@ -51,11 +56,13 @@ const Navbar = () => {
               anchor="left"
               open={isOpen}
               onClose={() => setIsOpen(!isOpen)}
+              // onClick={toggleSidebar}
             >
               <div className="boxWrap">
                 <div className="boxContent">
                   <Box
-                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setIsOpen(!isOpen)}
+                    onClick={toggleSidebar}
                     // width="10em"
                     textAlign="center"
                     role="presentation"
@@ -64,7 +71,7 @@ const Navbar = () => {
                       color="inherit"
                       // color="secondary"
                       startIcon={<MenuBookOutlinedIcon />}
-                      onClick={() => navigate("/receptek")}
+                      // onClick={() => navigate("/receptek")}
                     >
                       Receptek
                     </Button>
@@ -73,7 +80,8 @@ const Navbar = () => {
                 </div>
                 <div className="boxContent">
                   <Box
-                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setIsOpen(!isOpen)}
+                    onClick={toggleSidebar}
                     textAlign="center"
                     role="presentation"
                   >
@@ -91,7 +99,8 @@ const Navbar = () => {
                 </div>
                 <div className="boxContent">
                   <Box
-                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setIsOpen(!isOpen)}
+                    onClick={toggleSidebar}
                     textAlign="center"
                     role="presentation"
                   >
