@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import "express-async-errors";
@@ -15,6 +16,10 @@ import notFoundMiddleware from "./middleware/not-found.js";
 
 const app = express();
 dotenv.config();
+
+//cors
+app.use(cors());
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Welcome");
