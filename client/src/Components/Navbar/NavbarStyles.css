@@ -1,0 +1,30 @@
+.navbar-main {
+  border: 2px solid black;
+  padding: 1em;
+  /* background-color: #42a5f5; */
+  /* color: #ff9800; */
+}
+.boxWrap {
+  /* border: 3px solid black; */
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* margin-top: 30%; */
+}
+.boxContent {
+  margin-bottom: 1em;
+}
+.ursus {
+  /* border: 2px solid black; */
+  width: 8em;
+  margin-top: 0.2em;
+  /* margin-left: 5.5em; */
+}
+.sideMenu-open-ursus {
+  width: 8em;
+  margin-top: 0.2em;
+  margin-left: 5.5em;
+}

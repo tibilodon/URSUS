@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./NavbarStyles.css";
 import Button from "@mui/material/Button";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
-
+import UserAccount from "./UserAccount/UserAccount";
 // import AppBar from "@mui/material/AppBar";
 import {
   Toolbar,
@@ -19,7 +19,6 @@ import { ThemeProvider } from "@emotion/react";
 import { orange, purple, blue } from "@mui/material/colors";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 
@@ -153,7 +152,7 @@ const Navbar = () => {
                 Receptek
               </Button>
             </IconButton> */}
-            <Grid container justifyContent="flex-end">
+            {/* <Grid container justifyContent="flex-end">
               <IconButton
                 size="'large"
                 aria-label="account of current user/login"
@@ -164,7 +163,8 @@ const Navbar = () => {
               >
                 <AccountCircle />
               </IconButton>
-            </Grid>
+            </Grid> */}
+            <UserAccount />
           </Toolbar>
         </AppBar>
       </ThemeProvider>
