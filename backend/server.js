@@ -14,15 +14,24 @@ import recipesRouter from "./routes/recipesRoutes.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import notFoundMiddleware from "./middleware/not-found.js";
 
+import morgan from "morgan";
+
 const app = express();
 dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 
 //cors
 app.use(cors());
 
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Welcome");
+// app.get("/", (req, res) => {
+//   res.send("Welcome");
+// });
+
+app.get("/api/v1", (req, res) => {
+  res.json({ msg: "API" });
 });
 
 app.use("/api/v1/auth", authRouter);

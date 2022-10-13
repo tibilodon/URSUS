@@ -1,7 +1,6 @@
 import "./RegisterStyles.css";
 
 import { Alert } from "@mui/material";
-import { useState } from "react";
 import InputField from "../../Components/Input/InputField";
 import { useAppContext } from "../../Context/appContext";
 
@@ -11,17 +10,29 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  isMember: true,
+};
+
 const Register = () => {
-  const initialState = {
-    name: "",
-    email: "",
-    password: "",
-    isMember: true,
-  };
+  const navigate = useNavigate();
 
   const [values, setValues] = useState(initialState);
-  const { isLoading, showAlert, displayAlert, alertText, alertType } =
-    useAppContext();
+  const {
+    isLoading,
+    showAlert,
+    displayAlert,
+    alertText,
+    alertType,
+    user,
+    setupUser,
+  } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -34,15 +45,42 @@ const Register = () => {
   const onSubmit = e => {
     e.preventDefault();
     const { name, email, password, isMember } = values;
-    if (!email || !password || !isMember || !name) {
+    if (!email || !password || (!isMember && !name)) {
       displayAlert();
       return;
     }
+    const currentUser = { name, email, password };
+    if (isMember) {
+      setupUser({
+        currentUser,
+        endPoint: "login",
+        alertText: "Login Successful! Redirecting...",
+      });
+    } else {
+      setupUser({
+        currentUser,
+        endPoint: "register",
+        alertText: "User created, redirecting...",
+      });
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   return (
     <>
       <div className="reg-wrapper">
+        <div>
+          {showAlert}
+          {alertType}
+          {alertText}
+        </div>
         <Container maxWidth="sm">
           <Box
             sx={{
@@ -86,8 +124,13 @@ const Register = () => {
                   handleChange={handleChange}
                   labelText="password"
                 />
-                <Button sx={{ m: "1em" }} variant="contained" type="submit">
-                  Belépés
+                <Button
+                  disabled={isLoading}
+                  sx={{ m: "1em" }}
+                  variant="contained"
+                  type="submit"
+                >
+                  Tovább
                 </Button>
               </div>
               <div className="reg-option">
