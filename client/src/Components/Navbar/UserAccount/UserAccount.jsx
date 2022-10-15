@@ -4,12 +4,19 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Grid, Menu, MenuItem, IconButton, Button } from "@mui/material";
 import { useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
+import { useNavigate } from "react-router-dom";
 const UserAccount = () => {
+  const navigate = useNavigate();
   const { user, logoutUser } = useAppContext();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const myAccount = () => {
+    handleClose();
+    navigate("profile");
   };
 
   const handleClose = () => {
@@ -47,7 +54,7 @@ const UserAccount = () => {
             onClose={handleClose}
           >
             <MenuItem onClick={logoutUser}>Logout</MenuItem>
-            {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
+            <MenuItem onClick={myAccount}>My account</MenuItem>
           </Menu>
         </div>
       </Grid>

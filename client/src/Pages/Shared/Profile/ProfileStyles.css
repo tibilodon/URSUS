@@ -1,0 +1,7 @@
+.profile-wrap {
+  margin-top: 5em;
+}
+.profile-submit {
+  display: flex;
+  justify-content: center;
+}

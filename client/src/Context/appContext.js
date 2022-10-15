@@ -8,6 +8,9 @@ import {
   SETUP_USER_ERROR,
   TOGGLE_SIDEBAR,
   LOGOUT_USER,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from "./actions";
 
 import reducer from "./reducer";
@@ -18,7 +21,7 @@ const userLocation = localStorage.getItem("location");
 
 const initialState = {
   user: user ? JSON.parse(user) : null,
-  token: null,
+  token: token,
   userLocation: userLocation || "",
   jobLocation: userLocation || "",
   showSidebar: false,
@@ -93,9 +96,71 @@ const AppProvider = ({ children }) => {
     removeUserFromLocalStorage();
   };
 
+  //auth
+  const authFetch = axios.create({
+    baseURL: "/api/v1",
+  });
+
+  // request
+  authFetch.interceptors.request.use(
+    config => {
+      config.headers["Authorization"] = `Bearer ${state.token}`;
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  );
+
+  //response
+  authFetch.interceptors.response.use(
+    response => {
+      return response;
+    },
+    error => {
+      if (error.response.status === 401) {
+        logoutUser();
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  //updateUser
+  const updateUser = async currentUser => {
+    dispatch({
+      type: UPDATE_USER_BEGIN,
+    });
+    try {
+      const { data } = await authFetch.patch("/auth/updateUser", currentUser);
+      const { user, location, token } = data;
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: { user, location, token },
+      });
+      addUserToLocalStorage({ user, location, token });
+    } catch (error) {
+      if (error.response.status !== 401) {
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: {
+            msg: error.response.data.msg,
+          },
+        });
+      }
+    }
+    clearAlert();
+  };
+
   return (
     <AppContext.Provider
-      value={{ ...state, displayAlert, setupUser, logoutUser, toggleSidebar }}
+      value={{
+        ...state,
+        displayAlert,
+        setupUser,
+        logoutUser,
+        toggleSidebar,
+        updateUser,
+      }}
     >
       {children}
     </AppContext.Provider>

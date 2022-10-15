@@ -1,4 +1,4 @@
-import UnAuthenticatedError from "../errors/unAuthenticated";
+import UnAuthenticatedError from "../errors/unAuthenticated.js";
 
 import jwt from "jsonwebtoken";
 
