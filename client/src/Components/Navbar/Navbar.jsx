@@ -137,42 +137,13 @@ const Navbar = () => {
               role="presentation"
               onClick={() => navigate("/")}
             >
-              {/* <Button
-                color="inherit"
-                startIcon={<PermContactCalendarIcon />}
-              >
-                Receptjeim
-              </Button> */}
-              {/* <Divider /> */}
-              {/* <Divider /> */}
               <img
                 className={isOpen ? "sideMenu-open-ursus" : "ursus"}
                 src={ursus}
                 alt="ursus logo"
               />
             </Box>
-            {/* <IconButton size="large">
-              <Button
-                color="inherit"
-                // color="secondary"
-                startIcon={<MenuBookOutlinedIcon />}
-                // onClick={() => navigate("/")}
-              >
-                Receptek
-              </Button>
-            </IconButton> */}
-            {/* <Grid container justifyContent="flex-end">
-              <IconButton
-                size="'large"
-                aria-label="account of current user/login"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-                onClick={() => navigate("/")}
-              >
-                <AccountCircle />
-              </IconButton>
-            </Grid> */}
+
             <UserAccount />
           </Toolbar>
         </AppBar>
