@@ -16,7 +16,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     defaultError.statusCode = StatusCodes.BAD_REQUEST;
     defaultError.msg = `${Object.keys(
       err.keyValue
-    )} mező értékékének egyedülállónak kell lennie`;
+    )} mező értékei nem egyedükállóak`;
   }
   res.status(defaultError.statusCode).json({ msg: defaultError.msg });
 };
