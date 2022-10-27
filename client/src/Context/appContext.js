@@ -11,6 +11,20 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  HANDLE_CHANGE,
+  CLEAR_VALUES,
+  CREATE_RECIPE_BEGIN,
+  CREATE_RECIPE_SUCCESS,
+  CREATE_RECIPE_ERROR,
+  GET_RECIPES_BEGIN,
+  GET_RECIPES_SUCCESS,
+  SET_EDIT_RECIPE,
+  DELETE_RECIPE_BEGIN,
+  EDIT_RECIPE_BEGIN,
+  EDIT_RECIPE_SUCCESS,
+  EDIT_RECIPE_ERROR,
+  CLEAR_FILTERS,
+  CHANGE_PAGE,
 } from "./actions";
 
 import reducer from "./reducer";
@@ -20,15 +34,46 @@ const token = localStorage.getItem("token");
 const userLocation = localStorage.getItem("location");
 
 const initialState = {
-  user: user ? JSON.parse(user) : null,
-  token: token,
-  userLocation: userLocation || "",
-  jobLocation: userLocation || "",
-  showSidebar: false,
+  // utils
   isLoading: false,
   showAlert: false,
   alertText: "",
   alertType: "",
+  //sidebar
+  showSidebar: false,
+  //user
+  user: user ? JSON.parse(user) : null,
+  token: token,
+  userLocation: userLocation || "",
+  //recipe
+  isEditing: false,
+  editRecipeId: "",
+  position: "",
+  title: "",
+  recipeType: "egyéb",
+  recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
+  difficulty: "könnyű",
+  difficultyOptions: ["könnyű", "közepes", "nehéz"],
+  steps: { step_1: "", step_2: "", step_3: "" },
+  ing_1: 1,
+  ing_1ingredient: "",
+  ing_1options: ["L", "g", "kg"],
+  ing_2: 1,
+  ing_2ingredient: "",
+  ing_2options: ["L", "g", "kg"],
+  ing_3: 1,
+  ing_3ingredient: "",
+  ing_3options: ["L", "g", "kg"],
+  description: "",
+  timeItTakes: 1,
+  timeItTakesMinutes: ["perc"],
+  timeItTakesHours: ["óra"],
+  //search
+  search: "",
+  searchDifficulty: "összes",
+  searchType: "összes",
+  sort: "latest",
+  sortOptions: ["összes", "legújabb", "legrégebbi", "a-z", "z-a"],
 };
 
 const AppContext = React.createContext();

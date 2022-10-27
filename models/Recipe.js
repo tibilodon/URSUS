@@ -22,7 +22,7 @@ const RecipeSchema = new mongoose.Schema(
       step_2: { type: String },
       step_3: { type: String },
     },
-    ing1: {
+    ing_1: {
       quantity: Number,
       ingredient: String,
       value: {
@@ -31,7 +31,7 @@ const RecipeSchema = new mongoose.Schema(
         default: "kérlek válassz",
       },
     },
-    ing2: {
+    ing_2: {
       quantity: Number,
       ingredient: String,
       value: {
@@ -40,7 +40,7 @@ const RecipeSchema = new mongoose.Schema(
         default: "kérlek válassz",
       },
     },
-    ing3: {
+    ing_3: {
       quantity: Number,
       ingredient: String,
       value: {
