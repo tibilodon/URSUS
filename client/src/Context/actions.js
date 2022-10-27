@@ -1,17 +1,7 @@
 export const DISPLAY_ALERT = "SHOW_ALERT";
 export const CLEAR_ALERT = "CLEAR_ALERT";
 
-//register
-// export const REGISTER_USER_BEGIN = "REGISTER_USER_BEGIN";
-// export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
-// export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
-
-//login
-// export const LOGIN_USER_BEGIN = "LOGIN_USER_BEGIN";
-// export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
-// export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
-
-//setup user(register,login) with axios
+//setup user(register,login)
 export const SETUP_USER_BEGIN = "SETUP_USER_BEGIN";
 export const SETUP_USER_SUCCESS = "SETUP_USER_SUCCESS";
 export const SETUP_USER_ERROR = "SETUP_USER_ERROR";
@@ -26,3 +16,38 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const UPDATE_USER_BEGIN = "UPDATE_USER_BEGIN";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
 export const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
+
+//handleChange
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
+
+//clear values
+export const CLEAR_VALUES = "CLEAR_VALUES";
+
+//create recipe
+export const CREATE_RECIPE_BEGIN = "CREATE_RECIPE_BEGIN";
+export const CREATE_RECIPE_SUCCESS = "CREATE_RECIPE_SUCCESS";
+export const CREATE_RECIPE_ERROR = "CREATE_RECIPE_ERROR";
+
+//get recipes
+export const GET_RECIPES_BEGIN = "GET_RECIPES_BEGIN";
+export const GET_RECIPES_SUCCESS = "GET_RECIPES_SUCCESS";
+
+//set editRecipe in addRecipe
+export const SET_EDIT_RECIPE = "SET_EDIT_RECIPE";
+
+//delete recipe
+export const DELETE_RECIPE_BEGIN = "DELETE_RECIPE_BEGIN";
+
+//edit recipe
+export const EDIT_RECIPE_BEGIN = "EDIT_RECIPE_BEGIN";
+export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
+export const EDIT_RECIPE_ERROR = "EDIT_RECIPE_ERROR";
+
+//stats - not needed
+
+//search
+//SEARCH - clear filters
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
+
+//SEARCH - change page
+export const CHANGE_PAGE = "CHANGE_PAGE";
