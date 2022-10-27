@@ -112,6 +112,195 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     };
   }
+
+  if (action.type === HANDLE_CHANGE) {
+    return {
+      ...state,
+      page: 1,
+      [action.payload.name]: action.payload.value,
+    };
+  }
+
+  if (action.type === CLEAR_VALUES) {
+    const initialState = {
+      isEditing: false,
+      editRecipeId: "",
+      // position: "",
+      title: "",
+      recipeType: "egyéb",
+      recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
+      difficulty: "könnyű",
+      difficultyOptions: ["könnyű", "közepes", "nehéz"],
+      steps: { step_1: "", step_2: "", step_3: "" },
+      ing_1: 1,
+      ing_1ingredient: "",
+      ing_1options: ["L", "g", "kg"],
+      ing_2: 1,
+      ing_2ingredient: "",
+      ing_2options: ["L", "g", "kg"],
+      ing_3: 1,
+      ing_3ingredient: "",
+      ing_3options: ["L", "g", "kg"],
+      description: "",
+      timeItTakes: 1,
+      timeItTakesMinutes: ["perc"],
+      timeItTakesHours: ["óra"],
+    };
+    return {
+      ...state,
+      ...initialState,
+    };
+  }
+
+  //create recipe
+  if (action.type === CREATE_RECIPE_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === CREATE_RECIPE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "New recipe created",
+    };
+  }
+
+  if (action.type === CREATE_RECIPE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
+  //get recipes
+  if (action.type === GET_RECIPES_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+      showAlert: false,
+    };
+  }
+
+  if (action.type === GET_RECIPES_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      recipes: action.payload.recipes,
+      totalRecipes: action.payload.totalRecipes,
+      numOfPages: action.payload.numOfPages,
+    };
+  }
+
+  //set edit to form
+  if (action.type === SET_EDIT_RECIPE) {
+    const recipe = state.recipes.find(
+      recipe => recipe.id === action.payload.id
+    );
+    const {
+      _id,
+      title,
+      recipeType,
+      recipeTypeOptions,
+      difficulty,
+      difficultyOptions,
+      steps,
+      ing_1,
+      ing_1ingredient,
+      ing_1options,
+      ing_2,
+      ing_2ingredient,
+      ing_2options,
+      ing_3,
+      ing_3ingredient,
+      ing_3options,
+      description,
+      timeItTakes,
+      timeItTakesMinutes,
+      timeItTakesHours,
+    } = recipe;
+    return {
+      ...state,
+      isEditing: true,
+      editRecipeId: _id,
+      title,
+      recipeType,
+      recipeTypeOptions,
+      difficulty,
+      difficultyOptions,
+      steps,
+      ing_1,
+      ing_1ingredient,
+      ing_1options,
+      ing_2,
+      ing_2ingredient,
+      ing_2options,
+      ing_3,
+      ing_3ingredient,
+      ing_3options,
+      description,
+      timeItTakes,
+      timeItTakesMinutes,
+      timeItTakesHours,
+    };
+  }
+  //delete
+  if (action.type === DELETE_RECIPE_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  //edit recipe
+  if (action.type === EDIT_RECIPE_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+
+  if (action.type === EDIT_RECIPE_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Job updated/edited",
+    };
+  }
+
+  if (action.type === EDIT_RECIPE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
+    };
+  }
+
+  //clear filters
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      search: "",
+      searchDifficulty: "összes",
+      searchType: "összes",
+      sort: "legújabb",
+    };
+  }
+
+  if (action.type === CHANGE_PAGE) {
+    return { ...state, page: action.payload.page };
+  }
+
   throw new Error(`no such action: ${action.type}`);
 };
 

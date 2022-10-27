@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 import axios from "axios";
 import {
   CLEAR_ALERT,
@@ -45,10 +45,10 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || "",
-  //recipe
+  //create recipe
   isEditing: false,
   editRecipeId: "",
-  position: "",
+  // position: "",
   title: "",
   recipeType: "egyéb",
   recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
@@ -68,11 +68,16 @@ const initialState = {
   timeItTakes: 1,
   timeItTakesMinutes: ["perc"],
   timeItTakesHours: ["óra"],
+  //get recipes
+  recipes: [],
+  totalRecipes: 0,
+  numOfPages: 0,
+  page: 1,
   //search
   search: "",
   searchDifficulty: "összes",
   searchType: "összes",
-  sort: "latest",
+  sort: "legújabb",
   sortOptions: ["összes", "legújabb", "legrégebbi", "a-z", "z-a"],
 };
 
@@ -196,6 +201,187 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  //create job handleChange
+  const handleChange = ({ name, value }) => {
+    dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
+  };
+
+  //clear values
+  const clearValues = () => {
+    dispatch({ type: CLEAR_VALUES });
+  };
+
+  //create recipe
+  const createRecipe = async () => {
+    dispatch({ type: CREATE_RECIPE_BEGIN });
+    try {
+      const {
+        title,
+        recipeType,
+        recipeTypeOptions,
+        difficulty,
+        difficultyOptions,
+        steps,
+        ing_1,
+        ing_1ingredient,
+        ing_1options,
+        ing_2,
+        ing_2ingredient,
+        ing_2options,
+        ing_3,
+        ing_3ingredient,
+        ing_3options,
+        description,
+        timeItTakes,
+        timeItTakesMinutes,
+        timeItTakesHours,
+      } = state;
+      await authFetch.post("/recipes", {
+        title,
+        recipeType,
+        recipeTypeOptions,
+        difficulty,
+        difficultyOptions,
+        steps,
+        ing_1,
+        ing_1ingredient,
+        ing_1options,
+        ing_2,
+        ing_2ingredient,
+        ing_2options,
+        ing_3,
+        ing_3ingredient,
+        ing_3options,
+        description,
+        timeItTakes,
+        timeItTakesMinutes,
+        timeItTakesHours,
+      });
+      dispatch({ type: CREATE_RECIPE_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) {
+        return;
+      }
+      dispatch({
+        type: CREATE_RECIPE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+  };
+
+  const getRecipes = async () => {
+    const { search, searchDifficulty, searchType, sort, page } = state;
+    let url = `/recipes?page=${page}&searchDifficulty=${searchDifficulty}&recipeType=${searchType}&sort${sort}`;
+    if (search) {
+      url = url + `&search=${search}`;
+    }
+    dispatch({ type: GET_RECIPES_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { recipes, totalRecipes, numOfPages } = data;
+      dispatch({
+        type: GET_RECIPES_SUCCESS,
+        payload: { recipes, totalRecipes, numOfPages },
+      });
+    } catch (error) {
+      console.log(error.response);
+      //TODO: uncomment before build
+      // logoutUser()
+    }
+    clearAlert();
+  };
+
+  useEffect(() => {
+    getRecipes();
+  }, []);
+
+  //set recipe to form
+  const setEditRecipe = id => {
+    dispatch({ type: SET_EDIT_RECIPE, payload: { id } });
+  };
+
+  //edit recipe
+  const editRecipe = async () => {
+    dispatch({ type: EDIT_RECIPE_BEGIN });
+    try {
+      const {
+        title,
+        recipeType,
+        recipeTypeOptions,
+        difficulty,
+        difficultyOptions,
+        steps,
+        ing_1,
+        ing_1ingredient,
+        ing_1options,
+        ing_2,
+        ing_2ingredient,
+        ing_2options,
+        ing_3,
+        ing_3ingredient,
+        ing_3options,
+        description,
+        timeItTakes,
+        timeItTakesMinutes,
+        timeItTakesHours,
+      } = state;
+      await authFetch.patch(`/recipes/${state.editRecipeId}`, {
+        title,
+        recipeType,
+        recipeTypeOptions,
+        difficulty,
+        difficultyOptions,
+        steps,
+        ing_1,
+        ing_1ingredient,
+        ing_1options,
+        ing_2,
+        ing_2ingredient,
+        ing_2options,
+        ing_3,
+        ing_3ingredient,
+        ing_3options,
+        description,
+        timeItTakes,
+        timeItTakesMinutes,
+        timeItTakesHours,
+      });
+      dispatch({ type: EDIT_RECIPE_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) {
+        return;
+      }
+      dispatch({
+        type: EDIT_RECIPE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+
+    clearAlert();
+  };
+
+  const deleteRecipe = async recipeId => {
+    dispatch({ type: DELETE_RECIPE_BEGIN });
+    try {
+      await authFetch.delete(`/recipes/${recipeId}`);
+      getRecipes();
+    } catch (error) {
+      console.log(error);
+      // TODO:uncomment before build
+      // logoutUser()
+    }
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
+  const changePage = page => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -205,6 +391,15 @@ const AppProvider = ({ children }) => {
         logoutUser,
         toggleSidebar,
         updateUser,
+        handleChange,
+        clearValues,
+        createRecipe,
+        getRecipes,
+        setEditRecipe,
+        editRecipe,
+        deleteRecipe,
+        clearFilters,
+        changePage,
       }}
     >
       {children}

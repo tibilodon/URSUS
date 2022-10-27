@@ -28,7 +28,7 @@ const RecipeSchema = new mongoose.Schema(
       value: {
         type: String,
         enum: ["L", "g", "kg"],
-        default: "kérlek válassz",
+        // default: "kérlek válassz",
       },
     },
     ing_2: {
@@ -37,7 +37,7 @@ const RecipeSchema = new mongoose.Schema(
       value: {
         type: String,
         enum: ["L", "g", "kg"],
-        default: "kérlek válassz",
+        // default: "kérlek válassz",
       },
     },
     ing_3: {
@@ -46,7 +46,7 @@ const RecipeSchema = new mongoose.Schema(
       value: {
         type: String,
         enum: ["L", "g", "kg"],
-        default: "kérlek válassz",
+        // default: "kérlek válassz",
       },
     },
     description: { type: String },
