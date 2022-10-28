@@ -4,9 +4,12 @@ import { useEffect } from "react";
 import { useAppContext } from "../../../Context/appContext";
 
 const AllRecipes = () => {
-  const { title, recipeType, recipes } = useAppContext();
+  const { title, recipeType, recipes, getRecipes } = useAppContext();
+  useEffect(() => {
+    getRecipes();
+  }, []);
   return (
-    <div className="test-wrapper">
+    <div>
       AllRecipes
       <h1>place</h1>
       {recipes.map(recipe => {

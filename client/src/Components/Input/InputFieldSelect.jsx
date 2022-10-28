@@ -1,23 +1,12 @@
 import "./InputFieldStyles.css";
 import { useState } from "react";
-import { MenuItem, InputLabel } from "@mui/material";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
-  const [handleValue, setHandleValue] = useState(value);
+import { MenuItem, InputLabel, Select } from "@mui/material";
 
-  const handleChanges = e => {
-    setHandleValue(e.target.value);
-  };
+const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
-    <div className="input-wrap">
+    <div>
       <InputLabel id={name}>{labelText || name}</InputLabel>
-      <Select
-        // labelId="demo-simple-select-label"
-        // id="demo-simple-select"
-        value={handleValue}
-        label={name}
-        onChange={handleChanges}
-      >
+      <Select value={value} name={name} onChange={handleChange}>
         {list.map((itemValue, index) => {
           return (
             <MenuItem key={index} value={itemValue}>

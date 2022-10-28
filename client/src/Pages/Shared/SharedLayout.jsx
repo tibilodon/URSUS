@@ -6,7 +6,7 @@ const SharedLayout = () => {
   return (
     <>
       <Navbar />
-      <h1>Shared Layout</h1>
+
       <Outlet />
     </>
   );

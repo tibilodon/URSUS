@@ -4,8 +4,11 @@ import Alert from "../../../Components/Alert/Alert";
 import InputField from "../../../Components/Input/InputField";
 import InputFieldSelect from "../../../Components/Input/InputFieldSelect";
 import { useAppContext } from "../../../Context/appContext";
+import { useNavigate } from "react-router-dom";
 
 const AddRecipe = () => {
+  const navigate = useNavigate();
+
   const {
     clearValues,
     isEditing,
@@ -30,6 +33,7 @@ const AddRecipe = () => {
       return;
     }
     createRecipe();
+    navigate("/all-recipes");
   };
 
   const handleRecipeInput = e => {
@@ -38,7 +42,7 @@ const AddRecipe = () => {
 
   return (
     <>
-      <div style={{ marginTop: "3em" }}>
+      <div>
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}

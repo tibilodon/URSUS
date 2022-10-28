@@ -49,104 +49,106 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <AppBar>
-          <Toolbar>
-            <Drawer
-              anchor="left"
-              open={isOpen}
-              onClose={() => setIsOpen(!isOpen)}
-              // onClick={toggleSidebar}
-            >
-              <div className="boxWrap">
-                <div className="boxContent">
-                  <Box
-                    onClick={() => setIsOpen(!isOpen)}
-                    // width="10em"
-                    textAlign="center"
-                    role="presentation"
-                  >
-                    <Button
-                      color="inherit"
-                      // color="secondary"
-                      startIcon={<MenuBookOutlinedIcon />}
-                      onClick={() => navigate("/all-recipes")}
+      <div className="nav-wrapper">
+        <ThemeProvider theme={theme}>
+          <AppBar>
+            <Toolbar>
+              <Drawer
+                anchor="left"
+                open={isOpen}
+                onClose={() => setIsOpen(!isOpen)}
+                // onClick={toggleSidebar}
+              >
+                <div className="boxWrap">
+                  <div className="boxContent">
+                    <Box
+                      onClick={() => setIsOpen(!isOpen)}
+                      // width="10em"
+                      textAlign="center"
+                      role="presentation"
                     >
-                      Receptek
-                    </Button>
-                    <Divider />
-                  </Box>{" "}
+                      <Button
+                        color="inherit"
+                        // color="secondary"
+                        startIcon={<MenuBookOutlinedIcon />}
+                        onClick={() => navigate("/all-recipes")}
+                      >
+                        Receptek
+                      </Button>
+                      <Divider />
+                    </Box>{" "}
+                  </div>
+                  <div className="boxContent">
+                    <Box
+                      onClick={() => setIsOpen(!isOpen)}
+                      // onClick={toggleSidebar}
+                      textAlign="center"
+                      role="presentation"
+                    >
+                      <Button
+                        color="inherit"
+                        // color="secondary"
+                        startIcon={<PermContactCalendarIcon />}
+                        // onClick={() => navigate("/")}
+                      >
+                        Receptjeim
+                      </Button>
+                      <Divider />
+                      {/* <Divider /> */}
+                    </Box>
+                  </div>
+                  <div className="boxContent">
+                    <Box
+                      onClick={() => setIsOpen(!isOpen)}
+                      // onClick={toggleSidebar}
+                      textAlign="center"
+                      role="presentation"
+                    >
+                      <Button
+                        color="inherit"
+                        // color="secondary"
+                        startIcon={<AddCircleIcon />}
+                        onClick={() => navigate("/add-recipe")}
+                      >
+                        Új Recept
+                      </Button>
+                      {/* <Divider /> */}
+                      <Divider />
+                    </Box>
+                  </div>{" "}
                 </div>
-                <div className="boxContent">
-                  <Box
-                    onClick={() => setIsOpen(!isOpen)}
-                    // onClick={toggleSidebar}
-                    textAlign="center"
-                    role="presentation"
-                  >
-                    <Button
-                      color="inherit"
-                      // color="secondary"
-                      startIcon={<PermContactCalendarIcon />}
-                      // onClick={() => navigate("/")}
-                    >
-                      Receptjeim
-                    </Button>
-                    <Divider />
-                    {/* <Divider /> */}
-                  </Box>
-                </div>
-                <div className="boxContent">
-                  <Box
-                    onClick={() => setIsOpen(!isOpen)}
-                    // onClick={toggleSidebar}
-                    textAlign="center"
-                    role="presentation"
-                  >
-                    <Button
-                      color="inherit"
-                      // color="secondary"
-                      startIcon={<AddCircleIcon />}
-                      onClick={() => navigate("/add-recipe")}
-                    >
-                      Új Recept
-                    </Button>
-                    {/* <Divider /> */}
-                    <Divider />
-                  </Box>
-                </div>{" "}
-              </div>
-            </Drawer>
+              </Drawer>
 
-            <IconButton
-              onClick={() => setIsOpen(true)}
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              aria-controls="menu-appbar"
+              <IconButton
+                onClick={() => setIsOpen(true)}
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                aria-controls="menu-appbar"
 
-              // sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Box
-              sx={{ ml: 2, cursor: "pointer" }}
-              alignItems="center"
-              role="presentation"
-              onClick={() => navigate("/")}
-            >
-              <img
-                className={isOpen ? "sideMenu-open-ursus" : "ursus"}
-                src={ursus}
-                alt="ursus logo"
-              />
-            </Box>
+                // sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Box
+                sx={{ ml: 2, cursor: "pointer" }}
+                alignItems="center"
+                role="presentation"
+                onClick={() => navigate("/")}
+              >
+                <img
+                  className={isOpen ? "sideMenu-open-ursus" : "ursus"}
+                  src={ursus}
+                  alt="ursus logo"
+                />
+              </Box>
 
-            <UserAccount />
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
+              <UserAccount />
+            </Toolbar>
+          </AppBar>
+        </ThemeProvider>
+      </div>
     </>
   );
 };
