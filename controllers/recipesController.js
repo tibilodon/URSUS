@@ -37,11 +37,11 @@ const getAllRecipes = async (req, res) => {
 
   //add value based on condition
   //difficulty
-  if (difficulty && difficulty !== "összes") {
+  if (difficulty && difficulty !== "all") {
     queryObject.difficulty = difficulty;
   }
   //recipeType
-  if (recipeType && recipeType !== "összes") {
+  if (recipeType && recipeType !== "all") {
     queryObject.recipeType = recipeType;
   }
   //search
@@ -52,10 +52,10 @@ const getAllRecipes = async (req, res) => {
   //await not needed
   let result = Recipe.find(queryObject);
   //chain SORT conditions
-  if (sort === "legújabb") {
+  if (sort === "latest") {
     result = result.sort("-createdAt");
   }
-  if (sort === "legrégebbi") {
+  if (sort === "oldest") {
     result = result.sort("createdAt");
   }
   if (sort === "a-z") {

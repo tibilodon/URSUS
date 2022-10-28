@@ -75,10 +75,10 @@ const initialState = {
   page: 1,
   //search
   search: "",
-  searchDifficulty: "összes",
-  searchType: "összes",
-  sort: "legújabb",
-  sortOptions: ["összes", "legújabb", "legrégebbi", "a-z", "z-a"],
+  searchDifficulty: "all",
+  searchType: "all",
+  sort: "latest",
+  sortOptions: ["all", "latest", "oldest", "a-z", "z-a"],
 };
 
 const AppContext = React.createContext();

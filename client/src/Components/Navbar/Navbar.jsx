@@ -61,8 +61,7 @@ const Navbar = () => {
               <div className="boxWrap">
                 <div className="boxContent">
                   <Box
-                    // onClick={() => setIsOpen(!isOpen)}
-                    onClick={toggleSidebar}
+                    onClick={() => setIsOpen(!isOpen)}
                     // width="10em"
                     textAlign="center"
                     role="presentation"
@@ -71,7 +70,7 @@ const Navbar = () => {
                       color="inherit"
                       // color="secondary"
                       startIcon={<MenuBookOutlinedIcon />}
-                      // onClick={() => navigate("/receptek")}
+                      onClick={() => navigate("/all-recipes")}
                     >
                       Receptek
                     </Button>
@@ -80,8 +79,8 @@ const Navbar = () => {
                 </div>
                 <div className="boxContent">
                   <Box
-                    // onClick={() => setIsOpen(!isOpen)}
-                    onClick={toggleSidebar}
+                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={toggleSidebar}
                     textAlign="center"
                     role="presentation"
                   >
@@ -99,8 +98,8 @@ const Navbar = () => {
                 </div>
                 <div className="boxContent">
                   <Box
-                    // onClick={() => setIsOpen(!isOpen)}
-                    onClick={toggleSidebar}
+                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={toggleSidebar}
                     textAlign="center"
                     role="presentation"
                   >
@@ -108,7 +107,7 @@ const Navbar = () => {
                       color="inherit"
                       // color="secondary"
                       startIcon={<AddCircleIcon />}
-                      onClick={() => navigate("/uj")}
+                      onClick={() => navigate("/add-recipe")}
                     >
                       Új Recept
                     </Button>
