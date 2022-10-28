@@ -30,6 +30,8 @@ const AddRecipe = () => {
     }
     if (isEditing) {
       editRecipe();
+      navigate("/all-recipes");
+
       return;
     }
     createRecipe();

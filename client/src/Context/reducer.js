@@ -273,7 +273,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: "success",
-      alertText: "Job updated/edited",
+      alertText: "Recipe updated/edited",
     };
   }
 

@@ -85,7 +85,7 @@ const updateRecipe = async (req, res) => {
   if (!title || !recipeType) {
     throw new BadRequestError("Please Provide All Values");
   }
-  const recipe = await Job.findOne({ _id: recipeId });
+  const recipe = await Recipe.findOne({ _id: recipeId });
   if (!recipe) {
     throw new NotFoundError(`No recipe with id ${recipeId}`);
   }
