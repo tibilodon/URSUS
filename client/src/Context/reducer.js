@@ -202,7 +202,7 @@ const reducer = (state, action) => {
   //set edit to form
   if (action.type === SET_EDIT_RECIPE) {
     const recipe = state.recipes.find(
-      recipe => recipe.id === action.payload.id
+      recipe => recipe._id === action.payload.id
     );
     const {
       _id,
@@ -270,6 +270,7 @@ const reducer = (state, action) => {
   if (action.type === EDIT_RECIPE_SUCCESS) {
     return {
       ...state,
+      isLoading: false,
       showAlert: true,
       alertType: "success",
       alertText: "Job updated/edited",

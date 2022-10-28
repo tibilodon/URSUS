@@ -1,26 +1,22 @@
 import "./AllRecipesStyles.css";
-
+import { Box, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useAppContext } from "../../../Context/appContext";
+import RecipeItem from "../../../Components/Recipe/RecipeItem";
 
 const AllRecipes = () => {
-  const { title, recipeType, recipes, getRecipes } = useAppContext();
+  const { recipes, getRecipes } = useAppContext();
   useEffect(() => {
     getRecipes();
   }, []);
   return (
-    <div>
-      AllRecipes
-      <h1>place</h1>
-      {recipes.map(recipe => {
-        return (
-          <div key={recipe._id}>
-            <h1>{recipe.title}</h1>
-            <h1>{recipe.recipeType}</h1>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Grid container justifyContent="space-between">
+        {recipes.map(recipe => {
+          return <RecipeItem key={recipe._id} {...recipe} />;
+        })}
+      </Grid>
+    </>
   );
 };
 

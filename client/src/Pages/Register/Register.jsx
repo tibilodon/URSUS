@@ -68,7 +68,7 @@ const Register = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate("/");
+        navigate("/all-recipes");
       }, 3000);
     }
   }, [user, navigate]);

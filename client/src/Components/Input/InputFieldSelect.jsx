@@ -1,5 +1,4 @@
 import "./InputFieldStyles.css";
-import { useState } from "react";
 import { MenuItem, InputLabel, Select } from "@mui/material";
 
 const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
