@@ -59,7 +59,6 @@ const reducer = (state, action) => {
       user: action.payload.user,
       token: action.payload.token,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
       showAlert: true,
       alertType: "success",
       alertText: action.payload.alertText,
@@ -80,7 +79,6 @@ const reducer = (state, action) => {
       user: null,
       token: null,
       userLocation: "",
-      jobLocation: "",
     };
   }
   //update user
@@ -97,7 +95,6 @@ const reducer = (state, action) => {
       token: action.payload.token,
       user: action.payload.user,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
       showAlert: true,
       alertType: "Success",
       alertText: "User Profile Updated",
@@ -141,10 +138,8 @@ const reducer = (state, action) => {
       ing_3: 1,
       ing_3ingredient: "",
       ing_3options: ["L", "g", "kg"],
-      description: "",
-      timeItTakes: 1,
-      timeItTakesMinutes: ["perc"],
-      timeItTakesHours: ["óra"],
+      timeMinutesValue: "",
+      timeHoursValue: "",
     };
     return {
       ...state,
@@ -221,10 +216,8 @@ const reducer = (state, action) => {
       ing_3,
       ing_3ingredient,
       ing_3options,
-      description,
-      timeItTakes,
-      timeItTakesMinutes,
-      timeItTakesHours,
+      timeMinutesValue,
+      timeHoursValue,
     } = recipe;
     return {
       ...state,
@@ -245,10 +238,8 @@ const reducer = (state, action) => {
       ing_3,
       ing_3ingredient,
       ing_3options,
-      description,
-      timeItTakes,
-      timeItTakesMinutes,
-      timeItTakesHours,
+      timeMinutesValue,
+      timeHoursValue,
     };
   }
   //delete

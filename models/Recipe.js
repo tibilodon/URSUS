@@ -49,12 +49,9 @@ const RecipeSchema = new mongoose.Schema(
         // default: "kérlek válassz",
       },
     },
-    description: { type: String },
-    timeItTakes: {
-      minutes: { type: String, enum: ["perc"] },
-      hours: { type: String, enum: ["óra"] },
-      value: { type: Number },
-    },
+
+    timeMinutesValue: { type: Number },
+    timeHoursValue: { type: Number },
 
     createdBy: {
       type: mongoose.Types.ObjectId,

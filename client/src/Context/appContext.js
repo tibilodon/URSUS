@@ -48,7 +48,6 @@ const initialState = {
   //create recipe
   isEditing: false,
   editRecipeId: "",
-  // position: "",
   title: "",
   recipeType: "egyéb",
   recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
@@ -64,10 +63,10 @@ const initialState = {
   ing_3: 1,
   ing_3ingredient: "",
   ing_3options: ["L", "g", "kg"],
-  description: "",
-  timeItTakes: 1,
-  timeItTakesMinutes: ["perc"],
-  timeItTakesHours: ["óra"],
+
+  timeMinutesValue: "",
+  timeHoursValue: "",
+
   //get recipes
   recipes: [],
   totalRecipes: 0,
@@ -201,7 +200,7 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  //create job handleChange
+  //create/edit recipe handleChange
   const handleChange = ({ name, value }) => {
     dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
   };
@@ -231,10 +230,9 @@ const AppProvider = ({ children }) => {
         ing_3,
         ing_3ingredient,
         ing_3options,
-        description,
-        timeItTakes,
-        timeItTakesMinutes,
-        timeItTakesHours,
+        timeMinutesValue,
+
+        timeHoursValue,
       } = state;
       await authFetch.post("/recipes", {
         title,
@@ -252,10 +250,8 @@ const AppProvider = ({ children }) => {
         ing_3,
         ing_3ingredient,
         ing_3options,
-        description,
-        timeItTakes,
-        timeItTakesMinutes,
-        timeItTakesHours,
+        timeMinutesValue,
+        timeHoursValue,
       });
       dispatch({ type: CREATE_RECIPE_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
@@ -321,31 +317,27 @@ const AppProvider = ({ children }) => {
         ing_3,
         ing_3ingredient,
         ing_3options,
-        description,
-        timeItTakes,
-        timeItTakesMinutes,
-        timeItTakesHours,
+        timeMinutesValue,
+        timeHoursValue,
       } = state;
       await authFetch.patch(`/recipes/${state.editRecipeId}`, {
         title,
         recipeType,
         recipeTypeOptions,
-        // difficulty,
-        // difficultyOptions,
-        // steps,
-        // ing_1,
-        // ing_1ingredient,
-        // ing_1options,
-        // ing_2,
-        // ing_2ingredient,
-        // ing_2options,
-        // ing_3,
-        // ing_3ingredient,
-        // ing_3options,
-        // description,
-        // timeItTakes,
-        // timeItTakesMinutes,
-        // timeItTakesHours,
+        difficulty,
+        difficultyOptions,
+        steps,
+        ing_1,
+        ing_1ingredient,
+        ing_1options,
+        ing_2,
+        ing_2ingredient,
+        ing_2options,
+        ing_3,
+        ing_3ingredient,
+        ing_3options,
+        timeMinutesValue,
+        timeHoursValue,
       });
       dispatch({ type: EDIT_RECIPE_SUCCESS });
       dispatch({ type: CLEAR_VALUES });

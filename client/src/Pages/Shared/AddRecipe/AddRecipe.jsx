@@ -15,12 +15,14 @@ const AddRecipe = () => {
     isLoading,
     showAlert,
     displayAlert,
-    title,
     editRecipe,
     createRecipe,
     handleChange,
+    title,
     recipeType,
     recipeTypeOptions,
+    timeMinutesValue,
+    timeHoursValue,
   } = useAppContext();
   const handleSubmit = e => {
     e.preventDefault();
@@ -61,7 +63,21 @@ const AddRecipe = () => {
             handleChange={handleRecipeInput}
             list={recipeTypeOptions}
           />
-
+          {/*TODO:*/}
+          <InputField
+            type="number"
+            labelText="perc"
+            name="timeMinutesValue"
+            value={timeMinutesValue}
+            handleChange={handleRecipeInput}
+          />{" "}
+          <InputField
+            type="number"
+            labelText="óra"
+            name="timeHoursValue"
+            value={timeHoursValue}
+            handleChange={handleRecipeInput}
+          />
           <button type="submit" onClick={handleSubmit} disabled={isLoading}>
             submit
           </button>
