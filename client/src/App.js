@@ -30,7 +30,7 @@ function App() {
             <Route path="add-recipe" element={<AddRecipe />} />
             <Route path="all-recipes" element={<AllRecipes />} />
             {/*TODO: --TEST--*/}
-            <Route path="test" element={<MultipleInput />} />
+            {/* <Route path="test" element={<MultipleInput />} /> */}
             {/*TODO: --TEST--*/}
           </Route>
           <Route path="/landing" element={<Landing />} />

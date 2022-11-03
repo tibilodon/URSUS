@@ -11,7 +11,7 @@ const MultipleInput = () => {
       <ButtonGroup>
         <Button
           type="button"
-          onClick={addHandler}
+          // onClick={addHandler}
           endIcon={<AddIcon />}
           variant="contained"
         >
@@ -19,7 +19,7 @@ const MultipleInput = () => {
         </Button>
         <Button
           type="button"
-          onClick={removeHandler}
+          // onClick={removeHandler}
           color="secondary"
           endIcon={<DeleteIcon />}
           variant="contained"

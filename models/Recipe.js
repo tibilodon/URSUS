@@ -17,11 +17,19 @@ const RecipeSchema = new mongoose.Schema(
       default: "könnyű",
     },
 
-    steps: {
-      step_1: { type: String },
-      step_2: { type: String },
-      step_3: { type: String },
-    },
+    // steps
+    step_01: { type: String },
+    step_02: { type: String },
+    step_03: { type: String },
+    step_04: { type: String },
+    step_05: { type: String },
+    step_06: { type: String },
+    step_07: { type: String },
+    step_08: { type: String },
+    step_09: { type: String },
+    step_010: { type: String },
+    step_011: { type: String },
+    step_012: { type: String },
     ing_1: {
       quantity: Number,
       ingredient: String,
