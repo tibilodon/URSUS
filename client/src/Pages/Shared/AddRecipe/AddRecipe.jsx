@@ -55,22 +55,6 @@ const AddRecipe = () => {
     navigate("/all-recipes");
   };
 
-  const [step, setStep] = useState([
-    {
-      step: "",
-    },
-  ]);
-
-  // const [add, setAdd] = useState({ step_01, step_02 });
-
-  const addHandler = () => {
-    let newStep = { step: "" };
-    setStep([...step, newStep]);
-    // setAdd([...step, newStep]);
-  };
-
-  // const [stepOne, setStepOne] = useState(step_01);
-
   const handleRecipeInput = e => {
     // let stepData = [...step];
     // stepData[i][e.target.name] = e.target.value;
@@ -83,6 +67,44 @@ const AddRecipe = () => {
     // console.log(`STEPIONE:${stepOne}`);
   };
 
+  const [step, setStep] = useState([
+    {
+      step: "",
+    },
+  ]);
+
+  // if (step_012) {
+  //   stepper.push(step_012);
+  // }
+
+  const stepper = [
+    {
+      step_01,
+      step_02,
+      step_03,
+      step_04,
+      step_05,
+      step_06,
+      step_07,
+      step_08,
+      step_09,
+      step_010,
+      step_011,
+      step_012,
+    },
+  ];
+  console.log("STEPPER", stepper);
+
+  // const [add, setAdd] = useState({ step_01, step_02 });
+
+  const addHandler = () => {
+    let newStep = { step: "" };
+    setStep([...step, newStep]);
+    // setAdd([...step, newStep]);
+  };
+
+  // const [stepOne, setStepOne] = useState(step_01);
+
   const stepHandler = (i, e) => {
     // e.preventDefault();
     // console.log(`STEP:${step}`);
@@ -90,13 +112,14 @@ const AddRecipe = () => {
     // stepData[i][e.target.name] = e.target.value;
     stepData[i] = e.target.value;
     setStep(stepData);
-    step_01 += step[0];
+    // step_01 += step[0].step;
+    // step_01 += stepData[0];
 
     handleChange({ name: e.target.name, value: e.target.value });
 
     // step_01 = stepData[0];
-    console.log(step);
-    // console.log(stepData);
+    console.log("STEPDATA", stepData);
+    console.log("STEP COLL", step);
     console.log("step01", step_01);
   };
 
@@ -144,16 +167,33 @@ const AddRecipe = () => {
                 <MultipleInput
                   addHandler={addHandler}
                   removeHandler={() => removeHandler(i)}
-                  value={step.steps}
+                  value={steps.step}
                   // name={steps.step}
                   // label={steps.step}
-                  name={`step0${i + 1}`.toString()}
+                  name={`step_0${i + 1}`.toString()}
                   handleChange={e => stepHandler(i, e)}
                   type="text"
                 />
               </div>
             );
-          })}
+          })}{" "}
+          {isEditing &&
+            stepper.map((steps, i) => {
+              return (
+                <div key={i}>
+                  <MultipleInput
+                    addHandler={addHandler}
+                    removeHandler={() => removeHandler(i)}
+                    value={steps}
+                    // name={steps.step}
+                    // label={steps.step}
+                    name={steps}
+                    handleChange={e => stepHandler(i, e)}
+                    type="text"
+                  />
+                </div>
+              );
+            })}
           {/* <MultipleInput
             addHandler={setVisible}
             // removeHandler={() => removeHandler(i)}
