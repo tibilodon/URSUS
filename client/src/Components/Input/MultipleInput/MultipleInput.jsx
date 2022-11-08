@@ -10,19 +10,27 @@ const MultipleInput = ({
   name,
   value,
   handleChange,
+  hidden,
+  label,
 }) => {
   return (
-    <div>
+    <div
+    // hidden={hidden}
+    >
       MultipleInput
-      <InputField handleChange={handleChange} type="text" />
+      <InputField
+        // labelText={label}
+        name={name}
+        value={value}
+        handleChange={handleChange}
+        type="text"
+      />
       <ButtonGroup>
         <Button
           type="button"
           onClick={addHandler}
           endIcon={<AddIcon />}
           variant="contained"
-          name={name}
-          value={value}
         >
           Hozzávaló
         </Button>

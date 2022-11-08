@@ -53,6 +53,7 @@ const initialState = {
   recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
   difficulty: "könnyű",
   difficultyOptions: ["könnyű", "közepes", "nehéz"],
+
   step_01: "",
   step_02: "",
   step_03: "",
@@ -65,6 +66,7 @@ const initialState = {
   step_010: "",
   step_011: "",
   step_012: "",
+
   ing_1: 1,
   ing_1ingredient: "",
   ing_1options: ["L", "g", "kg"],

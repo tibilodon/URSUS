@@ -10,7 +10,7 @@ import MultipleInput from "../../../Components/Input/MultipleInput/MultipleInput
 const AddRecipe = () => {
   const navigate = useNavigate();
 
-  const {
+  let {
     clearValues,
     isEditing,
     isLoading,
@@ -55,20 +55,53 @@ const AddRecipe = () => {
     navigate("/all-recipes");
   };
 
-  const handleRecipeInput = e => {
-    handleChange({ name: e.target.name, value: e.target.value });
-  };
-
   const [step, setStep] = useState([
     {
       step: "",
     },
   ]);
 
+  // const [add, setAdd] = useState({ step_01, step_02 });
+
   const addHandler = () => {
     let newStep = { step: "" };
     setStep([...step, newStep]);
+    // setAdd([...step, newStep]);
   };
+
+  // const [stepOne, setStepOne] = useState(step_01);
+
+  const handleRecipeInput = e => {
+    // let stepData = [...step];
+    // stepData[i][e.target.name] = e.target.value;
+    handleChange({ name: e.target.name, value: e.target.value });
+    console.log(step_01);
+    // setStepOne(e.target.value);
+    // console.log(`step_01:${step_01}`);
+    // console.log(`step_01:${step_01}`);
+
+    // console.log(`STEPIONE:${stepOne}`);
+  };
+
+  const stepHandler = (i, e) => {
+    // e.preventDefault();
+    // console.log(`STEP:${step}`);
+    let stepData = [...step];
+    // stepData[i][e.target.name] = e.target.value;
+    stepData[i] = e.target.value;
+    setStep(stepData);
+    step_01 += step[0];
+
+    handleChange({ name: e.target.name, value: e.target.value });
+
+    // step_01 = stepData[0];
+    console.log(step);
+    // console.log(stepData);
+    console.log("step01", step_01);
+  };
+
+  // const stepper = [{ step_01, step_02 }];
+
   const removeHandler = i => {
     if (i > 0) {
       let stepData = [...step];
@@ -77,32 +110,80 @@ const AddRecipe = () => {
     }
   };
 
+  // const [t, setT] = useState(false);
+
+  // const setVisible = () => {
+  //   setT(!t);
+  // };
+
+  // const newAdd = () => {
+  //   if (step_01) {
+  //     setT(
+  //       <MultipleInput
+  //         addHandler={addHandler}
+  //         // removeHandler={() => removeHandler(index)}
+  //         value={step_02}
+  //         name="step_02"
+  //         handleChange={handleRecipeInput}
+  //         type="text"
+  //       />
+  //     );
+  //   }
+  //   return;
+  // };
+
   return (
     <>
       <div>
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}
-          {step.map((steps, index) => {
+          {step.map((steps, i) => {
             return (
-              <div key={index}>
+              <div key={i}>
                 <MultipleInput
                   addHandler={addHandler}
-                  removeHandler={() => removeHandler(index)}
-                  value={steps}
-                  name={steps}
-                  handleChange={handleRecipeInput}
+                  removeHandler={() => removeHandler(i)}
+                  value={step.steps}
+                  // name={steps.step}
+                  // label={steps.step}
+                  name={`step0${i + 1}`.toString()}
+                  handleChange={e => stepHandler(i, e)}
                   type="text"
                 />
               </div>
             );
           })}
+          {/* <MultipleInput
+            addHandler={setVisible}
+            // removeHandler={() => removeHandler(i)}
+            value={step_01}
+            name="step_01"
+            handleChange={handleRecipeInput}
+            type="text"
+            hidden={t}
+          />{" "}
+          <MultipleInput
+            // addHandler={() => newAdd()}
+            // removeHandler={() => removeHandler(i)}
+            value={step_02}
+            name="step_02"
+            handleChange={handleRecipeInput}
+            type="text"
+          /> */}
+          {/* {t} */}
           <InputField
             type="text"
             name="title"
             value={title}
             handleChange={handleRecipeInput}
-          />
+          />{" "}
+          {/* <InputField
+            type="text"
+            name="step_01"
+            value={step_01}
+            handleChange={handleRecipeInput}
+          /> */}
           <InputFieldSelect
             labelText="recipeType"
             name="recipeType"
