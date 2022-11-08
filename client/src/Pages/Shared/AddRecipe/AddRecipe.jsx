@@ -78,20 +78,18 @@ const AddRecipe = () => {
   // }
 
   const stepper = [
-    {
-      step_01,
-      step_02,
-      step_03,
-      step_04,
-      step_05,
-      step_06,
-      step_07,
-      step_08,
-      step_09,
-      step_010,
-      step_011,
-      step_012,
-    },
+    step_01,
+    step_02,
+    step_03,
+    step_04,
+    step_05,
+    step_06,
+    step_07,
+    step_08,
+    step_09,
+    step_010,
+    step_011,
+    step_012,
   ];
   console.log("STEPPER", stepper);
 
