@@ -18,18 +18,21 @@ const RecipeSchema = new mongoose.Schema(
     },
 
     // steps
-    step_01: { type: String },
-    step_02: { type: String },
-    step_03: { type: String },
-    step_04: { type: String },
-    step_05: { type: String },
-    step_06: { type: String },
-    step_07: { type: String },
-    step_08: { type: String },
-    step_09: { type: String },
-    step_010: { type: String },
-    step_011: { type: String },
-    step_012: { type: String },
+    step0: { type: String },
+    step1: { type: String },
+    step2: { type: String },
+    step3: { type: String },
+    step4: { type: String },
+    step5: { type: String },
+    step6: { type: String },
+    step7: { type: String },
+    step8: { type: String },
+    step9: { type: String },
+    step10: { type: String },
+    step11: { type: String },
+    step12: { type: String },
+
+    //ings
     ing_1: {
       quantity: Number,
       ingredient: String,

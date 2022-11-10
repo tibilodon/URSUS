@@ -29,7 +29,7 @@ import ursus from "../../Assets/ursus_v5.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { toggleSidebar, user, logoutUser } = useAppContext();
+  const { toggleSidebar, user, logoutUser, clearValues } = useAppContext();
   const [showLogout, setShowLogout] = useState(false);
   const theme = createTheme({
     typography: {
@@ -108,7 +108,10 @@ const Navbar = () => {
                         color="inherit"
                         // color="secondary"
                         startIcon={<AddCircleIcon />}
-                        onClick={() => navigate("/add-recipe")}
+                        onClick={() => {
+                          navigate("/add-recipe");
+                          clearValues();
+                        }}
                       >
                         Új Recept
                       </Button>
