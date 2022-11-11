@@ -44,13 +44,13 @@ const AddRecipe = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     if (!title) {
       displayAlert();
       return;
     }
     if (isEditing) {
       editRecipe();
-
       navigate("/all-recipes");
 
       return;
@@ -78,6 +78,11 @@ const AddRecipe = () => {
     // setAdd([...step, newStep]);
   };
 
+  useEffect(() => {
+    console.log("---TEST STEP:", testStep);
+    console.log(testStep);
+  }, [testStep]);
+
   // let fetched = steps;
 
   const fetchedAddHandler = () => {
@@ -85,24 +90,32 @@ const AddRecipe = () => {
     setTestStep([...testStep, newStep]);
     // fetched = [...fetched, newStep];
     setFetchedStep([...fetchedStep, newStep]);
-    // console.log("FETCHHANDLER", fetchedStep);
+    console.log("FETCHHANDLER");
     // setAdd([...step, newStep]);
   };
   // let data;
 
+  const [data, setData] = useState(false);
+
   const fetchedRemoveHandler = (i, e) => {
     if (i > 0) {
-    }
-    let stepData = [...testStep];
-    stepData.splice(i, 1);
+      let stepData = [...testStep];
+      stepData.splice(i, 1);
+      setData(!data);
 
-    console.log("STEPDATA SLICED", stepData);
-    // console.log("STEPDATA", stepData);
-    setTestStep(stepData);
+      console.log("STEPDATA SLICED", stepData);
+      // console.log("STEPDATA", stepData);
+      // data = stepData;
+      setTestStep(stepData);
+      handleChange({ name: "steps", value: stepData });
+      // handleRecipeInput(e);
+    }
+
     // setTestStep(data);
 
     console.log("TESTSTEP FROM REMOVE HANDLER", testStep);
-    console.log("STEPDATA FROM REMOVE HANDLER", stepData);
+    // console.log("DATA FROM REMOVE HANDLER", data);
+    // console.log("STEPDATA FROM REMOVE HANDLER", stepData);
     // fetched = stepData;
   };
 
@@ -132,7 +145,9 @@ const AddRecipe = () => {
       let stepData = [...step];
       stepData.splice(i, 1);
       setStep(stepData);
-      setTestStep(stepData);
+      handleChange({ name: "steps", value: stepData });
+
+      // setTestStep(stepData);
       console.log("REGULAR REMOVEHANDLER", step);
     }
   };
@@ -141,9 +156,7 @@ const AddRecipe = () => {
   // console.log("TESTsTEP OUTSIDE OF EVERYTING", testStep);
   // console.log("FETCHED STEP OUTSIDE OF EVERYTING", fetchedStep);
 
-  useEffect(() => {
-    console.log("---TEST STEP:", testStep);
-  }, [testStep, steps, step]);
+  const [dataset, setDataset] = useState([testStep]);
 
   return (
     <>
