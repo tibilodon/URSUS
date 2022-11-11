@@ -54,6 +54,8 @@ const initialState = {
   difficulty: "könnyű",
   difficultyOptions: ["könnyű", "közepes", "nehéz"],
 
+  steps: [],
+
   step0: "",
   step1: "",
   step2: "",
@@ -234,6 +236,7 @@ const AppProvider = ({ children }) => {
         recipeTypeOptions,
         difficulty,
         difficultyOptions,
+        steps,
         step0,
         step1,
         step2,
@@ -266,6 +269,8 @@ const AppProvider = ({ children }) => {
         recipeTypeOptions,
         difficulty,
         difficultyOptions,
+        steps,
+
         step0,
         step1,
         step2,
@@ -345,6 +350,8 @@ const AppProvider = ({ children }) => {
         recipeTypeOptions,
         difficulty,
         difficultyOptions,
+        steps,
+
         step0,
         step1,
         step2,
@@ -376,6 +383,8 @@ const AppProvider = ({ children }) => {
         recipeTypeOptions,
         difficulty,
         difficultyOptions,
+        steps,
+
         step0,
 
         step1,

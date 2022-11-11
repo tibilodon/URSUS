@@ -128,6 +128,7 @@ const reducer = (state, action) => {
       // recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
       difficulty: "könnyű",
       difficultyOptions: ["könnyű", "közepes", "nehéz"],
+      steps: [],
       step0: "",
       step1: "",
       step2: "",
@@ -218,6 +219,7 @@ const reducer = (state, action) => {
       // recipeTypeOptions,
       difficulty,
       difficultyOptions,
+      steps,
       step0,
 
       step1,
@@ -253,6 +255,7 @@ const reducer = (state, action) => {
       // recipeTypeOptions,
       difficulty,
       difficultyOptions,
+      steps,
       step0,
 
       step1,

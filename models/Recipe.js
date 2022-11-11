@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const RecipeSchema = new mongoose.Schema(
   {
@@ -16,6 +16,11 @@ const RecipeSchema = new mongoose.Schema(
       enum: ["könnyű", "közepes", "nehéz"],
       default: "könnyű",
     },
+
+    //TODO: TEST
+    // steps: [{ type: String }],
+    steps: [Schema.Types.Mixed],
+    // steps: [],
 
     // steps
     step0: { type: String },
@@ -70,7 +75,9 @@ const RecipeSchema = new mongoose.Schema(
       required: [true, "Please provide user"],
     },
   },
-  { timestamps: true }
+  // {  },
+  { timestamps: true },
+  { strict: false }
 );
 
 export default mongoose.model("Recipe", RecipeSchema);

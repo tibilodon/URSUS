@@ -1,11 +1,12 @@
 import "./AddRecipeStyles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Alert from "../../../Components/Alert/Alert";
 import InputField from "../../../Components/Input/InputField";
 import InputFieldSelect from "../../../Components/Input/InputFieldSelect";
 import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
 import MultipleInput from "../../../Components/Input/MultipleInput/MultipleInput";
+import { useRef } from "react";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const AddRecipe = () => {
     recipeTypeOptions,
     timeMinutesValue,
     timeHoursValue,
+    steps,
     step0,
     step1,
     step2,
@@ -56,123 +58,89 @@ const AddRecipe = () => {
     navigate("/all-recipes");
   };
 
-  const [step, setStep] = useState([
-    {
-      step: "",
-    },
-  ]);
+  const [step, setStep] = useState([{ step: "" }]);
+
+  const [testStep, setTestStep] = useState(steps);
 
   const handleRecipeInput = e => {
     handleChange({ name: e.target.name, value: e.target.value });
   };
 
-  const [fetchedStep, setFetchedStep] = useState([step0, step1, step2, step3]);
-
-  // useEffect(() => {
-  //   const fetchStep = () => {
-  //     step0 && setFetchedStep([{ step0, step1, step2 }]);
-  //   };
-  //   fetchStep();
-  //   console.log("FETCHED", fetchedStep.step0);
-  //   console.log(step0);
-  // }, [step0]);
-
-  // const [stepper, setStepper] = useState([]);
-  // const stepper = [];
-
-  // useEffect(() => {
-  //   const fetchSteps = () => {
-  //     if (step1) stepper.push(step1);
-  //     if (step2) stepper.push(step2);
-  //     if (step3) stepper.push(step3);
-  //     // step1 && setStepper([...stepper, step1]);
-  //     // step2 && setStepper([...stepper, step2]);
-  //     // step3 && setStepper([...stepper, step3]);
-  //   };
-  //   fetchSteps();
-  // }, [step1, step2, step3]);
-
-  // if (isEditing) setStep(stepper);
-
-  // if (step1) setStepper([...stepper, step1]);
-  // if (step2) setStepper([...stepper, step2]);
-  // if (step3) setStepper([...stepper, step3]);
-
-  // if (step1) stepper.push(step1);
-  // if (step2) stepper.push(step2);
-  // if (step3) stepper.push(step3);
-  // console.log("STEPPER", stepper);
-
-  // const [add, setAdd] = useState({ step1, step2 });
+  const [fetchedStep, setFetchedStep] = useState([step0, step1, step2]);
 
   const addHandler = () => {
     let newStep = { step: "" };
     setStep([...step, newStep]);
+
+    setTestStep([...testStep, newStep]);
     // setAdd([...step, newStep]);
   };
 
-  // const [stepOne, setStepOne] = useState(step1);
+  // let fetched = steps;
+
+  const fetchedAddHandler = () => {
+    let newStep = "";
+    setTestStep([...testStep, newStep]);
+    // fetched = [...fetched, newStep];
+    setFetchedStep([...fetchedStep, newStep]);
+    // console.log("FETCHHANDLER", fetchedStep);
+    // setAdd([...step, newStep]);
+  };
+  // let data;
+
+  const fetchedRemoveHandler = (i, e) => {
+    if (i > 0) {
+    }
+    let stepData = [...testStep];
+    stepData.splice(i, 1);
+
+    console.log("STEPDATA SLICED", stepData);
+    // console.log("STEPDATA", stepData);
+    setTestStep(stepData);
+    // setTestStep(data);
+
+    console.log("TESTSTEP FROM REMOVE HANDLER", testStep);
+    console.log("STEPDATA FROM REMOVE HANDLER", stepData);
+    // fetched = stepData;
+  };
+
+  const fetchedHandler = (i, e) => {
+    let stepData = [...testStep];
+    stepData[i] = e.target.value;
+    setTestStep(stepData);
+    //TODO: this solves last char delay
+    handleChange({ name: e.target.name, value: stepData });
+    console.log("TESTSTEPv IN HANDLER", testStep);
+  };
 
   //TODO: CUSTOM HANDLER
   const stepHandler = (i, e) => {
-    // e.preventDefault();
-    // console.log(`STEP:${step}`);
     let stepData = [...step];
-    // stepData[i][e.target.name] = e.target.value;
+
     stepData[i] = e.target.value;
     setStep(stepData);
-    console.log(i);
-    console.log(e.target.name);
-    console.log(e.target.value);
-    // step1.push(stepData[0].step);
-    // console.log(stepData[0]);
-    // console.log(step1);
-    // step1 += step[0].step;
-    // step1 += stepData[0];
+    setTestStep(stepData);
+    console.log("STEPDATA", stepData);
 
-    handleChange({ name: e.target.name, value: e.target.value });
-
-    // step1 = stepData[0];
-    // console.log("STEPDATA", stepData);
-    // console.log("STEP COLL", step);
-    // console.log("step01", step1);
+    handleChange({ name: e.target.name, value: step });
   };
-
-  // const stepper = [{ step1, step2 }];
 
   const removeHandler = i => {
     if (i > 0) {
       let stepData = [...step];
       stepData.splice(i, 1);
       setStep(stepData);
-      // stepper.push(stepData);
+      setTestStep(stepData);
     }
   };
 
-  // const [t, setT] = useState(false);
+  // console.log("STEP OUTSIDE OF EVERYTING", step);
+  // console.log("TESTsTEP OUTSIDE OF EVERYTING", testStep);
+  // console.log("FETCHED STEP OUTSIDE OF EVERYTING", fetchedStep);
 
-  // const setVisible = () => {
-  //   setT(!t);
-  // };
-
-  // const newAdd = () => {
-  //   if (step1) {
-  //     setT(
-  //       <MultipleInput
-  //         addHandler={addHandler}
-  //         // removeHandler={() => removeHandler(index)}
-  //         value={step2}
-  //         name="step2"
-  //         handleChange={handleRecipeInput}
-  //         type="text"
-  //       />
-  //     );
-  //   }
-  //   return;
-  // };
-
-  console.log(step);
-  console.log(fetchedStep);
+  useEffect(() => {
+    // console.log("---TEST STEP:", testStep);
+  }, [testStep, steps]);
 
   return (
     <>
@@ -180,6 +148,22 @@ const AddRecipe = () => {
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}
+          {/* {!isEditing &&
+            step.map((steps, i) => {
+              return (
+                <div key={i}>
+                  <MultipleInput
+                    addHandler={addHandler}
+                    removeHandler={() => removeHandler(i)}
+                    value={steps.step}
+                    name={`step${i}`}
+                    handleChange={e => stepHandler(i, e)}
+                    type="text"
+                  />
+                </div>
+              );
+            })} */}
+          {/*TODO: ---TEST---*/}
           {!isEditing &&
             step.map((steps, i) => {
               return (
@@ -188,9 +172,7 @@ const AddRecipe = () => {
                     addHandler={addHandler}
                     removeHandler={() => removeHandler(i)}
                     value={steps.step}
-                    // name={steps.step}
-                    // label={steps.step}
-                    name={`step${i}`}
+                    name="steps"
                     handleChange={e => stepHandler(i, e)}
                     type="text"
                   />
@@ -198,17 +180,15 @@ const AddRecipe = () => {
               );
             })}{" "}
           {isEditing &&
-            fetchedStep.map((steps, i) => {
+            testStep.map((steps, i) => {
               return (
                 <div key={i}>
                   <MultipleInput
-                    addHandler={addHandler}
-                    removeHandler={() => removeHandler(i)}
+                    addHandler={fetchedAddHandler}
+                    removeHandler={e => fetchedRemoveHandler(i, e)}
                     value={steps}
-                    // name={steps.step}
-                    // label={steps.step}
-                    name={`step${i}`}
-                    handleChange={handleRecipeInput}
+                    name="steps"
+                    handleChange={e => fetchedHandler(i, e)}
                     type="text"
                   />
                 </div>
