@@ -50,15 +50,17 @@ const AddRecipe = () => {
     }
     if (isEditing) {
       editRecipe();
+
       navigate("/all-recipes");
 
       return;
     }
+
     createRecipe();
     navigate("/all-recipes");
   };
 
-  const [step, setStep] = useState([{ step: "" }]);
+  const [step, setStep] = useState([""]);
 
   const [testStep, setTestStep] = useState(steps);
 
@@ -69,7 +71,7 @@ const AddRecipe = () => {
   const [fetchedStep, setFetchedStep] = useState([step0, step1, step2]);
 
   const addHandler = () => {
-    let newStep = { step: "" };
+    let newStep = "";
     setStep([...step, newStep]);
 
     setTestStep([...testStep, newStep]);
@@ -131,6 +133,7 @@ const AddRecipe = () => {
       stepData.splice(i, 1);
       setStep(stepData);
       setTestStep(stepData);
+      console.log("REGULAR REMOVEHANDLER", step);
     }
   };
 
@@ -139,8 +142,8 @@ const AddRecipe = () => {
   // console.log("FETCHED STEP OUTSIDE OF EVERYTING", fetchedStep);
 
   useEffect(() => {
-    // console.log("---TEST STEP:", testStep);
-  }, [testStep, steps]);
+    console.log("---TEST STEP:", testStep);
+  }, [testStep, steps, step]);
 
   return (
     <>
@@ -171,7 +174,7 @@ const AddRecipe = () => {
                   <MultipleInput
                     addHandler={addHandler}
                     removeHandler={() => removeHandler(i)}
-                    value={steps.step}
+                    value={steps}
                     name="steps"
                     handleChange={e => stepHandler(i, e)}
                     type="text"
