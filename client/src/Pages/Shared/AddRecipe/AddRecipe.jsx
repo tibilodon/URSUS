@@ -27,24 +27,10 @@ const AddRecipe = () => {
     timeMinutesValue,
     timeHoursValue,
     steps,
-    step0,
-    step1,
-    step2,
-    step3,
-    step4,
-    step5,
-    step6,
-    step7,
-    step8,
-    step9,
-    step10,
-    step11,
-    step12,
   } = useAppContext();
 
   const handleSubmit = e => {
     e.preventDefault();
-
     if (!title) {
       displayAlert();
       return;
@@ -52,92 +38,62 @@ const AddRecipe = () => {
     if (isEditing) {
       editRecipe();
       navigate("/all-recipes");
-
       return;
     }
-
     createRecipe();
     navigate("/all-recipes");
   };
 
   const [step, setStep] = useState([""]);
 
-  const [testStep, setTestStep] = useState(steps);
+  const [fetchedStep, setFetchedStep] = useState(steps);
 
   const handleRecipeInput = e => {
     handleChange({ name: e.target.name, value: e.target.value });
   };
 
-  const [fetchedStep, setFetchedStep] = useState([step0, step1, step2]);
-
   const addHandler = () => {
     let newStep = "";
     setStep([...step, newStep]);
-
-    setTestStep([...testStep, newStep]);
-    // setAdd([...step, newStep]);
+    setFetchedStep([...fetchedStep, newStep]);
   };
-
-  useEffect(() => {
-    console.log("---TEST STEP:", testStep);
-    console.log(testStep);
-  }, [testStep]);
-
-  // let fetched = steps;
 
   const fetchedAddHandler = () => {
     let newStep = "";
-    setTestStep([...testStep, newStep]);
-    // fetched = [...fetched, newStep];
     setFetchedStep([...fetchedStep, newStep]);
-    console.log("FETCHHANDLER");
-    // setAdd([...step, newStep]);
+    // console.log("FETCHHANDLER");
   };
-  // let data;
-
-  const [data, setData] = useState(false);
 
   const fetchedRemoveHandler = (i, e) => {
     if (i > 0) {
-      let stepData = [...testStep];
+      let stepData = [...fetchedStep];
       stepData.splice(i, 1);
-      setData(!data);
-
       console.log("STEPDATA SLICED", stepData);
       // console.log("STEPDATA", stepData);
-      // data = stepData;
-      setTestStep(stepData);
+      setFetchedStep(stepData);
+      //TODO:adds "deleted" value
       handleChange({ name: "steps", value: stepData });
-      // handleRecipeInput(e);
     }
-
-    // setTestStep(data);
-
-    console.log("TESTSTEP FROM REMOVE HANDLER", testStep);
-    // console.log("DATA FROM REMOVE HANDLER", data);
-    // console.log("STEPDATA FROM REMOVE HANDLER", stepData);
-    // fetched = stepData;
+    console.log("fetchedStep FROM REMOVE HANDLER", fetchedStep);
   };
 
   const fetchedHandler = (i, e) => {
-    let stepData = [...testStep];
+    let stepData = [...fetchedStep];
     stepData[i] = e.target.value;
-    setTestStep(stepData);
+    setFetchedStep(stepData);
     //TODO: this solves last char delay
     handleChange({ name: e.target.name, value: stepData });
-    console.log("TESTSTEPv IN HANDLER", testStep);
+    console.log("fetchedStepv IN HANDLER", fetchedStep);
   };
 
   //TODO: CUSTOM HANDLER
   const stepHandler = (i, e) => {
     let stepData = [...step];
-
     stepData[i] = e.target.value;
     setStep(stepData);
-    setTestStep(stepData);
+    setFetchedStep(stepData);
     console.log("STEPDATA", stepData);
-
-    handleChange({ name: e.target.name, value: step });
+    handleChange({ name: e.target.name, value: stepData });
   };
 
   const removeHandler = i => {
@@ -147,16 +103,10 @@ const AddRecipe = () => {
       setStep(stepData);
       handleChange({ name: "steps", value: stepData });
 
-      // setTestStep(stepData);
+      // setFetchedStep(stepData);
       console.log("REGULAR REMOVEHANDLER", step);
     }
   };
-
-  // console.log("STEP OUTSIDE OF EVERYTING", step);
-  // console.log("TESTsTEP OUTSIDE OF EVERYTING", testStep);
-  // console.log("FETCHED STEP OUTSIDE OF EVERYTING", fetchedStep);
-
-  const [dataset, setDataset] = useState([testStep]);
 
   return (
     <>
@@ -164,22 +114,7 @@ const AddRecipe = () => {
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}
-          {/* {!isEditing &&
-            step.map((steps, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    addHandler={addHandler}
-                    removeHandler={() => removeHandler(i)}
-                    value={steps.step}
-                    name={`step${i}`}
-                    handleChange={e => stepHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })} */}
-          {/*TODO: ---TEST---*/}
+          {/*TODO: ---STEPS---*/}
           {!isEditing &&
             step.map((steps, i) => {
               return (
@@ -196,7 +131,7 @@ const AddRecipe = () => {
               );
             })}{" "}
           {isEditing &&
-            testStep.map((steps, i) => {
+            fetchedStep.map((steps, i) => {
               return (
                 <div key={i}>
                   <MultipleInput
