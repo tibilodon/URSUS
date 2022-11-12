@@ -107,7 +107,7 @@ const AddRecipe = () => {
   //ingredients----
   const addIngredient = () => {
     let newIng = "";
-    setIngredient([...ingredient]);
+    setIngredient([...ingredient, newIng]);
   };
 
   const removeIngredient = i => {
@@ -148,6 +148,7 @@ const AddRecipe = () => {
     setFetchedIngredient(ingData);
     handleChange({ name: e.target.name, value: ingData });
   };
+  //----//----
 
   return (
     <>
@@ -171,6 +172,21 @@ const AddRecipe = () => {
                 </div>
               );
             })}{" "}
+          {!isEditing &&
+            ingredient.map((ing, i) => {
+              return (
+                <div key={i}>
+                  <MultipleInput
+                    addHandler={addIngredient}
+                    removeHandler={() => removeIngredient(i)}
+                    value={ing}
+                    name="ingredients"
+                    handleChange={e => ingredientHandler(i, e)}
+                    type="text"
+                  />
+                </div>
+              );
+            })}{" "}
           {isEditing &&
             fetchedStep.map((steps, i) => {
               return (
@@ -181,6 +197,21 @@ const AddRecipe = () => {
                     value={steps}
                     name="steps"
                     handleChange={e => fetchedStepHandler(i, e)}
+                    type="text"
+                  />
+                </div>
+              );
+            })}{" "}
+          {isEditing &&
+            fetchedIngredient.map((ings, i) => {
+              return (
+                <div key={i}>
+                  <MultipleInput
+                    addHandler={fetchedAddIngredient}
+                    removeHandler={e => fetchedRemoveIngredient(i, e)}
+                    value={ings}
+                    name="ingredients"
+                    handleChange={e => fetchedIngredientHandler(i, e)}
                     type="text"
                   />
                 </div>
