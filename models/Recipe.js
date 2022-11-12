@@ -18,24 +18,11 @@ const RecipeSchema = new mongoose.Schema(
     },
 
     //TODO: TEST
-    // steps: [{ type: String }],
-    steps: [Schema.Types.Mixed],
-    // steps: [],
+    //ingredients --add enum later--
+    ingredients: [Schema.Types.Mixed],
 
-    // steps
-    step0: { type: String },
-    step1: { type: String },
-    step2: { type: String },
-    step3: { type: String },
-    step4: { type: String },
-    step5: { type: String },
-    step6: { type: String },
-    step7: { type: String },
-    step8: { type: String },
-    step9: { type: String },
-    step10: { type: String },
-    step11: { type: String },
-    step12: { type: String },
+    //steps
+    steps: [Schema.Types.Mixed],
 
     //ings
     ing_1: {

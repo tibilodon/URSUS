@@ -21,12 +21,13 @@ const AddRecipe = () => {
     createRecipe,
     handleChange,
     //recipe
+    steps,
+    ingredients,
     title,
     recipeType,
     recipeTypeOptions,
     timeMinutesValue,
     timeHoursValue,
-    steps,
   } = useAppContext();
 
   const handleSubmit = e => {
@@ -48,64 +49,104 @@ const AddRecipe = () => {
 
   const [fetchedStep, setFetchedStep] = useState(steps);
 
+  const [ingredient, setIngredient] = useState([""]);
+  const [fetchedIngredient, setFetchedIngredient] = useState(ingredients);
+
   const handleRecipeInput = e => {
     handleChange({ name: e.target.name, value: e.target.value });
   };
 
-  const addHandler = () => {
+  //steps----
+  const addStep = () => {
     let newStep = "";
     setStep([...step, newStep]);
-    setFetchedStep([...fetchedStep, newStep]);
   };
 
-  const fetchedAddHandler = () => {
-    let newStep = "";
-    setFetchedStep([...fetchedStep, newStep]);
-    // console.log("FETCHHANDLER");
-  };
-
-  const fetchedRemoveHandler = (i, e) => {
-    if (i > 0) {
-      let stepData = [...fetchedStep];
-      stepData.splice(i, 1);
-      console.log("STEPDATA SLICED", stepData);
-      // console.log("STEPDATA", stepData);
-      setFetchedStep(stepData);
-      //TODO:adds "deleted" value
-      handleChange({ name: "steps", value: stepData });
-    }
-    console.log("fetchedStep FROM REMOVE HANDLER", fetchedStep);
-  };
-
-  const fetchedHandler = (i, e) => {
-    let stepData = [...fetchedStep];
-    stepData[i] = e.target.value;
-    setFetchedStep(stepData);
-    //TODO: this solves last char delay
-    handleChange({ name: e.target.name, value: stepData });
-    console.log("fetchedStepv IN HANDLER", fetchedStep);
-  };
-
-  //TODO: CUSTOM HANDLER
-  const stepHandler = (i, e) => {
-    let stepData = [...step];
-    stepData[i] = e.target.value;
-    setStep(stepData);
-    setFetchedStep(stepData);
-    console.log("STEPDATA", stepData);
-    handleChange({ name: e.target.name, value: stepData });
-  };
-
-  const removeHandler = i => {
+  const removeStep = i => {
     if (i > 0) {
       let stepData = [...step];
       stepData.splice(i, 1);
       setStep(stepData);
       handleChange({ name: "steps", value: stepData });
-
-      // setFetchedStep(stepData);
-      console.log("REGULAR REMOVEHANDLER", step);
     }
+  };
+
+  const stepHandler = (i, e) => {
+    let stepData = [...step];
+    stepData[i] = e.target.value;
+    setStep(stepData);
+    handleChange({ name: e.target.name, value: stepData });
+  };
+  //----//----
+
+  //fetched steps----
+  const fetchedAddStep = () => {
+    let newStep = "";
+    setFetchedStep([...fetchedStep, newStep]);
+  };
+
+  const fetchedRemoveStep = (i, e) => {
+    if (i > 0) {
+      let stepData = [...fetchedStep];
+      stepData.splice(i, 1);
+      setFetchedStep(stepData);
+      //TODO:adds "deleted" value
+      handleChange({ name: "steps", value: stepData });
+    }
+  };
+
+  const fetchedStepHandler = (i, e) => {
+    let stepData = [...fetchedStep];
+    stepData[i] = e.target.value;
+    setFetchedStep(stepData);
+    //TODO: this solves last char delay
+    handleChange({ name: e.target.name, value: stepData });
+  };
+  //----//----
+
+  //ingredients----
+  const addIngredient = () => {
+    let newIng = "";
+    setIngredient([...ingredient]);
+  };
+
+  const removeIngredient = i => {
+    if (i > 0) {
+      let ingData = [...ingredient];
+      ingData.splice(i, 1);
+      setIngredient(ingData);
+      handleChange({ name: "ingredients", value: ingData });
+    }
+  };
+
+  const ingredientHandler = (i, e) => {
+    let ingData = [...ingredient];
+    ingData[i] = e.target.value;
+    setIngredient(ingData);
+    handleChange({ name: e.target.name, value: ingData });
+  };
+  //----//----
+
+  //fetched ingredients
+  const fetchedAddIngredient = () => {
+    let newIng = "";
+    setFetchedIngredient([...fetchedIngredient, newIng]);
+  };
+
+  const fetchedRemoveIngredient = i => {
+    if (i > 0) {
+      let ingData = [...fetchedIngredient];
+      ingData.splice(i, 1);
+      setFetchedIngredient(ingData);
+      handleChange({ name: "ingredients", value: ingData });
+    }
+  };
+
+  const fetchedIngredientHandler = (i, e) => {
+    let ingData = [...fetchedIngredient];
+    ingData[i] = e.target.value;
+    setFetchedIngredient(ingData);
+    handleChange({ name: e.target.name, value: ingData });
   };
 
   return (
@@ -120,8 +161,8 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
-                    addHandler={addHandler}
-                    removeHandler={() => removeHandler(i)}
+                    addHandler={addStep}
+                    removeHandler={() => removeStep(i)}
                     value={steps}
                     name="steps"
                     handleChange={e => stepHandler(i, e)}
@@ -135,11 +176,11 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
-                    addHandler={fetchedAddHandler}
-                    removeHandler={e => fetchedRemoveHandler(i, e)}
+                    addHandler={fetchedAddStep}
+                    removeHandler={e => fetchedRemoveStep(i, e)}
                     value={steps}
                     name="steps"
-                    handleChange={e => fetchedHandler(i, e)}
+                    handleChange={e => fetchedStepHandler(i, e)}
                     type="text"
                   />
                 </div>
