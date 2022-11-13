@@ -172,21 +172,6 @@ const AddRecipe = () => {
                 </div>
               );
             })}{" "}
-          {!isEditing &&
-            ingredient.map((ing, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    addHandler={addIngredient}
-                    removeHandler={() => removeIngredient(i)}
-                    value={ing}
-                    name="ingredients"
-                    handleChange={e => ingredientHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })}{" "}
           {isEditing &&
             fetchedStep.map((steps, i) => {
               return (
@@ -197,6 +182,22 @@ const AddRecipe = () => {
                     value={steps}
                     name="steps"
                     handleChange={e => fetchedStepHandler(i, e)}
+                    type="text"
+                  />
+                </div>
+              );
+            })}
+          {/*TODO:----ingredients----*/}
+          {!isEditing &&
+            ingredient.map((ing, i) => {
+              return (
+                <div key={i}>
+                  <MultipleInput
+                    addHandler={addIngredient}
+                    removeHandler={() => removeIngredient(i)}
+                    value={ing}
+                    name="ingredients"
+                    handleChange={e => ingredientHandler(i, e)}
                     type="text"
                   />
                 </div>

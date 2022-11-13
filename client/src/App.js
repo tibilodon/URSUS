@@ -11,7 +11,7 @@ import AddRecipe from "./Pages/Shared/AddRecipe/AddRecipe";
 import AllRecipes from "./Pages/Shared/AllRecipes/AllRecipes";
 import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
-import MultipleInput from "./Components/Input/MultipleInput/MultipleInput";
+import Search from "./Components/Search/Search";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
             <Route path="add-recipe" element={<AddRecipe />} />
             <Route path="all-recipes" element={<AllRecipes />} />
             {/*TODO: --TEST--*/}
-            {/* <Route path="test" element={<MultipleInput />} /> */}
+            <Route path="test" element={<Search />} />
             {/*TODO: --TEST--*/}
           </Route>
           <Route path="/landing" element={<Landing />} />

@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const RecipeSchema = new mongoose.Schema(
   {
     title: { type: String, required: [true, "Kérlek add meg a recept nevét"] },
-    //jobType
+    //recipeType
     recipeType: {
       type: String,
       enum: ["desszert", "főétel", "leves", "egyéb"],
@@ -17,41 +17,11 @@ const RecipeSchema = new mongoose.Schema(
       default: "könnyű",
     },
 
-    //TODO: TEST
     //ingredients --add enum later--
     ingredients: [Schema.Types.Mixed],
 
     //steps
     steps: [Schema.Types.Mixed],
-
-    //ings
-    ing_1: {
-      quantity: Number,
-      ingredient: String,
-      value: {
-        type: String,
-        enum: ["L", "g", "kg"],
-        // default: "kérlek válassz",
-      },
-    },
-    ing_2: {
-      quantity: Number,
-      ingredient: String,
-      value: {
-        type: String,
-        enum: ["L", "g", "kg"],
-        // default: "kérlek válassz",
-      },
-    },
-    ing_3: {
-      quantity: Number,
-      ingredient: String,
-      value: {
-        type: String,
-        enum: ["L", "g", "kg"],
-        // default: "kérlek válassz",
-      },
-    },
 
     timeMinutesValue: { type: Number },
     timeHoursValue: { type: Number },
