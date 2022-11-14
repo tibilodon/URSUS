@@ -12,6 +12,7 @@ import AllRecipes from "./Pages/Shared/AllRecipes/AllRecipes";
 import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import Search from "./Components/Search/Search";
+import Pagination from "./Components/Pagination/Pagination";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
             <Route path="add-recipe" element={<AddRecipe />} />
             <Route path="all-recipes" element={<AllRecipes />} />
             {/*TODO: --TEST--*/}
-            <Route path="test" element={<Search />} />
+            {/* <Route path="test" element={<TestPeg />} /> */}
             {/*TODO: --TEST--*/}
           </Route>
           <Route path="/landing" element={<Landing />} />
