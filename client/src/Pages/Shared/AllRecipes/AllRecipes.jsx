@@ -16,14 +16,14 @@ const AllRecipes = () => {
     page,
     totalRecipes,
     search,
-    searchDifficulty,
-    searchType,
+    recipeType,
+    difficulty,
     sort,
     numOfPages,
   } = useAppContext();
   useEffect(() => {
     getRecipes();
-  }, [search, searchDifficulty, searchType, sort, page]);
+  }, [search, recipeType, difficulty, sort, page]);
 
   if (isLoading) {
     return <h1>ISLOADING</h1>;

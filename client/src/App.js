@@ -13,6 +13,7 @@ import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import Search from "./Components/Search/Search";
 import Pagination from "./Components/Pagination/Pagination";
+import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer/AllRecipesContainer";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <Route path="add-recipe" element={<AddRecipe />} />
             <Route path="all-recipes" element={<AllRecipes />} />
             {/*TODO: --TEST--*/}
-            {/* <Route path="test" element={<TestPeg />} /> */}
+            <Route path="test" element={<AllRecipesContainer />} />
             {/*TODO: --TEST--*/}
           </Route>
           <Route path="/landing" element={<Landing />} />
