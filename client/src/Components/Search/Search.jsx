@@ -1,3 +1,5 @@
+import "./SearchStyles.css";
+
 import React from "react";
 import { Box, Grid, Button } from "@mui/material";
 
@@ -17,6 +19,8 @@ const Search = () => {
     search,
     clearValues,
     handleChange,
+    recipeType,
+    difficulty,
   } = useAppContext();
 
   const handleSearch = e => {
@@ -30,27 +34,30 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className="search">
       <form>
-        <Grid container flexDirection="column">
-          <InputField
-            type="text"
-            value={search}
-            name="search"
-            handleChange={handleSearch}
-          />
+        {/* <Grid container flexDirection="column"> */}
+        <div className="search-items">
+          <div className="search-input">
+            <InputField
+              type="text"
+              value={search}
+              name="search"
+              handleChange={handleSearch}
+            />
+          </div>
           <InputFieldSelect
             labelText="recipeType"
             list={["all", ...recipeTypeOptions]}
             name="recipeType"
-            value={searchType}
+            value={recipeType}
             handleChange={handleSearch}
           />{" "}
           <InputFieldSelect
             labelText={"difficulty"}
             list={["all", ...difficultyOptions]}
-            name="recipeType"
-            value={searchDifficulty}
+            name="difficulty"
+            value={difficulty}
             handleChange={handleSearch}
           />{" "}
           <InputFieldSelect
@@ -69,7 +76,8 @@ const Search = () => {
           >
             Szűrők törlése
           </Button>
-        </Grid>
+        </div>
+        {/* </Grid> */}
       </form>
     </div>
   );
