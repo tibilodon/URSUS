@@ -46,7 +46,7 @@ const getAllRecipes = async (req, res) => {
   }
   //search
   if (search) {
-    queryObject.position = { $regex: search, $options: "i" };
+    queryObject.title = { $regex: search, $options: "i" };
     //$regex:value, $options:(in this case) case insensitive
   }
   //await not needed
