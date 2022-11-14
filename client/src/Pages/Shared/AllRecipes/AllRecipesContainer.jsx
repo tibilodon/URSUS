@@ -1,13 +1,13 @@
 import "./AllRecipesContainerStyles.css";
 import React from "react";
-import AllRecipes from "../AllRecipes";
-import Search from "../../../../Components/Search/Search";
+import Search from "../../../Components/Search/Search";
+import RecipeContainer from "../../../Components/Recipe/RecipeContainer/RecipeContainer";
 
 const AllRecipesContainer = () => {
   return (
     <div>
       <Search />
-      <AllRecipes />
+      <RecipeContainer />
     </div>
   );
 };

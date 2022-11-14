@@ -71,7 +71,7 @@ const initialState = {
   searchDifficulty: "all",
   searchType: "all",
   sort: "latest",
-  sortOptions: ["all", "latest", "oldest", "a-z", "z-a"],
+  sortOptions: ["latest", "oldest", "a-z", "z-a"],
 };
 
 const AppContext = React.createContext();
@@ -211,9 +211,9 @@ const AppProvider = ({ children }) => {
       const {
         title,
         recipeType,
-        recipeTypeOptions,
+        // recipeTypeOptions,
         difficulty,
-        difficultyOptions,
+        // difficultyOptions,
         steps,
         ingredients,
 
@@ -224,9 +224,9 @@ const AppProvider = ({ children }) => {
       await authFetch.post("/recipes", {
         title,
         recipeType,
-        recipeTypeOptions,
+        // recipeTypeOptions,
         difficulty,
-        difficultyOptions,
+        // difficultyOptions,
 
         steps,
 
@@ -249,8 +249,8 @@ const AppProvider = ({ children }) => {
   };
 
   const getRecipes = async () => {
-    const { search, searchDifficulty, searchType, sort, page } = state;
-    let url = `/recipes?page=${page}&searchDifficulty=${searchDifficulty}&recipeType=${searchType}&sort${sort}`;
+    const { search, searchType, searchDifficulty, sort, page } = state;
+    let url = `/recipes?page=${page}&recipeType=${searchType}&difficulty=${searchDifficulty}&sort=${sort}`;
     if (search) {
       url = url + `&search=${search}`;
     }
@@ -265,7 +265,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error.response);
       //TODO: uncomment before build
-      // logoutUser()
+      logoutUser();
     }
     clearAlert();
   };
@@ -287,9 +287,9 @@ const AppProvider = ({ children }) => {
       const {
         title,
         recipeType,
-        recipeTypeOptions,
+        // recipeTypeOptions,
         difficulty,
-        difficultyOptions,
+        // difficultyOptions,
         steps,
         ingredients,
 
@@ -299,9 +299,9 @@ const AppProvider = ({ children }) => {
       await authFetch.patch(`/recipes/${state.editRecipeId}`, {
         title,
         recipeType,
-        recipeTypeOptions,
+        // recipeTypeOptions,
         difficulty,
-        difficultyOptions,
+        // difficultyOptions,
         steps,
         ingredients,
 

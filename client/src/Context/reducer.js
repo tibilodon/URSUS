@@ -127,7 +127,7 @@ const reducer = (state, action) => {
       recipeType: "egyéb",
       // recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
       difficulty: "könnyű",
-      difficultyOptions: ["könnyű", "közepes", "nehéz"],
+      // difficultyOptions: ["könnyű", "közepes", "nehéz"],
       steps: [],
       ingredients: [],
 
@@ -198,7 +198,7 @@ const reducer = (state, action) => {
       recipeType,
       // recipeTypeOptions,
       difficulty,
-      difficultyOptions,
+      // difficultyOptions,
       steps,
       ingredients,
 
@@ -213,7 +213,7 @@ const reducer = (state, action) => {
       recipeType,
       // recipeTypeOptions,
       difficulty,
-      difficultyOptions,
+      // difficultyOptions,
       steps,
       ingredients,
 
@@ -262,9 +262,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       search: "",
-      searchDifficulty: "összes",
-      searchType: "összes",
-      sort: "legújabb",
+      searchDifficulty: "all",
+      searchType: "all",
+      sort: "latest",
     };
   }
 

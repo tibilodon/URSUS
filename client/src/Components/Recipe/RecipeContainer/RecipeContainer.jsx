@@ -1,11 +1,10 @@
-import "./AllRecipesStyles.css";
+import "./RecipeContainerStyles.css";
 import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useAppContext } from "../../../Context/appContext";
-import RecipeItem from "../../../Components/Recipe/RecipeItem";
-import Pagination from "../../../Components/Pagination/Pagination";
-
-const AllRecipes = () => {
+import RecipeItem from "../RecipeItem";
+import Pagination from "../../Pagination/Pagination";
+const RecipeContainer = () => {
   const {
     //recipes
     getRecipes,
@@ -16,14 +15,19 @@ const AllRecipes = () => {
     page,
     totalRecipes,
     search,
-    recipeType,
-    difficulty,
+    searchType,
+    searchDifficulty,
+    // recipeType,
+    // difficulty,
     sort,
     numOfPages,
   } = useAppContext();
+
   useEffect(() => {
     getRecipes();
-  }, [search, recipeType, difficulty, sort, page]);
+    // console.log(recipes.length);
+    console.log("SEARCH", search);
+  }, [search, searchType, searchDifficulty, sort, page]);
 
   if (isLoading) {
     return <h1>ISLOADING</h1>;
@@ -37,13 +41,13 @@ const AllRecipes = () => {
     <>
       <Grid container justifyContent="space-between">
         <h2>{totalRecipes} recept található</h2>
+        {numOfPages > 1 && <Pagination />}
         {recipes.map(recipe => {
           return <RecipeItem key={recipe._id} {...recipe} />;
         })}
       </Grid>
-      {numOfPages > 1 && <Pagination />}
     </>
   );
 };
 
-export default AllRecipes;
+export default RecipeContainer;

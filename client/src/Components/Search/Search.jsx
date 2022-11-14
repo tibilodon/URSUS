@@ -1,7 +1,7 @@
 import "./SearchStyles.css";
 
 import React from "react";
-import { Box, Grid, Button } from "@mui/material";
+import { Button } from "@mui/material";
 
 import InputField from "../Input/InputField";
 import InputFieldSelect from "../Input/InputFieldSelect";
@@ -10,17 +10,17 @@ import { useAppContext } from "../../Context/appContext";
 const Search = () => {
   const {
     isLoading,
-    recipeTypeOptions,
-    difficultyOptions,
-    sortOptions,
-    searchType,
-    searchDifficulty,
-    sort,
     search,
-    clearValues,
+    searchDifficulty,
+    searchType,
+    sort,
+    sortOptions,
+    difficultyOptions,
+    recipeTypeOptions,
     handleChange,
-    recipeType,
-    difficulty,
+    clearFilters,
+    // recipeType,
+    // difficulty,
   } = useAppContext();
 
   const handleSearch = e => {
@@ -30,7 +30,7 @@ const Search = () => {
 
   const handleClearValues = e => {
     e.preventDefault();
-    clearValues();
+    clearFilters();
   };
 
   return (
@@ -41,23 +41,23 @@ const Search = () => {
           <div className="search-input">
             <InputField
               type="text"
-              value={search}
               name="search"
+              value={search}
               handleChange={handleSearch}
             />
           </div>
           <InputFieldSelect
             labelText="recipeType"
             list={["all", ...recipeTypeOptions]}
-            name="recipeType"
-            value={recipeType}
+            name="searchType"
+            value={searchType}
             handleChange={handleSearch}
           />{" "}
           <InputFieldSelect
             labelText={"difficulty"}
             list={["all", ...difficultyOptions]}
-            name="difficulty"
-            value={difficulty}
+            name="searchDifficulty"
+            value={searchDifficulty}
             handleChange={handleSearch}
           />{" "}
           <InputFieldSelect
@@ -69,7 +69,7 @@ const Search = () => {
           />
           <Button
             onClick={handleClearValues}
-            type="button"
+            // type="button"
             disabled={isLoading}
             variant="contained"
             sx={{ width: "10em" }}

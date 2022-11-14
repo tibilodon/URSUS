@@ -8,12 +8,9 @@ import Landing from "./Pages/Landing/Landing";
 import ProtectedRoute from "./Pages/ProtectedRoute";
 import Register from "./Pages/Register/Register";
 import AddRecipe from "./Pages/Shared/AddRecipe/AddRecipe";
-import AllRecipes from "./Pages/Shared/AllRecipes/AllRecipes";
 import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
-import Search from "./Components/Search/Search";
-import Pagination from "./Components/Pagination/Pagination";
-import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer/AllRecipesContainer";
+import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 
 function App() {
   return (
@@ -30,9 +27,9 @@ function App() {
           >
             <Route path="profile" element={<Profile />} />
             <Route path="add-recipe" element={<AddRecipe />} />
-            <Route path="all-recipes" element={<AllRecipes />} />
+            <Route path="all-recipes" element={<AllRecipesContainer />} />
             {/*TODO: --TEST--*/}
-            <Route path="test" element={<AllRecipesContainer />} />
+            {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
           </Route>
           <Route path="/landing" element={<Landing />} />
