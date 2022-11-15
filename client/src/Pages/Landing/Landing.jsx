@@ -8,24 +8,17 @@ const Landing = () => {
   return (
     <>
       <div className="landing-wrapper">
-        <header className="bckg-header">
+        {/* <header className="bckg-header">
           <img className="background" src={img} alt="baking img" />
+        </header> */}
+        <div className="parallax">
+          {" "}
           <h1 className="title">Ursus konyhája</h1>
-        </header>
+        </div>
         <section className="bckg-section">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illum
-            earum dicta reiciendis, corrupti suscipit obcaecati eveniet
-            doloremque ipsum laborum rem esse debitis alias, rerum placeat non
-            magnam quos mollitia? Totam, iusto optio quas, enim quidem tempora
-            obcaecati fuga eveniet aut sit rerum! Eveniet perspiciatis repellat,
-            nobis accusamus iure aperiam voluptatibus nulla itaque hic.
-            Repellendus odio rem ipsa culpa praesentium tempore eum ea nostrum
-            nesciunt at, ratione perspiciatis, quisquam maiores doloribus
-            aliquam similique totam blanditiis porro commodi amet provident.
-            Debitis id fugit facilis, odit neque nostrum laborum dolorem
-            voluptatem exercitationem totam rem et repellat voluptates magnam
-            consequuntur eius aspernatur illo.
+            Az oldal csak regisztrált felhasználók részre elérhető. Kérlek,
+            regisztrálj vagy jelentkezz be az alábbi gomb segítségével.
           </p>
           <div className="landing-btn">
             <Link to="/register">

@@ -7,7 +7,7 @@
   perspective: 10px;
   background-size: contain;
 }
-.bckg-header {
+/* .bckg-header {
   position: relative;
   display: flex;
   justify-content: center;
@@ -15,10 +15,10 @@
   height: 100vh;
   transform-style: preserve-3d;
   z-index: -1;
-}
-.background {
+} */
+/* .background {
   transform: translateZ(-5px) scale(2);
-}
+} */
 .background {
   position: absolute;
   height: 100vh;
@@ -33,15 +33,39 @@
   color: white;
   text-shadow: 0 0 5px black;
 }
+@media (max-width: 498px) {
+  .title {
+    font-size: 5rem;
+  }
+  .bckg-section {
+    font-size: 1rem;
+  }
+}
 
 .bckg-section {
   font-size: 2rem;
   padding: 2rem;
-  background-color: #333;
-  color: white;
+  background-color: #81bece;
+  /* background-color: #333; */
+  color: #333;
+  text-align: center;
 }
 .landing-btn {
   display: flex;
   margin: 0.5em;
   justify-content: center;
+}
+
+.parallax {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../Assets/parallax.jpg");
+  /* min-height: 60%; */
+  height: 100%;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

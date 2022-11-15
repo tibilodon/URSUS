@@ -4,4 +4,8 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
+  color: #333;
+}
+:root {
+  --bg-col: #e8ede7;
 }

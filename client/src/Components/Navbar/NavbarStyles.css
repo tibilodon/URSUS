@@ -1,6 +1,6 @@
 .navbar-main {
   border: 2px solid black;
-  padding: 1em;
+  /* padding: 1em; */
   /* background-color: #42a5f5; */
   /* color: #ff9800; */
 }
@@ -15,7 +15,7 @@
   /* margin-top: 30%; */
 }
 .boxContent {
-  margin-bottom: 1em;
+  /* margin-bottom: 1em; */
 }
 .ursus {
   /* border: 2px solid black; */
@@ -30,5 +30,5 @@
 }
 
 .nav-wrapper {
-  padding-bottom: 5em;
+  /* padding-bottom: 5em; */
 }

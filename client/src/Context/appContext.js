@@ -263,7 +263,7 @@ const AppProvider = ({ children }) => {
         payload: { recipes, totalRecipes, numOfPages },
       });
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
       //TODO: uncomment before build
       logoutUser();
     }

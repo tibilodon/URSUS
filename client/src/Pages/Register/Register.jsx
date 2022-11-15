@@ -86,7 +86,8 @@ const Register = () => {
             sx={{
               boxShadow: 3,
               height: "100vh",
-              bgcolor: "#cfe8fc",
+              bgcolor: "#E8EDE7",
+              // bgcolor: "#cfe8fc",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",

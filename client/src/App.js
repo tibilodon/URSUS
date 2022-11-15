@@ -35,7 +35,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
-          <Route path="/test" element={<InputField />} />
+          {/* <Route path="/test" element={<InputField />} /> */}
         </Routes>
       </BrowserRouter>
     </>

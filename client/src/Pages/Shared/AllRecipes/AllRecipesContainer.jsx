@@ -5,7 +5,7 @@ import RecipeContainer from "../../../Components/Recipe/RecipeContainer/RecipeCo
 
 const AllRecipesContainer = () => {
   return (
-    <div>
+    <div className="all-recipes-wrap">
       <Search />
       <RecipeContainer />
     </div>
