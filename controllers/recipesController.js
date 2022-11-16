@@ -31,6 +31,12 @@ const deleteRecipe = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "Success! Recipe removed" });
 };
 
+//TODO:----FETCH ALL----
+const fetchAll = async (req, res) => {
+  const recipes = await Recipe.find({}).sort({ createdAt: -1 });
+  res.StatusCodes.OK.json(recipes);
+};
+
 const getAllRecipes = async (req, res) => {
   const { search, difficulty, recipeType, sort } = req.query;
   const queryObject = { createdBy: req.user.userId };
@@ -106,4 +112,11 @@ const updateRecipe = async (req, res) => {
 const showStats = async (req, res) => {
   res.send("show stats");
 };
-export { createRecipe, deleteRecipe, getAllRecipes, updateRecipe, showStats };
+export {
+  createRecipe,
+  deleteRecipe,
+  getAllRecipes,
+  updateRecipe,
+  showStats,
+  fetchAll,
+};

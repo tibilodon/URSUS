@@ -20,6 +20,9 @@ import connectDB from "./db/connect.js";
 import authRouter from "./routes/authRoutes.js";
 import recipesRouter from "./routes/recipesRoutes.js";
 
+//TODO: ---FETCH ALL----
+import fetchAllRouter from "./routes/fetchAllRoutes.js";
+
 //middleware
 import errorHandlerMiddleware from "./middleware/error-handler.js";
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -57,6 +60,7 @@ app.get("/api/v1", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/recipes", auth, recipesRouter);
+app.use("/api/v1/all", fetchAllRouter);
 
 //TODO:ADD for build
 // app.get("*", (req, res) => {
