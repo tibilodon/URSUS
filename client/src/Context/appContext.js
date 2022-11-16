@@ -320,7 +320,7 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getRecipes();
+    // getRecipes();
     // fetchAll();
   }, []);
 

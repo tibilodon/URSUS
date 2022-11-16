@@ -7,11 +7,12 @@ const FetchAll = () => {
   useEffect(() => {
     fetchAll();
   }, []);
+
   // const { title } = recipes;
   console.log(allRecipes);
   return (
     <div>
-      FetchAll
+      FetchAll {allRecipes.length}
       {allRecipes.map(recipe => {
         return (
           <div key={recipe.createdAt}>

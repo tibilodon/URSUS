@@ -53,13 +53,6 @@ const Pagination = () => {
             </Button>
           );
         })}
-        {/* <Button
-          type="button"
-          // onClick={addHandler}
-          variant="contained"
-        >
-          1
-        </Button> */}
         <Button
           type="button"
           onClick={nextPage}
