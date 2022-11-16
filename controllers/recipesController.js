@@ -34,7 +34,7 @@ const deleteRecipe = async (req, res) => {
 //TODO:----FETCH ALL----
 const fetchAll = async (req, res) => {
   const recipes = await Recipe.find({}).sort({ createdAt: -1 });
-  res.StatusCodes.OK.json(recipes);
+  res.status(StatusCodes.OK).json(recipes);
 };
 
 const getAllRecipes = async (req, res) => {

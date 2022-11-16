@@ -11,6 +11,7 @@ import AddRecipe from "./Pages/Shared/AddRecipe/AddRecipe";
 import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
+import FetchAll from "./Pages/FetchAll";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
-          {/* <Route path="/test" element={<InputField />} /> */}
+          <Route path="/test" element={<FetchAll />} />
         </Routes>
       </BrowserRouter>
     </>

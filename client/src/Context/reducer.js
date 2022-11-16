@@ -23,9 +23,10 @@ import {
   EDIT_RECIPE_ERROR,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  FETCH_ALL,
 } from "./actions";
 
-import { initialState } from "./appContext";
+import { initialState, fetchAllState } from "./appContext";
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -184,6 +185,15 @@ const reducer = (state, action) => {
       recipes: action.payload.recipes,
       totalRecipes: action.payload.totalRecipes,
       numOfPages: action.payload.numOfPages,
+    };
+  }
+
+  //TODO:----FETCH ALL---
+
+  if (action.type === FETCH_ALL) {
+    return {
+      ...state,
+      recipes: action.payload.recipes,
     };
   }
 

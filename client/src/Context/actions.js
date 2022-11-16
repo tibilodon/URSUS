@@ -51,3 +51,6 @@ export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 //SEARCH - change page
 export const CHANGE_PAGE = "CHANGE_PAGE";
+
+//TODO:---FETCH ALL ----
+export const FETCH_ALL = "FETCH_ALL";

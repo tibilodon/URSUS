@@ -25,6 +25,7 @@ import {
   EDIT_RECIPE_ERROR,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  FETCH_ALL,
 } from "./actions";
 
 import reducer from "./reducer";
@@ -32,6 +33,34 @@ import reducer from "./reducer";
 const user = localStorage.getItem("user");
 const token = localStorage.getItem("token");
 const userLocation = localStorage.getItem("location");
+
+//TODO:----FETCH ALL----
+const fetchAllState = {
+  title: "",
+  recipeType: "egyéb",
+  recipeTypeOptions: ["desszert", "főétel", "leves", "egyéb"],
+  difficulty: "könnyű",
+  difficultyOptions: ["könnyű", "közepes", "nehéz"],
+  //steps
+  steps: [],
+  //ingredients
+  ingredients: [],
+
+  timeMinutesValue: 0,
+  timeHoursValue: 0,
+
+  //get recipes
+  recipes: [],
+  totalRecipes: 0,
+  numOfPages: 0,
+  page: 1,
+  //search
+  search: "",
+  searchDifficulty: "all",
+  searchType: "all",
+  sort: "latest",
+  sortOptions: ["latest", "oldest", "a-z", "z-a"],
+};
 
 const initialState = {
   // utils
@@ -144,6 +173,11 @@ const AppProvider = ({ children }) => {
     baseURL: "/api/v1",
   });
 
+  //TODO:---FETCH ALL----
+  const allFetchUrl = axios.create({
+    baseURL: "/api/v1",
+  });
+
   // request
   authFetch.interceptors.request.use(
     config => {
@@ -235,6 +269,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
       });
+
       dispatch({ type: CREATE_RECIPE_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
@@ -248,7 +283,18 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const getAllRecipes = async () => {};
+  //TODO:----FETCH ALL---
+  const fetchAll = async () => {
+    let url = "/all";
+    try {
+      const { data } = await allFetchUrl(url);
+      const { recipes } = data;
+      console.log("----DATA---", data);
+      dispatch({ type: FETCH_ALL, payload: { recipes } });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getRecipes = async () => {
     const { search, searchType, searchDifficulty, sort, page } = state;
@@ -274,7 +320,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     getRecipes();
-    // eslint-disable-next-line
+    fetchAll();
   }, []);
 
   //set recipe to form
@@ -363,6 +409,7 @@ const AppProvider = ({ children }) => {
         deleteRecipe,
         clearFilters,
         changePage,
+        fetchAll,
       }}
     >
       {children}
@@ -375,4 +422,4 @@ const useAppContext = () => {
   return useContext(AppContext);
 };
 
-export { AppProvider, initialState, useAppContext };
+export { AppProvider, initialState, useAppContext, fetchAllState };
