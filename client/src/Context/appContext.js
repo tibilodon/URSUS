@@ -248,6 +248,8 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getAllRecipes = async () => {};
+
   const getRecipes = async () => {
     const { search, searchType, searchDifficulty, sort, page } = state;
     let url = `/recipes?page=${page}&recipeType=${searchType}&difficulty=${searchDifficulty}&sort=${sort}`;
