@@ -192,7 +192,6 @@ const reducer = (state, action) => {
 
   if (action.type === FETCH_ALL) {
     return {
-      ...state,
       recipes: action.payload.recipes,
     };
   }

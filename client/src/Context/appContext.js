@@ -288,9 +288,9 @@ const AppProvider = ({ children }) => {
     let url = "/all";
     try {
       const { data } = await allFetchUrl(url);
-      const { recipes } = data;
-      console.log("----DATA---", data);
-      dispatch({ type: FETCH_ALL, payload: { recipes } });
+      const { title } = data;
+      // console.log("----DATA---", data);
+      dispatch({ type: FETCH_ALL, payload: { recipes: data } });
     } catch (error) {
       console.log(error);
     }
