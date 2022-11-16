@@ -92,6 +92,7 @@ const initialState = {
 
   //get recipes
   recipes: [],
+  allRecipes: [],
   totalRecipes: 0,
   numOfPages: 0,
   page: 1,
@@ -288,9 +289,9 @@ const AppProvider = ({ children }) => {
     let url = "/all";
     try {
       const { data } = await allFetchUrl(url);
-      const { title } = data;
+      // const { title } = data;
       // console.log("----DATA---", data);
-      dispatch({ type: FETCH_ALL, payload: { recipes: data } });
+      dispatch({ type: FETCH_ALL, payload: { allRecipes: data } });
     } catch (error) {
       console.log(error);
     }
@@ -320,7 +321,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     getRecipes();
-    fetchAll();
+    // fetchAll();
   }, []);
 
   //set recipe to form

@@ -26,7 +26,7 @@ const RecipeContainer = () => {
   useEffect(() => {
     getRecipes();
     // console.log(recipes.length);
-    console.log("SEARCH", search);
+    // console.log("SEARCH", search);
   }, [search, searchType, searchDifficulty, sort, page]);
 
   if (isLoading) {

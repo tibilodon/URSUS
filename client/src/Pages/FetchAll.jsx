@@ -3,13 +3,16 @@ import { useAppContext } from "../Context/appContext";
 import Item from "./Item";
 
 const FetchAll = () => {
-  const { recipes, fetchAll } = useAppContext();
-  const { title } = recipes;
-  console.log(recipes);
+  const { allRecipes, fetchAll } = useAppContext();
+  useEffect(() => {
+    fetchAll();
+  }, []);
+  // const { title } = recipes;
+  console.log(allRecipes);
   return (
     <div>
       FetchAll
-      {recipes.map(recipe => {
+      {allRecipes.map(recipe => {
         return (
           <div key={recipe.createdAt}>
             <Item recipe={recipe} />
