@@ -12,6 +12,7 @@ import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 import FetchAll from "./Pages/FetchAll";
+import TestComp from "./Pages/TestComp";
 
 function App() {
   return (
@@ -32,11 +33,12 @@ function App() {
             {/*TODO: --TEST--*/}
             {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
+            <Route path="/test" element={<TestComp />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
-          <Route path="/test" element={<FetchAll />} />
+          <Route path="/test-not" element={<FetchAll />} />
         </Routes>
       </BrowserRouter>
     </>

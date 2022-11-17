@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppContext } from "../Context/appContext";
 import Item from "./Item";
+import TestNav from "./TestNav";
 
 const FetchAll = () => {
   const { allRecipes, fetchAll } = useAppContext();
@@ -9,9 +10,10 @@ const FetchAll = () => {
   }, []);
 
   // const { title } = recipes;
-  console.log(allRecipes);
+  // console.log(allRecipes);
   return (
     <div>
+      {/* <TestNav /> */}
       FetchAll {allRecipes.length}
       {allRecipes.map(recipe => {
         return (

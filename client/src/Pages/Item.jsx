@@ -5,7 +5,7 @@ const Item = ({ recipe }) => {
   //   return recipeType === "leves";
   // };
   // const result = recipe.recipeType.filter(filterDiff);
-  console.log(recipe.recipeType);
+  // console.log(recipe.recipeType);
 
   return <div>{recipe.title}</div>;
 };
