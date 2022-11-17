@@ -1,5 +1,10 @@
 .profile-wrap {
-  margin-top: 5em;
+  /* margin-top: 5em; */
+  /* padding-top: 5em; */
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-col);
+  height: 100vh;
 }
 .profile-submit {
   display: flex;
