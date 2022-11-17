@@ -34,7 +34,7 @@ const UserAccount = () => {
             onClick={handleMenu}
             color="inherit"
           >
-            <AccountCircle sx={{ mr: "0.3em" }} />
+            <AccountCircle sx={{ mr: "0.3em" }} fontSize="large" />
             {/* {user && user.name} */}
             <div className="user-account">{user && user.name}</div>
           </IconButton>

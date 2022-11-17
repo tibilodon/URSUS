@@ -49,7 +49,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="nav-wrapper">
+      <div>
         <ThemeProvider theme={theme}>
           <AppBar>
             <Toolbar>

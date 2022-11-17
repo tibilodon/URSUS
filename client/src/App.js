@@ -12,7 +12,7 @@ import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 import FetchAll from "./Pages/FetchAll";
-import TestComp from "./Pages/TestComp";
+import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
 
 function App() {
   return (
@@ -27,9 +27,9 @@ function App() {
               </ProtectedRoute>
             }
           >
+            <Route index path="all-recipes" element={<AllRecipesContainer />} />
             <Route path="profile" element={<Profile />} />
             <Route path="add-recipe" element={<AddRecipe />} />
-            <Route path="all-recipes" element={<AllRecipesContainer />} />
             {/*TODO: --TEST--*/}
             {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
@@ -38,7 +38,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
-          <Route path="/test-not" element={<FetchAll />} />
+          <Route path="/public" element={<PublicRecipeContainer />} />
         </Routes>
       </BrowserRouter>
     </>
