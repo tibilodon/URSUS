@@ -6,7 +6,7 @@ const TestComp = () => {
   return (
     <>
       <FetchAll />
-      <Search />
+      {/* <Search /> */}
     </>
   );
 };

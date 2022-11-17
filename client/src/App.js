@@ -33,7 +33,7 @@ function App() {
             {/*TODO: --TEST--*/}
             {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
-            <Route path="/test" element={<TestComp />} />
+            <Route path="/test" element={<FetchAll />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
