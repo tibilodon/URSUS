@@ -1,7 +1,7 @@
 import "./UserAccountStyles.css";
 import React from "react";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Grid, Menu, MenuItem, IconButton, Button } from "@mui/material";
+import { Grid, Menu, MenuItem, IconButton, Button, Box } from "@mui/material";
 import { useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ const UserAccount = () => {
     <>
       <Grid container justifyContent="flex-end">
         <div>
-          <IconButton
+          {/* <IconButton
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -35,9 +35,22 @@ const UserAccount = () => {
             color="inherit"
           >
             <AccountCircle sx={{ mr: "0.3em" }} fontSize="large" />
-            {/* {user && user.name} */}
             <div className="user-account">{user && user.name}</div>
-          </IconButton>
+          </IconButton> */}
+          <Box
+            onClick={handleMenu}
+            // width="10em"
+            textAlign="center"
+            role="presentation"
+          >
+            <Button
+              color="inherit"
+              // color="secondary"
+              startIcon={<AccountCircle />}
+            >
+              {user && user.name}
+            </Button>
+          </Box>{" "}
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}

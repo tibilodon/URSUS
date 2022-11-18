@@ -148,7 +148,9 @@ const Navbar = () => {
                   />
                 </Box>
               </div>
+              {/* <div className="cus"> */}
               <UserAccount />
+              {/* </div> */}
             </Toolbar>
           </AppBar>
         </ThemeProvider>
