@@ -134,19 +134,20 @@ const Navbar = () => {
               >
                 <MenuIcon />
               </IconButton>
-              <Box
-                sx={{ ml: 2, cursor: "pointer" }}
-                alignItems="center"
-                role="presentation"
-                onClick={() => navigate("/")}
-              >
-                <img
-                  className={isOpen ? "sideMenu-open-ursus" : "ursus"}
-                  src={ursus}
-                  alt="ursus logo"
-                />
-              </Box>
-
+              <div className="ursus-hover">
+                <Box
+                  sx={{ ml: 2, cursor: "pointer" }}
+                  alignItems="center"
+                  role="presentation"
+                  onClick={() => navigate("/")}
+                >
+                  <img
+                    className={isOpen ? "sideMenu-open-ursus" : "ursus"}
+                    src={ursus}
+                    alt="ursus logo"
+                  />
+                </Box>
+              </div>
               <UserAccount />
             </Toolbar>
           </AppBar>

@@ -12,10 +12,10 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* margin-top: 30%; */
 }
 .boxContent {
   /* margin-bottom: 1em; */
+  padding-bottom: 3em;
 }
 .ursus {
   /* border: 2px solid black; */

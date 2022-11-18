@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ursus from "../../../Assets/ursus_v5.png";
 import { ThemeProvider } from "@emotion/react";
 import NoAccountsRoundedIcon from "@mui/icons-material/NoAccountsRounded";
+import InfoIcon from "@mui/icons-material/Info";
 
 import {
   Toolbar,
@@ -42,7 +43,19 @@ const PublicNavbar = () => {
         <AppBar>
           <Toolbar>
             <div className="public-nav-wrap">
-              <div className="test">
+              {/* <div className="icon-hover nav-icon"> */}
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={() => navigate("/landing")}
+              >
+                <InfoIcon sx={{ mr: "0.3em" }} fontSize="large" />
+                {/* {user && user.name} */}
+              </IconButton>
+              {/* </div> */}
+              <div className="ursus-hover">
                 <Box
                   sx={{
                     // ml: 2,
@@ -52,9 +65,10 @@ const PublicNavbar = () => {
                   role="presentation"
                   onClick={() => navigate("/")}
                 >
-                  <img className="public-ursus" src={ursus} alt="ursus logo" />
+                  <img className="public-ursus " src={ursus} alt="ursus logo" />
                 </Box>
               </div>
+              {/* <div className="icon-hover nav-icon"> */}
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -65,6 +79,7 @@ const PublicNavbar = () => {
                 <NoAccountsRoundedIcon sx={{ mr: "0.3em" }} fontSize="large" />
                 {/* {user && user.name} */}
               </IconButton>
+              {/* </div> */}
             </div>
             {/* <UserAccount /> */}
           </Toolbar>
