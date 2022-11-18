@@ -29,17 +29,6 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
     p: 4,
   };
 
-  // cannot get it to work
-  const mapFunc = val => {
-    val.map((item, i) => {
-      <div key={i}>
-        <p>
-          step{i + 1}---{item}
-        </p>
-      </div>;
-    });
-  };
-
   const test = () => {
     console.log("yo");
   };
@@ -61,19 +50,16 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
           </Typography>{" "}
           <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography>
           {/* {dat} */}
-          {
-            steps && mapFunc(steps)
-            // steps && test()
-            // steps.map((item, i) => {
-            //   return (
-            //     <div key={i}>
-            //       <p>
-            //         step{i + 1}---{item}
-            //       </p>
-            //     </div>
-            //   );
-            // })
-          }
+          {steps &&
+            steps.map((item, i) => {
+              return (
+                <div key={i}>
+                  <p>
+                    step{i + 1}---{item}
+                  </p>
+                </div>
+              );
+            })}
           <div className="modify-btn-wrap">
             <div className="modify-btn-item">
               <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
