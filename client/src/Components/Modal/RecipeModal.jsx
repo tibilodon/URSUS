@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 
-const RecipeModal = ({ modal, handleModal, title, difficulty }) => {
+const RecipeModal = ({ modal, handleModal, title, difficulty, steps }) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -22,6 +22,19 @@ const RecipeModal = ({ modal, handleModal, title, difficulty }) => {
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
 
+  let dat;
+  if (steps) {
+    dat = steps.map((item, i) => {
+      return (
+        <div key={i}>
+          <p>
+            step{i + 1}--->{item}
+          </p>
+        </div>
+      );
+    });
+  }
+
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
@@ -36,8 +49,21 @@ const RecipeModal = ({ modal, handleModal, title, difficulty }) => {
             {title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            difficulty:difficulty
-          </Typography>
+            difficulty:{difficulty}
+            {steps}
+          </Typography>{" "}
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography>
+          {/* {dat} */}
+          {steps &&
+            steps.map((item, i) => {
+              return (
+                <div key={i}>
+                  <p>
+                    step{i + 1}--->{item}
+                  </p>
+                </div>
+              );
+            })}
         </Box>
       </Modal>
     </div>
