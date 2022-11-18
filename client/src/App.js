@@ -27,13 +27,13 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index path="all-recipes" element={<AllRecipesContainer />} />
+            <Route index element={<AllRecipesContainer />} />
             <Route path="profile" element={<Profile />} />
             <Route path="add-recipe" element={<AddRecipe />} />
             {/*TODO: --TEST--*/}
             {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
-            <Route path="/test" element={<FetchAll />} />
+            <Route path="all-recipes" element={<FetchAll />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />

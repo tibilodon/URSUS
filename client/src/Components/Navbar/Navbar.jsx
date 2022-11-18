@@ -71,7 +71,7 @@ const Navbar = () => {
                         color="inherit"
                         // color="secondary"
                         startIcon={<MenuBookOutlinedIcon />}
-                        onClick={() => navigate("/test")}
+                        onClick={() => navigate("/all-recipes")}
                       >
                         Receptek
                       </Button>
@@ -89,7 +89,7 @@ const Navbar = () => {
                         color="inherit"
                         // color="secondary"
                         startIcon={<PermContactCalendarIcon />}
-                        onClick={() => navigate("/all-recipes")}
+                        onClick={() => navigate("/")}
                       >
                         Receptjeim
                       </Button>
