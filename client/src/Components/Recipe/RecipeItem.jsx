@@ -12,6 +12,7 @@ const RecipeItem = ({
   _id,
   title,
   recipeType,
+  difficulty,
   createdAt,
   timeMinutesValue,
   timeHoursValue,
@@ -27,6 +28,7 @@ const RecipeItem = ({
         <Paper sx={{ width: "100%", padding: "1em" }}>
           <h1>title:{title}</h1>
           <h1>RecipeType:{recipeType}</h1>
+          <h1>difficulty:{difficulty}</h1>
           <h1>createdAt:{date}</h1>
           <h1>_id:{_id}</h1>
           <h1>minutes:{timeMinutesValue}</h1>

@@ -1,10 +1,15 @@
 import "./RecipeContainerStyles.css";
 import { Grid } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import RecipeItem from "../RecipeItem";
 import Pagination from "../../Pagination/Pagination";
+import RecipeModal from "../../Modal/RecipeModal";
+
 const RecipeContainer = () => {
+  const [modal, setModal] = useState(false);
+  const [moreData, setMoreData] = useState();
+
   const {
     //recipes
     getRecipes,
@@ -25,8 +30,6 @@ const RecipeContainer = () => {
 
   useEffect(() => {
     getRecipes();
-    // console.log(recipes.length);
-    // console.log("SEARCH", search);
   }, [search, searchType, searchDifficulty, sort, page]);
 
   if (isLoading) {
@@ -37,13 +40,37 @@ const RecipeContainer = () => {
     return <h1>NO RECIPES TO BE DISPLAYED</h1>;
   }
 
+  const handleModal = recipe => {
+    console.log("click", recipe.title);
+    console.log("SOGGY HOTDOG BUN:", recipe);
+    let data = recipe;
+    setMoreData(data);
+    setModal(!modal);
+  };
+
+  const data = (
+    <div>
+      <h1>{moreData}</h1>
+    </div>
+  );
+
   return (
     <>
       <Grid container justifyContent="space-between">
         <h2>{totalRecipes} recept található</h2>
         {numOfPages > 1 && <Pagination />}
+        {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
+        <RecipeModal {...moreData} modal={modal} handleModal={handleModal} />
         {recipes.map(recipe => {
-          return <RecipeItem key={recipe._id} {...recipe} />;
+          return (
+            <div
+              key={recipe._id}
+              className="modal-wrap"
+              onClick={() => handleModal(recipe)}
+            >
+              <RecipeItem key={recipe._id} {...recipe} />
+            </div>
+          );
         })}
       </Grid>
     </>
