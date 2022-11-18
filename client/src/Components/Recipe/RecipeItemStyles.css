@@ -7,3 +7,6 @@
 .modify-btn-item {
   margin-right: 0.3em;
 }
+.item-wrap {
+  border: 2px solid black;
+}

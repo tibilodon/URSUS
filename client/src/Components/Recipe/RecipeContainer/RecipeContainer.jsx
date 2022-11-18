@@ -48,19 +48,13 @@ const RecipeContainer = () => {
     setModal(!modal);
   };
 
-  const data = (
-    <div>
-      <h1>{moreData}</h1>
-    </div>
-  );
-
   return (
     <>
       <Grid container justifyContent="space-between">
         <h2>{totalRecipes} recept található</h2>
         {numOfPages > 1 && <Pagination />}
         {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
-        <RecipeModal {...moreData} modal={modal} handleModal={handleModal} />
+        {/* <RecipeModal {...moreData} modal={modal} handleModal={handleModal} /> */}
         {recipes.map(recipe => {
           return (
             <div
