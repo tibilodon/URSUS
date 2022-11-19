@@ -19,6 +19,7 @@ const RecipeItem = ({
   timeMinutesValue,
   timeHoursValue,
   steps,
+  ingredients,
 }) => {
   // const data = {
   //   _id,
@@ -60,6 +61,7 @@ const RecipeItem = ({
               _id={_id}
               steps={steps}
               difficulty={difficulty}
+              ingredients={ingredients}
             />
             <h1>title:{title}</h1>
             <h1>RecipeType:{recipeType}</h1>

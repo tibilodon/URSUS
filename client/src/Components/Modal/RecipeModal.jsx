@@ -22,7 +22,7 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: "50em",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -41,44 +41,45 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <div className="modal-wrap">
+          <Box sx={style}>
+            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
             {title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             difficulty:{difficulty}
           </Typography>{" "}
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography>
-          {/* {dat} */}
-          {steps &&
-            steps.map((item, i) => {
-              return (
-                <div key={i}>
-                  <p>
-                    step{i + 1}---{item}
-                  </p>
-                </div>
-              );
-            })}
-          <div className="modify-btn-wrap">
-            <div className="modify-btn-item">
-              <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
-                <Fab color="secondary" aria-label="edit">
-                  <EditIcon />
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography> */}
+            {steps &&
+              steps.map((item, i) => {
+                return (
+                  <div key={i}>
+                    <p>
+                      step{i + 1}---{item}
+                    </p>
+                  </div>
+                );
+              })}
+            <div className="modify-btn-wrap">
+              <div className="modify-btn-item">
+                <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
+                  <Fab color="secondary" aria-label="edit">
+                    <EditIcon />
+                  </Fab>
+                </Link>
+              </div>
+              <div>
+                <Fab
+                  onClick={() => deleteRecipe(_id)}
+                  color="primary"
+                  aria-label="delete"
+                >
+                  <DeleteForeverRoundedIcon />
                 </Fab>
-              </Link>
+              </div>
             </div>
-            <div>
-              <Fab
-                onClick={() => deleteRecipe(_id)}
-                color="primary"
-                aria-label="delete"
-              >
-                <DeleteForeverRoundedIcon />
-              </Fab>
-            </div>
-          </div>
-        </Box>
+          </Box>
+        </div>
       </Modal>
     </div>
   );
