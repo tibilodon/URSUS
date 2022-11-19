@@ -9,7 +9,17 @@ import { Link, useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 
-const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
+const RecipeModal = ({
+  title,
+  modal,
+  handleModal,
+  _id,
+  steps,
+  difficulty,
+  recipeType,
+  timeHoursValue,
+  timeMinutesValue,
+}) => {
   // useEffect(() => {
   //   // mapFunc();
   // }, [steps]);
@@ -22,15 +32,12 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "50em",
+    width: "35em",
     bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
+    // border: "2px solid #000",
+    boxShadow:
+      "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
     p: 4,
-  };
-
-  const test = () => {
-    console.log("yo");
   };
 
   return (
@@ -41,45 +48,46 @@ const RecipeModal = ({ title, modal, handleModal, _id, steps, difficulty }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="modal-wrap">
-          <Box sx={style}>
-            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h3" gutterBottom>
             {title}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            difficulty:{difficulty}
-          </Typography>{" "}
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}></Typography> */}
-            {steps &&
-              steps.map((item, i) => {
-                return (
-                  <div key={i}>
-                    <p>
-                      step{i + 1}---{item}
-                    </p>
-                  </div>
-                );
-              })}
-            <div className="modify-btn-wrap">
-              <div className="modify-btn-item">
-                <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
-                  <Fab color="secondary" aria-label="edit">
-                    <EditIcon />
-                  </Fab>
-                </Link>
-              </div>
-              <div>
-                <Fab
-                  onClick={() => deleteRecipe(_id)}
-                  color="primary"
-                  aria-label="delete"
-                >
-                  <DeleteForeverRoundedIcon />
+          <div className="card-main-details">
+            <Typography id="modal-modal-description">{difficulty}</Typography>{" "}
+            <Typography id="modal-modal-description">{recipeType}</Typography>{" "}
+            <Typography id="modal-modal-description">
+              {timeHoursValue} óra, {timeMinutesValue} perc
+            </Typography>{" "}
+          </div>
+          {steps &&
+            steps.map((item, i) => {
+              return (
+                <div key={i}>
+                  <p>
+                    step{i + 1}---{item}
+                  </p>
+                </div>
+              );
+            })}
+          <div className="modify-btn-wrap">
+            <div className="modify-btn-item">
+              <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
+                <Fab color="secondary" aria-label="edit">
+                  <EditIcon />
                 </Fab>
-              </div>
+              </Link>
             </div>
-          </Box>
-        </div>
+            <div>
+              <Fab
+                onClick={() => deleteRecipe(_id)}
+                color="primary"
+                aria-label="delete"
+              >
+                <DeleteForeverRoundedIcon />
+              </Fab>
+            </div>
+          </div>
+        </Box>
       </Modal>
     </div>
   );

@@ -62,6 +62,9 @@ const RecipeItem = ({
               steps={steps}
               difficulty={difficulty}
               ingredients={ingredients}
+              recipeType={recipeType}
+              timeMinutesValue={timeMinutesValue}
+              timeHoursValue={timeHoursValue}
             />
             <h1>title:{title}</h1>
             <h1>RecipeType:{recipeType}</h1>

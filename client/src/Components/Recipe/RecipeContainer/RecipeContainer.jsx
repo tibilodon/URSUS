@@ -8,7 +8,7 @@ import RecipeModal from "../../Modal/RecipeModal";
 
 const RecipeContainer = () => {
   const [modal, setModal] = useState(false);
-  const [moreData, setMoreData] = useState();
+  // const [moreData, setMoreData] = useState();
 
   const {
     //recipes
@@ -40,11 +40,11 @@ const RecipeContainer = () => {
     return <h1>NO RECIPES TO BE DISPLAYED</h1>;
   }
 
-  const handleModal = recipe => {
-    console.log("click", recipe.title);
-    console.log("SOGGY HOTDOG BUN:", recipe);
-    let data = recipe;
-    setMoreData(data);
+  const handleModal = () => {
+    // console.log("click", recipe.title);
+    // console.log("SOGGY HOTDOG BUN:", recipe);
+    // let data = recipe;
+    // setMoreData(data);
     setModal(!modal);
   };
 
