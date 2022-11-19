@@ -1,5 +1,24 @@
 .card-main-details {
   display: flex;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   justify-content: space-between;
+}
+.details-wrap {
+  display: flex;
+  /* border: 2px solid red; */
+}
+.ing-step-wrap {
+  /* border: 2px solid black; */
+  /* margin-top: 1em; */
+  /* padding: 1em; */
+  display: flex;
+  justify-content: space-between;
+}
+.col {
+  /* border: 2px solid red; */
+  padding: 1em;
+}
+.col li,
+p {
+  padding: 0.5em;
 }

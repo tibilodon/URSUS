@@ -8,6 +8,9 @@ import { useAppContext } from "../../Context/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import ScaleIcon from "@mui/icons-material/Scale";
 
 const RecipeModal = ({
   title,
@@ -19,6 +22,7 @@ const RecipeModal = ({
   recipeType,
   timeHoursValue,
   timeMinutesValue,
+  ingredients,
 }) => {
   // useEffect(() => {
   //   // mapFunc();
@@ -53,22 +57,57 @@ const RecipeModal = ({
             {title}
           </Typography>
           <div className="card-main-details">
-            <Typography id="modal-modal-description">{difficulty}</Typography>{" "}
-            <Typography id="modal-modal-description">{recipeType}</Typography>{" "}
-            <Typography id="modal-modal-description">
-              {timeHoursValue} óra, {timeMinutesValue} perc
-            </Typography>{" "}
+            <div className="details-wrap">
+              <ScaleIcon />
+              <Typography ml={"0.3em"} id="modal-modal-description">
+                {difficulty}
+              </Typography>{" "}
+            </div>
+
+            <div className="details-wrap">
+              <LocalDiningIcon />
+              <Typography ml={"0.3em"} id="modal-modal-description">
+                {recipeType}
+              </Typography>{" "}
+            </div>
+            <div className="details-wrap">
+              <AccessTimeIcon />
+              <Typography ml={"0.3em"} id="modal-modal-description">
+                {timeHoursValue && `${timeHoursValue} óra, `}{" "}
+                {timeMinutesValue && `${timeMinutesValue} perc`}
+              </Typography>{" "}
+            </div>
           </div>
-          {steps &&
-            steps.map((item, i) => {
-              return (
-                <div key={i}>
-                  <p>
-                    step{i + 1}---{item}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="ing-step-wrap">
+            <div className="col">
+              <h3>Hozzávalók:</h3>
+              {ingredients &&
+                ingredients.map((item, i) => {
+                  return (
+                    <div key={i}>
+                      <li>
+                        {item}
+                        {/* {i + 1}. hozzávaló: {item} */}
+                      </li>
+                    </div>
+                  );
+                })}
+            </div>
+            <div className="col">
+              <h3>Elkészítés:</h3>
+
+              {steps &&
+                steps.map((item, i) => {
+                  return (
+                    <div key={i}>
+                      <p>
+                        {i + 1}. lépés: {item}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
           <div className="modify-btn-wrap">
             <div className="modify-btn-item">
               <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
