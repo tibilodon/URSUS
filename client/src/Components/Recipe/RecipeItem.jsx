@@ -43,7 +43,6 @@ const RecipeItem = ({
   date = date.format("l");
 
   const [modal, setModal] = useState(false);
-  const [moreData, setMoreData] = useState();
   const handleModal = () => {
     // console.log("click", recipe.title);
     // console.log("SOGGY HOTDOG BUN:", recipe);
@@ -54,21 +53,36 @@ const RecipeItem = ({
 
   return (
     <>
-      <Box sx={{ margin: "3em" }}>
-        <Paper sx={{ width: "30em", padding: "1em" }}>
-          <div className="item-wrap" onClick={handleModal}>
-            <RecipeModal
-              modal={modal}
-              handleModal={handleModal}
-              title={title}
-              _id={_id}
-              steps={steps}
-              difficulty={difficulty}
-              ingredients={ingredients}
-              recipeType={recipeType}
-              timeMinutesValue={timeMinutesValue}
-              timeHoursValue={timeHoursValue}
-            />
+      <Box
+        // onMouseMove={() => setModal(false)}
+        sx={{
+          boxShadow: `rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em`,
+        }}
+      >
+        <Paper sx={{ width: "100%", padding: "1em" }}>
+          <div
+            className="item-wrap"
+            // onMouseEnter={handleModal}
+            // onMouseLeave={handleModal}
+            // onMouseOver={() => setModal(true)}
+            // onMouseMove={() => setModal(false)}
+            onClick={handleModal}
+          >
+            <div>
+              <RecipeModal
+                modal={modal}
+                onClose={handleModal}
+                title={title}
+                _id={_id}
+                steps={steps}
+                difficulty={difficulty}
+                ingredients={ingredients}
+                recipeType={recipeType}
+                timeMinutesValue={timeMinutesValue}
+                timeHoursValue={timeHoursValue}
+              />
+            </div>
             {/* <h1>title:{title}</h1>
             <h1>RecipeType:{recipeType}</h1>
             <h1>difficulty:{difficulty}</h1>
@@ -76,7 +90,12 @@ const RecipeItem = ({
             <h1>_id:{_id}</h1>
             <h1>minutes:{timeMinutesValue}</h1>
             <h1>hours:{timeHoursValue}</h1> */}
-            <Typography id="modal-modal-title" variant="h3" gutterBottom>
+            <Typography
+              sx={{ textAlign: "center" }}
+              id="modal-modal-title"
+              variant="h3"
+              gutterBottom
+            >
               {title.toUpperCase()}
             </Typography>
             <h3 className="createdAt">Készült:{date}</h3>

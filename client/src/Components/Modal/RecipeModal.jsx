@@ -15,6 +15,7 @@ import ScaleIcon from "@mui/icons-material/Scale";
 const RecipeModal = ({
   title,
   modal,
+  onClose,
   handleModal,
   _id,
   steps,
@@ -48,7 +49,7 @@ const RecipeModal = ({
     <div>
       <Modal
         open={modal}
-        onClose={handleModal}
+        onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

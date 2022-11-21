@@ -1,3 +1,6 @@
-.recipes-wrap {
-  border: 8px solid pink;
+.recipes-hero {
+  /* border: 2px solid red; */
+  padding: 0.5em 0.5em 0 0;
+  color: #00457e;
+  text-align: right;
 }

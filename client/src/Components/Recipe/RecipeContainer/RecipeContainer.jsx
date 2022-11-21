@@ -7,7 +7,6 @@ import Pagination from "../../Pagination/Pagination";
 import RecipeModal from "../../Modal/RecipeModal";
 
 const RecipeContainer = () => {
-  const [modal, setModal] = useState(false);
   // const [moreData, setMoreData] = useState();
 
   const {
@@ -40,34 +39,29 @@ const RecipeContainer = () => {
     return <h1>NO RECIPES TO BE DISPLAYED</h1>;
   }
 
-  const handleModal = () => {
-    // console.log("click", recipe.title);
-    // console.log("SOGGY HOTDOG BUN:", recipe);
-    // let data = recipe;
-    // setMoreData(data);
-    setModal(!modal);
-  };
-
   return (
     <>
-      {/* <Grid container justifyContent="space-between"> */}
-      <div className="recipes-wrap">
-        <h2>{totalRecipes} recept található</h2>
-        {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
-        {/* <RecipeModal {...moreData} modal={modal} handleModal={handleModal} /> */}
+      {/* <div className="recipes-wrap"> */}
+      <h2 className="recipes-hero">Saját receptjeim: {totalRecipes} </h2>
+      {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
+      {/* <RecipeModal {...moreData} modal={modal} handleModal={handleModal} /> */}
+      <Grid
+        container
+        justifyContent={"center"}
+        // rowSpacing={2}
+        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
         {recipes.map(recipe => {
           return (
-            <div
-              key={recipe._id}
-              className="modal-wrap"
-              onClick={() => handleModal(recipe)}
-            >
-              <RecipeItem key={recipe._id} {...recipe} />
+            <div key={recipe._id}>
+              <Grid item xs={12} sx={{ margin: "2em" }}>
+                <RecipeItem key={recipe._id} {...recipe} />
+              </Grid>
             </div>
           );
         })}
-      </div>
-      {/* </Grid> */}
+        {/* </div> */}
+      </Grid>
     </>
   );
 };
