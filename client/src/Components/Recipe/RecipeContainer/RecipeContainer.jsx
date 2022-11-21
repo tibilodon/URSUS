@@ -50,9 +50,9 @@ const RecipeContainer = () => {
 
   return (
     <>
-      <Grid container justifyContent="space-between">
+      {/* <Grid container justifyContent="space-between"> */}
+      <div className="recipes-wrap">
         <h2>{totalRecipes} recept található</h2>
-        {numOfPages > 1 && <Pagination />}
         {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
         {/* <RecipeModal {...moreData} modal={modal} handleModal={handleModal} /> */}
         {recipes.map(recipe => {
@@ -66,7 +66,8 @@ const RecipeContainer = () => {
             </div>
           );
         })}
-      </Grid>
+      </div>
+      {/* </Grid> */}
     </>
   );
 };

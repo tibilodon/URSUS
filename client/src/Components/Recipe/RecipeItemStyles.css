@@ -1,5 +1,4 @@
 .modify-btn-wrap {
-  /* border: 0.3em solid black; */
   display: flex;
   margin: 0.5em;
 }
@@ -9,4 +8,15 @@
 }
 .item-wrap {
   border: 2px solid black;
+}
+
+/*props from RecipeModalStyles.css*/
+.spread {
+  justify-content: space-between;
+}
+
+.createdAt {
+  text-align: right;
+  margin-bottom: 0.5em;
+  opacity: 0.4;
 }

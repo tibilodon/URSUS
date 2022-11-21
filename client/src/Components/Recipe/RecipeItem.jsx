@@ -1,5 +1,5 @@
 import "./RecipeItemStyles.css";
-import { Paper, Box, Fab } from "@mui/material";
+import { Paper, Box, Fab, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import moment from "moment";
@@ -9,6 +9,9 @@ import { useAppContext } from "../../Context/appContext";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import RecipeModal from "../Modal/RecipeModal";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import LocalDiningIcon from "@mui/icons-material/LocalDining";
+import ScaleIcon from "@mui/icons-material/Scale";
 
 const RecipeItem = ({
   _id,
@@ -52,7 +55,7 @@ const RecipeItem = ({
   return (
     <>
       <Box sx={{ margin: "3em" }}>
-        <Paper sx={{ width: "100%", padding: "1em" }}>
+        <Paper sx={{ width: "30em", padding: "1em" }}>
           <div className="item-wrap" onClick={handleModal}>
             <RecipeModal
               modal={modal}
@@ -66,15 +69,42 @@ const RecipeItem = ({
               timeMinutesValue={timeMinutesValue}
               timeHoursValue={timeHoursValue}
             />
-            <h1>title:{title}</h1>
+            {/* <h1>title:{title}</h1>
             <h1>RecipeType:{recipeType}</h1>
             <h1>difficulty:{difficulty}</h1>
             <h1>createdAt:{date}</h1>
             <h1>_id:{_id}</h1>
             <h1>minutes:{timeMinutesValue}</h1>
-            <h1>hours:{timeHoursValue}</h1>
+            <h1>hours:{timeHoursValue}</h1> */}
+            <Typography id="modal-modal-title" variant="h3" gutterBottom>
+              {title.toUpperCase()}
+            </Typography>
+            <h3 className="createdAt">Készült:{date}</h3>
+
+            <div className="card-main-details">
+              <div className="details-wrap">
+                <ScaleIcon />
+                <Typography ml={"0.3em"} id="modal-modal-description">
+                  {difficulty}
+                </Typography>{" "}
+              </div>
+
+              <div className="details-wrap">
+                <LocalDiningIcon />
+                <Typography ml={"0.3em"} id="modal-modal-description">
+                  {recipeType}
+                </Typography>{" "}
+              </div>
+              <div className="details-wrap">
+                <AccessTimeIcon />
+                <Typography ml={"0.3em"} id="modal-modal-description">
+                  {timeHoursValue && `${timeHoursValue} óra, `}{" "}
+                  {timeMinutesValue && `${timeMinutesValue} perc`}
+                </Typography>{" "}
+              </div>
+            </div>
           </div>
-          <div className="modify-btn-wrap">
+          <div className="modify-btn-wrap spread">
             <div className="modify-btn-item">
               <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
                 <Fab color="secondary" aria-label="edit">

@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import InputField from "../Input/InputField";
 import InputFieldSelect from "../Input/InputFieldSelect";
 import { useAppContext } from "../../Context/appContext";
+import Pagination from "../Pagination/Pagination";
 
 const Search = () => {
   const {
@@ -19,6 +20,7 @@ const Search = () => {
     recipeTypeOptions,
     handleChange,
     clearFilters,
+    numOfPages,
     // recipeType,
     // difficulty,
   } = useAppContext();
@@ -79,6 +81,7 @@ const Search = () => {
         </div>
         {/* </Grid> */}
       </form>
+      {numOfPages > 1 && <Pagination />}
     </div>
   );
 };
