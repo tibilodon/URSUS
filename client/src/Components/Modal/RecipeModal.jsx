@@ -54,7 +54,7 @@ const RecipeModal = ({
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h3" gutterBottom>
-            {title}
+            {title.toUpperCase()}
           </Typography>
           <div className="card-main-details">
             <div className="details-wrap">
