@@ -17,7 +17,6 @@ const MultipleInput = ({
     <div
     // hidden={hidden}
     >
-      MultipleInput
       <InputField
         // labelText={label}
         name={name}

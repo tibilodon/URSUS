@@ -3,7 +3,7 @@ import { Box, Fab } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useAppContext } from "../../Context/appContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -23,7 +23,6 @@ const RecipeModal = ({
   ingredients,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
-  const navigate = useNavigate();
 
   const style = {
     position: "absolute",
@@ -46,9 +45,9 @@ const RecipeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h3" gutterBottom>
-            {title.toUpperCase()}
-          </Typography>
+          <div class="hero-title">
+            <h1>{title}</h1>
+          </div>
           <div className="card-main-details">
             <div className="details-wrap">
               <ScaleIcon />
@@ -101,7 +100,7 @@ const RecipeModal = ({
                 })}
             </div>
           </div>
-          <div className="modify-btn-wrap">
+          <div className="modify-btn-wrap spread">
             {/* <div className="modify-btn-item"> */}
             <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
               <Fab color="secondary" aria-label="edit">

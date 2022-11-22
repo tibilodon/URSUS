@@ -41,27 +41,21 @@ const RecipeContainer = () => {
 
   return (
     <>
-      {/* <div className="recipes-wrap"> */}
-      <h2 className="recipes-hero">Saját receptjeim: {totalRecipes} </h2>
-      {/* {<div>LOOK AT ME CUNT: {data && data}</div>} */}
-      {/* <RecipeModal {...moreData} modal={modal} handleModal={handleModal} /> */}
-      <Grid
-        container
-        justifyContent={"center"}
-        // rowSpacing={2}
-        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-      >
-        {recipes.map(recipe => {
-          return (
-            <div key={recipe._id}>
-              <Grid item xs={12} sx={{ margin: "2em" }}>
-                <RecipeItem key={recipe._id} {...recipe} />
-              </Grid>
-            </div>
-          );
-        })}
-        {/* </div> */}
-      </Grid>
+      <div className="recipe-container">
+        <h2 className="recipes-hero">Saját receptjeim: {totalRecipes} </h2>
+
+        <Grid container justifyContent={"center"}>
+          {recipes.map(recipe => {
+            return (
+              <div key={recipe._id}>
+                <Grid item xs={12} sx={{ margin: "2em" }}>
+                  <RecipeItem key={recipe._id} {...recipe} />
+                </Grid>
+              </div>
+            );
+          })}
+        </Grid>
+      </div>
     </>
   );
 };

@@ -33,18 +33,26 @@ const RecipeItem = ({
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal(!modal);
+    setHovered(false);
   };
+
+  const [hovered, setHovered] = useState(false);
 
   return (
     <>
       <Box
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         sx={{
-          boxShadow: `rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em`,
+          cursor: "pointer",
+          boxShadow: hovered
+            ? `-5px -5px 30px 5px #00457e, 5px 5px 30px 5px #333`
+            : `rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+  rgba(90, 125, 188, 0.05) 0px 0.25em 1em`,
         }}
       >
         <Paper sx={{ width: "100%", padding: "1em" }}>
-          <div onClick={handleModal}>
+          <div className="item-wrap" onClick={handleModal}>
             <div>
               <RecipeModal
                 modal={modal}
@@ -60,14 +68,9 @@ const RecipeItem = ({
               />
             </div>
 
-            <Typography
-              sx={{ textAlign: "center" }}
-              id="modal-modal-title"
-              variant="h3"
-              gutterBottom
-            >
-              {title.toUpperCase()}
-            </Typography>
+            <div class="hero-title">
+              <h1>{title}</h1>
+            </div>
             <h3 className="createdAt">Készült:{date}</h3>
 
             <div className="card-main-details">

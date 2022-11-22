@@ -1,15 +1,26 @@
 import React from "react";
 import "./InputFieldStyles.css";
 //mui
-import TextField from "@mui/material/TextField";
+import { TextField, InputLabel } from "@mui/material";
 
-const InputField = ({ type, name, value, handleChange, labelText, sx }) => {
+const InputField = ({
+  type,
+  name,
+  value,
+  handleChange,
+  labelText,
+  sx,
+  searchLabel,
+}) => {
   return (
     <>
       <div className="input-wrap">
+        <InputLabel sx={{ textAlign: "center" }} id={name}>
+          {labelText}
+        </InputLabel>
         <TextField
           id={name}
-          label={labelText || name}
+          label={labelText || searchLabel}
           variant="filled"
           type={type}
           value={value}

@@ -42,6 +42,7 @@ const Search = () => {
         <div className="search-items">
           <div className="search-input">
             <InputField
+              searchLabel={"keresés"}
               type="text"
               name="search"
               value={search}
@@ -69,19 +70,21 @@ const Search = () => {
             value={sort}
             handleChange={handleSearch}
           />
-          <Button
-            onClick={handleClearValues}
-            // type="button"
-            disabled={isLoading}
-            variant="contained"
-            sx={{ width: "10em" }}
-          >
-            Szűrők törlése
-          </Button>
+          <div className="search-btn">
+            <Button
+              onClick={handleClearValues}
+              // type="button"
+              disabled={isLoading}
+              variant="contained"
+              sx={{ width: "10em" }}
+            >
+              Szűrők törlése
+            </Button>
+          </div>
         </div>
         {/* </Grid> */}
       </form>
-      {numOfPages > 1 && <Pagination />}
+      <div className="pagination-align">{numOfPages > 1 && <Pagination />}</div>
     </div>
   );
 };

@@ -1,4 +1,7 @@
 .all-recipes-wrap {
-  background-color: var(--bg-col);
   padding-top: 5em;
+  background-color: var(--bg-col);
+
+  /* height: 100vh; */
+  /* border: 5px solid red; */
 }

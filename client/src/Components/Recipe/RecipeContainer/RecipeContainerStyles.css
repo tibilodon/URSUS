@@ -1,6 +1,10 @@
 .recipes-hero {
   /* border: 2px solid red; */
   padding: 0.5em 0.5em 0 0;
-  color: #00457e;
+  color: #1769aa;
   text-align: right;
+}
+.recipe-container {
+  /* border: 5px solid red; */
+  background-color: var(--bg-col);
 }
