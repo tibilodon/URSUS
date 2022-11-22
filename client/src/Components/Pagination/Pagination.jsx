@@ -1,11 +1,32 @@
 import "./PaginationStyles.css";
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, createTheme } from "@mui/material";
 import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 
 import { useAppContext } from "../../Context/appContext";
+import { ThemeProvider } from "@emotion/react";
 
 const Pagination = () => {
+  const theme = createTheme({
+    typography: {
+      h2: {
+        fontSize: 80,
+      },
+    },
+    palette: {
+      primary: {
+        main: "#1769aa",
+      },
+      secondary: {
+        main: "#ed6c02",
+        // main: "#f44336",
+      },
+      third: {
+        main: "#9c27b0",
+      },
+    },
+  });
+
   const { numOfPages, page, changePage } = useAppContext();
   const pages = Array.from({ length: numOfPages }, (_, index) => {
     return index + 1;
@@ -31,38 +52,41 @@ const Pagination = () => {
 
   return (
     <div>
-      <ButtonGroup>
-        <Button
-          type="button"
-          color="secondary"
-          onClick={prevPage}
-          startIcon={<UndoIcon />}
-          variant="contained"
-        >
-          Előző
-        </Button>{" "}
-        {pages.map(pageNumber => {
-          return (
-            <Button
-              key={pageNumber}
-              type="button"
-              onClick={() => changePage(pageNumber)}
-              variant="contained"
-            >
-              {pageNumber}
-            </Button>
-          );
-        })}
-        <Button
-          type="button"
-          onClick={nextPage}
-          color="secondary"
-          endIcon={<RedoIcon />}
-          variant="contained"
-        >
-          Következő
-        </Button>
-      </ButtonGroup>
+      <ThemeProvider theme={theme}>
+        <ButtonGroup>
+          <Button
+            type="button"
+            color="third"
+            onClick={prevPage}
+            startIcon={<UndoIcon />}
+            variant="contained"
+          >
+            Előző
+          </Button>{" "}
+          {pages.map(pageNumber => {
+            return (
+              <Button
+                color={pageNumber === page ? "primary" : "secondary"}
+                key={pageNumber}
+                type="button"
+                onClick={() => changePage(pageNumber)}
+                variant="contained"
+              >
+                {pageNumber}
+              </Button>
+            );
+          })}
+          <Button
+            type="button"
+            onClick={nextPage}
+            color="third"
+            endIcon={<RedoIcon />}
+            variant="contained"
+          >
+            Következő
+          </Button>
+        </ButtonGroup>
+      </ThemeProvider>
     </div>
   );
 };

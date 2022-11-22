@@ -1,7 +1,11 @@
 .user-account {
   color: #ffeb3b;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
   /* padding: 0.2em; */
   /* margin: 0.3em; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
+}
+.user-account:hover {
+  padding: 0.3em 0 0.3em 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }

@@ -13,6 +13,7 @@ import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 import FetchAll from "./Pages/FetchAll";
 import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
+import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
 
 function App() {
   return (

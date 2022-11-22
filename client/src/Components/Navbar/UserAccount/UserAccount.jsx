@@ -1,11 +1,36 @@
 import "./UserAccountStyles.css";
 import React from "react";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Grid, Menu, MenuItem, IconButton, Button, Box } from "@mui/material";
+import {
+  Grid,
+  Menu,
+  MenuItem,
+  IconButton,
+  Button,
+  Box,
+  createTheme,
+} from "@mui/material";
 import { useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
+import { ThemeProvider } from "@emotion/react";
 const UserAccount = () => {
+  const theme = createTheme({
+    typography: {
+      h2: {
+        fontSize: 80,
+      },
+    },
+    palette: {
+      primary: {
+        main: "#1769aa",
+      },
+      secondary: {
+        main: "#ffeb3b",
+        // main: "#f44336",
+      },
+    },
+  });
   const navigate = useNavigate();
   const { user, logoutUser } = useAppContext();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,53 +49,40 @@ const UserAccount = () => {
   };
   return (
     <>
-      <Grid container justifyContent="flex-end">
-        <div>
-          {/* <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountCircle sx={{ mr: "0.3em" }} fontSize="large" />
-            <div className="user-account">{user && user.name}</div>
-          </IconButton> */}
-          <Box
-            onClick={handleMenu}
-            // width="10em"
-            textAlign="center"
-            role="presentation"
-          >
-            <Button
-              color="inherit"
-              // color="secondary"
-              startIcon={<AccountCircle />}
+      <ThemeProvider theme={theme}>
+        <Grid container justifyContent="flex-end">
+          <div>
+            <Box
+              onClick={handleMenu}
+              // width="10em"
+              textAlign="center"
+              role="presentation"
             >
-              {user && user.name}
-            </Button>
-          </Box>{" "}
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={logoutUser}>Logout</MenuItem>
-            <MenuItem onClick={myAccount}>My account</MenuItem>
-          </Menu>
-        </div>
-      </Grid>
+              <Button startIcon={<AccountCircle style={{ fill: "#ffeb3b" }} />}>
+                <h3 className="user-account">{user && user.name}</h3>
+              </Button>
+            </Box>{" "}
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={logoutUser}>Logout</MenuItem>
+              <MenuItem onClick={myAccount}>My account</MenuItem>
+            </Menu>
+          </div>
+        </Grid>
+      </ThemeProvider>
     </>
   );
 };
