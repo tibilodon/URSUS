@@ -12,7 +12,6 @@ import RecipeModal from "../Modal/RecipeModal";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
-// import HoveredItem from "./Hovered/HoveredItem";
 
 const RecipeItem = ({
   _id,
@@ -25,18 +24,6 @@ const RecipeItem = ({
   steps,
   ingredients,
 }) => {
-  // const data = {
-  //   _id,
-  //   title,
-  //   recipeType,
-  //   _id,
-  //   title,
-  //   recipeType,
-  //   difficulty,
-  //   createdAt,
-  //   timeMinutesValue,
-  //   timeHoursValue,
-  // };
   const { setEditRecipe, deleteRecipe } = useAppContext();
   //moments - date
   moment.locale("hu");
@@ -46,42 +33,18 @@ const RecipeItem = ({
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal(!modal);
-    // setHovered(false);
   };
-
-  // const [hovered, setHovered] = useState(false);
 
   return (
     <>
       <Box
-        // onMouseEnter={() => setHovered(true)}
-        // onMouseLeave={() => setHovered(false)}
-        // onMouseMove={() => setModal(false)}
         sx={{
           boxShadow: `rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em`,
         }}
       >
-        {/* {hovered ? (
-          <div className="hovered">
-            <HoveredItem
-              title={title}
-              _id={_id}
-              steps={steps}
-              difficulty={difficulty}
-              ingredients={ingredients}
-              recipeType={recipeType}
-              timeMinutesValue={timeMinutesValue}
-              timeHoursValue={timeHoursValue}
-            />
-          </div>
-        ) : null} */}
         <Paper sx={{ width: "100%", padding: "1em" }}>
-          <div
-            // onMouseOver={() => setModal(true)}
-            // onMouseMove={() => setModal(false)}
-            onClick={handleModal}
-          >
+          <div onClick={handleModal}>
             <div>
               <RecipeModal
                 modal={modal}
