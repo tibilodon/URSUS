@@ -12,7 +12,7 @@ import RecipeModal from "../Modal/RecipeModal";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
-import HoveredItem from "./Hovered/HoveredItem";
+// import HoveredItem from "./Hovered/HoveredItem";
 
 const RecipeItem = ({
   _id,
@@ -46,23 +46,23 @@ const RecipeItem = ({
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal(!modal);
-    setHovered(false);
+    // setHovered(false);
   };
 
-  const [hovered, setHovered] = useState(false);
+  // const [hovered, setHovered] = useState(false);
 
   return (
     <>
       <Box
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        // onMouseEnter={() => setHovered(true)}
+        // onMouseLeave={() => setHovered(false)}
         // onMouseMove={() => setModal(false)}
         sx={{
           boxShadow: `rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em`,
         }}
       >
-        {hovered ? (
+        {/* {hovered ? (
           <div className="hovered">
             <HoveredItem
               title={title}
@@ -75,7 +75,7 @@ const RecipeItem = ({
               timeHoursValue={timeHoursValue}
             />
           </div>
-        ) : null}
+        ) : null} */}
         <Paper sx={{ width: "100%", padding: "1em" }}>
           <div
             // onMouseOver={() => setModal(true)}
