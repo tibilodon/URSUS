@@ -5,6 +5,7 @@ import ursus from "../../../Assets/ursus_v5.png";
 import { ThemeProvider } from "@emotion/react";
 import NoAccountsRoundedIcon from "@mui/icons-material/NoAccountsRounded";
 import InfoIcon from "@mui/icons-material/Info";
+import { useAppContext } from "../../../Context/appContext";
 
 import {
   Toolbar,
@@ -19,6 +20,7 @@ import {
 } from "@mui/material";
 
 const PublicNavbar = () => {
+  const { user } = useAppContext();
   const navigate = useNavigate();
 
   //mui theme
@@ -74,7 +76,9 @@ const PublicNavbar = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={() => navigate("/register")}
+                onClick={
+                  user ? () => navigate("/") : () => navigate("/register")
+                }
               >
                 <NoAccountsRoundedIcon sx={{ mr: "0.3em" }} fontSize="large" />
                 {/* {user && user.name} */}

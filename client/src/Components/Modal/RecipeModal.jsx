@@ -21,6 +21,7 @@ const RecipeModal = ({
   timeHoursValue,
   timeMinutesValue,
   ingredients,
+  edit,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
 
@@ -100,24 +101,25 @@ const RecipeModal = ({
                 })}
             </div>
           </div>
-          <div className="modify-btn-wrap spread">
-            {/* <div className="modify-btn-item"> */}
-            <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
-              <Fab color="secondary" aria-label="edit">
-                <EditIcon />
-              </Fab>
-            </Link>
-            {/* </div> */}
-            <div>
-              <Fab
-                onClick={() => deleteRecipe(_id)}
-                color="primary"
-                aria-label="delete"
-              >
-                <DeleteForeverRoundedIcon />
-              </Fab>
+          {edit && (
+            <div className="modify-btn-wrap spread">
+              <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
+                <Fab color="secondary" aria-label="edit">
+                  <EditIcon />
+                </Fab>
+              </Link>
+              {/* </div> */}
+              <div>
+                <Fab
+                  onClick={() => deleteRecipe(_id)}
+                  color="primary"
+                  aria-label="delete"
+                >
+                  <DeleteForeverRoundedIcon />
+                </Fab>
+              </div>
             </div>
-          </div>
+          )}
         </Box>
       </Modal>
     </div>

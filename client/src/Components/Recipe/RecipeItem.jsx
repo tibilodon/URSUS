@@ -37,6 +37,7 @@ const RecipeItem = ({
   };
 
   const [hovered, setHovered] = useState(false);
+  const edit = true;
 
   return (
     <>
@@ -65,6 +66,7 @@ const RecipeItem = ({
                 recipeType={recipeType}
                 timeMinutesValue={timeMinutesValue}
                 timeHoursValue={timeHoursValue}
+                edit={edit}
               />
             </div>
 
