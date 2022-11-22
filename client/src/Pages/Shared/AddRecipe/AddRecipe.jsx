@@ -152,7 +152,7 @@ const AddRecipe = () => {
 
   return (
     <>
-      <div>
+      <div className="add-recipe-wrap">
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}
@@ -162,6 +162,7 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
+                    searchLabel="step"
                     addHandler={addStep}
                     removeHandler={() => removeStep(i)}
                     value={steps}
@@ -177,6 +178,7 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
+                    searchLabel="step"
                     addHandler={fetchedAddStep}
                     removeHandler={e => fetchedRemoveStep(i, e)}
                     value={steps}
@@ -193,6 +195,7 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
+                    searchLabel="ing"
                     addHandler={addIngredient}
                     removeHandler={() => removeIngredient(i)}
                     value={ing}
@@ -208,6 +211,7 @@ const AddRecipe = () => {
               return (
                 <div key={i}>
                   <MultipleInput
+                    searchLabel="ing"
                     addHandler={fetchedAddIngredient}
                     removeHandler={e => fetchedRemoveIngredient(i, e)}
                     value={ings}
@@ -219,6 +223,7 @@ const AddRecipe = () => {
               );
             })}
           <InputField
+            searchLabel="title"
             type="text"
             name="title"
             value={title}
@@ -234,14 +239,14 @@ const AddRecipe = () => {
           {/*TODO:*/}
           <InputField
             type="number"
-            labelText="perc"
+            searchLabel="perc"
             name="timeMinutesValue"
             value={timeMinutesValue}
             handleChange={handleRecipeInput}
           />{" "}
           <InputField
             type="number"
-            labelText="óra"
+            searchLabel="óra"
             name="timeHoursValue"
             value={timeHoursValue}
             handleChange={handleRecipeInput}

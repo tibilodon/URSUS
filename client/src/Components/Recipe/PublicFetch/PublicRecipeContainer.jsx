@@ -14,16 +14,6 @@ const PublicRecipeContainer = () => {
     <>
       <PublicNavbar />
 
-      {/* <div style={{ marginTop: "5em" }}>
-        FetchAll {allRecipes.length}
-        {allRecipes.map(recipe => {
-          return (
-            <div key={recipe.createdAt}>
-              <FetchedItem recipe={recipe} />
-            </div>
-          );
-        })}
-      </div> */}
       <div className="recipe-container public">
         <h2 className="recipes-hero">Összes Recept: {allRecipes.length} </h2>
 

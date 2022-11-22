@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-//TODO:test
-import InputField from "./Components/Input/InputField";
 //Pages
 import Error from "./Pages/Error/Error";
 import Landing from "./Pages/Landing/Landing";
@@ -11,9 +9,8 @@ import AddRecipe from "./Pages/Shared/AddRecipe/AddRecipe";
 import SharedLayout from "./Pages/Shared/SharedLayout";
 import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
-import FetchAll from "./Pages/FetchAll";
 import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
-import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
+import FetchAllContainer from "./Pages/Shared/FetchedAll/FetchAllContainer";
 
 function App() {
   return (
@@ -34,7 +31,7 @@ function App() {
             {/*TODO: --TEST--*/}
             {/* <Route path="test" element={<AllRecipesContainer />} /> */}
             {/*TODO: --TEST--*/}
-            <Route path="all-recipes" element={<FetchAll />} />
+            <Route path="all-recipes" element={<FetchAllContainer />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />

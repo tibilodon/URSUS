@@ -1,6 +1,6 @@
 import "./NavbarStyles.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useAppContext } from "../../Context/appContext";
 
@@ -44,8 +44,20 @@ const Navbar = () => {
       secondary: {
         main: "#f44336",
       },
+      active: {
+        main: "#ed6c02",
+      },
     },
   });
+
+  //check route and set css
+  const location = useLocation();
+  const pathMathRoute = route => {
+    if (route === location.pathname) {
+      return true;
+    }
+  };
+
   const navigate = useNavigate();
   return (
     <>
@@ -68,9 +80,17 @@ const Navbar = () => {
                       role="presentation"
                     >
                       <Button
-                        color="inherit"
-                        // color="secondary"
-                        startIcon={<MenuBookOutlinedIcon />}
+                        color={
+                          pathMathRoute("/all-recipes") ? "active" : "inherit"
+                        }
+                        // color="active"
+                        startIcon={
+                          <MenuBookOutlinedIcon
+                            style={{
+                              fill: pathMathRoute("/all-recipes") && "#ed6c02",
+                            }}
+                          />
+                        }
                         onClick={() => navigate("/all-recipes")}
                       >
                         Receptek
@@ -86,9 +106,15 @@ const Navbar = () => {
                       role="presentation"
                     >
                       <Button
-                        color="inherit"
+                        color={pathMathRoute("/") ? "active" : "inherit"}
                         // color="secondary"
-                        startIcon={<PermContactCalendarIcon />}
+                        startIcon={
+                          <PermContactCalendarIcon
+                            style={{
+                              fill: pathMathRoute("/") && "#ed6c02",
+                            }}
+                          />
+                        }
                         onClick={() => navigate("/")}
                       >
                         Receptjeim
@@ -105,9 +131,17 @@ const Navbar = () => {
                       role="presentation"
                     >
                       <Button
-                        color="inherit"
+                        color={
+                          pathMathRoute("/add-recipe") ? "active" : "inherit"
+                        }
                         // color="secondary"
-                        startIcon={<AddCircleIcon />}
+                        startIcon={
+                          <AddCircleIcon
+                            style={{
+                              fill: pathMathRoute("/add-recipe") && "#ed6c02",
+                            }}
+                          />
+                        }
                         onClick={() => {
                           navigate("/add-recipe");
                           clearValues();

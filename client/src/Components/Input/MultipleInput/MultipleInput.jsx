@@ -11,14 +11,15 @@ const MultipleInput = ({
   value,
   handleChange,
   hidden,
-  label,
+  labelText,
+  searchLabel,
 }) => {
   return (
     <div
     // hidden={hidden}
     >
       <InputField
-        // labelText={label}
+        searchLabel={searchLabel}
         name={name}
         value={value}
         handleChange={handleChange}
