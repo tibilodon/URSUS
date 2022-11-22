@@ -1,6 +1,8 @@
 .modify-btn-wrap {
   display: flex;
   margin: 0.5em;
+  border: 2px solid black;
+  /* z-index: 0; */
 }
 
 .modify-btn-item {
@@ -9,12 +11,14 @@
 
 /*clickable modal triggering area*/
 .item-wrap {
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 /*props from RecipeModalStyles.css*/
 .spread {
   justify-content: space-between;
+  /* position: absolute; */
+  /* z-index: -1; */
 }
 
 .createdAt {
@@ -24,4 +28,10 @@
 }
 .modal-hover {
   border: 2px solid green;
+}
+.hovered {
+  position: absolute;
+  border: 2px solid black;
+  margin-left: 15em;
+  opacity: 0.5;
 }

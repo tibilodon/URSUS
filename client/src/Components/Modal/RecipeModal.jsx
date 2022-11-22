@@ -1,9 +1,7 @@
 import "./RecipeModalStyles.css";
 import { Box, Fab } from "@mui/material";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useState, useEffect } from "react";
 import { useAppContext } from "../../Context/appContext";
 import { Link, useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -37,7 +35,7 @@ const RecipeModal = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "35em",
+    // width: "35em",
     bgcolor: "background.paper",
     // border: "2px solid #000",
     boxShadow:
@@ -110,13 +108,13 @@ const RecipeModal = ({
             </div>
           </div>
           <div className="modify-btn-wrap">
-            <div className="modify-btn-item">
-              <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
-                <Fab color="secondary" aria-label="edit">
-                  <EditIcon />
-                </Fab>
-              </Link>
-            </div>
+            {/* <div className="modify-btn-item"> */}
+            <Link to="/add-recipe" onClick={() => setEditRecipe(_id)}>
+              <Fab color="secondary" aria-label="edit">
+                <EditIcon />
+              </Fab>
+            </Link>
+            {/* </div> */}
             <div>
               <Fab
                 onClick={() => deleteRecipe(_id)}
