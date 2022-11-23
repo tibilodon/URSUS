@@ -1,5 +1,8 @@
 .reg-option {
+  display: flex;
   margin: 1em;
+  /* border: 2px solid black; */
+  align-items: center;
 }
 .form-items {
   display: flex;
@@ -13,4 +16,22 @@
 .reg-wrapper {
   /* background-color: #ffeb3b; */
   background-color: #81bece;
+}
+.media {
+  border: 2px solid black;
+}
+.reg-button {
+  margin-left: 1em;
+}
+
+@media (max-width: 400px) {
+  .reg-option {
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .reg-button {
+    margin: 0.5em 0;
+  }
 }

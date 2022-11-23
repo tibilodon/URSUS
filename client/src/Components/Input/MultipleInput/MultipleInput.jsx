@@ -15,7 +15,7 @@ const MultipleInput = ({
   searchLabel,
 }) => {
   return (
-    <div className="multiple-input-wrap">
+    <div className="multiple-input-wrap not-flex">
       <InputField
         searchLabel={searchLabel}
         name={name}

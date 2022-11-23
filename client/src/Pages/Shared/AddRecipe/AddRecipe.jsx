@@ -220,15 +220,15 @@ const AddRecipe = () => {
                       handleChange={handleRecipeInput}
                     />{" "}
                   </div>
-                </div>
-                <div className="add-input">
-                  <InputField
-                    type="number"
-                    searchLabel="óra"
-                    name="timeHoursValue"
-                    value={timeHoursValue}
-                    handleChange={handleRecipeInput}
-                  />
+                  <div className="add-input time">
+                    <InputField
+                      type="number"
+                      searchLabel="óra"
+                      name="timeHoursValue"
+                      value={timeHoursValue}
+                      handleChange={handleRecipeInput}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

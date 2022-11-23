@@ -134,18 +134,19 @@ const Register = () => {
                   Tovább
                 </Button>
               </div>
-              <div className="reg-option">
+              <div className="reg-option ">
                 {values.isMember
                   ? "Még nincs regisztrációd?"
                   : "Már regisztráltam"}
-                <Button
-                  sx={{ ml: "1em" }}
-                  type="button"
-                  variant="outlined"
-                  onClick={toggleMember}
-                >
-                  {values.isMember ? "Regisztráció" : "Bejelentkezés"}
-                </Button>
+                <div className="reg-button ">
+                  <Button
+                    type="button"
+                    variant="outlined"
+                    onClick={toggleMember}
+                  >
+                    {values.isMember ? "Regisztráció" : "Bejelentkezés"}
+                  </Button>
+                </div>
               </div>
             </form>
           </Box>
