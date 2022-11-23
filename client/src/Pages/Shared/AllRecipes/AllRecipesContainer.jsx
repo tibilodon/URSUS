@@ -8,6 +8,7 @@ const AllRecipesContainer = () => {
   return (
     <div className="all-recipes-wrap">
       <Search />
+
       <RecipeContainer />
       <div className="pagination-bottom">
         <Pagination />

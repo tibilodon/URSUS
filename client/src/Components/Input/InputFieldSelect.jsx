@@ -4,7 +4,7 @@ import { MenuItem, InputLabel, Select } from "@mui/material";
 const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
     <div>
-      <InputLabel id={name}>{labelText || name}</InputLabel>
+      <InputLabel id={name}>{labelText}</InputLabel>
       <Select value={value} name={name} onChange={handleChange}>
         {list.map((itemValue, index) => {
           return (

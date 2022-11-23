@@ -15,9 +15,7 @@ const MultipleInput = ({
   searchLabel,
 }) => {
   return (
-    <div
-    // hidden={hidden}
-    >
+    <div className="multiple-input-wrap">
       <InputField
         searchLabel={searchLabel}
         name={name}
@@ -25,7 +23,7 @@ const MultipleInput = ({
         handleChange={handleChange}
         type="text"
       />
-      <ButtonGroup>
+      <ButtonGroup sx={{ ml: "1em" }}>
         <Button
           type="button"
           onClick={addHandler}
