@@ -254,7 +254,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: "success",
-      alertText: "Recipe updated/edited",
+      alertText: "Recept szerkesztve",
     };
   }
 
