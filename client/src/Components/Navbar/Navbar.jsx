@@ -29,7 +29,8 @@ import ursus from "../../Assets/ursus_v5.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { toggleSidebar, user, logoutUser, clearValues } = useAppContext();
+  const { toggleSidebar, user, logoutUser, clearValues, clearFilters } =
+    useAppContext();
   const [showLogout, setShowLogout] = useState(false);
   const theme = createTheme({
     typography: {
@@ -173,7 +174,10 @@ const Navbar = () => {
                   sx={{ ml: 2, cursor: "pointer" }}
                   alignItems="center"
                   role="presentation"
-                  onClick={() => navigate("/")}
+                  onClick={() => {
+                    navigate("/");
+                    clearFilters();
+                  }}
                 >
                   <img
                     className={isOpen ? "sideMenu-open-ursus" : "ursus"}
