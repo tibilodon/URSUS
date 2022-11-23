@@ -25,6 +25,8 @@ const AddRecipe = () => {
     ingredients,
     title,
     recipeType,
+    difficulty,
+    difficultyOptions,
     recipeTypeOptions,
     timeMinutesValue,
     timeHoursValue,
@@ -156,112 +158,131 @@ const AddRecipe = () => {
         <form>
           <h3>{isEditing ? "edit recipe" : "create recipe"}</h3>
           {showAlert && <Alert />}
+          <div className="title-wrap">
+            <InputField
+              searchLabel="title"
+              type="text"
+              name="title"
+              value={title}
+              handleChange={handleRecipeInput}
+            />{" "}
+          </div>
+          <div className="other-details-wrap">
+            <InputFieldSelect
+              labelText="recipeType"
+              name="recipeType"
+              value={recipeType}
+              handleChange={handleRecipeInput}
+              list={recipeTypeOptions}
+            />{" "}
+            <InputFieldSelect
+              labelText="difficulty"
+              name="difficulty"
+              value={difficulty}
+              handleChange={handleRecipeInput}
+              list={difficultyOptions}
+            />
+            {/*TODO:*/}
+            <InputField
+              type="number"
+              searchLabel="perc"
+              name="timeMinutesValue"
+              value={timeMinutesValue}
+              handleChange={handleRecipeInput}
+            />{" "}
+            <InputField
+              type="number"
+              searchLabel="óra"
+              name="timeHoursValue"
+              value={timeHoursValue}
+              handleChange={handleRecipeInput}
+            />
+          </div>
           {/*TODO: ---STEPS---*/}
-          {!isEditing &&
-            step.map((steps, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    searchLabel="step"
-                    addHandler={addStep}
-                    removeHandler={() => removeStep(i)}
-                    value={steps}
-                    name="steps"
-                    handleChange={e => stepHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })}{" "}
-          {isEditing &&
-            fetchedStep.map((steps, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    searchLabel="step"
-                    addHandler={fetchedAddStep}
-                    removeHandler={e => fetchedRemoveStep(i, e)}
-                    value={steps}
-                    name="steps"
-                    handleChange={e => fetchedStepHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })}
-          {/*TODO:----ingredients----*/}
-          {!isEditing &&
-            ingredient.map((ing, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    searchLabel="ing"
-                    addHandler={addIngredient}
-                    removeHandler={() => removeIngredient(i)}
-                    value={ing}
-                    name="ingredients"
-                    handleChange={e => ingredientHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })}{" "}
-          {isEditing &&
-            fetchedIngredient.map((ings, i) => {
-              return (
-                <div key={i}>
-                  <MultipleInput
-                    searchLabel="ing"
-                    addHandler={fetchedAddIngredient}
-                    removeHandler={e => fetchedRemoveIngredient(i, e)}
-                    value={ings}
-                    name="ingredients"
-                    handleChange={e => fetchedIngredientHandler(i, e)}
-                    type="text"
-                  />
-                </div>
-              );
-            })}
-          <InputField
-            searchLabel="title"
-            type="text"
-            name="title"
-            value={title}
-            handleChange={handleRecipeInput}
-          />{" "}
-          <InputFieldSelect
-            labelText="recipeType"
-            name="recipeType"
-            value={recipeType}
-            handleChange={handleRecipeInput}
-            list={recipeTypeOptions}
-          />
-          {/*TODO:*/}
-          <InputField
-            type="number"
-            searchLabel="perc"
-            name="timeMinutesValue"
-            value={timeMinutesValue}
-            handleChange={handleRecipeInput}
-          />{" "}
-          <InputField
-            type="number"
-            searchLabel="óra"
-            name="timeHoursValue"
-            value={timeHoursValue}
-            handleChange={handleRecipeInput}
-          />
+          <div className="multi-wrap">
+            <div className="steps">
+              {!isEditing &&
+                step.map((steps, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="step"
+                        addHandler={addStep}
+                        removeHandler={() => removeStep(i)}
+                        value={steps}
+                        name="steps"
+                        handleChange={e => stepHandler(i, e)}
+                        type="text"
+                      />
+                    </div>
+                  );
+                })}{" "}
+              {isEditing &&
+                fetchedStep.map((steps, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="step"
+                        addHandler={fetchedAddStep}
+                        removeHandler={e => fetchedRemoveStep(i, e)}
+                        value={steps}
+                        name="steps"
+                        handleChange={e => fetchedStepHandler(i, e)}
+                        type="text"
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+            {/*TODO:----ingredients----*/}
+
+            <div className="ings">
+              {!isEditing &&
+                ingredient.map((ing, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="ing"
+                        addHandler={addIngredient}
+                        removeHandler={() => removeIngredient(i)}
+                        value={ing}
+                        name="ingredients"
+                        handleChange={e => ingredientHandler(i, e)}
+                        type="text"
+                      />
+                    </div>
+                  );
+                })}{" "}
+              {isEditing &&
+                fetchedIngredient.map((ings, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="ing"
+                        addHandler={fetchedAddIngredient}
+                        removeHandler={e => fetchedRemoveIngredient(i, e)}
+                        value={ings}
+                        name="ingredients"
+                        handleChange={e => fetchedIngredientHandler(i, e)}
+                        type="text"
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+
           <button type="submit" onClick={handleSubmit} disabled={isLoading}>
             submit
           </button>
-          <button
+          {/* <button
             onClick={e => {
               e.preventDefault();
               clearValues();
             }}
           >
             clear
-          </button>
+          </button> */}
         </form>
       </div>
     </>
