@@ -1,6 +1,5 @@
 import "./RegisterStyles.css";
 
-import { Alert } from "@mui/material";
 import InputField from "../../Components/Input/InputField";
 import { useAppContext } from "../../Context/appContext";
 
@@ -12,6 +11,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Alert from "../../Components/Alert/Alert";
 
 const initialState = {
   name: "",
@@ -54,13 +54,13 @@ const Register = () => {
       setupUser({
         currentUser,
         endPoint: "login",
-        alertText: "Login Successful! Redirecting...",
+        alertText: "Bejelentkezés sikeres! Kis türemlet...",
       });
     } else {
       setupUser({
         currentUser,
         endPoint: "register",
-        alertText: "User created, redirecting...",
+        alertText: "Regisztráció sikeres! Kis türemlet...",
       });
     }
   };
@@ -73,14 +73,18 @@ const Register = () => {
     }
   }, [user, navigate]);
 
+  if (showAlert) {
+    return <Alert />;
+  }
+
   return (
     <>
       <div className="reg-wrapper">
-        <div>
+        {/* <div>
           {showAlert}
           {alertType}
           {alertText}
-        </div>
+        </div> */}
         <Container maxWidth="sm">
           <Box
             sx={{
