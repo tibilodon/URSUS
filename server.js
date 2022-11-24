@@ -1,12 +1,12 @@
 //TODO:FOR BUILD ONLY
-// import { dirname } from "path";
-// import { fileURLToPath } from "url";
-// import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 
-//security packages for build
-// import helmet from "helmet";
-// import xss from "xss-clean";
-// import mongoSanitize from "express-mongo-sanitize";
+// security packages for build
+import helmet from "helmet";
+import xss from "xss-clean";
+import mongoSanitize from "express-mongo-sanitize";
 
 import cors from "cors";
 import express from "express";
@@ -36,13 +36,13 @@ dotenv.config();
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
   //TODO:add for build
-  //  app.use(express.static("client/build"));
+  app.use(express.static("client/build"));
 }
 
-// const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //TODO:add for build
-// app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 //cors
 app.use(cors());
@@ -50,9 +50,9 @@ app.use(cors());
 app.use(express.json());
 
 //TODO:security packages init ADD FOR DEPLOY
-// app.use(helmet());
-// app.use(xss());
-// app.use(mongoSanitize());
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize());
 
 app.get("/api/v1", (req, res) => {
   res.json({ msg: "API" });
@@ -63,9 +63,9 @@ app.use("/api/v1/recipes", auth, recipesRouter);
 app.use("/api/v1/all", fetchAllRouter);
 
 //TODO:ADD for build
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);
