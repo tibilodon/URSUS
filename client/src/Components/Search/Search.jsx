@@ -83,7 +83,7 @@ const Search = () => {
                   </div>
                   <InputFieldSelect
                     // labelText={"difficulty"}
-                    list={["all", ...difficultyOptions]}
+                    list={["összes", ...difficultyOptions]}
                     name="searchDifficulty"
                     value={searchDifficulty}
                     handleChange={handleSearch}
@@ -95,7 +95,7 @@ const Search = () => {
                   </div>
                   <InputFieldSelect
                     // labelText="recipeType"
-                    list={["all", ...recipeTypeOptions]}
+                    list={["összes", ...recipeTypeOptions]}
                     name="searchType"
                     value={searchType}
                     handleChange={handleSearch}

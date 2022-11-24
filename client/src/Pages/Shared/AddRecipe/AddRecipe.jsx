@@ -164,7 +164,7 @@ const AddRecipe = () => {
         <div className="add-recipe-wrap">
           <form className="recipe-form">
             <div className="add-edit-wrap">
-              <h2>{isEditing ? "edit recipe" : "create recipe"}</h2>
+              <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
               {showAlert && <Alert />}
             </div>
             <div className="flex-center-wrap">

@@ -56,10 +56,10 @@ const fetchAllState = {
   page: 1,
   //search
   search: "",
-  searchDifficulty: "all",
-  searchType: "all",
-  sort: "latest",
-  sortOptions: ["latest", "oldest", "a-z", "z-a"],
+  searchDifficulty: "összes",
+  searchType: "összes",
+  sort: "legújabb",
+  sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
 };
 
 const initialState = {
@@ -98,10 +98,10 @@ const initialState = {
   page: 1,
   //search
   search: "",
-  searchDifficulty: "all",
-  searchType: "all",
-  sort: "latest",
-  sortOptions: ["latest", "oldest", "a-z", "z-a"],
+  searchDifficulty: "összes",
+  searchType: "összes",
+  sort: "legújabb",
+  sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
 };
 
 const AppContext = React.createContext();

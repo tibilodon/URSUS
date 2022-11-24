@@ -273,9 +273,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       search: "",
-      searchDifficulty: "all",
-      searchType: "all",
-      sort: "latest",
+      searchDifficulty: "összes",
+      searchType: "összes",
+      sort: "legújabb",
     };
   }
 
