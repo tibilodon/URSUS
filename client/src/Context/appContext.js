@@ -322,6 +322,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     getRecipes();
     // fetchAll();
+    // eslint-disable-next-line
   }, []);
 
   //set recipe to form
