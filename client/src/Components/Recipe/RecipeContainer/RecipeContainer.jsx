@@ -5,7 +5,7 @@ import { useAppContext } from "../../../Context/appContext";
 import RecipeItem from "../RecipeItem";
 import Pagination from "../../Pagination/Pagination";
 import RecipeModal from "../../Modal/RecipeModal";
-
+import Loader from "../../Loader/Loader";
 const RecipeContainer = () => {
   // const [moreData, setMoreData] = useState();
 
@@ -31,12 +31,18 @@ const RecipeContainer = () => {
     getRecipes();
   }, [search, searchType, searchDifficulty, sort, page]);
 
+  // const isLoading = true;
+
   if (isLoading) {
-    return <h1>ISLOADING</h1>;
+    return <Loader />;
   }
 
   if (recipes.length === 0) {
-    return <h1>NO RECIPES TO BE DISPLAYED</h1>;
+    return (
+      <div className="no-recipe-found">
+        <h1>NO RECIPES TO BE DISPLAYED</h1>
+      </div>
+    );
   }
 
   return (

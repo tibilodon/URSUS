@@ -77,11 +77,12 @@
 }
 .add-edit-wrap {
   /* border: 2px solid black; */
-  margin: 1em;
+  padding: 1.8em 0 1em 0;
+  text-align: center;
 }
 
 /*TODO:---MOBILE---*/
-@media (max-width: 550px) {
+@media (max-width: 1024px) {
   .other-details-wrap {
     /* border: 5px solid black; */
     /* display: flex; */

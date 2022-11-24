@@ -102,12 +102,11 @@ const Register = () => {
                 {/* {showAlert && <Alert />} */}
                 {!values.isMember && (
                   <InputField
-                    sx={{ m: "1em" }}
                     type="text"
                     name="name"
                     value={values.name}
                     handleChange={handleChange}
-                    labelText="name"
+                    searchLabel="név"
                   />
                 )}
                 <InputField
@@ -116,14 +115,14 @@ const Register = () => {
                   name="email"
                   value={values.email}
                   handleChange={handleChange}
-                  labelText="e-mail"
+                  searchLabel="e-mail"
                 />{" "}
                 <InputField
                   type="password"
                   name="password"
                   value={values.password}
                   handleChange={handleChange}
-                  labelText="password"
+                  searchLabel="jelszó"
                 />
                 <Button
                   disabled={isLoading}

@@ -101,7 +101,7 @@ const Search = () => {
                     handleChange={handleSearch}
                   />{" "}
                 </div>
-                <div className="search-select">
+                <div className="search-select date">
                   <div className="add-icon">
                     <EventIcon />
                   </div>
