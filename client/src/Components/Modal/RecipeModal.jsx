@@ -30,7 +30,6 @@ const RecipeModal = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    // width: "35em",
     bgcolor: "background.paper",
     boxShadow:
       "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
@@ -46,7 +45,7 @@ const RecipeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div class="hero-title">
+          <div className="hero-title">
             <h1>{title}</h1>
           </div>
           <div className="card-main-details">
@@ -78,10 +77,7 @@ const RecipeModal = ({
                 ingredients.map((item, i) => {
                   return (
                     <div key={i}>
-                      <li>
-                        {item}
-                        {/* {i + 1}. hozzávaló: {item} */}
-                      </li>
+                      <li>{item}</li>
                     </div>
                   );
                 })}
@@ -108,7 +104,6 @@ const RecipeModal = ({
                   <EditIcon />
                 </Fab>
               </Link>
-              {/* </div> */}
               <div>
                 <Fab
                   onClick={() => deleteRecipe(_id)}

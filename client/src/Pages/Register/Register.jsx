@@ -4,10 +4,7 @@ import InputField from "../../Components/Input/InputField";
 import { useAppContext } from "../../Context/appContext";
 
 //mui
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import { Button, Box, Container } from "@mui/material";
 
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

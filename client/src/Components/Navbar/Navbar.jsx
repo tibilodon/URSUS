@@ -7,19 +7,15 @@ import { useAppContext } from "../../Context/appContext";
 import Button from "@mui/material/Button";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import UserAccount from "./UserAccount/UserAccount";
-// import AppBar from "@mui/material/AppBar";
 import {
   Toolbar,
   AppBar,
   createTheme,
-  Typography,
   Drawer,
   Box,
   Divider,
-  Grid,
 } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import { orange, purple, blue } from "@mui/material/colors";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -29,9 +25,7 @@ import ursus from "../../Assets/ursus_v5.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { toggleSidebar, user, logoutUser, clearValues, clearFilters } =
-    useAppContext();
-  const [showLogout, setShowLogout] = useState(false);
+  const { clearValues, clearFilters } = useAppContext();
   const theme = createTheme({
     typography: {
       h2: {
@@ -70,13 +64,11 @@ const Navbar = () => {
                 anchor="left"
                 open={isOpen}
                 onClose={() => setIsOpen(!isOpen)}
-                // onClick={toggleSidebar}
               >
                 <div className="boxWrap">
                   <div className="boxContent">
                     <Box
                       onClick={() => setIsOpen(!isOpen)}
-                      // width="10em"
                       textAlign="center"
                       role="presentation"
                     >
@@ -84,7 +76,6 @@ const Navbar = () => {
                         color={
                           pathMathRoute("/all-recipes") ? "active" : "inherit"
                         }
-                        // color="active"
                         startIcon={
                           <MenuBookOutlinedIcon
                             style={{
@@ -102,13 +93,11 @@ const Navbar = () => {
                   <div className="boxContent">
                     <Box
                       onClick={() => setIsOpen(!isOpen)}
-                      // onClick={toggleSidebar}
                       textAlign="center"
                       role="presentation"
                     >
                       <Button
                         color={pathMathRoute("/") ? "active" : "inherit"}
-                        // color="secondary"
                         startIcon={
                           <PermContactCalendarIcon
                             style={{
@@ -121,13 +110,11 @@ const Navbar = () => {
                         Receptjeim
                       </Button>
                       <Divider />
-                      {/* <Divider /> */}
                     </Box>
                   </div>
                   <div className="boxContent">
                     <Box
                       onClick={() => setIsOpen(!isOpen)}
-                      // onClick={toggleSidebar}
                       textAlign="center"
                       role="presentation"
                     >
@@ -135,7 +122,6 @@ const Navbar = () => {
                         color={
                           pathMathRoute("/add-recipe") ? "active" : "inherit"
                         }
-                        // color="secondary"
                         startIcon={
                           <AddCircleIcon
                             style={{
@@ -150,7 +136,6 @@ const Navbar = () => {
                       >
                         Új Recept
                       </Button>
-                      {/* <Divider /> */}
                       <Divider />
                     </Box>
                   </div>{" "}
@@ -164,8 +149,6 @@ const Navbar = () => {
                 color="inherit"
                 aria-label="menu"
                 aria-controls="menu-appbar"
-
-                // sx={{ mr: 2 }}
               >
                 <MenuIcon />
               </IconButton>
@@ -186,9 +169,7 @@ const Navbar = () => {
                   />
                 </Box>
               </div>
-              {/* <div className="cus"> */}
               <UserAccount />
-              {/* </div> */}
             </Toolbar>
           </AppBar>
         </ThemeProvider>

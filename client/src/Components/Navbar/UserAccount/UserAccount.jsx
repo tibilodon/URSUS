@@ -1,15 +1,7 @@
 import "./UserAccountStyles.css";
 import React from "react";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import {
-  Grid,
-  Menu,
-  MenuItem,
-  IconButton,
-  Button,
-  Box,
-  createTheme,
-} from "@mui/material";
+import { Grid, Menu, MenuItem, Button, Box, createTheme } from "@mui/material";
 import { useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +19,6 @@ const UserAccount = () => {
       },
       secondary: {
         main: "#ffeb3b",
-        // main: "#f44336",
       },
     },
   });
@@ -52,12 +43,7 @@ const UserAccount = () => {
       <ThemeProvider theme={theme}>
         <Grid container justifyContent="flex-end">
           <div>
-            <Box
-              onClick={handleMenu}
-              // width="10em"
-              textAlign="center"
-              role="presentation"
-            >
+            <Box onClick={handleMenu} textAlign="center" role="presentation">
               <Button startIcon={<AccountCircle style={{ fill: "#ffeb3b" }} />}>
                 <h3 className="user-account">{user && user.name}</h3>
               </Button>

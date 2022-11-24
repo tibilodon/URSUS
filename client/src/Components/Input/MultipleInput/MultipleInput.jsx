@@ -6,12 +6,10 @@ import InputField from "../InputField";
 const MultipleInput = ({
   addHandler,
   removeHandler,
-  type,
   name,
   value,
   handleChange,
-  hidden,
-  labelText,
+
   searchLabel,
 }) => {
   return (

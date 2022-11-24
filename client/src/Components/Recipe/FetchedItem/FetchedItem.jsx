@@ -1,5 +1,5 @@
 import "./FetchedItemStyles.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 import { Paper, Box, Typography } from "@mui/material";
 import moment from "moment";
@@ -67,7 +67,7 @@ const FetchedItem = ({ recipe }) => {
                 />
               </div>
 
-              <div class="hero-title">
+              <div className="hero-title">
                 <h1>{title}</h1>
               </div>
               <h3 className="createdAt">Készült:{date}</h3>

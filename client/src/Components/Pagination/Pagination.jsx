@@ -19,7 +19,6 @@ const Pagination = () => {
       },
       secondary: {
         main: "#ed6c02",
-        // main: "#f44336",
       },
       third: {
         main: "#9c27b0",

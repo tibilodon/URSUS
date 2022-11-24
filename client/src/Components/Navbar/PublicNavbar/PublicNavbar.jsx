@@ -7,17 +7,7 @@ import NoAccountsRoundedIcon from "@mui/icons-material/NoAccountsRounded";
 import InfoIcon from "@mui/icons-material/Info";
 import { useAppContext } from "../../../Context/appContext";
 
-import {
-  Toolbar,
-  AppBar,
-  createTheme,
-  Typography,
-  Drawer,
-  Box,
-  Divider,
-  Grid,
-  IconButton,
-} from "@mui/material";
+import { Toolbar, AppBar, createTheme, Box, IconButton } from "@mui/material";
 
 const PublicNavbar = () => {
   const { user } = useAppContext();
@@ -45,7 +35,6 @@ const PublicNavbar = () => {
         <AppBar>
           <Toolbar>
             <div className="public-nav-wrap">
-              {/* <div className="icon-hover nav-icon"> */}
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -54,23 +43,18 @@ const PublicNavbar = () => {
                 onClick={() => navigate("/landing")}
               >
                 <InfoIcon sx={{ mr: "0.3em" }} fontSize="large" />
-                {/* {user && user.name} */}
               </IconButton>
-              {/* </div> */}
               <div className="ursus-hover">
                 <Box
                   sx={{
-                    // ml: 2,
                     cursor: "pointer",
                   }}
-                  // alignItems="center"
                   role="presentation"
                   onClick={() => navigate("/")}
                 >
                   <img className="public-ursus " src={ursus} alt="ursus logo" />
                 </Box>
               </div>
-              {/* <div className="icon-hover nav-icon"> */}
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -81,11 +65,8 @@ const PublicNavbar = () => {
                 }
               >
                 <NoAccountsRoundedIcon sx={{ mr: "0.3em" }} fontSize="large" />
-                {/* {user && user.name} */}
               </IconButton>
-              {/* </div> */}
             </div>
-            {/* <UserAccount /> */}
           </Toolbar>
         </AppBar>
       </ThemeProvider>

@@ -1,13 +1,8 @@
 .search {
-  /* display: flex; */
-  /* width: 10em; */
-  /* width: 15em; */
 }
 .search-items {
-  /* width: 100%; */
   margin: 0.5em;
   padding: 0.3em;
-  /* border: 3px solid black; */
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   display: flex;
@@ -15,30 +10,22 @@
   justify-content: space-around;
 }
 .search-input {
-  /* border: 2px solid black; */
   display: flex;
   align-items: flex-end;
 }
 .pagination-align {
-  /* border: 2px solid black; */
   display: flex;
   justify-content: center;
   padding-top: 1em;
 }
 .search-btn {
-  /* border: 2px solid black; */
   display: flex;
-  /* flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end; */
   justify-content: center;
 }
 .search-select {
-  /* border: 2px solid black; */
   display: flex;
 }
 .search-input-wrap {
-  /* border: 2px solid red; */
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -50,16 +37,13 @@
     justify-content: center;
   }
   .search-items {
-    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .search-input-wrap {
-    /* border: 2px solid red; */
     display: flex;
     flex-wrap: wrap;
-    /* width: 100%; */
     justify-content: space-between;
     margin: 0.5em 0 0.5em 0;
     justify-content: space-around;
@@ -69,13 +53,11 @@
   }
   .date {
     margin-top: 0.5em;
-    /* border: 2px solid black; */
     display: flex;
   }
 }
 @media (min-width: 748px) {
   .search-align {
-    /* border: 5px solid green; */
     display: flex;
   }
 }

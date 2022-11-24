@@ -7,31 +7,21 @@ import Pagination from "../../Pagination/Pagination";
 import RecipeModal from "../../Modal/RecipeModal";
 import Loader from "../../Loader/Loader";
 const RecipeContainer = () => {
-  // const [moreData, setMoreData] = useState();
-
   const {
-    //recipes
     getRecipes,
     recipes,
-    //loading
     isLoading,
-    //search
     page,
     totalRecipes,
     search,
     searchType,
     searchDifficulty,
-    // recipeType,
-    // difficulty,
     sort,
-    numOfPages,
   } = useAppContext();
 
   useEffect(() => {
     getRecipes();
   }, [search, searchType, searchDifficulty, sort, page]);
-
-  // const isLoading = true;
 
   if (isLoading) {
     return <Loader />;

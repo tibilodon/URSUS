@@ -8,9 +8,6 @@ const FetchAllContainer = () => {
     fetchAll();
   }, []);
 
-  // const { title } = recipes;
-
-  // console.log(allRecipes);
   return (
     <div className="all-recipes-wrap">
       <h2>{allRecipes.length} recept található</h2>

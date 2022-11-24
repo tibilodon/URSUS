@@ -1,19 +1,14 @@
 .public-nav-wrap {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
-  /* border: 5px solid pink; */
   width: 100%;
 }
 .public-ursus {
-  /* border: 2px solid black; */
   width: 8em;
   margin-top: 0.2em;
-  /* margin-left: 5.5em; */
 }
 .nav-icon {
   margin: 0;
   padding: 0.1em;
-  /* border: 2px solid black; */
   width: 4em;
 }

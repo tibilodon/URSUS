@@ -1,30 +1,14 @@
 import "./LandingStyles.css";
-import img from "../../Assets/parallax.jpg";
 
-import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import CottageIcon from "@mui/icons-material/Cottage";
-import {
-  Toolbar,
-  AppBar,
-  createTheme,
-  Typography,
-  Drawer,
-  Box,
-  Divider,
-  Grid,
-  IconButton,
-} from "@mui/material";
+import { IconButton, Button } from "@mui/material";
 
 const Landing = () => {
   return (
     <>
       <div className="landing-wrapper">
-        {/* <header className="bckg-header">
-          <img className="background" src={img} alt="baking img" />
-        </header> */}
         <div className="parallax">
-          {" "}
           <h1 className="title">Ursus konyhája</h1>
         </div>
         <section className="bckg-section">
@@ -47,7 +31,6 @@ const Landing = () => {
                 aria-haspopup="true"
               >
                 <CottageIcon sx={{ mr: "0.3em" }} fontSize="large" />
-                {/* {user && user.name} */}
               </IconButton>
             </Link>
           </div>

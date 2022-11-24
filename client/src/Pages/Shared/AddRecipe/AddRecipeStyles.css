@@ -1,16 +1,12 @@
 .add-recipe-wrap {
   margin-top: 5em;
-  /* border: 2px solid black; */
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 2.25em,
     rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   display: flex;
   justify-content: center;
-  /* width: 100%; */
 }
 
 .add-recipe {
-  /* border: 20px solid black; */
-
   height: 100vh;
   width: 100%;
   display: flex;
@@ -18,14 +14,7 @@
   justify-content: center;
 }
 
-/* .recipe-form {
-  border: 2px solid red;
-  width: 100%;
-  height: 100%;
-} */
-
 .steps {
-  /* border: 2px solid black; */
   padding: 1em;
   margin: 0.5em;
   display: flex;
@@ -33,14 +22,12 @@
   align-items: flex-end;
 }
 .ings {
-  /* border: 2px solid black; */
   padding: 1em;
   margin: 0.5em;
   display: flex;
   flex-direction: column;
 }
 .multi-wrap {
-  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
 }
@@ -51,32 +38,25 @@
 .other-details-wrap {
   display: flex;
   justify-content: space-around;
-  /* border: 2px solid black; */
   margin-top: 1em;
 }
 .flex-end-wrap {
-  /* border: 2px solid black; */
   display: flex;
   align-items: flex-end;
 }
 .add-icon {
   align-self: center;
-  /* border: 2px solid black; */
-  /* width: 100%; */
   padding: 0.2em;
   display: flex;
 }
 .icon-align {
-  /* border: 2px solid black; */
   display: flex;
 }
 .add-input {
-  /* border: 2px solid black; */
   margin-left: 0.5em;
   width: 5em;
 }
 .add-edit-wrap {
-  /* border: 2px solid black; */
   padding: 1.8em 0 1em 0;
   text-align: center;
 }
@@ -84,28 +64,22 @@
 /*TODO:---MOBILE---*/
 @media (max-width: 1024px) {
   .other-details-wrap {
-    /* border: 5px solid black; */
-    /* display: flex; */
     flex-direction: column;
     align-items: center;
   }
   .multi-wrap {
-    /* border: 5px solid greenyellow; */
     flex-direction: column;
     margin: 0;
   }
   .ings {
-    /* border: 2px solid brown; */
     margin: 0;
     padding: 0;
   }
   .not-flex {
-    /* border: 2px solid purple; */
     flex-direction: column;
     align-items: center;
   }
   .add-edit-wrap {
-    /* border: 2px solid black; */
     margin: 0.3em;
   }
   .add-recipe-wrap {

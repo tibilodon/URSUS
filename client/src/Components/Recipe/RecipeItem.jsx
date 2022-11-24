@@ -70,7 +70,7 @@ const RecipeItem = ({
               />
             </div>
 
-            <div class="hero-title">
+            <div className="hero-title">
               <h1>{title}</h1>
             </div>
             <h3 className="createdAt">Készült:{date}</h3>

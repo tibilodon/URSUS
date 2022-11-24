@@ -1,7 +1,6 @@
 .reg-option {
   display: flex;
   margin: 1em;
-  /* border: 2px solid black; */
   align-items: center;
 }
 .form-items {
@@ -14,7 +13,6 @@
   margin-bottom: 0.5em;
 }
 .reg-wrapper {
-  /* background-color: #ffeb3b; */
   background-color: #81bece;
 }
 .media {
@@ -26,7 +24,6 @@
 
 @media (max-width: 400px) {
   .reg-option {
-    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;

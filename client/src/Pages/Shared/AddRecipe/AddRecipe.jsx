@@ -1,5 +1,5 @@
 import "./AddRecipeStyles.css";
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import Alert from "../../../Components/Alert/Alert";
 import InputField from "../../../Components/Input/InputField";
 import InputFieldSelect from "../../../Components/Input/InputFieldSelect";
@@ -18,7 +18,6 @@ const AddRecipe = () => {
   const navigate = useNavigate();
 
   const {
-    // clearValues,
     isEditing,
     isLoading,
     showAlert,
@@ -26,7 +25,6 @@ const AddRecipe = () => {
     editRecipe,
     createRecipe,
     handleChange,
-    //recipe
     steps,
     ingredients,
     title,
@@ -183,7 +181,6 @@ const AddRecipe = () => {
                     <ScaleIcon />
                   </div>
                   <InputFieldSelect
-                    // labelText="difficulty"
                     name="difficulty"
                     value={difficulty}
                     handleChange={handleRecipeInput}
@@ -197,7 +194,6 @@ const AddRecipe = () => {
                     <LocalDiningIcon />
                   </div>
                   <InputFieldSelect
-                    // labelText="recipeType"
                     name="recipeType"
                     value={recipeType}
                     handleChange={handleRecipeInput}
@@ -315,14 +311,6 @@ const AddRecipe = () => {
                 Kész
               </Button>
             </div>
-            {/* <button
-            onClick={e => {
-              e.preventDefault();
-              clearValues();
-            }}
-          >
-            clear
-          </button> */}
           </form>
         </div>
       </div>

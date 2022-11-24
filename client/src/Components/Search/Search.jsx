@@ -25,8 +25,6 @@ const Search = () => {
     handleChange,
     clearFilters,
     numOfPages,
-    // recipeType,
-    // difficulty,
   } = useAppContext();
 
   const theme = createTheme({
@@ -41,7 +39,6 @@ const Search = () => {
       },
       secondary: {
         main: "#ed6c02",
-        // main: "#f44336",
       },
       third: {
         main: "#9c27b0",
@@ -63,8 +60,6 @@ const Search = () => {
     <ThemeProvider theme={theme}>
       <div className="search">
         <form>
-          {/* <Grid container flexDirection="column"> */}
-
           <div className="search-items">
             <div className="search-align">
               <div className="search-input">
@@ -82,7 +77,6 @@ const Search = () => {
                     <ScaleIcon />
                   </div>
                   <InputFieldSelect
-                    // labelText={"difficulty"}
                     list={["összes", ...difficultyOptions]}
                     name="searchDifficulty"
                     value={searchDifficulty}
@@ -94,7 +88,6 @@ const Search = () => {
                     <LocalDiningIcon />
                   </div>
                   <InputFieldSelect
-                    // labelText="recipeType"
                     list={["összes", ...recipeTypeOptions]}
                     name="searchType"
                     value={searchType}
@@ -106,7 +99,6 @@ const Search = () => {
                     <EventIcon />
                   </div>
                   <InputFieldSelect
-                    // labelText={"rendezés"}
                     list={sortOptions}
                     name="sort"
                     value={sort}
@@ -117,13 +109,10 @@ const Search = () => {
               <div className="search-btn">
                 <Button
                   onClick={handleClearValues}
-                  // type="button"
                   disabled={isLoading}
                   variant="contained"
                   sx={{
                     width: "6em",
-                    // paddingLeft: "1.5em",
-                    // paddingRight: "1.5em",
                   }}
                 >
                   Szűrők törlése

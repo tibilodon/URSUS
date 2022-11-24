@@ -11,15 +11,14 @@ const Profile = () => {
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
   const [lastName, setLastName] = useState(user?.lastName);
-  const [location, setLocation] = useState(user?.location);
 
   const onSubmit = e => {
     e.preventDefault();
-    if (!name || !email || !lastName || !location) {
+    if (!name || !email || !lastName) {
       displayAlert();
       return;
     }
-    updateUser({ name, email, lastName, location });
+    updateUser({ name, email, lastName });
   };
   return (
     <div className="profile-wrap">
@@ -62,14 +61,6 @@ const Profile = () => {
               handleChange={e => setEmail(e.target.value)}
               sx={{ mb: "1em" }}
             />
-            {/* <InputField
-              type="text"
-              name="location"
-              value={location}
-              labelText="location"
-              handleChange={e => setLocation(e.target.value)}
-              sx={{ mb: "1em" }}
-            /> */}
             <div className="profile-submit">
               <Button disabled={isLoading} variant="contained" type="submit">
                 {isLoading ? "Kérlek várj" : "Mentés"}
