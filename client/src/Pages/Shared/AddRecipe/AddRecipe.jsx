@@ -236,7 +236,7 @@ const AddRecipe = () => {
                     return (
                       <div key={i}>
                         <MultipleInput
-                          searchLabel="ing"
+                          searchLabel={`${i + 1}. hozzávaló`}
                           addHandler={addIngredient}
                           removeHandler={() => removeIngredient(i)}
                           value={ing}
@@ -270,7 +270,7 @@ const AddRecipe = () => {
                     return (
                       <div key={i}>
                         <MultipleInput
-                          searchLabel="step"
+                          searchLabel={`${i + 1}. lépés`}
                           addHandler={addStep}
                           removeHandler={() => removeStep(i)}
                           value={steps}
