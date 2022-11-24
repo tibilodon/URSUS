@@ -198,7 +198,6 @@ const AppProvider = ({ children }) => {
     error => {
       if (error.response.status === 401) {
         logoutUser();
-        // console.log("---BITCH WANTS TO LOG YOU OUT!!!----");
       }
       return Promise.reject(error);
     }
@@ -321,7 +320,7 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // getRecipes();
+    getRecipes();
     // fetchAll();
   }, []);
 
@@ -381,7 +380,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
       // TODO:uncomment before build
-      // logoutUser()
+      logoutUser();
     }
   };
 
