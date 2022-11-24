@@ -9,6 +9,7 @@ const PublicRecipeContainer = () => {
   const { allRecipes, fetchAll } = useAppContext();
   useEffect(() => {
     fetchAll();
+    // eslint-disable-next-line
   }, []);
   return (
     <>

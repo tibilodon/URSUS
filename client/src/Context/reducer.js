@@ -26,7 +26,7 @@ import {
   FETCH_ALL,
 } from "./actions";
 
-import { initialState, fetchAllState } from "./appContext";
+import { initialState } from "./appContext";
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
