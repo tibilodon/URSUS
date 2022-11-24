@@ -36,13 +36,13 @@ const Profile = () => {
           }}
         >
           {showAlert}
-          <h1>Profile</h1>
+          <h1>Profilom</h1>
           <form onSubmit={onSubmit}>
             <InputField
               type="text"
               name="name"
               value={name}
-              labelText="name"
+              searchLabel="keresztnév"
               handleChange={e => setName(e.target.value)}
               sx={{ mb: "1em", mt: "1em" }}
             />
@@ -50,7 +50,7 @@ const Profile = () => {
               type="text"
               name="lastName"
               value={lastName}
-              labelText="last name"
+              searchLabel="vezetéknév"
               handleChange={e => setLastName(e.target.value)}
               sx={{ mb: "1em" }}
             />
@@ -58,21 +58,21 @@ const Profile = () => {
               type="text"
               name="email"
               value={email}
-              labelText="email"
+              searchLabel="e-mail"
               handleChange={e => setEmail(e.target.value)}
               sx={{ mb: "1em" }}
             />
-            <InputField
+            {/* <InputField
               type="text"
               name="location"
               value={location}
               labelText="location"
               handleChange={e => setLocation(e.target.value)}
               sx={{ mb: "1em" }}
-            />
+            /> */}
             <div className="profile-submit">
               <Button disabled={isLoading} variant="contained" type="submit">
-                {isLoading ? "Please wait" : "save changes"}
+                {isLoading ? "Kérlek várj" : "Mentés"}
               </Button>
             </div>
           </form>

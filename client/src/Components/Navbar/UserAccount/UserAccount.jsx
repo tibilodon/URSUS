@@ -77,8 +77,8 @@ const UserAccount = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={logoutUser}>Logout</MenuItem>
-              <MenuItem onClick={myAccount}>My account</MenuItem>
+              <MenuItem onClick={logoutUser}>Kijelentkezés</MenuItem>
+              <MenuItem onClick={myAccount}>Profilom</MenuItem>
             </Menu>
           </div>
         </Grid>
