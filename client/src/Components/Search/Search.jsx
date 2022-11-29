@@ -72,41 +72,7 @@ const Search = () => {
                   handleChange={handleSearch}
                 />
               </div>
-              {/* <div className="search-input-wrap">
-                <div className="search-select">
-                  <div className="add-icon">
-                    <ScaleIcon />
-                  </div>
-                  <InputFieldSelect
-                    list={["összes", ...difficultyOptions]}
-                    name="searchDifficulty"
-                    value={searchDifficulty}
-                    handleChange={handleSearch}
-                  />{" "}
-                </div>
-                <div className="search-select">
-                  <div className="add-icon">
-                    <LocalDiningIcon />
-                  </div>
-                  <InputFieldSelect
-                    list={["összes", ...recipeTypeOptions]}
-                    name="searchType"
-                    value={searchType}
-                    handleChange={handleSearch}
-                  />{" "}
-                </div>
-                <div className="search-select date">
-                  <div className="add-icon">
-                    <EventIcon />
-                  </div>
-                  <InputFieldSelect
-                    list={sortOptions}
-                    name="sort"
-                    value={sort}
-                    handleChange={handleSearch}
-                  />
-                </div>{" "}
-              </div> */}
+
               <div className="search-btn">
                 <Button
                   onClick={handleClearValues}
@@ -120,7 +86,7 @@ const Search = () => {
                 </Button>
               </div>
             </div>
-            {search && <h1>találatok:{totalRecipes}</h1>}
+            {search && totalRecipes > 1 && <h1>Találat:{totalRecipes}</h1>}
             {/* <div className="pagination-align">
               {numOfPages > 1 && <Pagination />}
             </div> */}

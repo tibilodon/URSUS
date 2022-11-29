@@ -1,6 +1,9 @@
 .search {
+  /* border: 3px solid black; */
 }
 .search-items {
+  /* border: 3px solid black; */
+
   margin: 0.5em;
   padding: 0.3em;
   box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
@@ -8,6 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 .search-input {
   display: flex;
@@ -30,6 +34,9 @@
   width: 100%;
   justify-content: space-around;
   margin: 0.3em 0 0.3em 0;
+}
+.search-items h1 {
+  margin-top: 0.5em;
 }
 
 @media (max-width: 747px) {
