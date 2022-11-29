@@ -6,7 +6,19 @@ import RedoIcon from "@mui/icons-material/Redo";
 import { useAppContext } from "../../Context/appContext";
 import { ThemeProvider } from "@emotion/react";
 
-const PublicPagination = () => {
+const PublicPagination = ({
+  postsPerPage,
+  totalPosts,
+  paginate,
+  page,
+  nextPage,
+  prevPage,
+}) => {
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   const theme = createTheme({
     typography: {
       h2: {
@@ -26,28 +38,8 @@ const PublicPagination = () => {
     },
   });
 
-  const { numOfPages, page, changePage } = useAppContext();
-  const pages = Array.from({ length: numOfPages }, (_, index) => {
-    return index + 1;
-  });
-
-  const prevPage = () => {
-    let newPage = page - 1;
-    if (newPage < 1) {
-      newPage = numOfPages;
-    }
-    changePage(newPage);
-  };
-
-  const nextPage = () => {
-    let newPage = page + 1;
-    if (newPage > numOfPages) {
-      newPage = numOfPages;
-      //you can jump to the first page with this option:
-      //newPage=1
-    }
-    changePage(newPage);
-  };
+  // console.log("PAGENUMBERS", pageNumbers);
+  // console.log("PAGE FROM ", page + 1);
 
   return (
     <div>
@@ -56,19 +48,19 @@ const PublicPagination = () => {
           <Button
             type="button"
             color="third"
-            onClick={prevPage}
+            onClick={() => prevPage(pageNumbers.length)}
             startIcon={<UndoIcon />}
             variant="contained"
           >
             Előző
           </Button>{" "}
-          {pages.map(pageNumber => {
+          {pageNumbers.map(pageNumber => {
             return (
               <Button
-                color={pageNumber === page ? "primary" : "secondary"}
+                // color={pageNumber === page ? "primary" : "secondary"}
                 key={pageNumber}
                 type="button"
-                onClick={() => changePage(pageNumber)}
+                onClick={() => paginate(pageNumber)}
                 variant="contained"
               >
                 {pageNumber}
@@ -77,7 +69,11 @@ const PublicPagination = () => {
           })}
           <Button
             type="button"
-            onClick={nextPage}
+            // onClick={nextPage}
+            onClick={() => nextPage(pageNumbers.length)}
+            // onClick={() =>
+            //   paginate(pageNumbers.length > 1 && pageNumbers.length + 1)
+            // }
             color="third"
             endIcon={<RedoIcon />}
             variant="contained"
