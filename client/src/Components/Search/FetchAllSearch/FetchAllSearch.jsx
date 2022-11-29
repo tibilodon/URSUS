@@ -60,34 +60,11 @@ const FetchAllSearch = ({
                     Szűrők törlése
                   </Button>
                 </div>
-                {searchTerm && <h1>találatok:{results}</h1>}
               </div>
-              <div className="pagination-align">{<Pagination />}</div>
+              {searchTerm && results > 1 && <h1>Találat: {results}</h1>}
             </div>
           </form>
         </div>
-        {/* <div className="fetch-search-wrap">
-          <InputField
-            value={searchTerm}
-            type="text"
-            searchLabel={"keresés"}
-            handleChange={handleChange}
-            name="search"
-          />
-          <div className="search-btn">
-            <Button
-              onClick={handleClearValues}
-              disabled={isLoading}
-              variant="contained"
-              sx={{
-                width: "6em",
-              }}
-            >
-              Szűrők törlése
-            </Button>
-          </div>
-          <div className="pagination-align">{<Pagination />}</div>
-        </div> */}
       </ThemeProvider>
     </>
   );

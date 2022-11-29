@@ -86,7 +86,7 @@ const Search = () => {
                 </Button>
               </div>
             </div>
-            {search && totalRecipes > 1 && <h1>Találat:{totalRecipes}</h1>}
+            {search && totalRecipes > 1 && <h1>Találat: {totalRecipes}</h1>}
             {/* <div className="pagination-align">
               {numOfPages > 1 && <Pagination />}
             </div> */}

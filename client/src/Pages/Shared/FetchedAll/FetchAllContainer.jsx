@@ -5,6 +5,7 @@ import { useAppContext } from "../../../Context/appContext";
 import FetchedItem from "../../../Components/Recipe/FetchedItem/FetchedItem";
 import { Grid } from "@mui/material";
 import FetchAllSearch from "../../../Components/Search/FetchAllSearch/FetchAllSearch";
+import PublicPagination from "../../../Components/Pagination/PublicPagination";
 
 const FetchAllContainer = () => {
   const { allRecipes, fetchAll, searchType, searchDifficulty } =
@@ -28,27 +29,17 @@ const FetchAllContainer = () => {
     fetchAll();
   }, []);
 
-  // if (results.length === 0) {
-  //   return (
-  //     // <div className="no-recipe-found">
-  //     <>
-  //       <div className="recipe-container public">
-  //         <h1>Nincs találat</h1>
-  //       </div>
-  //     </>
-  //     // </div>
-  //   );
-  // }
   return (
     <>
-      <div className="recipe-container public">
+      <div className="all-recipes-wrap">
         <FetchAllSearch
           handleChange={handleChange}
           handleClearValues={handleClearValues}
           searchTerm={searchTerm}
           results={results.length}
         />
-        {/* <h2 className="recipes-hero">Találat: {results.length} </h2> */}
+
+        <div className="pagination-align">{<PublicPagination />}</div>
 
         <Grid container justifyContent={"center"}>
           {results &&
