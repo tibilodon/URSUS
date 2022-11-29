@@ -27,6 +27,18 @@ const FetchAllContainer = () => {
   useEffect(() => {
     fetchAll();
   }, []);
+
+  // if (results.length === 0) {
+  //   return (
+  //     // <div className="no-recipe-found">
+  //     <>
+  //       <div className="recipe-container public">
+  //         <h1>Nincs találat</h1>
+  //       </div>
+  //     </>
+  //     // </div>
+  //   );
+  // }
   return (
     <>
       <div className="recipe-container public">
@@ -34,8 +46,9 @@ const FetchAllContainer = () => {
           handleChange={handleChange}
           handleClearValues={handleClearValues}
           searchTerm={searchTerm}
+          results={results.length}
         />
-        <h2 className="recipes-hero">Összes Recept: {allRecipes.length} </h2>
+        {/* <h2 className="recipes-hero">Találat: {results.length} </h2> */}
 
         <Grid container justifyContent={"center"}>
           {results &&

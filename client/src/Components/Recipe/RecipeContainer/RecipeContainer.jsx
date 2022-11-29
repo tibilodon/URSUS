@@ -1,6 +1,6 @@
 import "./RecipeContainerStyles.css";
 import { Grid } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import RecipeItem from "../RecipeItem";
 
@@ -18,10 +18,14 @@ const RecipeContainer = () => {
     sort,
   } = useAppContext();
 
+  // const [total, setTotal] = useState();
+  const total = recipes.length;
+
   useEffect(() => {
     getRecipes();
+    // setTotal(totalRecipes);
     // eslint-disable-next-line
-  }, [search, searchType, searchDifficulty, sort, page]);
+  }, [search, searchType, searchDifficulty, sort, page, totalRecipes]);
 
   if (isLoading) {
     return <Loader />;
@@ -30,7 +34,7 @@ const RecipeContainer = () => {
   if (recipes.length === 0) {
     return (
       <div className="no-recipe-found">
-        <h1>NO RECIPES TO BE DISPLAYED</h1>
+        <h1>Nincs találat</h1>
       </div>
     );
   }
@@ -38,7 +42,10 @@ const RecipeContainer = () => {
   return (
     <>
       <div className="recipe-container">
-        <h2 className="recipes-hero">Saját receptjeim: {totalRecipes} </h2>
+        <h2 className="recipes-hero">
+          Saját receptjeim: {total}
+          {/* {totalRecipes} */}
+        </h2>
 
         <Grid container justifyContent={"center"}>
           {recipes.map(recipe => {

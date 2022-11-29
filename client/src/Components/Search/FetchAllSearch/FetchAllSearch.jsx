@@ -8,7 +8,7 @@ import { ThemeProvider } from "@emotion/react";
 
 const FetchAllSearch = ({
   handleChange,
-
+  results,
   handleClearValues,
   searchTerm,
 }) => {
@@ -60,6 +60,7 @@ const FetchAllSearch = ({
                     Szűrők törlése
                   </Button>
                 </div>
+                {searchTerm && <h1>találatok:{results}</h1>}
               </div>
               <div className="pagination-align">{<Pagination />}</div>
             </div>
