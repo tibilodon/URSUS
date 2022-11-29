@@ -21,7 +21,7 @@ const FetchAllContainer = () => {
   };
 
   const results = allRecipes.filter(item => {
-    return item.title.includes(searchTerm);
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
   useEffect(() => {
