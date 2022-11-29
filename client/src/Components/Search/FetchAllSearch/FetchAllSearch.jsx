@@ -51,7 +51,7 @@ const FetchAllSearch = ({
                 <div className="search-btn">
                   <Button
                     onClick={handleClearValues}
-                    disabled={isLoading}
+                    disabled={!searchTerm}
                     variant="contained"
                     sx={{
                       width: "6em",

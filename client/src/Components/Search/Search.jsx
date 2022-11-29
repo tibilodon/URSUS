@@ -109,7 +109,7 @@ const Search = () => {
               <div className="search-btn">
                 <Button
                   onClick={handleClearValues}
-                  disabled={isLoading}
+                  disabled={!search}
                   variant="contained"
                   sx={{
                     width: "6em",
