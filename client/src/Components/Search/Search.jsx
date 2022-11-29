@@ -71,7 +71,7 @@ const Search = () => {
                   handleChange={handleSearch}
                 />
               </div>
-              <div className="search-input-wrap">
+              {/* <div className="search-input-wrap">
                 <div className="search-select">
                   <div className="add-icon">
                     <ScaleIcon />
@@ -105,7 +105,7 @@ const Search = () => {
                     handleChange={handleSearch}
                   />
                 </div>{" "}
-              </div>
+              </div> */}
               <div className="search-btn">
                 <Button
                   onClick={handleClearValues}
