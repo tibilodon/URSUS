@@ -8,8 +8,7 @@ import FetchAllSearch from "../../../Components/Search/FetchAllSearch/FetchAllSe
 import PublicPagination from "../../../Components/Pagination/PublicPagination";
 
 const FetchAllContainer = () => {
-  const { allRecipes, fetchAll, searchType, searchDifficulty } =
-    useAppContext();
+  const { allRecipes, fetchAll } = useAppContext();
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = e => {

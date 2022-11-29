@@ -15,7 +15,7 @@ const Landing = () => {
           <p>
             Az oldal fejlesztés alatt, egyes funkciók csak regisztrált
             felhasználók részre elérhetőek. Kérlek, regisztrálj / jelentkezz be,
-            vagy látogass el a főoldalra az alábbi gombok segítségével.
+            vagy látogass el a főoldalra a megfelelő gomb segítségével.
           </p>
           <div className="landing-btn">
             <Link to="/register">

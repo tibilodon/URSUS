@@ -11,6 +11,7 @@ import Profile from "./Pages/Shared/Profile/Profile";
 import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
 import FetchAllContainer from "./Pages/Shared/FetchedAll/FetchAllContainer";
+import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
 
 function App() {
   return (
@@ -36,7 +37,15 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
-          <Route path="/public" element={<PublicRecipeContainer />} />
+          <Route
+            path="/public"
+            element={
+              <>
+                <PublicNavbar />
+                <FetchAllContainer />
+              </>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
