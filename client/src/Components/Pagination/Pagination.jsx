@@ -65,7 +65,7 @@ const Pagination = () => {
           {pages.map(pageNumber => {
             return (
               <Button
-                color={pageNumber === page ? "primary" : "secondary"}
+                color={pageNumber === page ? "secondary" : "primary"}
                 key={pageNumber}
                 type="button"
                 onClick={() => changePage(pageNumber)}

@@ -38,9 +38,6 @@ const PublicPagination = ({
     },
   });
 
-  // console.log("PAGENUMBERS", pageNumbers);
-  // console.log("PAGE FROM ", page + 1);
-
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -57,7 +54,7 @@ const PublicPagination = ({
           {pageNumbers.map(pageNumber => {
             return (
               <Button
-                // color={pageNumber === page ? "primary" : "secondary"}
+                color={pageNumber === page ? "secondary" : "primary"}
                 key={pageNumber}
                 type="button"
                 onClick={() => paginate(pageNumber)}
@@ -69,11 +66,7 @@ const PublicPagination = ({
           })}
           <Button
             type="button"
-            // onClick={nextPage}
             onClick={() => nextPage(pageNumbers.length)}
-            // onClick={() =>
-            //   paginate(pageNumbers.length > 1 && pageNumbers.length + 1)
-            // }
             color="third"
             endIcon={<RedoIcon />}
             variant="contained"
