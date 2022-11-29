@@ -25,8 +25,7 @@ const Register = () => {
     isLoading,
     showAlert,
     displayAlert,
-    alertText,
-    alertType,
+
     user,
     setupUser,
   } = useAppContext();
@@ -77,11 +76,6 @@ const Register = () => {
   return (
     <>
       <div className="reg-wrapper">
-        {/* <div>
-          {showAlert}
-          {alertType}
-          {alertText}
-        </div> */}
         <Container maxWidth="sm">
           <Box
             sx={{
@@ -100,7 +94,6 @@ const Register = () => {
                 <h3 className="reg-header">
                   {values.isMember ? "Bejelentkezés" : "Regisztráció"}
                 </h3>
-                {/* {showAlert && <Alert />} */}
                 {!values.isMember && (
                   <InputField
                     type="text"

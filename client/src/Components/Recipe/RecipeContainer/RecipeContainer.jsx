@@ -1,10 +1,9 @@
 import "./RecipeContainerStyles.css";
 import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import RecipeItem from "../RecipeItem";
-import Pagination from "../../Pagination/Pagination";
-import RecipeModal from "../../Modal/RecipeModal";
+
 import Loader from "../../Loader/Loader";
 const RecipeContainer = () => {
   const {
@@ -21,6 +20,7 @@ const RecipeContainer = () => {
 
   useEffect(() => {
     getRecipes();
+    // eslint-disable-next-line
   }, [search, searchType, searchDifficulty, sort, page]);
 
   if (isLoading) {

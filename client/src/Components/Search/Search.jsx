@@ -1,7 +1,7 @@
 import "./SearchStyles.css";
 
 import React from "react";
-import { Button, createTheme, Box } from "@mui/material";
+import { Button, createTheme } from "@mui/material";
 
 import InputField from "../Input/InputField";
 import InputFieldSelect from "../Input/InputFieldSelect";
