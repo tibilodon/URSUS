@@ -19,7 +19,6 @@ const RecipeContainer = () => {
   } = useAppContext();
 
   // const [total, setTotal] = useState();
-  const total = recipes.length;
 
   useEffect(() => {
     getRecipes();
@@ -42,10 +41,10 @@ const RecipeContainer = () => {
   return (
     <>
       <div className="recipe-container">
-        <h2 className="recipes-hero">
+        {/* <h2 className="recipes-hero">
           Saját receptjeim: {total}
-          {/* {totalRecipes} */}
-        </h2>
+          {search && totalRecipes}
+        </h2> */}
 
         <Grid container justifyContent={"center"}>
           {recipes.map(recipe => {

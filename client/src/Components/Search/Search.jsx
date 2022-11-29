@@ -22,6 +22,7 @@ const Search = () => {
     sortOptions,
     difficultyOptions,
     recipeTypeOptions,
+    totalRecipes,
     handleChange,
     clearFilters,
     numOfPages,
@@ -119,9 +120,10 @@ const Search = () => {
                 </Button>
               </div>
             </div>
-            <div className="pagination-align">
+            {search && <h1>találatok:{totalRecipes}</h1>}
+            {/* <div className="pagination-align">
               {numOfPages > 1 && <Pagination />}
-            </div>
+            </div> */}
           </div>
         </form>
       </div>
