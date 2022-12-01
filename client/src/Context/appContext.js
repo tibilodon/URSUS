@@ -102,6 +102,7 @@ const initialState = {
   searchType: "összes",
   sort: "legújabb",
   sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
+  recipeImage: "",
 };
 
 const AppContext = React.createContext();
@@ -255,6 +256,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
 
         timeHoursValue,
+        recipeImage,
       } = state;
       await authFetch.post("/recipes", {
         title,
@@ -269,6 +271,7 @@ const AppProvider = ({ children }) => {
 
         timeMinutesValue,
         timeHoursValue,
+        recipeImage,
       });
 
       dispatch({ type: CREATE_RECIPE_SUCCESS });

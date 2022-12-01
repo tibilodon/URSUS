@@ -30,6 +30,7 @@ import notFoundMiddleware from "./middleware/not-found.js";
 import morgan from "morgan";
 
 import auth from "./middleware/auth.js";
+import multer from "multer";
 
 const app = express();
 dotenv.config();
@@ -58,6 +59,8 @@ app.get("/api/v1", (req, res) => {
   res.json({ msg: "API" });
 });
 
+// upload.single("recipeImage");
+
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/recipes", auth, recipesRouter);
 app.use("/api/v1/all", fetchAllRouter);
@@ -66,6 +69,28 @@ app.use("/api/v1/all", fetchAllRouter);
 app.get("*", function (req, res) {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
+
+//---TODO:MULTER****
+
+let storage = multer.diskStorage({
+  // destination: function (req, file, cb) {
+  //   cb(null, "./client/public/uploads");
+  // },
+  destination: "./client/public/uploads",
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
+});
+
+const upload = multer({ storage }).single("recipeImage");
+
+app.post("/", upload, (req, res) => {
+  console.log("REQ.FILES", req.files); // this does log the uploaded image data.
+});
+
+//-----///------
+
+// import e from "./client/public/uploads"
 
 app.use(errorHandlerMiddleware);
 app.use(notFoundMiddleware);

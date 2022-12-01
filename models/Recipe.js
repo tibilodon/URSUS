@@ -31,6 +31,9 @@ const RecipeSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Please provide user"],
     },
+    recipeImage: {
+      type: String,
+    },
   },
   // {  },
   { timestamps: true },

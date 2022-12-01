@@ -14,6 +14,8 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
 
+import axios from "axios";
+
 const AddRecipe = () => {
   const navigate = useNavigate();
 
@@ -34,6 +36,7 @@ const AddRecipe = () => {
     recipeTypeOptions,
     timeMinutesValue,
     timeHoursValue,
+    recipeImage,
   } = useAppContext();
 
   const handleSubmit = e => {
@@ -156,11 +159,43 @@ const AddRecipe = () => {
   };
   //----//----
 
+  //---IMAGE----
+
+  const [fileName, setFileName] = useState("");
+  const onChangeImage = e => {
+    setFileName(e.target.files[0]);
+    console.log("FILES", e.target.files[0].name);
+  };
+
+  const handleImageSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("recipeImage", fileName);
+
+    axios.post("/", formData);
+  };
+
   return (
     <>
       <div className="add-recipe">
         <div className="add-recipe-wrap">
+          <form onSubmit={handleImageSubmit} encType="multipart/form-data">
+            <label htmlFor="file">choose image</label>
+            <input
+              type="file"
+              name="recipeImage"
+              filename="recipeImage"
+              onChange={onChangeImage}
+            />
+          </form>
           <form className="recipe-form">
+            {/* <label htmlFor="file">choose image</label>
+            <input
+              type="file"
+              name="recipeImage"
+              filename="recipeImage"
+              onChange={onChangeImage}
+            /> */}
             <div className="add-edit-wrap">
               <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
               {showAlert && <Alert />}
@@ -300,6 +335,7 @@ const AddRecipe = () => {
               </div>
               {/*TODO:----ingredients----*/}
             </div>
+
             <div className="flex-center-wrap">
               <Button
                 type="submit"
