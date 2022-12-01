@@ -13,6 +13,10 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
 
+//firebase
+import { storage } from "../../firebase";
+import { ref, getDownloadURL } from "firebase/storage";
+
 const RecipeItem = ({
   _id,
   title,
@@ -23,6 +27,8 @@ const RecipeItem = ({
   timeHoursValue,
   steps,
   ingredients,
+  imgRef,
+  imgURL,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
   //moments - date
@@ -72,6 +78,7 @@ const RecipeItem = ({
 
             <div className="hero-title">
               <h1>{title}</h1>
+              {imgURL && <img style={{ width: "4em" }} src={imgURL} />}
             </div>
             <h3 className="createdAt">Készült:{date}</h3>
 

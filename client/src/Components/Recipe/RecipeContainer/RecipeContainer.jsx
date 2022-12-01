@@ -15,6 +15,8 @@ const RecipeContainer = () => {
     search,
     searchType,
     searchDifficulty,
+    imgRef,
+    imgURL,
     sort,
   } = useAppContext();
 
@@ -24,7 +26,16 @@ const RecipeContainer = () => {
     getRecipes();
     // setTotal(totalRecipes);
     // eslint-disable-next-line
-  }, [search, searchType, searchDifficulty, sort, page, totalRecipes]);
+  }, [
+    search,
+    searchType,
+    searchDifficulty,
+    sort,
+    page,
+    totalRecipes,
+    imgRef,
+    imgURL,
+  ]);
 
   if (isLoading) {
     return <Loader />;

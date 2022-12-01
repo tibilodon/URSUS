@@ -14,6 +14,12 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
 
+//firebase
+import { storage } from "../../../firebase";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import { useEffect } from "react";
+
 const AddRecipe = () => {
   const navigate = useNavigate();
 
@@ -34,6 +40,7 @@ const AddRecipe = () => {
     recipeTypeOptions,
     timeMinutesValue,
     timeHoursValue,
+    imgRef,
   } = useAppContext();
 
   const handleSubmit = e => {
@@ -156,10 +163,58 @@ const AddRecipe = () => {
   };
   //----//----
 
+  //FIREBASE----
+  const [imageUpload, setImageUpload] = useState(null);
+  const uploadImage = () => {
+    if (imageUpload === null) return;
+    const imgName = imageUpload.name + v4();
+    handleChange({ name: "imgRef", value: imgName });
+
+    const imageRef = ref(storage, `images/${imgName}`);
+    // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+
+    // console.log("--IMAGEREF:--", imageRef, "--IMGNAME:--", typeof imgName);
+    uploadBytes(imageRef, imageUpload).then(snapshot => {
+      // alert("image uploaded");
+      getDownloadURL(snapshot.ref).then(url => {
+        handleChange({ name: "imgURL", value: url });
+        console.log(typeof url);
+        setImageList(prev => [...prev, url]);
+      });
+    });
+  };
+
+  //retrieve ALL img
+  const [imageList, setImageList] = useState([]);
+  // setting ref for all images in the folder
+  const imageListRef = ref(storage, "images/");
+  useEffect(() => {
+    listAll(imageListRef).then(response => {
+      // console.log(response);
+      response.items.forEach(item => {
+        getDownloadURL(item).then(url => {
+          // setImageList(prev => [...prev, url]);
+          setImageList([url]);
+        });
+      });
+    });
+    console.log(imageList);
+  }, []);
+
   return (
     <>
       <div className="add-recipe">
         <div className="add-recipe-wrap">
+          <div>
+            <input
+              onChange={e => setImageUpload(e.target.files[0])}
+              type="file"
+            />
+            <button onClick={uploadImage}>upload img</button>
+            {imageList.map((url, i) => {
+              return <img style={{ width: "4em" }} key={i} src={url} />;
+            })}
+          </div>
           <form className="recipe-form">
             <div className="add-edit-wrap">
               <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
