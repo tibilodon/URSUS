@@ -50,7 +50,17 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(express.json());
 
 //TODO:security packages init ADD FOR DEPLOY
-app.use(helmet());
+// app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "example.com"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 app.use(xss());
 app.use(mongoSanitize());
 
