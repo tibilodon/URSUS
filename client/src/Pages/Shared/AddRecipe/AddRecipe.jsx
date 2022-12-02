@@ -215,6 +215,7 @@ const AddRecipe = () => {
       });
     });
   };
+
   //retrieve ALL img
   // const [imageList, setImageList] = useState([]);
   // // setting ref for all images in the folder
@@ -237,7 +238,17 @@ const AddRecipe = () => {
   // }
 
   useEffect(() => {
-    console.log(fetchedIngredient.length, ingredients.length);
+    if (isEditing && imageUpload) {
+      const fetchedImgRef = ref(storage, `images/${imgRef}`);
+
+      deleteObject(fetchedImgRef)
+        .then(() => {
+          console.log("img deleted");
+        })
+        .catch(error => {
+          console.log("error isloading delete", error);
+        });
+    }
     //check state, if not null, then upload
     if (imageUpload) {
       uploadImage();
@@ -253,9 +264,6 @@ const AddRecipe = () => {
         });
     }
   }, [imageUpload]);
-
-  if (isEditing) {
-  }
 
   return (
     <>
@@ -275,7 +283,12 @@ const AddRecipe = () => {
               {/* {imageList.map((url, i) => {
               return <img style={{ width: "4em" }} key={i} src={url} />;
             })} */}
-              {prev && <img style={{ width: "4em" }} src={prev} />}
+
+              {imgURL ? (
+                <img style={{ width: "4em" }} src={imgURL} alt={""} />
+              ) : (
+                prev && <img style={{ width: "4em" }} src={prev} alt={""} />
+              )}
             </div>
             <div className="flex-center-wrap">
               <InputField

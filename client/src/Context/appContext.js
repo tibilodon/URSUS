@@ -354,6 +354,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
         imgRef,
+        imgURL
       } = state;
       await authFetch.patch(`/recipes/${state.editRecipeId}`, {
         title,
@@ -367,6 +368,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
         imgRef,
+        imgURL
       });
       dispatch({ type: EDIT_RECIPE_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
