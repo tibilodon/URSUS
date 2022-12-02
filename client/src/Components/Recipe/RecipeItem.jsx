@@ -7,7 +7,7 @@ import "moment/locale/hu";
 
 import { useAppContext } from "../../Context/appContext";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RecipeModal from "../Modal/RecipeModal";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
@@ -15,7 +15,7 @@ import ScaleIcon from "@mui/icons-material/Scale";
 
 //firebase
 import { storage } from "../../firebase";
-import { ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const RecipeItem = ({
   _id,
@@ -44,6 +44,18 @@ const RecipeItem = ({
 
   const [hovered, setHovered] = useState(false);
   const edit = true;
+
+  const [imgPath, setImgPath] = useState(null);
+
+  useEffect(() => {
+    if (imgRef) {
+      const storage = getStorage();
+      // const imageRef = ref(storage, `images/${imgRef}`);
+      getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
+        setImgPath(url);
+      });
+    }
+  }, [imgRef]);
 
   return (
     <>
@@ -79,9 +91,9 @@ const RecipeItem = ({
 
             <div className="hero-title">
               <h1>{title}</h1>
-              {imgURL && (
+              {imgPath && (
                 <div className="img-card-wrap">
-                  <img src={imgURL} alt={""} />
+                  <img src={imgPath} alt={""} />
                 </div>
               )}
             </div>

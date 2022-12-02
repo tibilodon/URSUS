@@ -8,6 +8,8 @@ import RecipeModal from "../../Modal/RecipeModal";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { storage } from "../../../firebase";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const FetchedItem = ({ recipe }) => {
   const {
@@ -20,6 +22,7 @@ const FetchedItem = ({ recipe }) => {
     steps,
     ingredients,
     imgURL,
+    imgRef,
   } = recipe;
   moment.locale("hu");
   let date = moment(createdAt);
@@ -37,7 +40,17 @@ const FetchedItem = ({ recipe }) => {
 
   const edit = false;
 
-  useEffect(() => {}, [imgURL]);
+  const [imgPath, setImgPath] = useState(null);
+
+  useEffect(() => {
+    if (imgRef) {
+      const storage = getStorage();
+      // const imageRef = ref(storage, `images/${imgRef}`);
+      getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
+        setImgPath(url);
+      });
+    }
+  }, [imgURL, imgRef]);
 
   return (
     <>
@@ -73,9 +86,9 @@ const FetchedItem = ({ recipe }) => {
 
               <div className="hero-title">
                 <h1>{title}</h1>
-                {imgURL && (
+                {imgPath && (
                   <div className="img-card-wrap">
-                    <img src={imgURL} alt={""} />
+                    <img src={imgPath} alt={""} />
                   </div>
                 )}
               </div>

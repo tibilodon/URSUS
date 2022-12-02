@@ -280,9 +280,9 @@ const AddRecipe = () => {
                 type="file"
               />
               {imgURL ? (
-                <img style={{ width: "4em" }} src={imgURL} alt={""} />
+                <img src={imgURL} alt={""} />
               ) : (
-                prev && <img style={{ width: "4em" }} src={prev} alt={""} />
+                prev && <img src={prev} alt={""} />
               )}
             </div>
             <div className="flex-center-wrap">
