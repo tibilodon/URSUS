@@ -79,7 +79,11 @@ const RecipeItem = ({
 
             <div className="hero-title">
               <h1>{title}</h1>
-              {imgURL && <img style={{ width: "4em" }} src={imgURL} alt={""} />}
+              {imgURL && (
+                <div className="img-card-wrap">
+                  <img src={imgURL} alt={""} />
+                </div>
+              )}
             </div>
             <h3 className="createdAt">Készült:{date}</h3>
             <div className="modal-card-main-details">
