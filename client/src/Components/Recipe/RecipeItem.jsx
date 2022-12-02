@@ -78,7 +78,7 @@ const RecipeItem = ({
 
             <div className="hero-title">
               <h1>{title}</h1>
-              {imgURL && <img style={{ width: "4em" }} src={imgURL} />}
+              {imgURL && <img style={{ width: "4em" }} src={imgURL} alt={""} />}
             </div>
             <h3 className="createdAt">Készült:{date}</h3>
 

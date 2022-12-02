@@ -243,7 +243,7 @@ const AddRecipe = () => {
 
       deleteObject(fetchedImgRef)
         .then(() => {
-          console.log("img deleted");
+          // console.log("img deleted");
         })
         .catch(error => {
           console.log("error isloading delete", error);
@@ -257,7 +257,7 @@ const AddRecipe = () => {
     if (delRef) {
       deleteObject(delRef)
         .then(() => {
-          console.log("DELETED");
+          // console.log("DELETED");
         })
         .catch(error => {
           console.log(error);
@@ -279,11 +279,6 @@ const AddRecipe = () => {
                 onChange={e => setImageUpload(e.target.files[0])}
                 type="file"
               />
-              {/* <button onClick={uploadImage}>upload img</button> */}
-              {/* {imageList.map((url, i) => {
-              return <img style={{ width: "4em" }} key={i} src={url} />;
-            })} */}
-
               {imgURL ? (
                 <img style={{ width: "4em" }} src={imgURL} alt={""} />
               ) : (
@@ -353,7 +348,7 @@ const AddRecipe = () => {
                 </div>
               </div>
             </div>
-            {/*TODO: ---STEPS---*/}
+            {/*TODO:----ingredients----*/}
             <div className="multi-wrap">
               <div className="ings">
                 {!isEditing &&
@@ -372,37 +367,6 @@ const AddRecipe = () => {
                       </div>
                     );
                   })}{" "}
-                {/* {isEditing && ingredients.length < 1
-                  ? ingredient.map((ings, i) => {
-                      return (
-                        <div key={i}>
-                          <MultipleInput
-                            searchLabel="ing"
-                            addHandler={fetchedAddIngredient}
-                            removeHandler={e => fetchedRemoveIngredient(i, e)}
-                            value={ings}
-                            name="ingredients"
-                            handleChange={e => fetchedIngredientHandler(i, e)}
-                            type="text"
-                          />
-                        </div>
-                      );
-                    })
-                  : fetchedIngredient.map((ing, i) => {
-                      return (
-                        <div key={i}>
-                          <MultipleInput
-                            searchLabel={`${i + 1}. hozzávaló`}
-                            addHandler={addIngredient}
-                            removeHandler={() => removeIngredient(i)}
-                            value={ing}
-                            name="ingredients"
-                            handleChange={e => ingredientHandler(i, e)}
-                            type="text"
-                          />
-                        </div>
-                      );
-                    })} */}
                 {isEditing &&
                   fetchedIngredient.map((ings, i) => {
                     return (
@@ -420,6 +384,8 @@ const AddRecipe = () => {
                     );
                   })}
               </div>
+              {/*TODO:----STEP----*/}
+
               <div className="steps">
                 {!isEditing &&
                   step.map((steps, i) => {
@@ -454,7 +420,6 @@ const AddRecipe = () => {
                     );
                   })}
               </div>
-              {/*TODO:----ingredients----*/}
             </div>
             <div className="flex-center-wrap">
               <Button

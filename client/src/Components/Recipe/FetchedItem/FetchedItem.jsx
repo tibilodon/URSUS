@@ -1,5 +1,5 @@
 import "./FetchedItemStyles.css";
-import {  useState } from "react";
+import { useState } from "react";
 
 import { Paper, Box, Typography } from "@mui/material";
 import moment from "moment";
@@ -19,6 +19,7 @@ const FetchedItem = ({ recipe }) => {
     timeHoursValue,
     steps,
     ingredients,
+    imgURL,
   } = recipe;
   moment.locale("hu");
   let date = moment(createdAt);
@@ -69,6 +70,9 @@ const FetchedItem = ({ recipe }) => {
 
               <div className="hero-title">
                 <h1>{title}</h1>
+                {imgURL && (
+                  <img style={{ width: "4em" }} src={imgURL} alt={""} />
+                )}
               </div>
               <h3 className="createdAt">Készült:{date}</h3>
 
