@@ -50,7 +50,7 @@ const RecipeModal = ({
           <div className="hero-title-modal">
             <h1>{title}</h1>
             <div className="img-modal-wrap">
-              {imgURL && <img src={imgURL} alt={""} />}
+              {imgURL && <img crossorigin="anonymous" src={imgURL} alt={""} />}
               {/* <img src={imgURL} alt={""} /> */}
             </div>
           </div>
