@@ -1,5 +1,5 @@
 import "./FetchedItemStyles.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Paper, Box, Typography } from "@mui/material";
 import moment from "moment";
@@ -37,6 +37,8 @@ const FetchedItem = ({ recipe }) => {
 
   const edit = false;
 
+  useEffect(() => {}, [imgURL]);
+
   return (
     <>
       <div>
@@ -65,32 +67,36 @@ const FetchedItem = ({ recipe }) => {
                   timeMinutesValue={timeMinutesValue}
                   timeHoursValue={timeHoursValue}
                   edit={edit}
+                  imgURL={imgURL}
                 />
               </div>
 
               <div className="hero-title">
                 <h1>{title}</h1>
                 {imgURL && (
-                  <img style={{ width: "4em" }} src={imgURL} alt={""} />
+                  <div className="img-card-wrap">
+                    <img src={imgURL} alt={""} />
+                  </div>
                 )}
               </div>
               <h3 className="createdAt">Készült:{date}</h3>
+              <div className="modal-card-main-details">
+                <div className="card-main-details">
+                  <div className="details-wrap">
+                    <ScaleIcon />
+                    <Typography ml={"0.3em"} id="modal-modal-description">
+                      {difficulty}
+                    </Typography>{" "}
+                  </div>
 
-              <div className="card-main-details">
-                <div className="details-wrap">
-                  <ScaleIcon />
-                  <Typography ml={"0.3em"} id="modal-modal-description">
-                    {difficulty}
-                  </Typography>{" "}
+                  <div className="details-wrap">
+                    <LocalDiningIcon />
+                    <Typography ml={"0.3em"} id="modal-modal-description">
+                      {recipeType}
+                    </Typography>{" "}
+                  </div>
                 </div>
-
-                <div className="details-wrap">
-                  <LocalDiningIcon />
-                  <Typography ml={"0.3em"} id="modal-modal-description">
-                    {recipeType}
-                  </Typography>{" "}
-                </div>
-                <div className="details-wrap">
+                <div className="details-wrap time">
                   <AccessTimeIcon />
                   <Typography ml={"0.3em"} id="modal-modal-description">
                     {timeHoursValue && `${timeHoursValue} óra, `}{" "}

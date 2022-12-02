@@ -21,7 +21,6 @@ const PublicRecipeContainer = () => {
 
       <div className="recipe-container public">
         <h2 className="recipes-hero">Összes Recept: {allRecipes.length} </h2>
-
         <Grid container justifyContent={"center"}>
           {allRecipes.map(recipe => {
             return (

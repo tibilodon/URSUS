@@ -65,7 +65,7 @@ const FetchAllContainer = () => {
 
   return (
     <>
-      <div className="all-recipes-wrap">
+      <div className="all-recipes-wrap full">
         <FetchAllSearch
           handleChange={handleChange}
           handleClearValues={handleClearValues}
@@ -91,7 +91,7 @@ const FetchAllContainer = () => {
           {results &&
             currentPosts.map(recipe => {
               return (
-                <div key={recipe.createdAt}>
+                <div key={recipe.createdAt} className="full">
                   <Grid item xs={12} sx={{ margin: "2em" }}>
                     <FetchedItem recipe={recipe} />
                   </Grid>

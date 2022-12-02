@@ -22,6 +22,7 @@ const RecipeModal = ({
   timeMinutesValue,
   ingredients,
   edit,
+  imgURL,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
 
@@ -45,24 +46,30 @@ const RecipeModal = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="hero-title">
+          <div className="hero-title-modal">
             <h1>{title}</h1>
+            <div className="img-modal-wrap">
+              {imgURL && <img src={imgURL} alt={""} />}
+              {/* <img src={imgURL} alt={""} /> */}
+            </div>
           </div>
-          <div className="card-main-details">
-            <div className="details-wrap">
-              <ScaleIcon />
-              <Typography ml={"0.3em"} id="modal-modal-description">
-                {difficulty}
-              </Typography>{" "}
-            </div>
+          <div className="modal-card-main-details">
+            <div className="card-main-details">
+              <div className="details-wrap">
+                <ScaleIcon />
+                <Typography ml={"0.3em"} id="modal-modal-description">
+                  {difficulty}
+                </Typography>{" "}
+              </div>
 
-            <div className="details-wrap">
-              <LocalDiningIcon />
-              <Typography ml={"0.3em"} id="modal-modal-description">
-                {recipeType}
-              </Typography>{" "}
+              <div className="details-wrap">
+                <LocalDiningIcon />
+                <Typography ml={"0.3em"} id="modal-modal-description">
+                  {recipeType}
+                </Typography>{" "}
+              </div>
             </div>
-            <div className="details-wrap">
+            <div className="details-wrap time">
               <AccessTimeIcon />
               <Typography ml={"0.3em"} id="modal-modal-description">
                 {timeHoursValue && `${timeHoursValue} óra, `}{" "}

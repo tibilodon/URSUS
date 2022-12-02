@@ -73,6 +73,7 @@ const RecipeItem = ({
                 timeMinutesValue={timeMinutesValue}
                 timeHoursValue={timeHoursValue}
                 edit={edit}
+                imgURL={imgURL}
               />
             </div>
 
@@ -81,22 +82,23 @@ const RecipeItem = ({
               {imgURL && <img style={{ width: "4em" }} src={imgURL} alt={""} />}
             </div>
             <h3 className="createdAt">Készült:{date}</h3>
+            <div className="modal-card-main-details">
+              <div className="card-main-details">
+                <div className="details-wrap">
+                  <ScaleIcon />
+                  <Typography ml={"0.3em"} id="modal-modal-description">
+                    {difficulty}
+                  </Typography>{" "}
+                </div>
 
-            <div className="card-main-details">
-              <div className="details-wrap">
-                <ScaleIcon />
-                <Typography ml={"0.3em"} id="modal-modal-description">
-                  {difficulty}
-                </Typography>{" "}
+                <div className="details-wrap">
+                  <LocalDiningIcon />
+                  <Typography ml={"0.3em"} id="modal-modal-description">
+                    {recipeType}
+                  </Typography>{" "}
+                </div>
               </div>
-
-              <div className="details-wrap">
-                <LocalDiningIcon />
-                <Typography ml={"0.3em"} id="modal-modal-description">
-                  {recipeType}
-                </Typography>{" "}
-              </div>
-              <div className="details-wrap">
+              <div className="details-wrap time">
                 <AccessTimeIcon />
                 <Typography ml={"0.3em"} id="modal-modal-description">
                   {timeHoursValue && `${timeHoursValue} óra, `}{" "}
