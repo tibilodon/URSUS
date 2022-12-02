@@ -93,7 +93,7 @@ const RecipeItem = ({
               <h1>{title}</h1>
               {imgPath && (
                 <div className="img-card-wrap">
-                  <img src={imgPath} alt={""} />
+                  <img crossorigin="anonymous" src={imgPath} alt={""} />
                 </div>
               )}
             </div>
