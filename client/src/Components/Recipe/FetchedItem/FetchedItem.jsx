@@ -44,7 +44,7 @@ const FetchedItem = ({ recipe }) => {
 
   useEffect(() => {
     if (imgRef) {
-      const storage = getStorage();
+      // const storage = getStorage();
       // const imageRef = ref(storage, `images/${imgRef}`);
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
         setImgPath(url);
