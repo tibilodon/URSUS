@@ -60,7 +60,7 @@ const RecipeContainer = () => {
         <Grid container justifyContent={"center"}>
           {recipes.map(recipe => {
             return (
-              <div key={recipe._id}>
+              <div key={recipe._id} className="full">
                 <Grid item xs={12} sx={{ margin: "2em" }}>
                   <RecipeItem key={recipe._id} {...recipe} />
                 </Grid>

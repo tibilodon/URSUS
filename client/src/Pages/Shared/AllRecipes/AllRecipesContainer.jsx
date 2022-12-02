@@ -8,7 +8,7 @@ import { useAppContext } from "../../../Context/appContext";
 const AllRecipesContainer = () => {
   const { numOfPages } = useAppContext();
   return (
-    <div className="all-recipes-wrap">
+    <div className="all-recipes-wrap full">
       <Search />
       {numOfPages > 1 && (
         <div className="pagination-align">
