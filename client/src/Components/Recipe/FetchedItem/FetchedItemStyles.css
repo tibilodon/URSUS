@@ -1,12 +1,7 @@
 .img-card-wrap {
-  /* border: 2px solid black; */
   display: flex;
   justify-content: center;
 }
 .img-card-wrap img {
   width: 8em;
-  /* border: 2px solid red; */
 }
-/* .t {
-  border: 2px solid red;
-} */

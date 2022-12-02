@@ -50,7 +50,6 @@ const FetchAllContainer = () => {
 
   const nextPage = pageNumbers => {
     let newPage = currentPage + 1;
-    // console.log("NEWPAGE", newPage);
 
     if (newPage > pageNumbers) {
       newPage = pageNumbers;
@@ -60,8 +59,6 @@ const FetchAllContainer = () => {
     }
     setCurrentPage(newPage);
   };
-
-  // console.log("CURRENTPAGE", currentPage);
 
   return (
     <>

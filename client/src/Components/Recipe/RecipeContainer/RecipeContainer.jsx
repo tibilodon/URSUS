@@ -20,11 +20,8 @@ const RecipeContainer = () => {
     sort,
   } = useAppContext();
 
-  // const [total, setTotal] = useState();
-
   useEffect(() => {
     getRecipes();
-    // setTotal(totalRecipes);
     // eslint-disable-next-line
   }, [
     search,
@@ -52,11 +49,6 @@ const RecipeContainer = () => {
   return (
     <>
       <div className="recipe-container">
-        {/* <h2 className="recipes-hero">
-          Saját receptjeim: {total}
-          {search && totalRecipes}
-        </h2> */}
-
         <Grid container justifyContent={"center"}>
           {recipes.map(recipe => {
             return (
