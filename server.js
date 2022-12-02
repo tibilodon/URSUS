@@ -52,13 +52,8 @@ app.use(express.json());
 //TODO:security packages init ADD FOR DEPLOY
 // app.use(helmet());
 app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "example.com"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
-    },
+  helmet({
+    contentSecurityPolicy: false,
   })
 );
 app.use(xss());
