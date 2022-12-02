@@ -16,7 +16,13 @@ import ScaleIcon from "@mui/icons-material/Scale";
 
 //firebase
 import { storage } from "../../../firebase";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { v4 } from "uuid";
 import { useEffect } from "react";
 
@@ -41,7 +47,18 @@ const AddRecipe = () => {
     timeMinutesValue,
     timeHoursValue,
     imgRef,
+    imgURL,
   } = useAppContext();
+
+  // const [load, setLoad] = useState(false);
+
+  // const handleThings = e => {
+  //   setLoad(true);
+  //   uploadImage();
+
+  //   handleSubmit(e);
+  //   setLoad(false);
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -60,10 +77,15 @@ const AddRecipe = () => {
 
   const [step, setStep] = useState([""]);
 
-  const [fetchedStep, setFetchedStep] = useState(steps);
+  const [fetchedStep, setFetchedStep] = useState(
+    steps.length < 1 ? [""] : steps
+  );
 
   const [ingredient, setIngredient] = useState([""]);
-  const [fetchedIngredient, setFetchedIngredient] = useState(ingredients);
+
+  const [fetchedIngredient, setFetchedIngredient] = useState(
+    ingredients.length < 1 ? [""] : ingredients
+  );
 
   const handleRecipeInput = e => {
     handleChange({ name: e.target.name, value: e.target.value });
@@ -163,62 +185,97 @@ const AddRecipe = () => {
   };
   //----//----
 
-  //FIREBASE----
+  //TODO:---FIREBASE----
+  //file
   const [imageUpload, setImageUpload] = useState(null);
+
+  //ref for the file, which gets deleted upon choosing another img
+  const [delRef, setDelRef] = useState(null);
+  //preview of the uploaded img
+  const [prev, setPrev] = useState(null);
+
+  //upload
   const uploadImage = () => {
     if (imageUpload === null) return;
     const imgName = imageUpload.name + v4();
     handleChange({ name: "imgRef", value: imgName });
 
     const imageRef = ref(storage, `images/${imgName}`);
+    setDelRef(imageRef);
+    // console.log("imgREF", imageRef);
     // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
 
-    // console.log("--IMAGEREF:--", imageRef, "--IMGNAME:--", typeof imgName);
     uploadBytes(imageRef, imageUpload).then(snapshot => {
       // alert("image uploaded");
       getDownloadURL(snapshot.ref).then(url => {
         handleChange({ name: "imgURL", value: url });
-        console.log(typeof url);
-        setImageList(prev => [...prev, url]);
+        // console.log(typeof url);
+        // setImageList(prev => [...prev, url]);
+        setPrev(url);
       });
     });
   };
-
   //retrieve ALL img
-  const [imageList, setImageList] = useState([]);
-  // setting ref for all images in the folder
-  const imageListRef = ref(storage, "images/");
+  // const [imageList, setImageList] = useState([]);
+  // // setting ref for all images in the folder
+  // const imageListRef = ref(storage, "images/");
+  // useEffect(() => {
+  //   listAll(imageListRef).then(response => {
+  //     // console.log(response);
+  //     response.items.forEach(item => {
+  //       getDownloadURL(item).then(url => {
+  //         // setImageList(prev => [...prev, url]);
+  //         setImageList([url]);
+  //       });
+  //     });
+  //   });
+  //   // console.log(imageList);
+  // }, []);
+
+  // if (load) {
+  //   return <h1>LOADING</h1>;
+  // }
+
   useEffect(() => {
-    listAll(imageListRef).then(response => {
-      // console.log(response);
-      response.items.forEach(item => {
-        getDownloadURL(item).then(url => {
-          // setImageList(prev => [...prev, url]);
-          setImageList([url]);
+    console.log(fetchedIngredient.length, ingredients.length);
+    //check state, if not null, then upload
+    if (imageUpload) {
+      uploadImage();
+    }
+    //check state, delete if not null
+    if (delRef) {
+      deleteObject(delRef)
+        .then(() => {
+          console.log("DELETED");
+        })
+        .catch(error => {
+          console.log(error);
         });
-      });
-    });
-    console.log(imageList);
-  }, []);
+    }
+  }, [imageUpload]);
+
+  if (isEditing) {
+  }
 
   return (
     <>
       <div className="add-recipe">
         <div className="add-recipe-wrap">
-          <div>
-            <input
-              onChange={e => setImageUpload(e.target.files[0])}
-              type="file"
-            />
-            <button onClick={uploadImage}>upload img</button>
-            {imageList.map((url, i) => {
-              return <img style={{ width: "4em" }} key={i} src={url} />;
-            })}
-          </div>
           <form className="recipe-form">
             <div className="add-edit-wrap">
               <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
               {showAlert && <Alert />}
+            </div>
+            <div>
+              <input
+                onChange={e => setImageUpload(e.target.files[0])}
+                type="file"
+              />
+              {/* <button onClick={uploadImage}>upload img</button> */}
+              {/* {imageList.map((url, i) => {
+              return <img style={{ width: "4em" }} key={i} src={url} />;
+            })} */}
+              {prev && <img style={{ width: "4em" }} src={prev} />}
             </div>
             <div className="flex-center-wrap">
               <InputField
@@ -302,6 +359,37 @@ const AddRecipe = () => {
                       </div>
                     );
                   })}{" "}
+                {/* {isEditing && ingredients.length < 1
+                  ? ingredient.map((ings, i) => {
+                      return (
+                        <div key={i}>
+                          <MultipleInput
+                            searchLabel="ing"
+                            addHandler={fetchedAddIngredient}
+                            removeHandler={e => fetchedRemoveIngredient(i, e)}
+                            value={ings}
+                            name="ingredients"
+                            handleChange={e => fetchedIngredientHandler(i, e)}
+                            type="text"
+                          />
+                        </div>
+                      );
+                    })
+                  : fetchedIngredient.map((ing, i) => {
+                      return (
+                        <div key={i}>
+                          <MultipleInput
+                            searchLabel={`${i + 1}. hozzávaló`}
+                            addHandler={addIngredient}
+                            removeHandler={() => removeIngredient(i)}
+                            value={ing}
+                            name="ingredients"
+                            handleChange={e => ingredientHandler(i, e)}
+                            type="text"
+                          />
+                        </div>
+                      );
+                    })} */}
                 {isEditing &&
                   fetchedIngredient.map((ings, i) => {
                     return (

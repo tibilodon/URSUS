@@ -11,6 +11,7 @@ const InputField = ({
   labelText,
   sx,
   searchLabel,
+  required,
 }) => {
   return (
     <>
