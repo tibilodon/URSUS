@@ -86,9 +86,9 @@ const FetchedItem = ({ recipe }) => {
 
               <div className="hero-title">
                 <h1>{title}</h1>
-                {imgPath && (
+                {imgURL && (
                   <div className="img-card-wrap">
-                    <img alt={""} url={imgPath} />
+                    <img alt={""} src={imgURL} />
                   </div>
                 )}
               </div>

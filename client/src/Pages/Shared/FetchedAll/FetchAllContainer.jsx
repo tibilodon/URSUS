@@ -24,10 +24,6 @@ const FetchAllContainer = () => {
     return item.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  useEffect(() => {
-    fetchAll();
-  }, []);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
@@ -59,6 +55,10 @@ const FetchAllContainer = () => {
     }
     setCurrentPage(newPage);
   };
+
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   return (
     <>
