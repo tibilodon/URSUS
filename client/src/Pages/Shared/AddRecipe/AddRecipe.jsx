@@ -204,8 +204,10 @@ const AddRecipe = () => {
     setDelRef(imageRef);
     // console.log("imgREF", imageRef);
     // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-
-    uploadBytes(imageRef, imageUpload).then(snapshot => {
+    const metadata = {
+      contentType: "image/jpeg",
+    };
+    uploadBytes(imageRef, imageUpload, metadata).then(snapshot => {
       // alert("image uploaded");
       getDownloadURL(snapshot.ref).then(url => {
         // handleChange({ name: "imgURL", value: url });
@@ -283,10 +285,6 @@ const AddRecipe = () => {
               {showAlert && <Alert />}
             </div>
             <div>
-              <input
-                onChange={e => setImageUpload(e.target.files[0])}
-                type="file"
-              />
               {imgPath ? (
                 <div className="img-card-wrap">
                   <img crossOrigin="anonymous" src={imgPath} alt={""} />
@@ -298,6 +296,21 @@ const AddRecipe = () => {
                   </div>
                 )
               )}
+              <div className="upload-label">
+                <label htmlFor="files">
+                  <Button variant="contained" color="primary" component="span">
+                    {" "}
+                    {prev ? "Képcsere" : "Képfeltöltés"}
+                  </Button>
+                </label>
+                <input
+                  onChange={e => setImageUpload(e.target.files[0])}
+                  type="file"
+                  accept="image/*"
+                  id="files"
+                  style={{ display: "none" }}
+                />
+              </div>
             </div>
             <div className="flex-center-wrap">
               <InputField
