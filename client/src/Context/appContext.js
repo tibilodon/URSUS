@@ -61,7 +61,7 @@ const fetchAllState = {
   sort: "legújabb",
   sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
   imgRef: "",
-  imgURL: "",
+  // imgURL: "",
 };
 
 const initialState = {
@@ -105,7 +105,7 @@ const initialState = {
   sort: "legújabb",
   sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
   imgRef: "",
-  imgURL: "",
+  // imgURL: "",
 };
 
 const AppContext = React.createContext();
@@ -260,7 +260,7 @@ const AppProvider = ({ children }) => {
 
         timeHoursValue,
         imgRef,
-        imgURL,
+        // imgURL,
       } = state;
       await authFetch.post("/recipes", {
         title,
@@ -276,7 +276,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
         imgRef,
-        imgURL,
+        // imgURL,
       });
 
       dispatch({ type: CREATE_RECIPE_SUCCESS });
@@ -354,7 +354,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
         imgRef,
-        imgURL
+        // imgURL
       } = state;
       await authFetch.patch(`/recipes/${state.editRecipeId}`, {
         title,
@@ -368,7 +368,7 @@ const AppProvider = ({ children }) => {
         timeMinutesValue,
         timeHoursValue,
         imgRef,
-        imgURL
+        // imgURL
       });
       dispatch({ type: EDIT_RECIPE_SUCCESS });
       dispatch({ type: CLEAR_VALUES });

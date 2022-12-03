@@ -47,7 +47,7 @@ const AddRecipe = () => {
     timeMinutesValue,
     timeHoursValue,
     imgRef,
-    imgURL,
+    // imgURL,
   } = useAppContext();
 
   // const [load, setLoad] = useState(false);
@@ -208,7 +208,7 @@ const AddRecipe = () => {
     uploadBytes(imageRef, imageUpload).then(snapshot => {
       // alert("image uploaded");
       getDownloadURL(snapshot.ref).then(url => {
-        handleChange({ name: "imgURL", value: url });
+        // handleChange({ name: "imgURL", value: url });
         // console.log(typeof url);
         // setImageList(prev => [...prev, url]);
         setPrev(url);

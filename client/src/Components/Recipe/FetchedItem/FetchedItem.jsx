@@ -21,7 +21,7 @@ const FetchedItem = ({ recipe }) => {
     timeHoursValue,
     steps,
     ingredients,
-    imgURL,
+    // imgURL,
     imgRef,
   } = recipe;
   moment.locale("hu");
@@ -50,7 +50,7 @@ const FetchedItem = ({ recipe }) => {
         setImgPath(url);
       });
     }
-  }, [imgURL, imgRef]);
+  }, [imgRef]);
 
   return (
     <>

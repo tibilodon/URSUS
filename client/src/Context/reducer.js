@@ -135,7 +135,7 @@ const reducer = (state, action) => {
       timeMinutesValue: "",
       timeHoursValue: "",
       imgRef: "",
-      imgURL: "",
+      // imgURL: "",
     };
     return {
       ...state,
@@ -218,7 +218,7 @@ const reducer = (state, action) => {
       timeMinutesValue,
       timeHoursValue,
       imgRef,
-      imgURL,
+      // imgURL,
     } = recipe;
     return {
       ...state,
@@ -235,7 +235,7 @@ const reducer = (state, action) => {
       timeMinutesValue,
       timeHoursValue,
       imgRef,
-      imgURL,
+      // imgURL,
     };
   }
   //delete
