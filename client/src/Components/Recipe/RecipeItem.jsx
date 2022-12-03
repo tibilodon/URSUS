@@ -47,9 +47,9 @@ const RecipeItem = ({
 
   const [imgPath, setImgPath] = useState(null);
 
+  const storage = getStorage();
   useEffect(() => {
     if (imgRef) {
-      const storage = getStorage();
       // const imageRef = ref(storage, `images/${imgRef}`);
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
         setImgPath(url);
@@ -93,7 +93,7 @@ const RecipeItem = ({
               <h1>{title}</h1>
               {imgPath && (
                 <div className="img-card-wrap">
-                  <img crossorigin="anonymous" src={imgPath} alt={""} />
+                  <img crossOrigin="anonymous" src={imgPath} alt={""} />
                 </div>
               )}
             </div>

@@ -80,15 +80,15 @@ const FetchedItem = ({ recipe }) => {
                   timeMinutesValue={timeMinutesValue}
                   timeHoursValue={timeHoursValue}
                   edit={edit}
-                  imgURL={imgURL}
+                  imgPath={imgPath}
                 />
               </div>
 
               <div className="hero-title">
                 <h1>{title}</h1>
-                {imgURL && (
+                {imgPath && (
                   <div className="img-card-wrap">
-                    <img crossorigin="anonymous" alt={""} src={imgURL} />
+                    <img crossOrigin="anonymous" alt={""} src={imgPath} />
                   </div>
                 )}
               </div>

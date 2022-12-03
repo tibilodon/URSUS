@@ -236,8 +236,16 @@ const AddRecipe = () => {
   // if (load) {
   //   return <h1>LOADING</h1>;
   // }
+  const [imgPath, setImgPath] = useState(null);
 
   useEffect(() => {
+    if (imgRef) {
+      // const storage = getStorage();
+      // const imageRef = ref(storage, `images/${imgRef}`);
+      getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
+        setImgPath(url);
+      });
+    }
     if (isEditing && imageUpload) {
       const fetchedImgRef = ref(storage, `images/${imgRef}`);
 
@@ -279,10 +287,16 @@ const AddRecipe = () => {
                 onChange={e => setImageUpload(e.target.files[0])}
                 type="file"
               />
-              {imgURL ? (
-                <img src={imgURL} alt={""} />
+              {imgPath ? (
+                <div className="img-card-wrap">
+                  <img crossOrigin="anonymous" src={imgPath} alt={""} />
+                </div>
               ) : (
-                prev && <img src={prev} alt={""} />
+                prev && (
+                  <div className="img-card-wrap">
+                    <img crossOrigin="anonymous" src={prev} alt={""} />
+                  </div>
+                )
               )}
             </div>
             <div className="flex-center-wrap">
