@@ -85,7 +85,7 @@ const RecipeItem = ({
                 timeMinutesValue={timeMinutesValue}
                 timeHoursValue={timeHoursValue}
                 edit={edit}
-                imgURL={imgURL}
+                imgPath={imgPath}
               />
             </div>
 
