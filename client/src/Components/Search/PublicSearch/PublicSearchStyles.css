@@ -1,0 +1,20 @@
+.search-wrap {
+  /* border: var(--test); */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 1em;
+  border: none;
+
+  background-color: #ee9b01;
+}
+.search-wrap input {
+  height: 80%;
+  /* border-radius: 0 800px 0 0; */
+  /* border-radius: 0 800px 0 0; */
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding: 1em;
+  border: none;
+  outline: none;
+}

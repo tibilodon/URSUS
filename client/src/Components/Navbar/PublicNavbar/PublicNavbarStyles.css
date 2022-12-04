@@ -66,5 +66,29 @@
 }
 .nav-ico-user:hover,
 .nav-ico-search:hover {
+  transition: 0.7s;
+
+  background-color: #da6a00;
+  /* background-color: #EE9B01 */
+}
+.expand {
+  display: flex;
+  align-items: center;
   background-color: #ee9b01;
+  /* border: var(--test); */
+  height: 100%;
+}
+.expand {
+  padding: 0 1em 0 1em;
+}
+.active {
+  background-color: #da6a00;
+}
+.active-hover:hover {
+  transition: 0.2s ease-in-out;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: #da6a00;
 }
