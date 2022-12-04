@@ -12,6 +12,8 @@ import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
 import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
 import FetchAllContainer from "./Pages/Shared/FetchedAll/FetchAllContainer";
 import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
+import PublicLanding from "./Pages/Shared/publicLanding/PublicLanding";
+import PublicNavTest from "./Components/Navbar/PublicNavbar/PublicNavTest";
 
 function App() {
   return (
@@ -29,9 +31,9 @@ function App() {
             <Route index element={<AllRecipesContainer />} />
             <Route path="profile" element={<Profile />} />
             <Route path="add-recipe" element={<AddRecipe />} />
-            {/*TODO: --TEST--*/}
-            {/* <Route path="test" element={<AllRecipesContainer />} /> */}
-            {/*TODO: --TEST--*/}
+            {/*TODO: --TEST--LOGGED IN----*/}
+            {/* <Route path="test" element={<PublicLanding />} /> */}
+            {/* TODO: --TEST-- LOGGED IN*/}
             <Route path="all-recipes" element={<FetchAllContainer />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
@@ -46,6 +48,17 @@ function App() {
               </>
             }
           />
+          {/*TODO:  -----PUBLIC TEST----- */}
+          <Route
+            path="/test"
+            element={
+              <>
+                <PublicNavTest />
+                {/* <PublicLanding /> */}
+              </>
+            }
+          />
+          {/*TODO:  -----PUBLIC TEST----- */}
         </Routes>
       </BrowserRouter>
     </>

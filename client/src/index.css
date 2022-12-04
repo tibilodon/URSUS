@@ -10,6 +10,8 @@
   --bg-col: #e8ede7;
   --blue: #1769aa;
   --black: #333;
+
+  --test: 2px solid black;
 }
 
 .icon-hover {
