@@ -18,6 +18,7 @@ import AuthLogin from "./Pages/Auth/Login/AuthLogin";
 import AuthReg from "./Pages/Auth/Login/AuthReg";
 import BgWrap from "./Components/BgWrap";
 import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
+import Card from "./Components/Card/Card";
 
 function App() {
   return (
@@ -61,6 +62,17 @@ function App() {
                   <PublicNavTest />
                 </BgWrap> */}
                 <PublicCardHolder />
+              </>
+            }
+          />
+          <Route
+            path="/testCard"
+            element={
+              <>
+                {/* <BgWrap>
+                  <PublicNavTest />
+                </BgWrap> */}
+                <Card />
               </>
             }
           />

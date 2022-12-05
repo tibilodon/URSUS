@@ -12,6 +12,7 @@
   --black: #333;
 
   --test: 2px solid black;
+  --rtest: 2px solid red;
 }
 
 .icon-hover {
@@ -39,9 +40,10 @@ h3 {
   font-size: small;
 }
 .bg-wrap {
-  /* border: var(--test); */
-  width: 100%;
-  height: 100vh;
+  /* width: 100%; */
+  height: 100%;
+  /* background-color: var(--bg-col); */
   background-image: url("./Assets/bg-img.jpg");
   background-size: cover;
+  background-repeat: repeat;
 }
