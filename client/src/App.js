@@ -14,6 +14,8 @@ import FetchAllContainer from "./Pages/Shared/FetchedAll/FetchAllContainer";
 import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
 import PublicLanding from "./Pages/Shared/publicLanding/PublicLanding";
 import PublicNavTest from "./Components/Navbar/PublicNavbar/PublicNavTest";
+import AuthLogin from "./Pages/Auth/Login/AuthLogin";
+import AuthReg from "./Pages/Auth/Login/AuthReg";
 
 function App() {
   return (
@@ -58,6 +60,9 @@ function App() {
               </>
             }
           />
+          <Route path="/registerTest" element={<AuthReg />} />
+          <Route path="/loginTest" element={<AuthLogin />} />
+
           {/*TODO:  -----PUBLIC TEST----- */}
         </Routes>
       </BrowserRouter>

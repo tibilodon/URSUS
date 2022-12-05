@@ -5,7 +5,6 @@ import noAccountIco from "../../../Assets/no_account_ico.svg";
 import searchIco from "../../../Assets/search_ico.svg";
 import { useNavigate } from "react-router-dom";
 import PublicSearch from "../../Search/PublicSearch/PublicSearch";
-import Register from "../../../Pages/Auth/Register/Register";
 
 const PublicNavTest = () => {
   const navigate = useNavigate();
@@ -44,12 +43,17 @@ const PublicNavTest = () => {
               // <div className="expand">
               <>
                 <span
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/loginTest")}
                   className="expand active-hover"
                 >
                   Belépés
                 </span>
-                <span className="expand active-hover">Regisztráció</span>
+                <span
+                  onClick={() => navigate("/registerTest")}
+                  className="expand active-hover"
+                >
+                  Regisztráció
+                </span>
               </>
               // </div>
             )}

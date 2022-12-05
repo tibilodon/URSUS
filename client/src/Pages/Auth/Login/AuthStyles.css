@@ -1,0 +1,117 @@
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border: var(--test); */
+  height: 100vh;
+  width: 100%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: center; */
+  /* border: var(--test); */
+  background-color: rgba(200, 210, 209, 0.9);
+
+  /* background-color: #c8d2d1; */
+  width: 70%;
+  height: 80%;
+  box-shadow: rgba(17, 17, 26, 0.5) 0px 4px 16px,
+    rgba(17, 17, 26, 0.8) 0px 8px 24px, rgba(17, 17, 26, 0.8) 0px 16px 56px;
+}
+.login-paper img {
+  /* border: var(--test); */
+  height: 6em;
+  padding: 1em;
+}
+.login-paper input {
+  margin-top: 1em;
+  /* background-color: rgba(238, 155, 1, 0.5); */
+  border: none;
+  outline: none;
+  padding: 0.8em;
+  width: 90%;
+}
+.login-paper button {
+  /* border: var(--test); */
+  margin: 1em;
+}
+
+.auth-no {
+  /* border: var(--test); */
+  margin-top: 2em;
+}
+.auth-no h3 {
+  text-align: center;
+}
+
+/*TODO:---BTN---*/
+.button-auth {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #da6a00;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  /* font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-auth:hover,
+.button-auth:focus {
+  background-color: #ee9b01;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-auth:hover {
+  transform: translateY(-1px);
+}
+
+.button-auth:active {
+  background-color: #da6a00;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.reg {
+  background-color: #14471e;
+}
+.reg:hover,
+.reg:focus {
+  background-color: #68904d;
+}
+.reg:active {
+  background-color: #14471e;
+}
+
+@media (min-width: 500px) {
+  .login-paper {
+    width: 40%;
+  }
+}
