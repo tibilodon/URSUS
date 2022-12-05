@@ -19,7 +19,9 @@ const Card = () => {
         </div>
       </div>
       <div className="card-downer">
-        <h1>title</h1>
+        <div className="card-title">
+          <h1>me likey bread</h1>
+        </div>
         <div className="card-time">
           <img className="card-ico" src={time} alt="" />
           <h1>time</h1>

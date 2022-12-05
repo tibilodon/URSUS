@@ -18,32 +18,66 @@
 
 .card-sizer h1 {
   /* text-shadow: #da6a00 1px 0 10px; */
-  color: var(--bg-col);
+  /* color: var(--bg-col); */
 }
 .card-upper {
-  border: var(--rtest);
+  /* border: var(--rtest); */
   display: flex;
   justify-content: space-between;
 }
 .card-downer {
-  border: var(--rtest);
+  /* border: var(--rtest); */
 }
 .card-ico {
-  filter: invert(91%) sepia(3%) saturate(412%) hue-rotate(65deg)
-    brightness(109%) contrast(86%);
+  filter: invert(40%) sepia(87%) saturate(1009%) hue-rotate(5deg)
+    brightness(93%) contrast(105%);
+  /* border: var(--test); */
+  width: 30px;
+  /* padding-left: 0.5em; */
+  /* padding: 1em; */
+  margin-left: 2em;
 }
 
 /*---CARD ICO WITH TEXT----*/
 .card-difficulty {
-  display: flex;
-  align-items: center;
-  border: var(--rtest);
 }
 .card-type {
-  display: flex;
-  align-items: center;
 }
 .card-time {
+}
+.card-difficulty,
+.card-type,
+.card-time {
+  border-radius: 40px;
+  margin: 2em;
+  padding: 0.2em;
+  width: 30%;
   display: flex;
   align-items: center;
+  /* border: var(--rtest);
+   */
+  background-color: var(--bg-col);
+  font-size: 0.5em;
+}
+.card-title h1 {
+  /* color: yellow; */
+  color: var(--bg-col);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #333;
+  letter-spacing: 0.07em;
+  font-size: 2.2em;
+  /* text-shadow: #333 px 0 10px; */
+  margin-left: 1em;
+}
+.card-difficulty h1,
+.card-type h1,
+.card-time h1 {
+  margin-left: 1em;
+}
+@media (hover: hover) {
+  .card-sizer:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px,
+      rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
+  }
 }
