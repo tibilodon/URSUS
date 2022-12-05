@@ -1,0 +1,10 @@
+.card-sizer {
+  display: flex;
+  /* width: 1em; */
+  height: 10em;
+  width: 10em;
+  border: var(--test);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

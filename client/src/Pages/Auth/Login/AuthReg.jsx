@@ -1,11 +1,8 @@
 import "./AuthStyles.css";
-import { useEffect } from "react";
 import ursus from "../../../Assets/ursus_v6_1.png";
 import bgImage from "../../../Assets/login-bg.jpg";
 
 const AuthReg = () => {
-  useEffect(() => {}, [bgImage]);
-
   return (
     <>
       <div

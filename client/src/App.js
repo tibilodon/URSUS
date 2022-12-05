@@ -16,6 +16,8 @@ import PublicLanding from "./Pages/Shared/publicLanding/PublicLanding";
 import PublicNavTest from "./Components/Navbar/PublicNavbar/PublicNavTest";
 import AuthLogin from "./Pages/Auth/Login/AuthLogin";
 import AuthReg from "./Pages/Auth/Login/AuthReg";
+import BgWrap from "./Components/BgWrap";
+import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
 
 function App() {
   return (
@@ -55,8 +57,10 @@ function App() {
             path="/test"
             element={
               <>
-                <PublicNavTest />
-                {/* <PublicLanding /> */}
+                {/* <BgWrap>
+                  <PublicNavTest />
+                </BgWrap> */}
+                <PublicCardHolder />
               </>
             }
           />

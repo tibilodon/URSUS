@@ -5,6 +5,7 @@ import noAccountIco from "../../../Assets/no_account_ico.svg";
 import searchIco from "../../../Assets/search_ico.svg";
 import { useNavigate } from "react-router-dom";
 import PublicSearch from "../../Search/PublicSearch/PublicSearch";
+import NewPagination from "../../Pagination/NewPagination";
 
 const PublicNavTest = () => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const PublicNavTest = () => {
           </div>
         </div>
       </nav>
+      {/* <NewPagination /> */}
     </>
   );
 };
