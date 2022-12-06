@@ -1,13 +1,25 @@
 import "./CardStyles.css";
-import React from "react";
+import { useState } from "react";
 import bread from "../../Assets/bread.jpg";
 import time from "../../Assets/time.svg";
 import difficulty from "../../Assets/difficulty.svg";
 import recType from "../../Assets/rec-type.svg";
+import CardModal from "../Modal/CardModal";
 
 const Card = () => {
+  const [modal, setModal] = useState(false);
+  const modalHandler = e => {
+    e.preventDefault();
+    setModal(!modal);
+    console.log("CLICKEDs");
+  };
   return (
-    <div style={{ backgroundImage: `url(${bread})` }} className="card-sizer">
+    <div
+      onClick={modalHandler}
+      style={{ backgroundImage: `url(${bread})` }}
+      className="card-sizer"
+    >
+      <CardModal modal={modal} />
       <div className="card-upper">
         <div className="card-difficulty">
           <img className="card-ico" src={difficulty} alt="" />

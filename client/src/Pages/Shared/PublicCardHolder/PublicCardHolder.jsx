@@ -15,9 +15,9 @@ const PublicCardHolder = () => {
         <NewPagination />
         <div className="card-holder-card-wrap">
           <Card />
+          {/* <Card />
           <Card />
-          <Card />
-          <Card />
+          <Card /> */}
         </div>
       </BgWrap>
     </>
