@@ -1,8 +1,11 @@
+/*props from CardStyles.css*/
+
 .modal-off {
   display: none;
 }
 .modal-wrap {
-display: flex;
+  display: flex;
+  justify-content: center;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -27,4 +30,37 @@ display: flex;
     rgba(0, 0, 0, 0.62) 0px -12px 30px, rgba(0, 0, 0, 0.32) 0px 4px 6px,
     rgba(0, 0, 0, 0.37) 0px 12px 13px, rgba(0, 0, 0, 0.89) 0px -3px 5px;
   border-radius: 10px;
+  background-color: var(--bg-col);
+}
+.modal-difficulty,
+.modal-type,
+.modal-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: var(--test); */
+  border-radius: 40px;
+  height: 6em;
+  width: 4.2em;
+  background-color: #ee9b01;
+}
+.modal-icons {
+  border: var(--test);
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+}
+.modal-icons h1 {
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  padding: 0.1em;
+}
+.modal-ico {
+  /* border: var(--rtest); */
+  margin: 0.1em;
+  width: 2.5em;
+  padding: 0.4em;
+  border-radius: 4000px;
+  background-color: var(--bg-col);
 }
