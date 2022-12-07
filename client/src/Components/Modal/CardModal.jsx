@@ -11,6 +11,15 @@ const CardModal = ({ modal }) => {
     <>
       <div className={modal ? "modal-wrap " : "modal-off"}>
         <div className="modal-sizer">
+          <div
+            style={{ backgroundImage: `url(${bread})` }}
+            className="modal-img"
+          >
+            {/* <img src={bread} alt="" /> */}
+            <div className="modal-title">
+              <h1>me still likey me bready</h1>
+            </div>
+          </div>
           <div className="modal-icons">
             <div className="modal-difficulty">
               <img className="modal-ico" src={difficulty} alt="" />
@@ -26,9 +35,21 @@ const CardModal = ({ modal }) => {
               <h1 style={{ padding: "0", margin: "0" }}>33 perc</h1>
             </div>
           </div>
-
-          <div className="card-title">
-            <h1>me still likey me bready</h1>
+          <div className="ings">
+            <h1>Hozzávalók:</h1>
+            <ul>
+              <li>eggs</li>
+              <li>water</li>
+              <li>indians</li>
+            </ul>
+          </div>{" "}
+          <div className="ings modal-steps">
+            <h1>Elkészítés:</h1>
+            <ul>
+              <li>1. lépés: boild</li>
+              <li>2. lépés: add whatever</li>
+              <li>3. lépés: kys</li>
+            </ul>
           </div>
         </div>
       </div>

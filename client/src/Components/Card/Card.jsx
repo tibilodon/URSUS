@@ -15,7 +15,7 @@ const Card = () => {
   return (
     <div
       onClick={modalHandler}
-      style={{ backgroundImage: `url(${bread})` }}
+      // style={{ backgroundImage: `url(${bread})` }}
       className="card-sizer"
     >
       <CardModal modal={modal} />
