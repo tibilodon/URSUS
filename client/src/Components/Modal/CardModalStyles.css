@@ -40,8 +40,8 @@
   align-items: center;
   /* border: var(--test); */
   border-radius: 40px;
-  height: 6em;
-  width: 4.2em;
+  height: 6.2em;
+  width: 3.8em;
   background-color: #ee9b01;
 }
 .modal-icons {
@@ -52,14 +52,14 @@
   justify-content: space-around;
 }
 .modal-icons h1 {
-  font-size: 0.9em;
-  margin-top: 0.5em;
+  font-size: 0.8em;
+  margin-top: 0.2em;
   padding: 0.1em;
 }
 .modal-ico {
   /* border: var(--rtest); */
-  margin: 0.1em;
-  width: 2.5em;
+  margin: 0.4em 0 0 0;
+  width: 3em;
   padding: 0.4em;
   border-radius: 4000px;
   background-color: var(--bg-col);
