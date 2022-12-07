@@ -107,6 +107,7 @@
 }
 
 .ings h1 {
+  font-size: 1.5em;
   color: var(--black);
   margin: 0.2em 2em 0.2em;
 }
