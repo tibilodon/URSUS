@@ -1,8 +1,8 @@
 import "./LandingStyles.css";
 
 import { Link } from "react-router-dom";
-import CottageIcon from "@mui/icons-material/Cottage";
-import { IconButton, Button } from "@mui/material";
+import home from "../../Assets/home-ico.svg";
+import BtnOne from "../../Components/Buttons/BtnOne";
 
 const Landing = () => {
   return (
@@ -19,19 +19,15 @@ const Landing = () => {
           </p>
           <div className="landing-btn">
             <Link to="/register">
-              <Button variant="contained">Regisztráció / Bejelentkezés</Button>
+              <BtnOne text={"Regisztráció"} bgCol="orange" />
+            </Link>{" "}
+            <Link to="/register">
+              <BtnOne text={"Bejelentkezés"} bgCol="green" />
             </Link>
           </div>
           <div className="icon-hover">
             <Link to="/">
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-              >
-                <CottageIcon sx={{ mr: "0.3em" }} fontSize="large" />
-              </IconButton>
+              <img src={home} alt="" />
             </Link>
           </div>
         </section>

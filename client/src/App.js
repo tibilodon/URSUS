@@ -19,6 +19,7 @@ import AuthReg from "./Pages/Auth/Login/AuthReg";
 import BgWrap from "./Components/BgWrap";
 import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
 import Card from "./Components/Card/Card";
+import NewProfile from "./Pages/Shared/Profile/NewProfile";
 
 function App() {
   return (
@@ -42,7 +43,8 @@ function App() {
             <Route path="all-recipes" element={<FetchAllContainer />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register />} />{" "}
+          <Route path="/login" element={<AuthLogin />} />
           <Route path="*" element={<Error />} />
           <Route
             path="/public"
@@ -61,7 +63,9 @@ function App() {
                 {/* <BgWrap>
                   <PublicNavTest />
                 </BgWrap> */}
-                <PublicCardHolder />
+                {/* <PublicCardHolder /> */}
+                <PublicNavTest />
+                <NewProfile />
               </>
             }
           />
@@ -78,7 +82,6 @@ function App() {
           />
           <Route path="/registerTest" element={<AuthReg />} />
           <Route path="/loginTest" element={<AuthLogin />} />
-
           {/*TODO:  -----PUBLIC TEST----- */}
         </Routes>
       </BrowserRouter>

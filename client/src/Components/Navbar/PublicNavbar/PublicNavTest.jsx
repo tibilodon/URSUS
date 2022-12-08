@@ -25,7 +25,7 @@ const PublicNavTest = () => {
     <>
       <nav className="public-nav">
         <div className="nav-ico-logo">
-          <img src={ursus} alt="" />
+          <img onClick={() => navigate("/landing")} src={ursus} alt="" />
         </div>
         <div className="user-search-wrap">
           {searchClick && <PublicSearch />}
