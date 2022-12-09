@@ -52,7 +52,15 @@ function App() {
               </>
             }
           />{" "}
-          <Route path="/login" element={<AuthLogin />} />
+          <Route
+            path="/login"
+            element={
+              <>
+                <PublicNavTest />
+                <AuthLogin />
+              </>
+            }
+          />
           <Route path="*" element={<Error />} />
           <Route
             path="/public"
@@ -71,9 +79,9 @@ function App() {
                 {/* <BgWrap>
                   <PublicNavTest />
                 </BgWrap> */}
-                {/* <PublicCardHolder /> */}
-                <PublicNavTest />
-                <NewProfile />
+                <PublicCardHolder />
+                {/* <PublicNavTest />
+                <NewProfile /> */}
               </>
             }
           />

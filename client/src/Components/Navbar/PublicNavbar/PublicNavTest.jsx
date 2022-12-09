@@ -12,8 +12,8 @@ const PublicNavTest = () => {
   const location = useLocation();
 
   //search will not be available @auth pages
-  const pathMatchRoute = route => {
-    if (route === location.pathname) {
+  const pathMatchRoute = (routeA, routeB) => {
+    if (routeA || routeB === location.pathname) {
       return true;
     }
   };
@@ -36,17 +36,17 @@ const PublicNavTest = () => {
           <img onClick={() => navigate("/landing")} src={ursus} alt="" />
         </div>
         <div className="user-search-wrap">
-          {pathMatchRoute("/login", "/register")
-            ? null
-            : searchClick && <PublicSearch />}
-          {/* {searchClick && <PublicSearch />} */}
-
-          <div
-            onClick={handleSearch}
-            className={searchClick ? "nav-ico-search active" : "nav-ico-search"}
-          >
-            <img src={searchIco} alt="" />
-          </div>
+          {searchClick && <PublicSearch />}
+          {pathMatchRoute("/register", "login") ? null : (
+            <div
+              onClick={handleSearch}
+              className={
+                searchClick ? "nav-ico-search active" : "nav-ico-search"
+              }
+            >
+              <img src={searchIco} alt="" />
+            </div>
+          )}
           <div
             onClick={handleLogin}
             className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
