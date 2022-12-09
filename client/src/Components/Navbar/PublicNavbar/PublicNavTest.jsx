@@ -3,12 +3,20 @@ import "./PublicNavbarStyles.css";
 import ursus from "../../../Assets/ursus_v6_1.png";
 import noAccountIco from "../../../Assets/no_account_ico.svg";
 import searchIco from "../../../Assets/search_ico.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PublicSearch from "../../Search/PublicSearch/PublicSearch";
 import NewPagination from "../../Pagination/NewPagination";
 
 const PublicNavTest = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  //search will not be available @auth pages
+  const pathMatchRoute = route => {
+    if (route === location.pathname) {
+      return true;
+    }
+  };
   const [loginClick, setLoginClick] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
   const handleLogin = e => {
@@ -28,7 +36,10 @@ const PublicNavTest = () => {
           <img onClick={() => navigate("/landing")} src={ursus} alt="" />
         </div>
         <div className="user-search-wrap">
-          {searchClick && <PublicSearch />}
+          {pathMatchRoute("/login", "/register")
+            ? null
+            : searchClick && <PublicSearch />}
+          {/* {searchClick && <PublicSearch />} */}
 
           <div
             onClick={handleSearch}
@@ -44,13 +55,13 @@ const PublicNavTest = () => {
               // <div className="expand">
               <>
                 <span
-                  onClick={() => navigate("/loginTest")}
+                  onClick={() => navigate("/login")}
                   className="expand active-hover"
                 >
                   Belépés
                 </span>
                 <span
-                  onClick={() => navigate("/registerTest")}
+                  onClick={() => navigate("/register")}
                   className="expand active-hover"
                 >
                   Regisztráció

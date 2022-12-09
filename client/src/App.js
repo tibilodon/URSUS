@@ -43,7 +43,15 @@ function App() {
             <Route path="all-recipes" element={<FetchAllContainer />} />
           </Route>
           <Route path="/landing" element={<Landing />} />
-          <Route path="/register" element={<Register />} />{" "}
+          <Route
+            path="/register"
+            element={
+              <>
+                <PublicNavTest />
+                <AuthReg />
+              </>
+            }
+          />{" "}
           <Route path="/login" element={<AuthLogin />} />
           <Route path="*" element={<Error />} />
           <Route
