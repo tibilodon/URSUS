@@ -12,8 +12,8 @@ const PublicNavTest = () => {
   const location = useLocation();
 
   //search will not be available @auth pages
-  const pathMatchRoute = (routeA, routeB) => {
-    if (routeA || routeB === location.pathname) {
+  const pathMatchRoute = route => {
+    if (route === location.pathname) {
       return true;
     }
   };
@@ -37,7 +37,7 @@ const PublicNavTest = () => {
         </div>
         <div className="user-search-wrap">
           {searchClick && <PublicSearch />}
-          {pathMatchRoute("/register", "login") ? null : (
+          {pathMatchRoute("/register") || pathMatchRoute("/login") ? null : (
             <div
               onClick={handleSearch}
               className={
