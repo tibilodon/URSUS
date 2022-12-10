@@ -6,6 +6,7 @@ import searchIco from "../../../Assets/search_ico.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import PublicSearch from "../../Search/PublicSearch/PublicSearch";
 import NewPagination from "../../Pagination/NewPagination";
+import homeIco from "../../../Assets/home-ico.svg";
 
 const PublicNavTest = () => {
   const navigate = useNavigate();
@@ -47,30 +48,36 @@ const PublicNavTest = () => {
               <img src={searchIco} alt="" />
             </div>
           )}
-          <div
-            onClick={handleLogin}
-            className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
-          >
-            {loginClick && (
-              // <div className="expand">
-              <>
-                <span
-                  onClick={() => navigate("/login")}
-                  className="expand active-hover"
-                >
-                  Belépés
-                </span>
-                <span
-                  onClick={() => navigate("/register")}
-                  className="expand active-hover"
-                >
-                  Regisztráció
-                </span>
-              </>
-              // </div>
-            )}
-            <img src={noAccountIco} alt="" />
-          </div>
+          {pathMatchRoute("/register") || pathMatchRoute("/login") ? (
+            <div onClick={() => navigate("/")} className="nav-ico-user">
+              <img src={homeIco} alt="" />
+            </div>
+          ) : (
+            <div
+              onClick={handleLogin}
+              className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
+            >
+              {loginClick && (
+                // <div className="expand">
+                <>
+                  <span
+                    onClick={() => navigate("/login")}
+                    className="expand active-hover"
+                  >
+                    Belépés
+                  </span>
+                  <span
+                    onClick={() => navigate("/register")}
+                    className="expand active-hover"
+                  >
+                    Regisztráció
+                  </span>
+                </>
+                // </div>
+              )}
+              <img src={noAccountIco} alt="" />
+            </div>
+          )}
         </div>
       </nav>
       {/* <NewPagination /> */}
