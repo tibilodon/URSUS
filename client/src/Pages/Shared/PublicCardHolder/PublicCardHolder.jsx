@@ -8,6 +8,7 @@ import NewPagination from "../../../Components/Pagination/NewPagination";
 import bgImg from "../../../Assets/bg-img.jpg";
 import { useAppContext } from "../../../Context/appContext";
 import SearchNot from "../../../Components/Alert/SearchNot";
+import Loader from "../../../Components/Loader/Loader";
 
 const PublicCardHolder = () => {
   const { allRecipes, fetchAll } = useAppContext();
@@ -55,7 +56,6 @@ const PublicCardHolder = () => {
   useEffect(() => {
     fetchAll();
   }, []);
-  console.log(results);
 
   return (
     <>
