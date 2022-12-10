@@ -7,6 +7,7 @@ import PublicNavTest from "../../../Components/Navbar/PublicNavbar/PublicNavTest
 import NewPagination from "../../../Components/Pagination/NewPagination";
 import bgImg from "../../../Assets/bg-img.jpg";
 import { useAppContext } from "../../../Context/appContext";
+import SearchNot from "../../../Components/Alert/SearchNot";
 
 const PublicCardHolder = () => {
   const { allRecipes, fetchAll } = useAppContext();
@@ -14,6 +15,10 @@ const PublicCardHolder = () => {
   const results = allRecipes.filter(item => {
     return item.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
+  const handleChange = e => {
+    setSearchTerm(e.target.value);
+  };
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
@@ -50,13 +55,32 @@ const PublicCardHolder = () => {
   useEffect(() => {
     fetchAll();
   }, []);
+  console.log(results);
+
   return (
     <>
-      <PublicNavTest />
+      <PublicNavTest handleChange={handleChange} searchTerm={searchTerm} />
       <BgWrap>
-        <NewPagination />
-
-        {results &&
+        {/* <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            border: "2px solid red",
+          }}
+        > */}
+        {/* <div className="pagi-al"> */}
+        <NewPagination
+          page={currentPage}
+          postsPerPage={postsPerPage}
+          //or allRecipes.length
+          totalPosts={results.length}
+          paginate={paginate}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
+        {/* </div> */}
+        {/* </div> */}
+        {results.length >= 1 ? (
           currentPosts.map(recipe => {
             return (
               <div key={recipe.createdAt} className="card-holder-card-wrap">
@@ -64,7 +88,10 @@ const PublicCardHolder = () => {
                 <Card recipe={recipe} />
               </div>
             );
-          })}
+          })
+        ) : (
+          <SearchNot />
+        )}
         {/* <div className="card-holder-card-wrap">
           <Card />
 

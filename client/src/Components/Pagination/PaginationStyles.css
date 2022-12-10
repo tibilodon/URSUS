@@ -2,7 +2,21 @@
   /* margin: 0.2em 0 1em 0; */
   /* border: var(--test); */
   display: flex;
+  /* width: fit-content; */
+  left: 30%;
+  /* left: 50vh; */
+  width: 100%;
+  /* width: 12em; */
+  /* left: 30%; */
+  /* right: 30%; */
   justify-content: center;
+  margin-bottom: 3em;
+  padding-top: 0.1em;
+  position: sticky;
+  top: 3em;
+  align-self: flex-start;
+  z-index: 1;
+  overflow: hidden;
   /* height: 1em; */
 }
 
@@ -78,9 +92,13 @@
   /* padding: 2em; */
 }
 .pagi-number:hover,
-.pagi-number:focus {
+.pagi-number:focus,
+.actives {
   background-color: #68904d;
 }
-.pagi-number:active {
+/* .pagi-number:active {
   background-color: #68904d;
-}
+} */
+/* .active {
+  background-color: #68904d;
+} */

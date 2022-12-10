@@ -9,34 +9,10 @@ import NewPagination from "../../Pagination/NewPagination";
 import homeIco from "../../../Assets/home-ico.svg";
 import { useAppContext } from "../../../Context/appContext";
 
-const PublicNavTest = () => {
+const PublicNavTest = ({ handleChange, searchTerm }) => {
   const { allRecipes, fetchAll } = useAppContext();
   const navigate = useNavigate();
   const location = useLocation();
-
-  //search
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleChange = e => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleClearValues = e => {
-    e.preventDefault();
-    setSearchTerm("");
-  };
-
-  const results = allRecipes.filter(item => {
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
-
-  //get posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = results.slice(indexOfFirstPost, indexOfLastPost);
 
   useEffect(() => {
     fetchAll();
@@ -68,12 +44,7 @@ const PublicNavTest = () => {
         </div>
         <div className="user-search-wrap">
           {searchClick && (
-            <PublicSearch
-              handleChange={handleChange}
-              handleClearValues={handleClearValues}
-              searchTerm={searchTerm}
-              results={results.length}
-            />
+            <PublicSearch handleChange={handleChange} searchTerm={searchTerm} />
           )}
           {pathMatchRoute("/register") || pathMatchRoute("/login") ? null : (
             <div

@@ -9,3 +9,8 @@
   background-repeat: repeat;
   height: 100%;
 }
+.pagi-al {
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+}

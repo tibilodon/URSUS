@@ -20,6 +20,7 @@ import BgWrap from "./Components/BgWrap";
 import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
 import Card from "./Components/Card/Card";
 import NewProfile from "./Pages/Shared/Profile/NewProfile";
+import SearchNot from "./Components/Alert/SearchNot";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
                   <PublicNavTest />
                 </BgWrap> */}
                 <PublicCardHolder />
+                {/* <SearchNot /> */}
                 {/* <PublicNavTest />
                 <NewProfile /> */}
               </>

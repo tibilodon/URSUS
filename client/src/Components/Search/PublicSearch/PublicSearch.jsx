@@ -2,12 +2,7 @@ import "./PublicSearchStyles.css";
 
 import { useState } from "react";
 
-const PublicSearch = ({
-  handleChange,
-  handleClearValues,
-  searchTerm,
-  results,
-}) => {
+const PublicSearch = ({ handleChange, searchTerm }) => {
   const [search, setSearch] = useState();
   return (
     <>
