@@ -67,8 +67,10 @@ function App() {
             path="/public"
             element={
               <>
-                <PublicNavbar />
-                <FetchAllContainer />
+                <PublicCardHolder />
+
+                {/* <PublicNavbar />
+                <FetchAllContainer /> */}
               </>
             }
           />

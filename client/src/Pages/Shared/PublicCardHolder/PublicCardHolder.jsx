@@ -69,15 +69,18 @@ const PublicCardHolder = () => {
           }}
         > */}
         {/* <div className="pagi-al"> */}
-        <NewPagination
-          page={currentPage}
-          postsPerPage={postsPerPage}
-          //or allRecipes.length
-          totalPosts={results.length}
-          paginate={paginate}
-          prevPage={prevPage}
-          nextPage={nextPage}
-        />
+        {results.length >= 1 ? (
+          <NewPagination
+            page={currentPage}
+            postsPerPage={postsPerPage}
+            //or allRecipes.length
+            totalPosts={results.length}
+            paginate={paginate}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        ) : null}
+
         {/* </div> */}
         {/* </div> */}
         {results.length >= 1 ? (

@@ -1,9 +1,9 @@
 import "./PublicSearchStyles.css";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 const PublicSearch = ({ handleChange, searchTerm }) => {
-  const [search, setSearch] = useState();
+  // const [search, setSearch] = useState();
   return (
     <>
       <div className="search-wrap">
