@@ -4,7 +4,8 @@
   justify-content: space-between;
   position: relative;
   /* width: 1em; */
-  height: 30em;
+  /* height: 30em; */
+
   width: 30em;
   margin: 1em;
   /* border: 4px solid red; */
@@ -25,8 +26,14 @@
   /* border: var(--rtest); */
   display: flex;
   justify-content: space-between;
+  /* position: absolute; */
 }
 .card-downer {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+
   /* border: var(--rtest); */
 }
 .card-ico {
@@ -52,11 +59,12 @@
   border-radius: 40px;
   margin: 2em;
   padding: 0.2em;
-  width: 30%;
+
+  /* width: 30%; */
   display: flex;
   align-items: center;
-  /* border: var(--rtest);
-   */
+  /* border: var(--rtest); */
+
   background-color: var(--bg-col);
   font-size: 0.5em;
 }
@@ -73,7 +81,7 @@
 .card-difficulty h1,
 .card-type h1,
 .card-time h1 {
-  margin-left: 1em;
+  margin: 0 1em 0 1em;
 }
 @media (hover: hover) {
   .card-sizer:hover {
@@ -81,4 +89,19 @@
       rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px,
       rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
   }
+}
+.sizer-img {
+  position: relative;
+  /* width: 30em; */
+  /* height: 30em; */
+}
+.card-details {
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-time {
+  width: 46%;
 }

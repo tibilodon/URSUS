@@ -40,10 +40,8 @@ h3 {
   font-size: small;
 }
 .bg-wrap {
-  /* width: 100%; */
   height: 100%;
-  /* background-color: var(--bg-col); */
-  background-image: url("./Assets/bg-img.jpg");
+  background-image: url("./Assets/bg-img_50.jpg");
   background-size: cover;
   background-repeat: repeat;
 }

@@ -49,11 +49,11 @@ const Card = ({ recipe }) => {
   }, [imgRef]);
   return (
     <div
-      crossOrigin="anonymous"
       onClick={modalHandler}
-      style={{ backgroundImage: `url(${imgPath})` }}
+      // style={{ backgroundImage: `url(${imgPath})` }}
       className="card-sizer"
     >
+      <img crossOrigin="anonymous" className="sizer-img" src={imgPath} alt="" />
       <CardModal
         modal={modal}
         // onClose={handleModal}
@@ -67,30 +67,32 @@ const Card = ({ recipe }) => {
         // edit={edit}
         imgPath={imgPath}
       />
-      <div className="card-upper">
-        <div className="card-difficulty">
-          <img className="card-ico" src={difficultyIco} alt="" />
-          <h1>{difficulty}</h1>
-        </div>
-        <div className="card-type">
-          <img className="card-ico" src={recType} alt="" />
-          <h1>{recipeType}</h1>
-        </div>
-      </div>
-      <div className="card-downer">
-        <div className="card-title">
-          <h1>{title}</h1>
-        </div>
-
-        {(timeHoursValue || timeMinutesValue) && (
-          <div className="card-time">
-            <img className="card-ico" src={time} alt="" />
-            <div>
-              {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
-              {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
-            </div>
+      <div className="card-details">
+        <div className="card-upper">
+          <div className="card-difficulty">
+            <img className="card-ico" src={difficultyIco} alt="" />
+            <h1>{difficulty}</h1>
           </div>
-        )}
+          <div className="card-type">
+            <img className="card-ico" src={recType} alt="" />
+            <h1>{recipeType}</h1>
+          </div>
+        </div>
+        <div className="card-downer">
+          <div className="card-title">
+            <h1>{title}</h1>
+          </div>
+
+          {(timeHoursValue || timeMinutesValue) && (
+            <div className="card-time">
+              <img className="card-ico" src={time} alt="" />
+              <div>
+                {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
+                {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

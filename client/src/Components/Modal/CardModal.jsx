@@ -26,10 +26,10 @@ const CardModal = ({
       <div className={modal ? "modal-wrap " : "modal-off"}>
         <div className="modal-sizer">
           <div
-            crossOrigin="anonymous"
-            style={{ backgroundImage: `url(${imgPath})` }}
+            // style={{ backgroundImage: `url(${imgPath})` }}
             className="modal-img"
           >
+            <img crossOrigin="anonymous" src={imgPath} alt="" />
             {/* <img src={bread} alt="" /> */}
             <div className="modal-title">
               <h1>{title}</h1>
