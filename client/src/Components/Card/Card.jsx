@@ -49,6 +49,7 @@ const Card = ({ recipe }) => {
   }, [imgRef]);
   return (
     <div
+      crossOrigin="anonymous"
       onClick={modalHandler}
       style={{ backgroundImage: `url(${imgPath})` }}
       className="card-sizer"
