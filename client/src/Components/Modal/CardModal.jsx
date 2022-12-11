@@ -26,6 +26,7 @@ const CardModal = ({
       <div className={modal ? "modal-wrap " : "modal-off"}>
         <div className="modal-sizer">
           <div
+            crossOrigin="anonymous"
             style={{ backgroundImage: `url(${imgPath})` }}
             className="modal-img"
           >
