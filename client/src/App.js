@@ -21,6 +21,7 @@ import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
 import Card from "./Components/Card/Card";
 import NewProfile from "./Pages/Shared/Profile/NewProfile";
 import SearchNot from "./Components/Alert/SearchNot";
+import MemberNav from "./Components/Navbar/MemberNav/MemberNav";
 
 function App() {
   return (
@@ -79,29 +80,10 @@ function App() {
             path="/test"
             element={
               <>
-                {/* <BgWrap>
-                  <PublicNavTest />
-                </BgWrap> */}
-                <PublicCardHolder />
-                {/* <SearchNot /> */}
-                {/* <PublicNavTest />
-                <NewProfile /> */}
+                <MemberNav />
               </>
             }
           />
-          <Route
-            path="/testCard"
-            element={
-              <>
-                {/* <BgWrap>
-                  <PublicNavTest />
-                </BgWrap> */}
-                <Card />
-              </>
-            }
-          />
-          <Route path="/registerTest" element={<AuthReg />} />
-          <Route path="/loginTest" element={<AuthLogin />} />
           {/*TODO:  -----PUBLIC TEST----- */}
         </Routes>
       </BrowserRouter>
