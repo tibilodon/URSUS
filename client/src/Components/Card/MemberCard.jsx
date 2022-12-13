@@ -1,19 +1,20 @@
 import "./CardStyles.css";
 import { useState, useEffect } from "react";
-import bread from "../../Assets/bread.jpg";
 import time from "../../Assets/time.svg";
 import difficultyIco from "../../Assets/difficulty.svg";
 import recType from "../../Assets/rec-type.svg";
 import CardModal from "../Modal/CardModal";
+import { useAppContext } from "../../Context/appContext";
 //moment
 import moment from "moment";
 import "moment/locale/hu";
 //firebase
 import { storage } from "../../firebase";
-import { ref, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-const Card = ({ recipe }) => {
+const MemberCard = ({ recipe }) => {
   const {
+    _id,
     title,
     recipeType,
     difficulty,
@@ -22,21 +23,26 @@ const Card = ({ recipe }) => {
     timeHoursValue,
     steps,
     ingredients,
-    // imgURL,
     imgRef,
   } = recipe;
-  //moment
+  const { setEditRecipe, deleteRecipe } = useAppContext();
+  //moments - date
   moment.locale("hu");
   let date = moment(createdAt);
   date = date.format("l");
+
   //modal
   const [modal, setModal] = useState(false);
   const modalHandler = e => {
     e.preventDefault();
     setModal(!modal);
   };
+
+  const edit = true;
+
   //firebase ref
   const [imgPath, setImgPath] = useState(null);
+  const storage = getStorage();
 
   useEffect(() => {
     if (imgRef) {
@@ -45,6 +51,7 @@ const Card = ({ recipe }) => {
       });
     }
   }, [imgRef]);
+
   return (
     <div
       onClick={modalHandler}
@@ -61,13 +68,14 @@ const Card = ({ recipe }) => {
         modal={modal}
         // onClose={handleModal}
         title={title}
+        _id={_id}
         steps={steps}
         difficulty={difficulty}
         ingredients={ingredients}
         recipeType={recipeType}
         timeMinutesValue={timeMinutesValue}
         timeHoursValue={timeHoursValue}
-        // edit={edit}
+        edit={edit}
         imgPath={imgPath}
       />
       <div className="card-details">
@@ -101,4 +109,4 @@ const Card = ({ recipe }) => {
   );
 };
 
-export default Card;
+export default MemberCard;

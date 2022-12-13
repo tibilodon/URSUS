@@ -17,7 +17,7 @@ const CardModal = ({
   timeHoursValue,
   timeMinutesValue,
   ingredients,
-  // edit,
+  edit,
   imgPath,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();

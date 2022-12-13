@@ -56,7 +56,7 @@ const PublicCardHolder = () => {
   useEffect(() => {
     fetchAll();
   }, []);
-
+  console.log(allRecipes);
   return (
     <>
       <PublicNavTest handleChange={handleChange} searchTerm={searchTerm} />
