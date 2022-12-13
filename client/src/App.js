@@ -22,6 +22,8 @@ import Card from "./Components/Card/Card";
 import NewProfile from "./Pages/Shared/Profile/NewProfile";
 import SearchNot from "./Components/Alert/SearchNot";
 import MemberNav from "./Components/Navbar/MemberNav/MemberNav";
+import MemberCardHolder from "./Pages/Shared/MemberCardHolder/MemberCardHolder";
+import NewPagination from "./Components/Pagination/NewPagination";
 
 function App() {
   return (
@@ -36,8 +38,20 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<AllRecipesContainer />} />
-            <Route path="profile" element={<Profile />} />
+            <Route
+              index
+              element={
+                <MemberCardHolder />
+                // <AllRecipesContainer />
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                // <Profile />
+                <NewProfile />
+              }
+            />
             <Route path="add-recipe" element={<AddRecipe />} />
             {/*TODO: --TEST--LOGGED IN----*/}
             {/* <Route path="test" element={<PublicLanding />} /> */}
@@ -80,7 +94,7 @@ function App() {
             path="/test"
             element={
               <>
-                <MemberNav />
+                <NewPagination />
               </>
             }
           />

@@ -12,39 +12,35 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [sidebar, setSidebar] = useState(false);
 
-  const fok = e => {
+  const handleSidebar = e => {
     e.preventDefault();
-    setSidebar(false);
-    console.log("fokked");
+    setSidebar(!sidebar);
   };
 
   return (
     <>
-      <div onClick={() => setSidebar(true)} className="sidebar">
-        <img src={menu} alt="" />
+      <div className="sidebar">
+        <img onClick={handleSidebar} src={menu} alt="" />
         {sidebar ? (
           <div className={"sidebar-menu"}>
             <div className={"sidebar-sizer"}>
               <div className="close-ico">
-                <img onClick={fok} src={closeSquare} alt="" />
+                <img onClick={handleSidebar} src={closeSquare} alt="" />
               </div>
               <div className="sidebar-items-wrap">
                 <div
-                  onClick={() => navigate("/landing")}
+                  onClick={() => navigate("/all-recipes")}
                   className="sidebar-items"
                 >
                   <img src={allRecipesIco} alt="" />
                   <h3>Receptek</h3>
                 </div>{" "}
-                <div
-                  onClick={() => navigate("/landing")}
-                  className="sidebar-items"
-                >
+                <div onClick={() => navigate("/")} className="sidebar-items">
                   <img src={myRecipesIco} alt="" />
                   <h3>Receptjeim</h3>
                 </div>{" "}
                 <div
-                  onClick={() => navigate("/landing")}
+                  onClick={() => navigate("/add-recipe")}
                   className="sidebar-items"
                 >
                   <img src={addIco} alt="" />

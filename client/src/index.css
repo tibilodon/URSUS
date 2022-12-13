@@ -13,6 +13,7 @@
 
   --test: 2px solid black;
   --rtest: 2px solid red;
+  --active: #ee9b01;
 }
 
 .icon-hover {

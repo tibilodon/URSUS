@@ -2,7 +2,7 @@ import "./PublicSearchStyles.css";
 
 // import { useState } from "react";
 
-const PublicSearch = ({ handleChange, searchTerm }) => {
+const PublicSearch = ({ handleChange, searchTerm, value, searchResults }) => {
   // const [search, setSearch] = useState();
   return (
     <>
@@ -14,8 +14,8 @@ const PublicSearch = ({ handleChange, searchTerm }) => {
           type="text"
           placeholder="search"
           name="search"
-          value={searchTerm}
-          onChange={handleChange}
+          value={searchTerm || value}
+          onChange={handleChange || searchResults}
         />
       </div>
     </>

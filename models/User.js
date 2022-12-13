@@ -32,12 +32,7 @@ const UserSchema = new mongoose.Schema({
     maxlength: 20,
     default: "lastName",
   },
-  location: {
-    type: String,
-    trim: true,
-    maxlength: 20,
-    default: "my city",
-  },
+
 });
 UserSchema.pre("save", async function () {
   if (!this.isModified("password")) return;

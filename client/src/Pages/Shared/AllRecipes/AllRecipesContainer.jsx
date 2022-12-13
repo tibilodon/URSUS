@@ -9,7 +9,7 @@ const AllRecipesContainer = () => {
   const { numOfPages } = useAppContext();
   return (
     <div className="all-recipes-wrap full">
-      <Search />
+      {/* <Search /> */}
       {numOfPages > 1 && (
         <div className="pagination-align">
           <Pagination />

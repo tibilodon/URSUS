@@ -32,7 +32,6 @@ import reducer from "./reducer";
 
 const user = localStorage.getItem("user");
 const token = localStorage.getItem("token");
-const userLocation = localStorage.getItem("location");
 
 //TODO:----FETCH ALL----
 const fetchAllState = {
@@ -75,7 +74,6 @@ const initialState = {
   //user
   user: user ? JSON.parse(user) : null,
   token: token,
-  userLocation: userLocation || "",
   //create recipe
   isEditing: false,
   editRecipeId: "",
@@ -132,17 +130,15 @@ const AppProvider = ({ children }) => {
   };
 
   //add user to local storage
-  const addUserToLocalStorage = ({ user, token, location }) => {
+  const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
-    localStorage.setItem("location", location);
   };
 
   //remove user from local storage (logout,etc)
   const removeUserFromLocalStorage = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    localStorage.removeItem("location");
   };
 
   const setupUser = async ({ currentUser, endPoint, alertText }) => {
@@ -152,12 +148,12 @@ const AppProvider = ({ children }) => {
         `/api/v1/auth/${endPoint}`,
         currentUser
       );
-      const { user, token, location } = data;
+      const { user, token } = data;
       dispatch({
         type: SETUP_USER_SUCCESS,
-        payload: { user, token, location, alertText },
+        payload: { user, token, alertText },
       });
-      addUserToLocalStorage({ user, token, location });
+      addUserToLocalStorage({ user, token });
     } catch (error) {
       dispatch({
         type: SETUP_USER_ERROR,
@@ -214,12 +210,12 @@ const AppProvider = ({ children }) => {
     });
     try {
       const { data } = await authFetch.patch("/auth/updateUser", currentUser);
-      const { user, location, token } = data;
+      const { user, token } = data;
       dispatch({
         type: UPDATE_USER_SUCCESS,
-        payload: { user, location, token },
+        payload: { user, token },
       });
-      addUserToLocalStorage({ user, location, token });
+      addUserToLocalStorage({ user, token });
     } catch (error) {
       if (error.response.status !== 401) {
         dispatch({

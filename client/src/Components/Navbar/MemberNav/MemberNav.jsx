@@ -9,7 +9,25 @@ import accountIco from "../../../Assets/account_ico.svg";
 import { useState, useEffect } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 
-const MemberNav = ({ handleChange, searchTerm }) => {
+const MemberNav = () => {
+  const {
+    isLoading,
+    search,
+    searchDifficulty,
+    searchType,
+    sort,
+    sortOptions,
+    difficultyOptions,
+    recipeTypeOptions,
+    totalRecipes,
+    handleChange,
+    clearFilters,
+    numOfPages,
+    user,
+    logoutUser,
+  } = useAppContext();
+  const navigate = useNavigate();
+
   const [loginClick, setLoginClick] = useState(false);
   const [searchClick, setSearchClick] = useState(false);
   const handleLogin = e => {
@@ -22,24 +40,25 @@ const MemberNav = ({ handleChange, searchTerm }) => {
     setSearchClick(!searchClick);
     loginClick && setLoginClick(!loginClick);
   };
-
-  const [sidebar, setSidebar] = useState(false);
-  const handleSidebar = e => {
-    e.preventDefault();
-    setSidebar(!sidebar);
+  const searchResults = e => {
+    if (isLoading) return;
+    handleChange({ name: e.target.name, value: e.target.value });
   };
-
   return (
     <>
       <nav className="public-nav">
         <div className="nav-ico-logo member">
           <Sidebar />
 
-          <img src={ursus} alt="" />
+          <img onClick={() => navigate("/")} src={ursus} alt="" />
         </div>
         <div className="user-search-wrap">
           {searchClick && (
-            <PublicSearch handleChange={handleChange} searchTerm={searchTerm} />
+            <PublicSearch
+              // handleChange={handleSearch}
+              value={search}
+              searchResults={searchResults}
+            />
           )}
 
           <div
@@ -49,10 +68,6 @@ const MemberNav = ({ handleChange, searchTerm }) => {
             <img src={searchIco} alt="" />
           </div>
 
-          {/* <div className="nav-ico-user">
-            <img src={homeIco} alt="" />
-          </div> */}
-
           <div
             onClick={handleLogin}
             className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
@@ -60,14 +75,21 @@ const MemberNav = ({ handleChange, searchTerm }) => {
             {loginClick && (
               // <div className="expand">
               <>
-                <span className="expand active-hover">Profil</span>
-                <span className="expand active-hover">Kijeletnkezés</span>
+                <span
+                  onClick={() => navigate("/profile")}
+                  className="expand active-hover"
+                >
+                  Profil
+                </span>
+                <span onClick={logoutUser} className="expand active-hover">
+                  Kijeletnkezés
+                </span>
               </>
               // </div>
             )}
-            <div className="user">
-              <img src={accountIco} alt="" />
-              <h3>User Name</h3>
+            <div className="users">
+              <img className="users-ico" src={accountIco} alt="" />
+              <h3>{user && user.name}</h3>
             </div>
           </div>
         </div>
