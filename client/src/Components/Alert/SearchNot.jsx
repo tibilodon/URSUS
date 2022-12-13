@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../Assets/not-found-bg.jpg";
+import bg from "../../Assets/not-found-bg_50.jpg";
 
 const SearchNot = () => {
   return (

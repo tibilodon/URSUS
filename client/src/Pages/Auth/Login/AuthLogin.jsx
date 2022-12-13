@@ -1,7 +1,7 @@
 import "./AuthStyles.css";
 import React from "react";
 import ursus from "../../../Assets/ursus_v6_1.png";
-import bgImage from "../../../Assets/login-bg.jpg";
+import bgImage from "../../../Assets/login-bg_50.jpg";
 
 import { useAppContext } from "../../../Context/appContext";
 

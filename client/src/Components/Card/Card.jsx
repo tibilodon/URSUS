@@ -53,7 +53,12 @@ const Card = ({ recipe }) => {
       // style={{ backgroundImage: `url(${imgPath})` }}
       className="card-sizer"
     >
-      <img crossOrigin="anonymous" className="sizer-img" src={imgPath} alt="" />
+      <img
+        crossOrigin="anonymous"
+        className="sizer-img"
+        src={imgPath && imgPath}
+        alt=""
+      />
       <CardModal
         modal={modal}
         // onClose={handleModal}

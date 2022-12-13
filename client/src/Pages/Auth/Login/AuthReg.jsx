@@ -1,6 +1,6 @@
 import "./AuthStyles.css";
 import ursus from "../../../Assets/ursus_v6_1.png";
-import bgImage from "../../../Assets/login-bg.jpg";
+import bgImage from "../../../Assets/login-bg_50.jpg";
 
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";

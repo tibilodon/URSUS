@@ -1,6 +1,6 @@
 import "./ProfileStyles.css";
 import ursus from "../../../Assets/ursus_v6_1.png";
-import bgImage from "../../../Assets/login-bg.jpg";
+import bgImage from "../../../Assets/login-bg_50.jpg";
 import React from "react";
 
 const NewProfile = () => {

@@ -22,11 +22,19 @@ const MemberNav = ({ handleChange, searchTerm }) => {
     setSearchClick(!searchClick);
     loginClick && setLoginClick(!loginClick);
   };
+
+  const [sidebar, setSidebar] = useState(false);
+  const handleSidebar = e => {
+    e.preventDefault();
+    setSidebar(!sidebar);
+  };
+
   return (
     <>
       <nav className="public-nav">
         <div className="nav-ico-logo member">
           <Sidebar />
+
           <img src={ursus} alt="" />
         </div>
         <div className="user-search-wrap">
@@ -57,7 +65,10 @@ const MemberNav = ({ handleChange, searchTerm }) => {
               </>
               // </div>
             )}
-            <img src={accountIco} alt="" />
+            <div className="user">
+              <img src={accountIco} alt="" />
+              <h3>User Name</h3>
+            </div>
           </div>
         </div>
       </nav>

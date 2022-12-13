@@ -1,25 +1,76 @@
 import "./SidebarStyles.css";
 import { useState } from "react";
 import menu from "../../Assets/menu_ico.svg";
+//icons
+import addIco from "../../Assets/add_ico.svg";
+import myRecipesIco from "../../Assets/my-recipes_ico.svg";
+import allRecipesIco from "../../Assets/all-recipes_ico.svg";
+import closeSquare from "../../Assets/close-square_ico.svg";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
-  const [active, setActive] = useState(false);
-  const handleTest = e => {
+  const navigate = useNavigate();
+  const [sidebar, setSidebar] = useState(false);
+
+  const fok = e => {
     e.preventDefault();
-    setActive(!active);
+    setSidebar(false);
+    console.log("fokked");
   };
+
   return (
     <>
-      <div onClick={handleTest} className="sidebar">
+      <div onClick={() => setSidebar(true)} className="sidebar">
         <img src={menu} alt="" />
-      </div>
+        {sidebar ? (
+          <div className={"sidebar-menu"}>
+            <div className={"sidebar-sizer"}>
+              <div className="close-ico">
+                <img onClick={fok} src={closeSquare} alt="" />
+              </div>
+              <div className="sidebar-items-wrap">
+                <div
+                  onClick={() => navigate("/landing")}
+                  className="sidebar-items"
+                >
+                  <img src={allRecipesIco} alt="" />
+                  <h3>Receptek</h3>
+                </div>{" "}
+                <div
+                  onClick={() => navigate("/landing")}
+                  className="sidebar-items"
+                >
+                  <img src={myRecipesIco} alt="" />
+                  <h3>Receptjeim</h3>
+                </div>{" "}
+                <div
+                  onClick={() => navigate("/landing")}
+                  className="sidebar-items"
+                >
+                  <img src={addIco} alt="" />
+                  <h3>Új recept</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
-      <div onClick={handleTest} className={active ? "sidebar-menu" : "off"}>
-        <div className="sidebar-sizer">
-          <span>receptek</span>
-          <span>receptek</span>
-          <span>receptek</span>
-        </div>
+        {/* <div className={sidebar ? "sidebar-menu" : "off"}>
+          <div className="sidebar-sizer">
+            <div className="sidebar-items">
+              <img src={allRecipesIco} alt="" />
+              <h3>Receptek</h3>
+            </div>{" "}
+            <div className="sidebar-items">
+              <img src={myRecipesIco} alt="" />
+              <h3>Receptjeim</h3>
+            </div>{" "}
+            <div className="sidebar-items">
+              <img src={addIco} alt="" />
+              <h3>Új recept</h3>
+            </div>
+          </div>
+        </div> */}
       </div>
     </>
   );
