@@ -15,6 +15,9 @@
   --rtest: 2px solid red;
   --active: #ee9b01;
 }
+button {
+  cursor: pointer;
+}
 
 .icon-hover {
   /* border: 2px solid black; */

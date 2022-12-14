@@ -63,12 +63,12 @@ const FetchAllContainer = () => {
   return (
     <>
       <div className="all-recipes-wrap full">
-        <FetchAllSearch
+        {/* <FetchAllSearch
           handleChange={handleChange}
           handleClearValues={handleClearValues}
           searchTerm={searchTerm}
           results={results.length}
-        />
+        /> */}
 
         <div className="pagination-align">
           {

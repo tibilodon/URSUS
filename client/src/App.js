@@ -24,6 +24,7 @@ import SearchNot from "./Components/Alert/SearchNot";
 import MemberNav from "./Components/Navbar/MemberNav/MemberNav";
 import MemberCardHolder from "./Pages/Shared/MemberCardHolder/MemberCardHolder";
 import NewPagination from "./Components/Pagination/NewPagination";
+import EditAllowed from "./Components/EditAllowed/EditAllowed";
 
 function App() {
   return (
@@ -56,7 +57,14 @@ function App() {
             {/*TODO: --TEST--LOGGED IN----*/}
             {/* <Route path="test" element={<PublicLanding />} /> */}
             {/* TODO: --TEST-- LOGGED IN*/}
-            <Route path="all-recipes" element={<FetchAllContainer />} />
+            <Route
+              path="all-recipes"
+              element={
+                <>
+                  <FetchAllContainer />
+                </>
+              }
+            />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route
@@ -94,7 +102,7 @@ function App() {
             path="/test"
             element={
               <>
-                <NewPagination />
+                <EditAllowed />
               </>
             }
           />

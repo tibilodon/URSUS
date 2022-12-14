@@ -1,3 +1,10 @@
 .paggi {
-  padding-top: 3em;
+  position: fixed;
+  display: flex;
+  /* border: var(--test); */
+  width: 100%;
+  z-index: 1;
+  top: 3em;
+  height: 3em;
+  /* margin-bottom: 8em; */
 }

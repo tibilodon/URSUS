@@ -17,6 +17,11 @@ const Sidebar = () => {
     setSidebar(!sidebar);
   };
 
+  const handleClose = path => {
+    setSidebar(false);
+    navigate(`${path}`);
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -29,18 +34,24 @@ const Sidebar = () => {
               </div>
               <div className="sidebar-items-wrap">
                 <div
-                  onClick={() => navigate("/all-recipes")}
+                  // onClick={() => navigate("/all-recipes")}
+                  onClick={e => handleClose("/all-recipes")}
                   className="sidebar-items"
                 >
                   <img src={allRecipesIco} alt="" />
                   <h3>Receptek</h3>
                 </div>{" "}
-                <div onClick={() => navigate("/")} className="sidebar-items">
+                <div
+                  // onClick={() => navigate("/")}
+                  onClick={() => handleClose("/")}
+                  className="sidebar-items"
+                >
                   <img src={myRecipesIco} alt="" />
                   <h3>Receptjeim</h3>
                 </div>{" "}
                 <div
-                  onClick={() => navigate("/add-recipe")}
+                  // onClick={() => navigate("/add-recipe")}
+                  onClick={() => handleClose("/add-recipe")}
                   className="sidebar-items"
                 >
                   <img src={addIco} alt="" />

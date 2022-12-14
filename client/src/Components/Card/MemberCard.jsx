@@ -11,20 +11,20 @@ import "moment/locale/hu";
 //firebase
 import { storage } from "../../firebase";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import EditAllowed from "../EditAllowed/EditAllowed";
 
-const MemberCard = ({ recipe }) => {
-  const {
-    _id,
-    title,
-    recipeType,
-    difficulty,
-    createdAt,
-    timeMinutesValue,
-    timeHoursValue,
-    steps,
-    ingredients,
-    imgRef,
-  } = recipe;
+const MemberCard = ({
+  _id,
+  title,
+  recipeType,
+  difficulty,
+  createdAt,
+  timeMinutesValue,
+  timeHoursValue,
+  steps,
+  ingredients,
+  imgRef,
+}) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
   //moments - date
   moment.locale("hu");
@@ -94,15 +94,18 @@ const MemberCard = ({ recipe }) => {
             <h1>{title}</h1>
           </div>
 
-          {(timeHoursValue || timeMinutesValue) && (
-            <div className="card-time">
-              <img className="card-ico" src={time} alt="" />
-              <div>
-                {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
-                {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
+          <div className="edit-allowed">
+            {(timeHoursValue || timeMinutesValue) && (
+              <div className="card-time">
+                <img className="card-ico" src={time} alt="" />
+                <div>
+                  {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
+                  {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+            <EditAllowed id={_id} />
+          </div>
         </div>
       </div>
     </div>

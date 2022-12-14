@@ -28,7 +28,6 @@ const RecipeItem = ({
   steps,
   ingredients,
   imgRef,
-  imgURL,
 }) => {
   const { setEditRecipe, deleteRecipe } = useAppContext();
   //moments - date

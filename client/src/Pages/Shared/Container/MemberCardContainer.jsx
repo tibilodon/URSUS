@@ -1,3 +1,4 @@
+import "./MemberCardContainerStyles.css";
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import MemberCard from "../../../Components/Card/MemberCard";
@@ -48,7 +49,7 @@ const MemberCardContainer = () => {
   return recipes.map(recipe => {
     return (
       <div key={recipe._id} className="card-holder-card-wrap">
-        <MemberCard recipe={recipe} />
+        <MemberCard {...recipe} />
       </div>
     );
   });
