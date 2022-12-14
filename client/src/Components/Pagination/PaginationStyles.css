@@ -3,17 +3,19 @@
   /* border: var(--test); */
   display: flex;
   /* width: fit-content; */
-  left: 30%;
+  /* left: 30%; */
   /* left: 50vh; */
   width: 100%;
   /* width: 12em; */
   /* left: 30%; */
   /* right: 30%; */
   justify-content: center;
-  margin-bottom: 3em;
-  padding-top: 0.1em;
+  /* margin-bottom: 3em; */
+  /* padding: 0.8em; */
+  /* margin-bottom: 0.2em; */
+  padding-bottom: 0.2em;
   position: sticky;
-  top: 3em;
+  /* top: 3em; */
   align-self: flex-start;
   /* z-index: 2; */
   overflow: hidden;

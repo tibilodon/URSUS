@@ -1,18 +1,18 @@
 .paggi {
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   justify-content: center;
   /* border: var(--test); */
   /* z-index: 1; */
   overflow: hidden;
-  top: 3em;
+  /* top: 3em; */
   height: 3em;
   width: 100%;
   /* margin-bottom: 8em; */
-  position: absolute;
+  /* position: absolute; */
 }
 .paggi-z-index {
-  z-index: 1;
+  /* z-index: 1; */
   /* border: 2px solid black; */
   /* width: 100%; */
 }

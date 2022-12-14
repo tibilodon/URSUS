@@ -16,6 +16,7 @@ const MemberCardHolder = () => {
     <>
       {/* {numOfPages >= 1 && ( */}
       <BgWrap>
+        <MemberCardContainer />
         <div className="paggi">
           {numOfPages > 1 && (
             <>
@@ -25,7 +26,6 @@ const MemberCardHolder = () => {
             </>
           )}
         </div>
-        <MemberCardContainer />
         {/* )} */}
       </BgWrap>
     </>

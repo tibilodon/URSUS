@@ -5,7 +5,8 @@ import menu from "../../Assets/menu_ico.svg";
 import addIco from "../../Assets/add_ico.svg";
 import myRecipesIco from "../../Assets/my-recipes_ico.svg";
 import allRecipesIco from "../../Assets/all-recipes_ico.svg";
-import closeSquare from "../../Assets/close-square_ico.svg";
+import closeSquare from "../../Assets/close-x_ico.svg";
+// import closeSquare from "../../Assets/close-square_ico.svg";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {

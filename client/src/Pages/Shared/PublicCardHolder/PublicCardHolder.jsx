@@ -62,18 +62,6 @@ const PublicCardHolder = () => {
       <PublicNavTest handleChange={handleChange} searchTerm={searchTerm} />
       <BgWrap>
         {results.length >= 1 ? (
-          <NewPagination
-            page={currentPage}
-            postsPerPage={postsPerPage}
-            //or allRecipes.length
-            totalPosts={results.length}
-            paginate={paginate}
-            prevPage={prevPage}
-            nextPage={nextPage}
-          />
-        ) : null}
-
-        {results.length >= 1 ? (
           currentPosts.map(recipe => {
             return (
               <div key={recipe.createdAt} className="card-holder-card-wrap">
@@ -84,6 +72,19 @@ const PublicCardHolder = () => {
         ) : (
           <SearchNot />
         )}
+        {results.length >= 1 ? (
+          <div onClick={() => window.scrollTo(0, 0)}>
+            <NewPagination
+              page={currentPage}
+              postsPerPage={postsPerPage}
+              //or allRecipes.length
+              totalPosts={results.length}
+              paginate={paginate}
+              prevPage={prevPage}
+              nextPage={nextPage}
+            />
+          </div>
+        ) : null}
       </BgWrap>
     </>
   );

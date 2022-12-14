@@ -75,60 +75,29 @@ const FetchAllContainer = ({
   return (
     <>
       <BgWrap>
-        {/* <div className="all-recipes-wrap full"> */}
-        {/* <FetchAllSearch
-          handleChange={handleChange}
-          handleClearValues={handleClearValues}
-          searchTerm={searchTerm}
-          results={results.length}
-        /> */}
-
-        <div className="pagination-align">
-          {/* {
-            <PublicPagination
-              page={currentPage}
-              postsPerPage={postsPerPage}
-              //or allRecipes.length
-              totalPosts={results.length}
-              paginate={paginate}
-              prevPage={prevPage}
-              nextPage={nextPage}
-            />
-          } */}
-          {totalPosts >= 1 ? (
-            <NewPagination
-              page={currentPage}
-              postsPerPage={postsPerPage}
-              //or allRecipes.length
-              totalPosts={totalPosts}
-              paginate={paginate}
-              prevPage={prevPage}
-              nextPage={nextPage}
-            />
-          ) : null}
-        </div>
-
-        {/* <Grid container justifyContent={"center"}>
+        <div className={totalPosts === 1 ? "full" : null}>
           {results &&
             currentPosts.map(recipe => {
               return (
-                <div key={recipe.createdAt} className="full">
-                  <Grid item xs={12} sx={{ margin: "2em" }}>
-                    <FetchedItem recipe={recipe} />
-                  </Grid>
+                <div className={"keksz"} key={recipe.createdAt}>
+                  <Card {...recipe} recipe={recipe} />
                 </div>
               );
             })}
-        </Grid> */}
-        {results &&
-          currentPosts.map(recipe => {
-            return (
-              <div key={recipe.createdAt}>
-                <Card {...recipe} recipe={recipe} />
-              </div>
-            );
-          })}
-        {/* </div> */}
+          {totalPosts >= 1 ? (
+            <div onClick={() => window.scrollTo(0, 0)}>
+              <NewPagination
+                page={currentPage}
+                postsPerPage={postsPerPage}
+                //or allRecipes.length
+                totalPosts={totalPosts}
+                paginate={paginate}
+                prevPage={prevPage}
+                nextPage={nextPage}
+              />
+            </div>
+          ) : null}
+        </div>
       </BgWrap>
     </>
   );

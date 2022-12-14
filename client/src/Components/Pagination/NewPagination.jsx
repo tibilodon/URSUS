@@ -15,6 +15,7 @@ const NewPagination = ({
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
+
   return (
     <>
       <div className="pagi-wrap">
