@@ -61,14 +61,6 @@ const PublicCardHolder = () => {
     <>
       <PublicNavTest handleChange={handleChange} searchTerm={searchTerm} />
       <BgWrap>
-        {/* <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            border: "2px solid red",
-          }}
-        > */}
-        {/* <div className="pagi-al"> */}
         {results.length >= 1 ? (
           <NewPagination
             page={currentPage}
@@ -81,13 +73,10 @@ const PublicCardHolder = () => {
           />
         ) : null}
 
-        {/* </div> */}
-        {/* </div> */}
         {results.length >= 1 ? (
           currentPosts.map(recipe => {
             return (
               <div key={recipe.createdAt} className="card-holder-card-wrap">
-                {/* <Card /> */}
                 <Card recipe={recipe} />
               </div>
             );
@@ -95,10 +84,6 @@ const PublicCardHolder = () => {
         ) : (
           <SearchNot />
         )}
-        {/* <div className="card-holder-card-wrap">
-          <Card />
-
-        </div> */}
       </BgWrap>
     </>
   );

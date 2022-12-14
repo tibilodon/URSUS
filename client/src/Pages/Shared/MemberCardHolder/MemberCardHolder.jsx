@@ -16,7 +16,15 @@ const MemberCardHolder = () => {
     <>
       {/* {numOfPages >= 1 && ( */}
       <BgWrap>
-        <div className="paggi">{numOfPages > 1 && <MemberNewPagination />}</div>
+        <div className="paggi">
+          {numOfPages > 1 && (
+            <>
+              <div className="paggi-z-index">
+                <MemberNewPagination />
+              </div>
+            </>
+          )}
+        </div>
         <MemberCardContainer />
         {/* )} */}
       </BgWrap>
