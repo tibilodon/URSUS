@@ -7,9 +7,15 @@ import myRecipesIco from "../../Assets/my-recipes_ico.svg";
 import allRecipesIco from "../../Assets/all-recipes_ico.svg";
 import closeSquare from "../../Assets/close-x_ico.svg";
 // import closeSquare from "../../Assets/close-square_ico.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+  const pathMatchRoute = route => {
+    if (route === location.pathname) {
+      return true;
+    }
+  };
   const navigate = useNavigate();
   const [sidebar, setSidebar] = useState(false);
 
@@ -39,7 +45,11 @@ const Sidebar = () => {
                   onClick={e => handleClose("/all-recipes")}
                   className="sidebar-items"
                 >
-                  <img src={allRecipesIco} alt="" />
+                  <img
+                    className={pathMatchRoute("/all-recipes") ? "path" : null}
+                    src={allRecipesIco}
+                    alt=""
+                  />
                   <h3>Receptek</h3>
                 </div>{" "}
                 <div
@@ -47,7 +57,11 @@ const Sidebar = () => {
                   onClick={() => handleClose("/")}
                   className="sidebar-items"
                 >
-                  <img src={myRecipesIco} alt="" />
+                  <img
+                    className={pathMatchRoute("/") ? "path" : null}
+                    src={myRecipesIco}
+                    alt=""
+                  />
                   <h3>Receptjeim</h3>
                 </div>{" "}
                 <div
@@ -55,7 +69,11 @@ const Sidebar = () => {
                   onClick={() => handleClose("/add-recipe")}
                   className="sidebar-items"
                 >
-                  <img src={addIco} alt="" />
+                  <img
+                    className={pathMatchRoute("/add-recipe") ? "path" : null}
+                    src={addIco}
+                    alt=""
+                  />
                   <h3>Új recept</h3>
                 </div>
               </div>
