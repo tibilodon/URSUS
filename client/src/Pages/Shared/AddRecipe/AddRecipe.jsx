@@ -26,6 +26,10 @@ import {
 import { v4 } from "uuid";
 import { useEffect } from "react";
 import BtnOne from "../../../Components/Buttons/BtnOne";
+import addBg from "../../../Assets/add-bg.jpg";
+import difficultyIco from "../../../Assets/difficulty.svg";
+import typeIco from "../../../Assets/rec-type.svg";
+import timeIco from "../../../Assets/time.svg";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -278,7 +282,7 @@ const AddRecipe = () => {
 
   return (
     <>
-      <div className="add-recipe">
+      <div style={{ backgroundImage: `url(${addBg})` }} className="add-recipe">
         <div className="add-recipe-wrap">
           <form className="recipe-form">
             <div className="add-edit-wrap">
@@ -315,13 +319,13 @@ const AddRecipe = () => {
               </div>
             </div>
             <div className="add-input">
-              <InputField
+              {/* <InputField
                 searchLabel="title"
                 type="text"
                 name="title"
                 value={title}
                 handleChange={handleRecipeInput}
-              />{" "}
+              />{" "} */}
               <input
                 type="text"
                 placeholder="receptnév"
@@ -334,7 +338,8 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    <ScaleIcon />
+                    {/* <ScaleIcon /> */}
+                    <img src={difficultyIco} alt="" />
                   </div>
                   <InputFieldSelect
                     name="difficulty"
@@ -347,7 +352,8 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    <LocalDiningIcon />
+                    {/* <LocalDiningIcon /> */}
+                    <img src={typeIco} alt="" />
                   </div>
                   <InputFieldSelect
                     name="recipeType"
@@ -361,24 +367,39 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    <AccessTimeIcon />
+                    {/* <AccessTimeIcon /> */}
+                    <img src={timeIco} alt="" />
                   </div>
                   <div className="add-input">
-                    <InputField
+                    {/* <InputField
                       type="number"
                       searchLabel="perc"
                       name="timeMinutesValue"
                       value={timeMinutesValue}
                       handleChange={handleRecipeInput}
-                    />{" "}
+                    />{" "} */}
+                    <input
+                      type="number"
+                      placeholder="perc"
+                      name="timeMinutesValue"
+                      value={timeMinutesValue}
+                      onChange={handleRecipeInput}
+                    />
                   </div>
                   <div className="add-input time">
-                    <InputField
+                    {/* <InputField
                       type="number"
                       searchLabel="óra"
                       name="timeHoursValue"
                       value={timeHoursValue}
                       handleChange={handleRecipeInput}
+                    /> */}
+                    <input
+                      type="number"
+                      placeholder="óra"
+                      name="timeHoursValue"
+                      value={timeHoursValue}
+                      onChange={handleRecipeInput}
                     />
                   </div>
                 </div>
@@ -399,6 +420,7 @@ const AddRecipe = () => {
                           name="ingredients"
                           handleChange={e => ingredientHandler(i, e)}
                           type="text"
+                          btnType={"button"}
                         />
                       </div>
                     );
@@ -415,6 +437,7 @@ const AddRecipe = () => {
                           name="ingredients"
                           handleChange={e => fetchedIngredientHandler(i, e)}
                           type="text"
+                          btnType={"button"}
                         />
                       </div>
                     );
@@ -435,6 +458,7 @@ const AddRecipe = () => {
                           name="steps"
                           handleChange={e => stepHandler(i, e)}
                           type="text"
+                          btnType={"button"}
                         />
                       </div>
                     );
@@ -451,6 +475,7 @@ const AddRecipe = () => {
                           name="steps"
                           handleChange={e => fetchedStepHandler(i, e)}
                           type="text"
+                          btnType={"button"}
                         />
                       </div>
                     );
@@ -458,7 +483,13 @@ const AddRecipe = () => {
               </div>
             </div>
             <div className="flex-center-wrap">
-              <Button
+              <BtnOne
+                btnType={"submit"}
+                onClick={handleSubmit}
+                disabled={isLoading}
+                text={"Kész"}
+              />
+              {/* <Button
                 type="submit"
                 onClick={handleSubmit}
                 disabled={isLoading}
@@ -466,7 +497,7 @@ const AddRecipe = () => {
                 endIcon={<SendIcon />}
               >
                 Kész
-              </Button>
+              </Button> */}
             </div>
           </form>
         </div>

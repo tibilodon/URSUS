@@ -4,7 +4,17 @@ import { MenuItem, InputLabel, Select } from "@mui/material";
 const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
     <div>
-      <InputLabel id={name}>{labelText}</InputLabel>
+      {/* <label htmlFor="select-opt">geg</label> */}
+      <select name={name} onChange={handleChange} value={value} id="select-opt">
+        {list.map((itemValue, index) => {
+          return (
+            <option key={index} value={itemValue}>
+              {itemValue}
+            </option>
+          );
+        })}
+      </select>
+      {/* <InputLabel id={name}>{labelText}</InputLabel>
       <Select value={value} name={name} onChange={handleChange}>
         {list.map((itemValue, index) => {
           return (
@@ -13,7 +23,7 @@ const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
             </MenuItem>
           );
         })}
-      </Select>
+      </Select> */}
     </div>
   );
 };

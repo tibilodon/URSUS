@@ -14,6 +14,7 @@ const MultipleInput = ({
   handleChange,
 
   searchLabel,
+  btnType,
 }) => {
   return (
     <>
@@ -46,10 +47,10 @@ const MultipleInput = ({
         </div>
         <div className="multiple-btn">
           <div className="multi-wrap-icon" onClick={addHandler}>
-            <BtnOne bgCol="green" img={addIcon} />
+            <BtnOne btnType={btnType} bgCol="green" img={addIcon} />
           </div>
           <div className="multi-wrap-icon" onClick={removeHandler}>
-            <BtnOne img={removeIcon} />
+            <BtnOne btnType={btnType} img={removeIcon} />
           </div>
         </div>
       </div>

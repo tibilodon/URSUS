@@ -2,10 +2,15 @@ import "./ButtonStyles.css";
 
 import React from "react";
 
-const BtnOne = ({ bgCol, text, img }) => {
+const BtnOne = ({ bgCol, text, img, btnType, onClick, disabled }) => {
   return (
     <>
-      <button type="button" className={`btnOne ${bgCol}`}>
+      <button
+        disabled={disabled}
+        onClick={onClick}
+        type={btnType}
+        className={`btnOne ${bgCol}`}
+      >
         {text && text}
         {img && <img src={img} alt="" />}
       </button>
