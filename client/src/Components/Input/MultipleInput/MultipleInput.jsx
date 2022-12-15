@@ -17,53 +17,67 @@ const MultipleInput = ({
 }) => {
   return (
     <>
-      {/* // <div className="multiple-input-wrap not-flex"> */}
-      {/* <InputField
-        searchLabel={searchLabel}
-        name={name}
-        value={value}
-        handleChange={handleChange}
-        type="text"
-      /> */}
-      <input
-        type="text"
-        name={name}
-        value={value}
-        onChange={handleChange}
-        placeholder={searchLabel}
-      />
-      <div className="multi-wrap-icon" onClick={addHandler}>
-        <BtnOne img={addIcon} />
+      {/* <div className="multiple-input-wrap not-flex">
+        <InputField
+          searchLabel={searchLabel}
+          name={name}
+          value={value}
+          handleChange={handleChange}
+          type="text"
+        />
+
+        <input
+          type="text"
+          name={name}
+          value={value}
+          onChange={handleChange}
+          placeholder={searchLabel}
+        /> */}
+
+      <div className="multiple-wrap">
+        <div className="add-input">
+          <input
+            type="text"
+            name={name}
+            value={value}
+            onChange={handleChange}
+            placeholder={searchLabel}
+          />
+        </div>
+        <div className="multiple-btn">
+          <div className="multi-wrap-icon" onClick={addHandler}>
+            <BtnOne bgCol="green" img={addIcon} />
+          </div>
+          <div className="multi-wrap-icon" onClick={removeHandler}>
+            <BtnOne img={removeIcon} />
+          </div>
+        </div>
       </div>
-      <div onClick={removeHandler}>
-        <BtnOne img={removeIcon} />
-      </div>
-      {/* <button type="button" onClick={addHandler}>
-        <img src={addIcon} alt="" />
-      </button>
-      <button type="button" onClick={removeHandler}>
-        <img src={removeIcon} alt="" />
-      </button> */}
+
       {/* <ButtonGroup sx={{ ml: "1em" }}>
-        <Button
-          type="button"
-          onClick={addHandler}
-          endIcon={<AddIcon />}
-          variant="contained"
-        >
-          Hozzávaló
-        </Button>
-        <Button
-          type="button"
-          onClick={removeHandler}
-          color="secondary"
-          endIcon={<DeleteIcon />}
-          variant="contained"
-        >
-          Hozzávaló
-        </Button>
-      </ButtonGroup> */}
-      {/* // </div> */}
+          <Button
+            type="button"
+            onClick={addHandler}
+            endIcon={<AddIcon />}
+            variant="contained"
+          >
+            Hozzávaló
+          </Button>
+          <button type="button" onClick={addHandler}>
+            +add
+          </button>
+
+          <Button
+            type="button"
+            onClick={removeHandler}
+            color="secondary"
+            endIcon={<DeleteIcon />}
+            variant="contained"
+          >
+            Hozzávaló
+          </Button>
+        </ButtonGroup>
+      </div> */}
     </>
   );
 };

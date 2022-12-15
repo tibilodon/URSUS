@@ -10,7 +10,30 @@
 .multi-wrap-icon {
   /* width: 100%; */
   display: flex;
-  border: var(--test);
-  width: 4em;
+  /* border: var(--test); */
+  width: 3em;
+  height: 2.1em;
+}
+
+.add-input {
   height: 2em;
+}
+.add-input input {
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.4em;
+  padding: 0.5em;
+}
+.multiple-btn {
+  /* border: var(--rtest); */
+  display: flex;
+  width: 7em;
+
+  justify-content: space-around;
+}
+
+.multiple-wrap {
+  display: flex;
+  align-items: center;
 }

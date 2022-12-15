@@ -258,7 +258,9 @@ const NewAdd = () => {
   return (
     <>
       <div>NewAdd</div>
-      <MultipleInput />
+      <div className="add-multiple">
+        <MultipleInput />
+      </div>
     </>
   );
 };

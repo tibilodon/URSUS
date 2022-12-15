@@ -5,8 +5,8 @@ import React from "react";
 const BtnOne = ({ bgCol, text, img }) => {
   return (
     <>
-      <button className={`btnOne ${bgCol}`}>
-        {text}
+      <button type="button" className={`btnOne ${bgCol}`}>
+        {text && text}
         {img && <img src={img} alt="" />}
       </button>
     </>

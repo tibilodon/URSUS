@@ -25,6 +25,7 @@ import {
 } from "firebase/storage";
 import { v4 } from "uuid";
 import { useEffect } from "react";
+import BtnOne from "../../../Components/Buttons/BtnOne";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -298,10 +299,11 @@ const AddRecipe = () => {
               )}
               <div className="upload-label">
                 <label htmlFor="files">
-                  <Button variant="contained" color="primary" component="span">
+                  {/* <Button variant="contained" color="primary" component="span">
                     {" "}
                     {prev ? "Képcsere" : "Képfeltöltés"}
-                  </Button>
+                  </Button> */}
+                  <BtnOne text={prev ? "Képcsere" : "Képfeltöltés"} />
                 </label>
                 <input
                   onChange={e => setImageUpload(e.target.files[0])}
@@ -312,7 +314,7 @@ const AddRecipe = () => {
                 />
               </div>
             </div>
-            <div className="flex-center-wrap">
+            <div className="add-input">
               <InputField
                 searchLabel="title"
                 type="text"
@@ -320,6 +322,13 @@ const AddRecipe = () => {
                 value={title}
                 handleChange={handleRecipeInput}
               />{" "}
+              <input
+                type="text"
+                placeholder="receptnév"
+                name="title"
+                value={title}
+                onChange={handleRecipeInput}
+              />
             </div>
             <div className="other-details-wrap">
               <div className="flex-end-wrap">
