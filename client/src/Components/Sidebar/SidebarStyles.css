@@ -75,12 +75,14 @@
 .close-ico {
   display: flex;
   /* border: var(--test); */
-  /* margin-left: -1em; */
+  margin-left: -1em;
   padding: 0;
-  justify-content: flex-start;
+  /* margin: 0; */
+  /* justify-content: flex-start; */
   /* top: 0; */
 }
 .close-ico img {
+  /* width: 1em; */
   background-color: var(--active);
   /* width: 1.8em; */
   /* height: 1.5em; */

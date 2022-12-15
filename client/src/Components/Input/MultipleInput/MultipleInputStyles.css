@@ -7,3 +7,10 @@
     margin: 0;
   }
 }
+.multi-wrap-icon {
+  /* width: 100%; */
+  display: flex;
+  border: var(--test);
+  width: 4em;
+  height: 2em;
+}

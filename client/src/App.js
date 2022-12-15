@@ -25,6 +25,7 @@ import MemberNav from "./Components/Navbar/MemberNav/MemberNav";
 import MemberCardHolder from "./Pages/Shared/MemberCardHolder/MemberCardHolder";
 import NewPagination from "./Components/Pagination/NewPagination";
 import EditAllowed from "./Components/EditAllowed/EditAllowed";
+import NewAdd from "./Pages/Shared/AddRecipe/NewAdd";
 
 function App() {
   return (
@@ -102,7 +103,8 @@ function App() {
             path="/test"
             element={
               <>
-                <EditAllowed />
+                {/* <EditAllowed /> */}
+                <NewAdd />
               </>
             }
           />
