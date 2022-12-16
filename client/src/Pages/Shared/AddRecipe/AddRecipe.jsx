@@ -7,13 +7,6 @@ import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
 import MultipleInput from "../../../Components/Input/MultipleInput/MultipleInput";
 
-import SendIcon from "@mui/icons-material/Send";
-import Button from "@mui/material/Button";
-
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import ScaleIcon from "@mui/icons-material/Scale";
-
 //firebase
 import { storage } from "../../../firebase";
 import {
@@ -30,6 +23,8 @@ import addBg from "../../../Assets/add-bg.jpg";
 import difficultyIco from "../../../Assets/difficulty.svg";
 import typeIco from "../../../Assets/rec-type.svg";
 import timeIco from "../../../Assets/time.svg";
+import uploadIco from "../../../Assets/upload_ico.svg";
+import deleteIco from "../../../Assets/delete_ico.svg";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -54,18 +49,6 @@ const AddRecipe = () => {
     imgRef,
     // imgURL,
   } = useAppContext();
-
-  const [del, setDel] = useState();
-
-  // const [load, setLoad] = useState(false);
-
-  // const handleThings = e => {
-  //   setLoad(true);
-  //   uploadImage();
-
-  //   handleSubmit(e);
-  //   setLoad(false);
-  // };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -200,30 +183,35 @@ const AddRecipe = () => {
   //preview of the uploaded img
   const [prev, setPrev] = useState(null);
 
+  //ref for img
+  const [uploadedRef, setUploadedRef] = useState(null);
+
   //upload
   const uploadImage = e => {
     if (imageUpload === null) return;
     const imgName = imageUpload.name + v4();
+    setUploadedRef(imgName);
     handleChange({ name: "imgRef", value: imgName });
-
+    // console.log("IMGREF----", imgRef);
     const imageRef = ref(storage, `images/${imgName}`);
-
+    // setTest(imgName);
     uploadBytes(imageRef, imageUpload).then(snapshot => {
-      console.log("ERROR? NO ERROR, THEN GOOD");
+      getDownloadURL(snapshot.ref).then(url => {
+        console.log("File available at", url);
+        setPrev(url);
+      });
+      console.log("ERROR? NO ERROR, THEN GOOD", snapshot);
     });
   };
 
-  const [imgPath, setImgPath] = useState(null);
-
   useEffect(() => {
     console.log("PREV", prev);
-    console.log("IMG PATH", imgPath);
+    console.log("IMG PATH", uploadedRef);
     console.log("IMG UPLOAD", imageUpload);
     console.log("IMG REF", imgRef);
 
     if (imgRef) {
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
-        setImgPath(url);
         setPrev(url);
       });
     }
@@ -236,10 +224,14 @@ const AddRecipe = () => {
   }, [imageUpload, isEditing]);
 
   const deleteImg = () => {
-    const fetchedImgRef = ref(storage, `images/${imgRef}`);
+    const fetchedImgRef = ref(storage, `images/${uploadedRef || imgRef}`);
 
     deleteObject(fetchedImgRef)
       .then(() => {
+        handleChange({ name: "imgRef", value: null });
+        setPrev(null);
+        setImageUpload(null);
+        uploadedRef(null);
         console.log("img deleted");
       })
       .catch(error => {
@@ -264,25 +256,31 @@ const AddRecipe = () => {
               )}
 
               <div className="upload-label">
-                <label className="files-label" htmlFor="files">
-                  {/*TODO:ONLY SPAN WORKS WITH FILES*/}
-                  <div className="notBtnOne">
-                    <div className="btn-one-wrap">
-                      <span className="btnOne">
-                        {prev ? "Képcsere" : "Képfeltöltés"}
-                      </span>
-                    </div>
-                  </div>
-                </label>
-                <input
-                  onChange={e => {
-                    setImageUpload(e.target.files[0]);
-                  }}
-                  type="file"
-                  accept="image/*"
-                  id="files"
-                  style={{ display: "none" }}
-                />
+                {prev ? (
+                  <BtnOne onClick={deleteImg} img={deleteIco} text={"Törlés"} />
+                ) : (
+                  <>
+                    <label className="btnOne" htmlFor="files">
+                      {/*TODO:ONLY SPAN WORKS WITH FILES*/}
+                      {/* <div className="btn-one-wrap notBtn">
+                    <span className="btnOne ">
+                    {prev ? "Képcsere" : "Képfeltöltés"}
+                    </span>
+                  </div> */}
+                      upload
+                      <img src={uploadIco} alt="" />
+                    </label>
+                    <input
+                      onChange={e => {
+                        setImageUpload(e.target.files[0]);
+                      }}
+                      type="file"
+                      accept="image/*"
+                      id="files"
+                      style={{ display: "none" }}
+                    />
+                  </>
+                )}
               </div>
             </div>
             <div className="add-input">
