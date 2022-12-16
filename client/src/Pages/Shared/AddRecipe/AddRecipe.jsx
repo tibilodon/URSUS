@@ -197,7 +197,6 @@ const AddRecipe = () => {
   const [imageUpload, setImageUpload] = useState(null);
 
   //ref for the file, which gets deleted upon choosing another img
-  const [delRef, setDelRef] = useState(null);
   //preview of the uploaded img
   const [prev, setPrev] = useState(null);
 
@@ -208,48 +207,12 @@ const AddRecipe = () => {
     handleChange({ name: "imgRef", value: imgName });
 
     const imageRef = ref(storage, `images/${imgName}`);
-    // setDelRef(imageRef);
-    // console.log("imgREF", imageRef);
-    // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    // const metadata = {
-    //   contentType: "image/jpeg",
-    // };
+
     uploadBytes(imageRef, imageUpload).then(snapshot => {
       console.log("ERROR? NO ERROR, THEN GOOD");
     });
-
-    /*  uploadBytes(imageRef, imageUpload).then(snapshot => {
-      // alert("image uploaded");
-      getDownloadURL(snapshot.ref).then(url => {
-        // handleChange({ name: "imgURL", value: url });
-        // console.log(typeof url);
-        // setImageList(prev => [...prev, url]);
-        setPrev(url);
-        // console.log("uploaded link:", url);
-      });
-    });*/
   };
 
-  //retrieve ALL img
-  // const [imageList, setImageList] = useState([]);
-  // // setting ref for all images in the folder
-  // const imageListRef = ref(storage, "images/");
-  // useEffect(() => {
-  //   listAll(imageListRef).then(response => {
-  //     // console.log(response);
-  //     response.items.forEach(item => {
-  //       getDownloadURL(item).then(url => {
-  //         // setImageList(prev => [...prev, url]);
-  //         setImageList([url]);
-  //       });
-  //     });
-  //   });
-  //   // console.log(imageList);
-  // }, []);
-
-  // if (load) {
-  //   return <h1>LOADING</h1>;
-  // }
   const [imgPath, setImgPath] = useState(null);
 
   useEffect(() => {
@@ -257,29 +220,14 @@ const AddRecipe = () => {
     console.log("IMG PATH", imgPath);
     console.log("IMG UPLOAD", imageUpload);
     console.log("IMG REF", imgRef);
-    // console.log(imageUpload);
-    // console.log("IMGREF", imgRef, "imgpath", imgPath);
 
     if (imgRef) {
-      // const storage = getStorage();
-      // const imageRef = ref(storage, `images/${imgRef}`);
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
         setImgPath(url);
         setPrev(url);
       });
     }
-    // if (isEditing && imageUpload) {
-    //   const fetchedImgRef = ref(storage, `images/${imgRef}`);
 
-    //   //TODO:
-    //   deleteObject(fetchedImgRef)
-    //     .then(() => {
-    //       // console.log("img deleted");
-    //     })
-    //     .catch(error => {
-    //       console.log("error in useEffect delete", error);
-    //     });
-    // }
     //check state, if not null, then upload
     if (imageUpload) {
       uploadImage();
@@ -287,22 +235,9 @@ const AddRecipe = () => {
     //check state, delete if not null
   }, [imageUpload, isEditing]);
 
-  // if (isEditing && imageUpload) {
-  //   const fetchedImgRef = ref(storage, `images/${imgRef}`);
-
-  //   //TODO:
-  //   deleteObject(fetchedImgRef)
-  //     .then(() => {
-  //       console.log("img deleted");
-  //     })
-  //     .catch(error => {
-  //       console.log("error in useEffect delete", error);
-  //     });
-  // }
   const deleteImg = () => {
     const fetchedImgRef = ref(storage, `images/${imgRef}`);
 
-    //TODO:
     deleteObject(fetchedImgRef)
       .then(() => {
         console.log("img deleted");
@@ -311,17 +246,6 @@ const AddRecipe = () => {
         console.log("error in useEffect delete", error);
       });
   };
-
-  //TODO:
-  // if (delRef) {
-  //   deleteObject(delRef)
-  //     .then(() => {
-  //       console.log("DELETED");
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 
   return (
     <>
@@ -338,27 +262,9 @@ const AddRecipe = () => {
                   <img crossOrigin="anonymous" src={prev} alt="" />
                 </div>
               )}
-              {/* {imgPath ? (
-                <div className="img-card-wrap">
-                  <img
-                    crossOrigin="anonymous"
-                    src={imgPath && imgPath}
-                    alt={""}
-                  />
-                </div>
-              ) : (
-                prev && (
-                  <div className="img-card-wrap">
-                    <img crossOrigin="anonymous" src={prev && prev} alt={""} />
-                  </div>
-                )
-              )} */}
+
               <div className="upload-label">
                 <label className="files-label" htmlFor="files">
-                  {/* <Button variant="contained" color="primary" component="span">
-                    {" "}
-                    {prev ? "Képcsere" : "Képfeltöltés"}
-                  </Button> */}
                   {/*TODO:ONLY SPAN WORKS WITH FILES*/}
                   <div className="notBtnOne">
                     <div className="btn-one-wrap">
@@ -367,10 +273,8 @@ const AddRecipe = () => {
                       </span>
                     </div>
                   </div>
-                  {/* <BtnOne text={prev ? "Képcsere" : "Képfeltöltés"} /> */}
                 </label>
                 <input
-                  // onChange={e => setImageUpload(e.target.files[0])}
                   onChange={e => {
                     setImageUpload(e.target.files[0]);
                   }}
@@ -382,13 +286,6 @@ const AddRecipe = () => {
               </div>
             </div>
             <div className="add-input">
-              {/* <InputField
-                searchLabel="title"
-                type="text"
-                name="title"
-                value={title}
-                handleChange={handleRecipeInput}
-              />{" "} */}
               <input
                 type="text"
                 placeholder="receptnév"
@@ -401,7 +298,6 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    {/* <ScaleIcon /> */}
                     <img src={difficultyIco} alt="" />
                   </div>
                   <InputFieldSelect
@@ -415,7 +311,6 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    {/* <LocalDiningIcon /> */}
                     <img src={typeIco} alt="" />
                   </div>
                   <InputFieldSelect
@@ -430,17 +325,9 @@ const AddRecipe = () => {
               <div className="flex-end-wrap">
                 <div className="icon-align">
                   <div className="add-icon">
-                    {/* <AccessTimeIcon /> */}
                     <img src={timeIco} alt="" />
                   </div>
                   <div className="add-input">
-                    {/* <InputField
-                      type="number"
-                      searchLabel="perc"
-                      name="timeMinutesValue"
-                      value={timeMinutesValue}
-                      handleChange={handleRecipeInput}
-                    />{" "} */}
                     <input
                       type="number"
                       placeholder="perc"
@@ -450,13 +337,6 @@ const AddRecipe = () => {
                     />
                   </div>
                   <div className="add-input time">
-                    {/* <InputField
-                      type="number"
-                      searchLabel="óra"
-                      name="timeHoursValue"
-                      value={timeHoursValue}
-                      handleChange={handleRecipeInput}
-                    /> */}
                     <input
                       type="number"
                       placeholder="óra"
@@ -552,15 +432,6 @@ const AddRecipe = () => {
                 disabled={isLoading}
                 text={"Kész"}
               />
-              {/* <Button
-                type="submit"
-                onClick={handleSubmit}
-                disabled={isLoading}
-                variant="contained"
-                endIcon={<SendIcon />}
-              >
-                Kész
-              </Button> */}
             </div>
           </form>
         </div>
