@@ -8,8 +8,10 @@ import allRecipesIco from "../../Assets/all-recipes_ico.svg";
 import closeSquare from "../../Assets/close-x_ico.svg";
 // import closeSquare from "../../Assets/close-square_ico.svg";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useAppContext } from "../../Context/appContext";
 
 const Sidebar = () => {
+  const { clearValues, handleChange } = useAppContext();
   const location = useLocation();
   const pathMatchRoute = route => {
     if (route === location.pathname) {
@@ -27,6 +29,15 @@ const Sidebar = () => {
   const handleClose = path => {
     setSidebar(false);
     navigate(`${path}`);
+  };
+
+  const handleAddRecipe = () => {
+    if (pathMatchRoute("/add-recipe")) {
+      // window.location.refresh();
+    }
+    setSidebar(false);
+    clearValues();
+    navigate("/add-recipe");
   };
 
   return (
@@ -66,7 +77,13 @@ const Sidebar = () => {
                 </div>{" "}
                 <div
                   // onClick={() => navigate("/add-recipe")}
-                  onClick={() => handleClose("/add-recipe")}
+                  // onClick={() => {
+
+                  //   setSidebar(false);
+                  //   clearValues();
+                  //   navigate("/add-recipe");
+                  // }}
+                  onClick={e => handleAddRecipe()}
                   className="sidebar-items"
                 >
                   <img

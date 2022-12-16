@@ -47,7 +47,7 @@ const MultipleInput = ({
         </div>
         <div className="multiple-btn">
           <div className="multi-wrap-icon" onClick={addHandler}>
-            <BtnOne btnType={btnType} bgCol="green" img={addIcon} />
+            <BtnOne btnType={btnType} img={addIcon} />
           </div>
           <div className="multi-wrap-icon" onClick={removeHandler}>
             <BtnOne btnType={btnType} img={removeIcon} />

@@ -132,7 +132,8 @@ const reducer = (state, action) => {
 
       timeMinutesValue: "",
       timeHoursValue: "",
-      imgRef: "",
+      imgRef: null,
+
       // imgURL: "",
     };
     return {

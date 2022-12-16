@@ -102,7 +102,7 @@ const initialState = {
   searchType: "összes",
   sort: "legújabb",
   sortOptions: ["legújabb", "legrégebbi", "a-z", "z-a"],
-  imgRef: "",
+  imgRef: null,
   // imgURL: "",
 };
 

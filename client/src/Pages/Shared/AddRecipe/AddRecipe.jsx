@@ -206,21 +206,27 @@ const AddRecipe = () => {
     handleChange({ name: "imgRef", value: imgName });
 
     const imageRef = ref(storage, `images/${imgName}`);
-    setDelRef(imageRef);
+    // setDelRef(imageRef);
     // console.log("imgREF", imageRef);
     // const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    const metadata = {
-      contentType: "image/jpeg",
-    };
-    uploadBytes(imageRef, imageUpload, metadata).then(snapshot => {
+    // const metadata = {
+    //   contentType: "image/jpeg",
+    // };
+    uploadBytes(imageRef, imageUpload).then(snapshot => {
       // alert("image uploaded");
       getDownloadURL(snapshot.ref).then(url => {
         // handleChange({ name: "imgURL", value: url });
         // console.log(typeof url);
         // setImageList(prev => [...prev, url]);
         setPrev(url);
+        console.log("uploaded link:", url);
       });
     });
+  };
+
+  const hitMe = e => {
+    setImageUpload(e.target.files[0]);
+    uploadImage();
   };
 
   //retrieve ALL img
@@ -246,11 +252,14 @@ const AddRecipe = () => {
   const [imgPath, setImgPath] = useState(null);
 
   useEffect(() => {
+    console.log("IMGREF", imgRef, "imgpath", imgPath);
+
     if (imgRef) {
       // const storage = getStorage();
       // const imageRef = ref(storage, `images/${imgRef}`);
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
         setImgPath(url);
+        setPrev(url);
       });
     }
     if (isEditing && imageUpload) {
@@ -269,16 +278,16 @@ const AddRecipe = () => {
       uploadImage();
     }
     //check state, delete if not null
-    if (delRef) {
-      deleteObject(delRef)
-        .then(() => {
-          // console.log("DELETED");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
   }, [imageUpload]);
+  if (delRef) {
+    deleteObject(delRef)
+      .then(() => {
+        console.log("DELETED");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -290,26 +299,44 @@ const AddRecipe = () => {
               {showAlert && <Alert />}
             </div>
             <div>
-              {imgPath ? (
+              {prev && (
                 <div className="img-card-wrap">
-                  <img crossOrigin="anonymous" src={imgPath} alt={""} />
+                  <img crossOrigin="anonymous" src={prev} alt="" />
+                </div>
+              )}
+              {/* {imgPath ? (
+                <div className="img-card-wrap">
+                  <img
+                    crossOrigin="anonymous"
+                    src={imgPath && imgPath}
+                    alt={""}
+                  />
                 </div>
               ) : (
                 prev && (
                   <div className="img-card-wrap">
-                    <img crossOrigin="anonymous" src={prev} alt={""} />
+                    <img crossOrigin="anonymous" src={prev && prev} alt={""} />
                   </div>
                 )
-              )}
+              )} */}
               <div className="upload-label">
-                <label htmlFor="files">
+                <label className="files-label" htmlFor="files">
                   {/* <Button variant="contained" color="primary" component="span">
                     {" "}
                     {prev ? "Képcsere" : "Képfeltöltés"}
                   </Button> */}
-                  <BtnOne text={prev ? "Képcsere" : "Képfeltöltés"} />
+                  {/*TODO:ONLY SPAN WORKS WITH FILES*/}
+                  <div className="notBtnOne">
+                    <div className="btn-one-wrap">
+                      <span className="btnOne">
+                        {prev ? "Képcsere" : "Képfeltöltés"}
+                      </span>
+                    </div>
+                  </div>
+                  {/* <BtnOne text={prev ? "Képcsere" : "Képfeltöltés"} /> */}
                 </label>
                 <input
+                  // onChange={e => setImageUpload(e.target.files[0])}
                   onChange={e => setImageUpload(e.target.files[0])}
                   type="file"
                   accept="image/*"
@@ -407,7 +434,7 @@ const AddRecipe = () => {
             </div>
             {/*TODO:----ingredients----*/}
             <div className="multi-wrap">
-              <div className="ings">
+              <div className="add-multi">
                 {!isEditing &&
                   ingredient.map((ing, i) => {
                     return (
@@ -445,7 +472,7 @@ const AddRecipe = () => {
               </div>
               {/*TODO:----STEP----*/}
 
-              <div className="steps">
+              <div className="add-multi">
                 {!isEditing &&
                   step.map((steps, i) => {
                     return (
