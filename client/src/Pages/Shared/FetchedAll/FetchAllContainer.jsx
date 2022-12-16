@@ -20,7 +20,7 @@ const FetchAllContainer = ({
   currentPage,
   totalPosts,
 }) => {
-  // const { allRecipes, fetchAll } = useAppContext();
+  const { fetchAll } = useAppContext();
   // const [searchTerm, setSearchTerm] = useState("");
 
   // const handleChange = e => {
@@ -68,9 +68,9 @@ const FetchAllContainer = ({
   //   setCurrentPage(newPage);
   // };
 
-  // useEffect(() => {
-  //   fetchAll();
-  // }, []);
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   return (
     <>

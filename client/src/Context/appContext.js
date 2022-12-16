@@ -323,11 +323,11 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  useEffect(() => {
-    // getRecipes();
-    // fetchAll();
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  // getRecipes();
+  // fetchAll();
+  // eslint-disable-next-line
+  // }, []);
 
   //set recipe to form
   const setEditRecipe = id => {

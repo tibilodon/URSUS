@@ -55,6 +55,8 @@ const AddRecipe = () => {
     // imgURL,
   } = useAppContext();
 
+  const [del, setDel] = useState();
+
   // const [load, setLoad] = useState(false);
 
   // const handleThings = e => {
@@ -200,7 +202,7 @@ const AddRecipe = () => {
   const [prev, setPrev] = useState(null);
 
   //upload
-  const uploadImage = () => {
+  const uploadImage = e => {
     if (imageUpload === null) return;
     const imgName = imageUpload.name + v4();
     handleChange({ name: "imgRef", value: imgName });
@@ -213,20 +215,19 @@ const AddRecipe = () => {
     //   contentType: "image/jpeg",
     // };
     uploadBytes(imageRef, imageUpload).then(snapshot => {
+      console.log("ERROR? NO ERROR, THEN GOOD");
+    });
+
+    /*  uploadBytes(imageRef, imageUpload).then(snapshot => {
       // alert("image uploaded");
       getDownloadURL(snapshot.ref).then(url => {
         // handleChange({ name: "imgURL", value: url });
         // console.log(typeof url);
         // setImageList(prev => [...prev, url]);
         setPrev(url);
-        console.log("uploaded link:", url);
+        // console.log("uploaded link:", url);
       });
-    });
-  };
-
-  const hitMe = e => {
-    setImageUpload(e.target.files[0]);
-    uploadImage();
+    });*/
   };
 
   //retrieve ALL img
@@ -252,7 +253,12 @@ const AddRecipe = () => {
   const [imgPath, setImgPath] = useState(null);
 
   useEffect(() => {
-    console.log("IMGREF", imgRef, "imgpath", imgPath);
+    console.log("PREV", prev);
+    console.log("IMG PATH", imgPath);
+    console.log("IMG UPLOAD", imageUpload);
+    console.log("IMG REF", imgRef);
+    // console.log(imageUpload);
+    // console.log("IMGREF", imgRef, "imgpath", imgPath);
 
     if (imgRef) {
       // const storage = getStorage();
@@ -262,32 +268,60 @@ const AddRecipe = () => {
         setPrev(url);
       });
     }
-    if (isEditing && imageUpload) {
-      const fetchedImgRef = ref(storage, `images/${imgRef}`);
+    // if (isEditing && imageUpload) {
+    //   const fetchedImgRef = ref(storage, `images/${imgRef}`);
 
-      deleteObject(fetchedImgRef)
-        .then(() => {
-          // console.log("img deleted");
-        })
-        .catch(error => {
-          console.log("error isloading delete", error);
-        });
-    }
+    //   //TODO:
+    //   deleteObject(fetchedImgRef)
+    //     .then(() => {
+    //       // console.log("img deleted");
+    //     })
+    //     .catch(error => {
+    //       console.log("error in useEffect delete", error);
+    //     });
+    // }
     //check state, if not null, then upload
     if (imageUpload) {
       uploadImage();
     }
     //check state, delete if not null
-  }, [imageUpload]);
-  if (delRef) {
-    deleteObject(delRef)
+  }, [imageUpload, isEditing]);
+
+  // if (isEditing && imageUpload) {
+  //   const fetchedImgRef = ref(storage, `images/${imgRef}`);
+
+  //   //TODO:
+  //   deleteObject(fetchedImgRef)
+  //     .then(() => {
+  //       console.log("img deleted");
+  //     })
+  //     .catch(error => {
+  //       console.log("error in useEffect delete", error);
+  //     });
+  // }
+  const deleteImg = () => {
+    const fetchedImgRef = ref(storage, `images/${imgRef}`);
+
+    //TODO:
+    deleteObject(fetchedImgRef)
       .then(() => {
-        console.log("DELETED");
+        console.log("img deleted");
       })
       .catch(error => {
-        console.log(error);
+        console.log("error in useEffect delete", error);
       });
-  }
+  };
+
+  //TODO:
+  // if (delRef) {
+  //   deleteObject(delRef)
+  //     .then(() => {
+  //       console.log("DELETED");
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }
 
   return (
     <>
@@ -337,7 +371,9 @@ const AddRecipe = () => {
                 </label>
                 <input
                   // onChange={e => setImageUpload(e.target.files[0])}
-                  onChange={e => setImageUpload(e.target.files[0])}
+                  onChange={e => {
+                    setImageUpload(e.target.files[0]);
+                  }}
                   type="file"
                   accept="image/*"
                   id="files"
