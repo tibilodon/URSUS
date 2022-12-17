@@ -16,6 +16,7 @@
   --active: #ee9b01;
   --dgreen: #14471e;
   --lgreen: #68904d;
+  --box-shad: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 button {
   cursor: pointer;

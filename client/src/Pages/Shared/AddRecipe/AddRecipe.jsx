@@ -248,23 +248,28 @@ const AddRecipe = () => {
             <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
             {showAlert && <Alert />}
           </div>
-          <div>
-            {prev && (
-              <div className="img-card-wrap">
-                <img crossOrigin="anonymous" src={prev} alt="" />
-              </div>
-            )}
+          {/* <div> */}
+          {prev && (
+            <div className="prev-img">
+              <img crossOrigin="anonymous" src={prev} alt="" />
+            </div>
+          )}
 
-            <div className="upload-label">
-              {prev ? (
-                <BtnOne
-                  onClick={deleteImg}
-                  img={deleteIco}
-                  text={"Kép törlése"}
-                />
-              ) : (
-                <>
-                  <label className="btnOne notBtn-upload" htmlFor="files">
+          <div className="upload-label">
+            {prev ? (
+              <div className="add-btnOne-wrap">
+                <div className="delete-img-btnOne">
+                  <BtnOne
+                    onClick={deleteImg}
+                    img={deleteIco}
+                    text={"Kép törlése"}
+                  />
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="add-btnOne-wrap">
+                  <label className="btnOne delete-img-btnOne" htmlFor="files">
                     {/*TODO:ONLY SPAN WORKS WITH FILES*/}
                     {/* <div className="btn-one-wrap notBtn">
                     <span className="btnOne ">
@@ -274,20 +279,22 @@ const AddRecipe = () => {
                     Képfeltöltés
                     <img src={uploadIco} alt="" />
                   </label>
-                  <input
-                    onChange={e => {
-                      setImageUpload(e.target.files[0]);
-                    }}
-                    type="file"
-                    accept="image/*"
-                    id="files"
-                    style={{ display: "none" }}
-                  />
-                </>
-              )}
-            </div>
+                </div>
+                <input
+                  onChange={e => {
+                    setImageUpload(e.target.files[0]);
+                  }}
+                  type="file"
+                  accept="image/*"
+                  id="files"
+                  style={{ display: "none" }}
+                />
+              </>
+            )}
           </div>
-          <div className="add-input">
+          {/* </div> */}
+          <div className="multiple-with-span title-input">
+            <span>Receptnév:</span>
             <input
               type="text"
               placeholder="receptnév"
@@ -363,7 +370,8 @@ const AddRecipe = () => {
               {!isEditing &&
                 ingredient.map((ing, i) => {
                   return (
-                    <div key={i}>
+                    <div className="multiple-with-span" key={i}>
+                      <span>{`${i + 1}. hozzávaló`}</span>
                       <MultipleInput
                         searchLabel={`${i + 1}. hozzávaló`}
                         addHandler={addIngredient}
@@ -380,9 +388,10 @@ const AddRecipe = () => {
               {isEditing &&
                 fetchedIngredient.map((ings, i) => {
                   return (
-                    <div key={i}>
+                    <div className="multiple-with-span" key={i}>
+                      <span>{`${i + 1}. hozzávaló`}</span>
                       <MultipleInput
-                        searchLabel="ing"
+                        searchLabel={`${i + 1}. hozzávaló`}
                         addHandler={fetchedAddIngredient}
                         removeHandler={e => fetchedRemoveIngredient(i, e)}
                         value={ings}
@@ -401,7 +410,8 @@ const AddRecipe = () => {
               {!isEditing &&
                 step.map((steps, i) => {
                   return (
-                    <div key={i}>
+                    <div className="multiple-with-span" key={i}>
+                      <span>{`${i + 1}. lépés`}</span>
                       <MultipleInput
                         searchLabel={`${i + 1}. lépés`}
                         addHandler={addStep}
@@ -418,9 +428,10 @@ const AddRecipe = () => {
               {isEditing &&
                 fetchedStep.map((steps, i) => {
                   return (
-                    <div key={i}>
+                    <div className="multiple-with-span" key={i}>
+                      <span>{`${i + 1}. lépés`}</span>
                       <MultipleInput
-                        searchLabel="step"
+                        searchLabel={`${i + 1}. lépés`}
                         addHandler={fetchedAddStep}
                         removeHandler={e => fetchedRemoveStep(i, e)}
                         value={steps}
@@ -434,13 +445,15 @@ const AddRecipe = () => {
                 })}
             </div>
           </div>
-          <div className="flex-center-wrap">
-            <BtnOne
-              btnType={"submit"}
-              onClick={handleSubmit}
-              disabled={isLoading}
-              text={"Kész"}
-            />
+          <div className="add-btnOne-wrap">
+            <div className="done-btnOne">
+              <BtnOne
+                btnType={"submit"}
+                onClick={handleSubmit}
+                disabled={isLoading}
+                text={"Kész"}
+              />
+            </div>
           </div>
         </form>
         {/* </div> */}
