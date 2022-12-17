@@ -95,3 +95,21 @@
   height: 100%;
   background-color: #da6a00;
 }
+@media (max-width: 569px) {
+  .public-nav {
+    border: var(--test);
+    /* max-width: 100vh; */
+    display: flex;
+    /* justify-content: flex-start; */
+    /* justify-content: space-between; */
+    /* justify-content: space-ar; */
+  }
+  .nav-ico-logo {
+    border: var(--test);
+  }
+  .nav-ico-logo img {
+    margin: 0.1em;
+    padding: 0.1em;
+    /* border: var(--test); */
+  }
+}
