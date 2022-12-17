@@ -197,18 +197,18 @@ const AddRecipe = () => {
     // setTest(imgName);
     uploadBytes(imageRef, imageUpload).then(snapshot => {
       getDownloadURL(snapshot.ref).then(url => {
-        console.log("File available at", url);
+        // console.log("File available at", url);
         setPrev(url);
       });
-      console.log("ERROR? NO ERROR, THEN GOOD", snapshot);
+      // console.log("ERROR? NO ERROR, THEN GOOD", snapshot);
     });
   };
 
   useEffect(() => {
-    console.log("PREV", prev);
-    console.log("IMG PATH", uploadedRef);
-    console.log("IMG UPLOAD", imageUpload);
-    console.log("IMG REF", imgRef);
+    // console.log("PREV", prev);
+    // console.log("IMG PATH", uploadedRef);
+    // console.log("IMG UPLOAD", imageUpload);
+    // console.log("IMG REF", imgRef);
 
     if (imgRef) {
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
@@ -232,207 +232,218 @@ const AddRecipe = () => {
         setPrev(null);
         setImageUpload(null);
         uploadedRef(null);
-        console.log("img deleted");
+        // console.log("img deleted");
       })
       .catch(error => {
-        console.log("error in useEffect delete", error);
+        // console.log("error in useEffect delete", error);
       });
   };
 
   return (
     <>
       <div style={{ backgroundImage: `url(${addBg})` }} className="add-recipe">
-        <div className="add-recipe-wrap">
-          <form className="recipe-form">
-            <div className="add-edit-wrap">
-              <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
-              {showAlert && <Alert />}
-            </div>
-            <div>
-              {prev && (
-                <div className="img-card-wrap">
-                  <img crossOrigin="anonymous" src={prev} alt="" />
-                </div>
-              )}
+        {/* <div className="add-recipe-wrap"> */}
+        <form className="recipe-form">
+          <div className="add-edit-wrap">
+            <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
+            {showAlert && <Alert />}
+          </div>
+          <div>
+            {prev && (
+              <div className="img-card-wrap">
+                <img crossOrigin="anonymous" src={prev} alt="" />
+              </div>
+            )}
 
-              <div className="upload-label">
-                {prev ? (
-                  <BtnOne onClick={deleteImg} img={deleteIco} text={"Törlés"} />
-                ) : (
-                  <>
-                    <label className="btnOne" htmlFor="files">
-                      {/*TODO:ONLY SPAN WORKS WITH FILES*/}
-                      {/* <div className="btn-one-wrap notBtn">
+            <div className="upload-label">
+              {prev ? (
+                <BtnOne
+                  onClick={deleteImg}
+                  img={deleteIco}
+                  text={"Kép törlése"}
+                />
+              ) : (
+                <>
+                  <label className="btnOne notBtn-upload" htmlFor="files">
+                    {/*TODO:ONLY SPAN WORKS WITH FILES*/}
+                    {/* <div className="btn-one-wrap notBtn">
                     <span className="btnOne ">
                     {prev ? "Képcsere" : "Képfeltöltés"}
                     </span>
                   </div> */}
-                      upload
-                      <img src={uploadIco} alt="" />
-                    </label>
-                    <input
-                      onChange={e => {
-                        setImageUpload(e.target.files[0]);
-                      }}
-                      type="file"
-                      accept="image/*"
-                      id="files"
-                      style={{ display: "none" }}
-                    />
-                  </>
-                )}
+                    Képfeltöltés
+                    <img src={uploadIco} alt="" />
+                  </label>
+                  <input
+                    onChange={e => {
+                      setImageUpload(e.target.files[0]);
+                    }}
+                    type="file"
+                    accept="image/*"
+                    id="files"
+                    style={{ display: "none" }}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+          <div className="add-input">
+            <input
+              type="text"
+              placeholder="receptnév"
+              name="title"
+              value={title}
+              onChange={handleRecipeInput}
+            />
+          </div>
+          <div className="other-details-wrap">
+            <div className="flex-end-wrap">
+              {/* <div className="icon-align"> */}
+              <div className="add-icon">
+                <img src={difficultyIco} alt="" />
               </div>
-            </div>
-            <div className="add-input">
-              <input
-                type="text"
-                placeholder="receptnév"
-                name="title"
-                value={title}
-                onChange={handleRecipeInput}
+              <InputFieldSelect
+                name="difficulty"
+                value={difficulty}
+                handleChange={handleRecipeInput}
+                list={difficultyOptions}
               />
+              {/* </div> */}
+            </div>{" "}
+            <div className="flex-end-wrap">
+              {/* <div className="icon-align"> */}
+              <div className="add-icon">
+                <img src={typeIco} alt="" />
+              </div>
+              <InputFieldSelect
+                name="recipeType"
+                value={recipeType}
+                handleChange={handleRecipeInput}
+                list={recipeTypeOptions}
+              />{" "}
+              {/* </div> */}
             </div>
-            <div className="other-details-wrap">
-              <div className="flex-end-wrap">
-                <div className="icon-align">
-                  <div className="add-icon">
-                    <img src={difficultyIco} alt="" />
-                  </div>
-                  <InputFieldSelect
-                    name="difficulty"
-                    value={difficulty}
-                    handleChange={handleRecipeInput}
-                    list={difficultyOptions}
+            {/*TODO:*/}
+            <div className="flex-end-wrap time">
+              {/* <div className="icon-align"> */}
+              <div className="add-icon">
+                <img src={timeIco} alt="" />
+              </div>
+              <div className="time-input-wrap">
+                <div className="time-input">
+                  <span>perc:</span>
+                  <input
+                    id="minutes"
+                    type="number"
+                    placeholder="0"
+                    name="timeMinutesValue"
+                    value={timeMinutesValue}
+                    onChange={handleRecipeInput}
                   />
                 </div>
-              </div>{" "}
-              <div className="flex-end-wrap">
-                <div className="icon-align">
-                  <div className="add-icon">
-                    <img src={typeIco} alt="" />
-                  </div>
-                  <InputFieldSelect
-                    name="recipeType"
-                    value={recipeType}
-                    handleChange={handleRecipeInput}
-                    list={recipeTypeOptions}
-                  />{" "}
-                </div>
-              </div>
-              {/*TODO:*/}
-              <div className="flex-end-wrap">
-                <div className="icon-align">
-                  <div className="add-icon">
-                    <img src={timeIco} alt="" />
-                  </div>
-                  <div className="add-input">
-                    <input
-                      type="number"
-                      placeholder="perc"
-                      name="timeMinutesValue"
-                      value={timeMinutesValue}
-                      onChange={handleRecipeInput}
-                    />
-                  </div>
-                  <div className="add-input time">
-                    <input
-                      type="number"
-                      placeholder="óra"
-                      name="timeHoursValue"
-                      value={timeHoursValue}
-                      onChange={handleRecipeInput}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/*TODO:----ingredients----*/}
-            <div className="multi-wrap">
-              <div className="add-multi">
-                {!isEditing &&
-                  ingredient.map((ing, i) => {
-                    return (
-                      <div key={i}>
-                        <MultipleInput
-                          searchLabel={`${i + 1}. hozzávaló`}
-                          addHandler={addIngredient}
-                          removeHandler={() => removeIngredient(i)}
-                          value={ing}
-                          name="ingredients"
-                          handleChange={e => ingredientHandler(i, e)}
-                          type="text"
-                          btnType={"button"}
-                        />
-                      </div>
-                    );
-                  })}{" "}
-                {isEditing &&
-                  fetchedIngredient.map((ings, i) => {
-                    return (
-                      <div key={i}>
-                        <MultipleInput
-                          searchLabel="ing"
-                          addHandler={fetchedAddIngredient}
-                          removeHandler={e => fetchedRemoveIngredient(i, e)}
-                          value={ings}
-                          name="ingredients"
-                          handleChange={e => fetchedIngredientHandler(i, e)}
-                          type="text"
-                          btnType={"button"}
-                        />
-                      </div>
-                    );
-                  })}
-              </div>
-              {/*TODO:----STEP----*/}
+                <div className="time-input">
+                  <span>óra:</span>
 
-              <div className="add-multi">
-                {!isEditing &&
-                  step.map((steps, i) => {
-                    return (
-                      <div key={i}>
-                        <MultipleInput
-                          searchLabel={`${i + 1}. lépés`}
-                          addHandler={addStep}
-                          removeHandler={() => removeStep(i)}
-                          value={steps}
-                          name="steps"
-                          handleChange={e => stepHandler(i, e)}
-                          type="text"
-                          btnType={"button"}
-                        />
-                      </div>
-                    );
-                  })}{" "}
-                {isEditing &&
-                  fetchedStep.map((steps, i) => {
-                    return (
-                      <div key={i}>
-                        <MultipleInput
-                          searchLabel="step"
-                          addHandler={fetchedAddStep}
-                          removeHandler={e => fetchedRemoveStep(i, e)}
-                          value={steps}
-                          name="steps"
-                          handleChange={e => fetchedStepHandler(i, e)}
-                          type="text"
-                          btnType={"button"}
-                        />
-                      </div>
-                    );
-                  })}
+                  <input
+                    id="hours"
+                    type="number"
+                    placeholder="0"
+                    name="timeHoursValue"
+                    value={timeHoursValue}
+                    onChange={handleRecipeInput}
+                  />
+                </div>
               </div>
+              {/* </div> */}
             </div>
-            <div className="flex-center-wrap">
-              <BtnOne
-                btnType={"submit"}
-                onClick={handleSubmit}
-                disabled={isLoading}
-                text={"Kész"}
-              />
+          </div>
+          {/*TODO:----ingredients----*/}
+          <div className="multi-wrap">
+            <div className="add-multi">
+              {!isEditing &&
+                ingredient.map((ing, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel={`${i + 1}. hozzávaló`}
+                        addHandler={addIngredient}
+                        removeHandler={() => removeIngredient(i)}
+                        value={ing}
+                        name="ingredients"
+                        handleChange={e => ingredientHandler(i, e)}
+                        type="text"
+                        btnType={"button"}
+                      />
+                    </div>
+                  );
+                })}{" "}
+              {isEditing &&
+                fetchedIngredient.map((ings, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="ing"
+                        addHandler={fetchedAddIngredient}
+                        removeHandler={e => fetchedRemoveIngredient(i, e)}
+                        value={ings}
+                        name="ingredients"
+                        handleChange={e => fetchedIngredientHandler(i, e)}
+                        type="text"
+                        btnType={"button"}
+                      />
+                    </div>
+                  );
+                })}
             </div>
-          </form>
-        </div>
+            {/*TODO:----STEP----*/}
+
+            <div className="add-multi">
+              {!isEditing &&
+                step.map((steps, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel={`${i + 1}. lépés`}
+                        addHandler={addStep}
+                        removeHandler={() => removeStep(i)}
+                        value={steps}
+                        name="steps"
+                        handleChange={e => stepHandler(i, e)}
+                        type="text"
+                        btnType={"button"}
+                      />
+                    </div>
+                  );
+                })}{" "}
+              {isEditing &&
+                fetchedStep.map((steps, i) => {
+                  return (
+                    <div key={i}>
+                      <MultipleInput
+                        searchLabel="step"
+                        addHandler={fetchedAddStep}
+                        removeHandler={e => fetchedRemoveStep(i, e)}
+                        value={steps}
+                        name="steps"
+                        handleChange={e => fetchedStepHandler(i, e)}
+                        type="text"
+                        btnType={"button"}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+          <div className="flex-center-wrap">
+            <BtnOne
+              btnType={"submit"}
+              onClick={handleSubmit}
+              disabled={isLoading}
+              text={"Kész"}
+            />
+          </div>
+        </form>
+        {/* </div> */}
       </div>
     </>
   );

@@ -27,7 +27,6 @@ const NewProfile = () => {
         className="new-profile-wrap"
       >
         <form className="login-paper" onSubmit={onSubmit}>
-          {/* <div className="login-paper"> */}
           <img src={ursus} alt="" />
           {showAlert}
           <h1>Profilom</h1>

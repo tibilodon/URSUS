@@ -1,14 +1,17 @@
-.add-recipe-wrap {
-  border: 4px solid red;
-  /* height: 100vh; */
-  height: 100vh;
-  margin-top: 6em;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 2.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+.recipe-form {
+  height: 100%;
+  padding: 1em;
+  width: 100%;
+  /* border: 4px solid red; */
+
+  /* border: var(--test); */
   display: flex;
   flex-direction: column;
-
-  justify-content: space-between;
+  justify-content: space-around;
+  background-color: rgba(232, 237, 231, 0.8);
+  box-shadow: rgba(67, 71, 85, 0.47) 0px 0px 2.25em,
+    rgba(90, 125, 188, 0.15) 0px 0.25em 1em;
+  /* opacity: 0.3; */
 }
 
 .add-recipe {
@@ -18,31 +21,18 @@
   /* margin-top: 0.3em; */
 
   /* margin-top: 5em; */
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 4px solid black; */
+  border: 4px solid black;
 }
-
-/* .steps {
-  padding: 1em;
-  margin: 0.5em;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-} */
-/* .ings {
-  padding: 1em;
-  margin: 0.5em;
-  display: flex;
-  flex-direction: column;
-} */
 
 .add-multi {
   width: 30em;
-  border: 3px solid green;
+  margin: 0.2em;
+  /* border: 3px solid green; */
 }
 .multi-wrap {
   display: flex;
@@ -53,27 +43,66 @@
   display: flex;
   justify-content: center;
 }
+
+/*TODO: select opt*/
 .other-details-wrap {
   display: flex;
   justify-content: space-around;
   margin-top: 1em;
+  /* border: var(--test); */
 }
 .flex-end-wrap {
+  /* border: 3px solid green; */
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 .add-icon {
   align-self: center;
-  padding: 0.2em;
+  /* padding: 0.2em; */
   display: flex;
+  /* border: var(--test); */
 }
-.icon-align {
+.add-icon img {
+  width: 2em;
+  height: 2em;
+  /* margin-right: 0.2em; */
+}
+.time {
+  flex-direction: row;
+  /* width: 3em; */
+}
+.time-input-wrap {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
-.add-input {
-  margin-left: 0.5em;
-  width: 5em;
+/*TODO: time input*/
+.time-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* border: var(--test); */
+  height: 2em;
+  display: flex;
+  width: 100%;
+  font-size: small;
 }
+.time-input input {
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: 0.4em;
+  padding: 0.5em;
+  margin-left: 0.2em;
+  width: 3em;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.time-input span {
+  margin-left: 0.2em;
+}
+
 .add-edit-wrap {
   padding: 1.8em 0 1em 0;
   text-align: center;
@@ -87,7 +116,11 @@
   display: flex;
   justify-content: center;
   /* padding: 0.2em; */
-  border: var(--test);
+  /* border: var(--test); */
+}
+.notBtn-upload {
+  /* border: var(--test); */
+  display: flex;
 }
 
 .files-label {
@@ -97,15 +130,10 @@
   /* width: 100%; */
   /* padding: 3em; */
 }
-.notBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--test);
-}
 
+/*TODO: IMG */
 .img-card-wrap {
-  margin-top: 3em;
+  /* margin-top: 3em; */
   border: 3px solid green;
   height: 100%;
   width: 100%;
@@ -145,13 +173,4 @@
   .time {
     margin-bottom: 0.5em;
   }
-}
-.recipe-form {
-  height: 100%;
-  border: var(--test);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background-color: rgba(232, 237, 231, 0.8);
-  /* opacity: 0.3; */
 }

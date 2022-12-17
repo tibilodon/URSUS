@@ -3,9 +3,15 @@ import { MenuItem, InputLabel, Select } from "@mui/material";
 
 const InputFieldSelect = ({ labelText, name, value, handleChange, list }) => {
   return (
-    <div>
+    <div className="input-select-wrap">
       {/* <label htmlFor="select-opt">geg</label> */}
-      <select name={name} onChange={handleChange} value={value} id="select-opt">
+      <select
+        className="input-select-select"
+        name={name}
+        onChange={handleChange}
+        value={value}
+        id="select-opt"
+      >
         {list.map((itemValue, index) => {
           return (
             <option key={index} value={itemValue}>

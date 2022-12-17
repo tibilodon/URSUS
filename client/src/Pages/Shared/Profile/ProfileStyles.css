@@ -21,3 +21,8 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.login-paper input {
+  border: none;
+  outline: none;
+  border-radius: 0.4em;
+}
