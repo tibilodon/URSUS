@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../Sidebar/Sidebar";
 import Card from "../../Card/Card";
 import FetchAllContainer from "../../../Pages/Shared/FetchedAll/FetchAllContainer";
+import collapseIco from "../../../Assets/collapse_ico.svg";
 
 const MemberNav = () => {
   const {
@@ -109,9 +110,10 @@ const MemberNav = () => {
 
           <img onClick={() => navigate("/")} src={ursus} alt="" />
         </div>
-        <div className="user-search-wrap">
+        <div className="user-search-wrap mobile">
           {searchClick && (
             <PublicSearch
+              collapse={handleSearch}
               // handleChange={handleChangeSearch}
               value={pathMatchRoute("/all-recipes") ? searchTerm : search}
               searchResults={
@@ -122,12 +124,16 @@ const MemberNav = () => {
             />
           )}
 
-          <div
-            onClick={handleSearch}
-            className={searchClick ? "nav-ico-search active" : "nav-ico-search"}
-          >
-            <img src={searchIco} alt="" />
-          </div>
+          {!pathMatchRoute("/add-recipe") && (
+            <div
+              onClick={handleSearch}
+              className={
+                searchClick ? "nav-ico-search active" : "nav-ico-search"
+              }
+            >
+              <img src={searchIco} alt="" />
+            </div>
+          )}
 
           <div
             onClick={handleLogin}
