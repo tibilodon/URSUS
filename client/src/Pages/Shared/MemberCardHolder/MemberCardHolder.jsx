@@ -17,6 +17,7 @@ const MemberCardHolder = () => {
       {/* {numOfPages >= 1 && ( */}
       <BgWrap>
         <MemberCardContainer />
+
         <div className="paggi">
           {numOfPages > 1 && (
             <>

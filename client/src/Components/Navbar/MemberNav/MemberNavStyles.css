@@ -24,3 +24,17 @@
   margin: 0;
   padding: 0 0.2em 0.5em 0.2em;
 }
+/*TODO:TEST*/
+@media (max-width: 566px) {
+  .public-nav {
+    max-width: 100%;
+    border: var(--test);
+    display: flex;
+  }
+  .mobile {
+    /* border: var(--test); */
+    /* width: 100%; */
+    /* position: absolute; */
+    /* overflow: hidden; */
+  }
+}
