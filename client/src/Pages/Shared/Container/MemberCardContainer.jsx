@@ -4,6 +4,7 @@ import { useAppContext } from "../../../Context/appContext";
 import MemberCard from "../../../Components/Card/MemberCard";
 import Loader from "../../../Components/Loader/Loader";
 import SearchNot from "../../../Components/Alert/SearchNot";
+import BgWrap from "../../../Components/BgWrap";
 
 const MemberCardContainer = () => {
   const {

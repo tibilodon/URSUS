@@ -93,17 +93,17 @@ const MemberCard = ({
           <div className="card-title">
             <h1>{title}</h1>
           </div>
+          {(timeHoursValue || timeMinutesValue) && (
+            <div className="card-time">
+              <img className="card-ico" src={time} alt="" />
+              <div>
+                {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
+                {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
+              </div>
+            </div>
+          )}
 
           <div className="edit-allowed">
-            {(timeHoursValue || timeMinutesValue) && (
-              <div className="card-time">
-                <img className="card-ico" src={time} alt="" />
-                <div>
-                  {timeHoursValue && <h1>{timeHoursValue} óra</h1>}
-                  {timeMinutesValue && <h1>{timeMinutesValue} perc</h1>}
-                </div>
-              </div>
-            )}
             <EditAllowed id={_id} />
           </div>
         </div>

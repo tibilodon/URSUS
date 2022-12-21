@@ -1,5 +1,6 @@
 import "./PublicSearchStyles.css";
 import collapseIco from "../../../Assets/collapse_ico.svg";
+import searchIcoMobile from "../../../Assets/search_ico.svg";
 
 // import { useState } from "react";
 
@@ -28,6 +29,7 @@ const PublicSearch = ({
           value={searchTerm || value}
           onChange={handleChange || searchResults}
         />
+        <img className="mobileIco" src={searchIcoMobile} alt="" />
       </div>
     </>
   );

@@ -104,13 +104,13 @@ const MemberNav = () => {
 
   return (
     <>
-      <nav className="public-nav">
+      <div className="member-nav">
         <div className="nav-ico-logo member">
           <Sidebar />
 
           <img onClick={() => navigate("/")} src={ursus} alt="" />
         </div>
-        <div className="user-search-wrap mobile">
+        <div className="user-search-wrap">
           {searchClick && (
             <PublicSearch
               collapse={handleSearch}
@@ -128,7 +128,7 @@ const MemberNav = () => {
             <div
               onClick={handleSearch}
               className={
-                searchClick ? "nav-ico-search active" : "nav-ico-search"
+                searchClick ? "nav-ico-search active mobile" : "nav-ico-search"
               }
             >
               <img src={searchIco} alt="" />
@@ -137,20 +137,25 @@ const MemberNav = () => {
 
           <div
             onClick={handleLogin}
-            className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
+            className={
+              loginClick ? "nav-ico-user active mobile-user" : "nav-ico-user"
+            }
           >
             {loginClick && (
               // <div className="expand">
               <>
-                <span
-                  onClick={() => navigate("/profile")}
-                  className="expand active-hover"
-                >
-                  Profil
-                </span>
-                <span onClick={logoutUser} className="expand active-hover">
-                  Kijeletnkezés
-                </span>
+                <img className="mobileIco-user" src={collapseIco} alt="" />
+                <div className="mobile-user-spans">
+                  <span
+                    onClick={() => navigate("/profile")}
+                    className="expand active-hover "
+                  >
+                    Profil
+                  </span>
+                  <span onClick={logoutUser} className="expand active-hover ">
+                    Kijeletnkezés
+                  </span>
+                </div>
               </>
               // </div>
             )}
@@ -160,7 +165,7 @@ const MemberNav = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </div>
       {pathMatchRoute("/all-recipes") && (
         <FetchAllContainer
           results={results}

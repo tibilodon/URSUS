@@ -8,6 +8,7 @@ import PublicSearch from "../../Search/PublicSearch/PublicSearch";
 import NewPagination from "../../Pagination/NewPagination";
 import homeIco from "../../../Assets/home-ico.svg";
 import { useAppContext } from "../../../Context/appContext";
+import collapseIco from "../../../Assets/collapse_ico.svg";
 
 const PublicNavTest = ({ handleChange, searchTerm }) => {
   const { allRecipes, fetchAll } = useAppContext();
@@ -44,13 +45,17 @@ const PublicNavTest = ({ handleChange, searchTerm }) => {
         </div>
         <div className="user-search-wrap">
           {searchClick && (
-            <PublicSearch handleChange={handleChange} searchTerm={searchTerm} />
+            <PublicSearch
+              collapse={handleSearch}
+              handleChange={handleChange}
+              searchTerm={searchTerm}
+            />
           )}
           {pathMatchRoute("/register") || pathMatchRoute("/login") ? null : (
             <div
               onClick={handleSearch}
               className={
-                searchClick ? "nav-ico-search active" : "nav-ico-search"
+                searchClick ? "nav-ico-search active mobile" : "nav-ico-search"
               }
             >
               <img src={searchIco} alt="" />
@@ -63,23 +68,28 @@ const PublicNavTest = ({ handleChange, searchTerm }) => {
           ) : (
             <div
               onClick={handleLogin}
-              className={loginClick ? "nav-ico-user active" : "nav-ico-user"}
+              className={
+                loginClick ? "nav-ico-user active mobile-user" : "nav-ico-user"
+              }
             >
               {loginClick && (
                 // <div className="expand">
                 <>
-                  <span
-                    onClick={() => navigate("/login")}
-                    className="expand active-hover"
-                  >
-                    Belépés
-                  </span>
-                  <span
-                    onClick={() => navigate("/register")}
-                    className="expand active-hover"
-                  >
-                    Regisztráció
-                  </span>
+                  <img className="mobileIco-user" src={collapseIco} alt="" />
+                  <div className="mobile-user-spans">
+                    <span
+                      onClick={() => navigate("/login")}
+                      className="expand active-hover"
+                    >
+                      Belépés
+                    </span>
+                    <span
+                      onClick={() => navigate("/register")}
+                      className="expand active-hover"
+                    >
+                      Regisztráció
+                    </span>
+                  </div>
                 </>
                 // </div>
               )}
