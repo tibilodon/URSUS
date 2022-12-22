@@ -1,7 +1,6 @@
 import "./AddRecipeStyles.css";
 import { useState } from "react";
 import Alert from "../../../Components/Alert/Alert";
-import InputField from "../../../Components/Input/InputField";
 import InputFieldSelect from "../../../Components/Input/InputFieldSelect";
 import { useAppContext } from "../../../Context/appContext";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +11,6 @@ import { storage } from "../../../firebase";
 import {
   ref,
   uploadBytes,
-  listAll,
   getDownloadURL,
   deleteObject,
 } from "firebase/storage";
@@ -192,24 +190,16 @@ const AddRecipe = () => {
     const imgName = imageUpload.name + v4();
     setUploadedRef(imgName);
     handleChange({ name: "imgRef", value: imgName });
-    // console.log("IMGREF----", imgRef);
     const imageRef = ref(storage, `images/${imgName}`);
     // setTest(imgName);
     uploadBytes(imageRef, imageUpload).then(snapshot => {
       getDownloadURL(snapshot.ref).then(url => {
-        // console.log("File available at", url);
         setPrev(url);
       });
-      // console.log("ERROR? NO ERROR, THEN GOOD", snapshot);
     });
   };
 
   useEffect(() => {
-    // console.log("PREV", prev);
-    // console.log("IMG PATH", uploadedRef);
-    // console.log("IMG UPLOAD", imageUpload);
-    // console.log("IMG REF", imgRef);
-
     if (imgRef) {
       getDownloadURL(ref(storage, `images/${imgRef}`)).then(url => {
         setPrev(url);
@@ -232,23 +222,18 @@ const AddRecipe = () => {
         setPrev(null);
         setImageUpload(null);
         uploadedRef(null);
-        // console.log("img deleted");
       })
-      .catch(error => {
-        // console.log("error in useEffect delete", error);
-      });
+      .catch(error => {});
   };
 
   return (
     <>
       <div style={{ backgroundImage: `url(${addBg})` }} className="add-recipe">
-        {/* <div className="add-recipe-wrap"> */}
         <form className="recipe-form">
           <div className="add-edit-wrap">
             <h2>{isEditing ? "Szerkesztés" : "Új recept"}</h2>
             {showAlert && <Alert />}
           </div>
-          {/* <div> */}
           {prev && (
             <div className="prev-img">
               <img crossOrigin="anonymous" src={prev} alt="" />
@@ -292,7 +277,6 @@ const AddRecipe = () => {
               </>
             )}
           </div>
-          {/* </div> */}
           <div className="multiple-with-span title-input">
             <span>Receptnév:</span>
             <input
@@ -305,7 +289,6 @@ const AddRecipe = () => {
           </div>
           <div className="other-details-wrap">
             <div className="flex-end-wrap">
-              {/* <div className="icon-align"> */}
               <div className="add-icon">
                 <img src={difficultyIco} alt="" />
               </div>
@@ -315,10 +298,8 @@ const AddRecipe = () => {
                 handleChange={handleRecipeInput}
                 list={difficultyOptions}
               />
-              {/* </div> */}
             </div>{" "}
             <div className="flex-end-wrap">
-              {/* <div className="icon-align"> */}
               <div className="add-icon">
                 <img src={typeIco} alt="" />
               </div>
@@ -328,11 +309,9 @@ const AddRecipe = () => {
                 handleChange={handleRecipeInput}
                 list={recipeTypeOptions}
               />{" "}
-              {/* </div> */}
             </div>
             {/*TODO:*/}
             <div className="flex-end-wrap time">
-              {/* <div className="icon-align"> */}
               <div className="add-icon">
                 <img src={timeIco} alt="" />
               </div>
@@ -361,7 +340,6 @@ const AddRecipe = () => {
                   />
                 </div>
               </div>
-              {/* </div> */}
             </div>
           </div>
           {/*TODO:----ingredients----*/}
@@ -456,7 +434,6 @@ const AddRecipe = () => {
             </div>
           </div>
         </form>
-        {/* </div> */}
       </div>
     </>
   );

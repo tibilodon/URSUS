@@ -1,6 +1,5 @@
 import "./CardStyles.css";
 import { useState, useEffect } from "react";
-import bread from "../../Assets/bread.jpg";
 import time from "../../Assets/time.svg";
 import difficultyIco from "../../Assets/difficulty.svg";
 import recType from "../../Assets/rec-type.svg";
@@ -22,7 +21,6 @@ const Card = ({ recipe }) => {
     timeHoursValue,
     steps,
     ingredients,
-    // imgURL,
     imgRef,
   } = recipe;
   //moment
@@ -46,11 +44,7 @@ const Card = ({ recipe }) => {
     }
   }, [imgRef]);
   return (
-    <div
-      onClick={modalHandler}
-      // style={{ backgroundImage: `url(${imgPath})` }}
-      className="card-sizer"
-    >
+    <div onClick={modalHandler} className="card-sizer">
       <div className="card-img-wrap-div">
         <img
           crossOrigin="anonymous"
@@ -61,7 +55,6 @@ const Card = ({ recipe }) => {
       </div>
       <CardModal
         modal={modal}
-        // onClose={handleModal}
         title={title}
         steps={steps}
         difficulty={difficulty}
@@ -69,7 +62,6 @@ const Card = ({ recipe }) => {
         recipeType={recipeType}
         timeMinutesValue={timeMinutesValue}
         timeHoursValue={timeHoursValue}
-        // edit={edit}
         imgPath={imgPath}
       />
       <div className="card-details">

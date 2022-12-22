@@ -9,7 +9,6 @@ import { useAppContext } from "../../Context/appContext";
 import moment from "moment";
 import "moment/locale/hu";
 //firebase
-import { storage } from "../../firebase";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import EditAllowed from "../EditAllowed/EditAllowed";
 
@@ -55,7 +54,6 @@ const MemberCard = ({
   return (
     <div
       onClick={modalHandler}
-      // style={{ backgroundImage: `url(${imgPath})` }}
       className="card-sizer"
     >
       <div className="card-img-wrap-div">
@@ -68,7 +66,6 @@ const MemberCard = ({
       </div>
       <CardModal
         modal={modal}
-        // onClose={handleModal}
         title={title}
         _id={_id}
         steps={steps}

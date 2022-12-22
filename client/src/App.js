@@ -4,28 +4,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Error from "./Pages/Error/Error";
 import Landing from "./Pages/Landing/Landing";
 import ProtectedRoute from "./Pages/ProtectedRoute";
-import Register from "./Pages/Register/Register";
 import AddRecipe from "./Pages/Shared/AddRecipe/AddRecipe";
 import SharedLayout from "./Pages/Shared/SharedLayout";
-import Profile from "./Pages/Shared/Profile/Profile";
-import AllRecipesContainer from "./Pages/Shared/AllRecipes/AllRecipesContainer";
-import PublicRecipeContainer from "./Components/Recipe/PublicFetch/PublicRecipeContainer";
 import FetchAllContainer from "./Pages/Shared/FetchedAll/FetchAllContainer";
-import PublicNavbar from "./Components/Navbar/PublicNavbar/PublicNavbar";
-import PublicLanding from "./Pages/Shared/publicLanding/PublicLanding";
 import PublicNavTest from "./Components/Navbar/PublicNavbar/PublicNavTest";
 import AuthLogin from "./Pages/Auth/Login/AuthLogin";
 import AuthReg from "./Pages/Auth/Login/AuthReg";
-import BgWrap from "./Components/BgWrap";
 import PublicCardHolder from "./Pages/Shared/PublicCardHolder/PublicCardHolder";
-import Card from "./Components/Card/Card";
 import NewProfile from "./Pages/Shared/Profile/NewProfile";
-import SearchNot from "./Components/Alert/SearchNot";
-import MemberNav from "./Components/Navbar/MemberNav/MemberNav";
 import MemberCardHolder from "./Pages/Shared/MemberCardHolder/MemberCardHolder";
-import NewPagination from "./Components/Pagination/NewPagination";
-import EditAllowed from "./Components/EditAllowed/EditAllowed";
-import NewAdd from "./Pages/Shared/AddRecipe/NewAdd";
 
 function App() {
   return (
@@ -40,24 +27,9 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route
-              index
-              element={
-                <MemberCardHolder />
-                // <AllRecipesContainer />
-              }
-            />
-            <Route
-              path="profile"
-              element={
-                // <Profile />
-                <NewProfile />
-              }
-            />
+            <Route index element={<MemberCardHolder />} />
+            <Route path="profile" element={<NewProfile />} />
             <Route path="add-recipe" element={<AddRecipe />} />
-            {/*TODO: --TEST--LOGGED IN----*/}
-            {/* <Route path="test" element={<PublicLanding />} /> */}
-            {/* TODO: --TEST-- LOGGED IN*/}
             <Route
               path="all-recipes"
               element={
@@ -92,23 +64,18 @@ function App() {
             element={
               <>
                 <PublicCardHolder />
-
-                {/* <PublicNavbar />
-                <FetchAllContainer /> */}
               </>
             }
           />
-          {/*TODO:  -----PUBLIC TEST----- */}
-          <Route
+          {/*TODO:---TEST---*/}
+          {/* <Route
             path="/test"
             element={
               <>
-                {/* <EditAllowed /> */}
                 <NewAdd />
               </>
             }
-          />
-          {/*TODO:  -----PUBLIC TEST----- */}
+          /> */}
         </Routes>
       </BrowserRouter>
     </>

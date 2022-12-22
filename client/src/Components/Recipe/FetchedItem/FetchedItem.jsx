@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Paper, Box, Typography } from "@mui/material";
 import moment from "moment";
 import "moment/locale/hu";
-import RecipeModal from "../../Modal/RecipeModal";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -68,21 +67,7 @@ const FetchedItem = ({ recipe }) => {
         >
           <Paper sx={{ width: "100%", padding: "1em" }}>
             <div className="item-wrap" onClick={handleModal}>
-              <div>
-                <RecipeModal
-                  modal={modal}
-                  onClose={handleModal}
-                  title={title}
-                  steps={steps}
-                  difficulty={difficulty}
-                  ingredients={ingredients}
-                  recipeType={recipeType}
-                  timeMinutesValue={timeMinutesValue}
-                  timeHoursValue={timeHoursValue}
-                  edit={edit}
-                  imgPath={imgPath}
-                />
-              </div>
+              <div></div>
 
               <div className="hero-title">
                 <h1>{title}</h1>

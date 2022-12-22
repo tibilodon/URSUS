@@ -13,11 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* border: var(--test); */
   height: 100vh;
   width: 100%;
-
   background-size: cover;
   background-repeat: no-repeat;
 }

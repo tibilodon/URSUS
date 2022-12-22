@@ -58,3 +58,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.version-footer {
+  background-color: var(--active);
+  display: flex;
+  justify-content: flex-end;
+  font-size: small;
+  margin-right: 0.1em;
+}

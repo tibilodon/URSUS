@@ -73,7 +73,6 @@ const PublicNavTest = ({ handleChange, searchTerm }) => {
               }
             >
               {loginClick && (
-                // <div className="expand">
                 <>
                   <img className="mobileIco-user" src={collapseIco} alt="" />
                   <div className="mobile-user-spans">
@@ -91,14 +90,12 @@ const PublicNavTest = ({ handleChange, searchTerm }) => {
                     </span>
                   </div>
                 </>
-                // </div>
               )}
               <img src={noAccountIco} alt="" />
             </div>
           )}
         </div>
       </nav>
-      {/* <NewPagination /> */}
     </>
   );
 };

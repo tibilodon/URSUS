@@ -1,8 +1,6 @@
 import "./MemberCardHolderStyles.css";
 import { useEffect } from "react";
 import MemberNewPagination from "../../../Components/Pagination/MemberNewPagination";
-import SearchNot from "../../../Components/Alert/SearchNot";
-import Loader from "../../../Components/Loader/Loader";
 import { useAppContext } from "../../../Context/appContext";
 import MemberCardContainer from "../Container/MemberCardContainer";
 import BgWrap from "../../../Components/BgWrap";
@@ -14,7 +12,6 @@ const MemberCardHolder = () => {
   }, []);
   return (
     <>
-      {/* {numOfPages >= 1 && ( */}
       <BgWrap>
         <MemberCardContainer />
 
@@ -27,7 +24,6 @@ const MemberCardHolder = () => {
             </>
           )}
         </div>
-        {/* )} */}
       </BgWrap>
     </>
   );

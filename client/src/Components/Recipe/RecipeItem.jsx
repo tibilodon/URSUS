@@ -8,7 +8,6 @@ import "moment/locale/hu";
 import { useAppContext } from "../../Context/appContext";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import RecipeModal from "../Modal/RecipeModal";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import LocalDiningIcon from "@mui/icons-material/LocalDining";
 import ScaleIcon from "@mui/icons-material/Scale";
@@ -71,22 +70,7 @@ const RecipeItem = ({
       >
         <Paper sx={{ width: "100%", padding: "1em" }}>
           <div className="item-wrap" onClick={handleModal}>
-            <div>
-              <RecipeModal
-                modal={modal}
-                onClose={handleModal}
-                title={title}
-                _id={_id}
-                steps={steps}
-                difficulty={difficulty}
-                ingredients={ingredients}
-                recipeType={recipeType}
-                timeMinutesValue={timeMinutesValue}
-                timeHoursValue={timeHoursValue}
-                edit={edit}
-                imgPath={imgPath}
-              />
-            </div>
+            <div></div>
 
             <div className="hero-title">
               <h1>{title}</h1>

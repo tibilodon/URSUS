@@ -42,8 +42,6 @@ const NewPagination = ({
             </button>
           );
         })}
-        {/* <button className="arrow-btn pagi-number">1</button>
-        <button className="arrow-btn pagi-number">1</button> */}
         <button
           type="button"
           onClick={() => nextPage(pageNumbers.length)}

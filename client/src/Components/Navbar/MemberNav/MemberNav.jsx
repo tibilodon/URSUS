@@ -16,16 +16,7 @@ const MemberNav = () => {
   const {
     isLoading,
     search,
-    searchDifficulty,
-    searchType,
-    sort,
-    sortOptions,
-    difficultyOptions,
-    recipeTypeOptions,
-    totalRecipes,
     handleChange,
-    clearFilters,
-    numOfPages,
     user,
     logoutUser,
     fetchAll,
@@ -81,7 +72,6 @@ const MemberNav = () => {
   const prevPage = pageNumbers => {
     let newPage = currentPage - 1;
     if (newPage < 1) {
-      // newPage = pageNumbers;
       newPage = 1;
     }
     setCurrentPage(newPage);
@@ -114,7 +104,6 @@ const MemberNav = () => {
           {searchClick && (
             <PublicSearch
               collapse={handleSearch}
-              // handleChange={handleChangeSearch}
               value={pathMatchRoute("/all-recipes") ? searchTerm : search}
               searchResults={
                 pathMatchRoute("/all-recipes")
@@ -142,7 +131,6 @@ const MemberNav = () => {
             }
           >
             {loginClick && (
-              // <div className="expand">
               <>
                 <img className="mobileIco-user" src={collapseIco} alt="" />
                 <div className="mobile-user-spans">
@@ -157,7 +145,6 @@ const MemberNav = () => {
                   </span>
                 </div>
               </>
-              // </div>
             )}
             <div className="users">
               <img className="users-ico" src={accountIco} alt="" />
@@ -172,7 +159,6 @@ const MemberNav = () => {
           currentPosts={currentPosts}
           currentPage={currentPage}
           postsPerPage={postsPerPage}
-          //or allRecipes.length
           totalPosts={results.length}
           paginate={paginate}
           prevPage={prevPage}

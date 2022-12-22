@@ -5,10 +5,8 @@ import BgWrap from "../../../Components/BgWrap";
 import Card from "../../../Components/Card/Card";
 import PublicNavTest from "../../../Components/Navbar/PublicNavbar/PublicNavTest";
 import NewPagination from "../../../Components/Pagination/NewPagination";
-import bgImg from "../../../Assets/bg-img_50.jpg";
 import { useAppContext } from "../../../Context/appContext";
 import SearchNot from "../../../Components/Alert/SearchNot";
-import Loader from "../../../Components/Loader/Loader";
 
 const PublicCardHolder = () => {
   const { allRecipes, fetchAll } = useAppContext();

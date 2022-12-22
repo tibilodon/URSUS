@@ -1,36 +1,27 @@
 import "./CardModalStyles.css";
-import bread from "../../Assets/bread.jpg";
 import time from "../../Assets/time.svg";
 import difficultyIco from "../../Assets/difficulty.svg";
 import recType from "../../Assets/rec-type.svg";
-import { Link } from "react-router-dom";
-import { useAppContext } from "../../Context/appContext";
 
 const CardModal = ({
   title,
   modal,
-  onClose,
-  _id,
   steps,
   difficulty,
   recipeType,
   timeHoursValue,
   timeMinutesValue,
   ingredients,
-  edit,
   imgPath,
 }) => {
-  const { setEditRecipe, deleteRecipe } = useAppContext();
   return (
     <>
       <div className={modal ? "modal-wrap " : "modal-off"}>
         <div className="modal-sizer">
           <div
-            // style={{ backgroundImage: `url(${imgPath})` }}
             className="modal-img"
           >
             <img crossOrigin="anonymous" src={imgPath} alt="" />
-            {/* <img src={bread} alt="" /> */}
             <div className="modal-title">
               <h1>{title}</h1>
             </div>

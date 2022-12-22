@@ -2,43 +2,20 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
-  /* border-radius: 40px; */
   padding: 0.2em;
-  /* width: 6em; */
-  /* width: 30%; */
   display: flex;
   align-items: center;
   width: 100%;
-  /* height: 80%; */
-  /* border: var(--rtest); */
-
-  /* background-color: var(--bg-col); */
-  /* font-size: 0.5em; */
-  /* border: var(--test); */
 }
 .edit-pill-wrap button {
   display: flex;
   border: none;
   justify-content: center;
-  /* margin: 0.2em; */
   margin: 0 0.2em 0 0;
-  /* margin-left: 0.2em; */
   background-color: var(--active);
-  /* border: 3px solid red; */
 }
-.edit-pill-wrap img {
-  /* width: 80%; */
 
-  /* border: 3px solid purple; */
-}
 .edit-pill-wrap button:hover {
   transition: 0.7s;
-
   background-color: #da6a00;
-}
-.edit-allowed {
-  /* border: var(--rtest); */
-  /* display: flex; */
-  /* width: 28em; */
-  /* justify-content: space-between; */
 }

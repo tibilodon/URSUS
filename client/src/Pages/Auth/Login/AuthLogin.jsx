@@ -19,17 +19,12 @@ const AuthLogin = () => {
 
   const [values, setValues] = useState(initialState);
   const {
-    isLoading,
     showAlert,
     displayAlert,
 
     user,
     setupUser,
   } = useAppContext();
-
-  const toggleMember = () => {
-    setValues({ ...values });
-  };
 
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });

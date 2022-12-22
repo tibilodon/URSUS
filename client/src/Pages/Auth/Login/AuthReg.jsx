@@ -26,10 +26,6 @@ const AuthReg = () => {
     setupUser,
   } = useAppContext();
 
-  const toggleMember = () => {
-    setValues({ ...values });
-  };
-
   const handleChange = e => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -67,7 +63,6 @@ const AuthReg = () => {
         style={{ backgroundImage: `url(${bgImage})` }}
         className="login-wrap"
       >
-        {/* <div className="login-paper"> */}
         <form onSubmit={onSubmit} className="login-paper" action="">
           <img src={ursus} alt="" />
 
@@ -104,7 +99,6 @@ const AuthReg = () => {
             </Link>
           </div>
         </form>
-        {/* </div> */}
       </div>
     </>
   );

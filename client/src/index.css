@@ -14,6 +14,7 @@
   --test: 2px solid black;
   --rtest: 2px solid red;
   --active: #ee9b01;
+  --focus: #da6a00;
   --dgreen: #14471e;
   --lgreen: #68904d;
   --box-shad: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -23,8 +24,6 @@ button {
 }
 
 .icon-hover {
-  /* border: 2px solid black; */
-
   width: 2em;
   padding-left: 0.06em;
   border-radius: 5000px;

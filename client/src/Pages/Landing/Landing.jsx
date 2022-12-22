@@ -31,6 +31,7 @@ const Landing = () => {
             </Link>
           </div>
         </section>
+        <footer className="version-footer">v2.0.1</footer>
       </div>
     </>
   );

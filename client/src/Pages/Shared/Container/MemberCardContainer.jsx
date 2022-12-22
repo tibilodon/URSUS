@@ -1,10 +1,9 @@
 import "./MemberCardContainerStyles.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "../../../Context/appContext";
 import MemberCard from "../../../Components/Card/MemberCard";
 import Loader from "../../../Components/Loader/Loader";
 import SearchNot from "../../../Components/Alert/SearchNot";
-import BgWrap from "../../../Components/BgWrap";
 
 const MemberCardContainer = () => {
   const {
@@ -40,12 +39,7 @@ const MemberCardContainer = () => {
   }
 
   if (recipes.length === 0) {
-    return (
-      // <div className="no-recipe-found">
-      //   <h1>Nincs találat</h1>
-      // </div>
-      <SearchNot />
-    );
+    return <SearchNot />;
   }
   return recipes.map(recipe => {
     return (
