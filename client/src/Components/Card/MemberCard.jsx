@@ -58,12 +58,14 @@ const MemberCard = ({
       // style={{ backgroundImage: `url(${imgPath})` }}
       className="card-sizer"
     >
-      <img
-        crossOrigin="anonymous"
-        className="sizer-img"
-        src={imgPath && imgPath}
-        alt=""
-      />
+      <div className="card-img-wrap-div">
+        <img
+          crossOrigin="anonymous"
+          className="sizer-img"
+          src={imgPath && imgPath}
+          alt=""
+        />
+      </div>
       <CardModal
         modal={modal}
         // onClose={handleModal}
@@ -102,10 +104,9 @@ const MemberCard = ({
               </div>
             </div>
           )}
-
-          <div className="edit-allowed">
-            <EditAllowed id={_id} />
-          </div>
+        </div>
+        <div className="edit-allowed">
+          <EditAllowed id={_id} />
         </div>
       </div>
     </div>

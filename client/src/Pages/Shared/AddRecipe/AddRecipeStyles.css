@@ -35,7 +35,7 @@
 /*TODO: multi */
 .multi-wrap {
   display: flex;
-  border: var(--test);
+  /* border: var(--test); */
   /* flex-direction: column; */
   justify-content: space-around;
 }
@@ -247,7 +247,7 @@
   .add-multi {
     /* width: 10em; */
     width: 100%;
-    border: var(--test);
+    /* border: var(--test); */
   }
   .multiple-with-span span {
     text-align: center;

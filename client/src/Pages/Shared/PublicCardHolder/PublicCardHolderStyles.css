@@ -8,6 +8,7 @@
   background-size: cover;
   background-repeat: repeat;
   height: 100%;
+  max-width: 100%;
 }
 .pagi-al {
   border: 2px solid red;
