@@ -30,7 +30,6 @@
     padding: 0;
   }
   .search-wrap input {
-    border: var(--test);
     width: 100%;
   }
   .mobile-collapse {
